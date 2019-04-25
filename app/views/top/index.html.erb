@@ -1,0 +1,12 @@
+<h1>QOTAELU</h1>
+
+<%= form_tag('/', method: :get) do %>
+  <input name="keyword" placeholder="作品名で検索" type="text" value=""><button title="検索" type="submit"></button></input>
+<% end %>
+
+<button><%= link_to "カテゴリ一覧", "/questions/categories", class: '' %></button>
+<button><%= link_to "ランキング", "/questions/ranking", class: '' %></button>
+<button><%= link_to "回答受付中", "/questions/open", class: '' %></button>
+<button><%= link_to "ログイン", new_user_session_path, class: '' %></button>
+<button><%= link_to "新規登録", new_user_registration_path, class: '' %></button>
+<button>使ってみる</button>

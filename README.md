@@ -1,24 +1,73 @@
-# README
+## users table
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false, foreign_key: true|
+|role|string|
+|sex|boolean|
+|money|integer|null: false|
+|bio|text|
+|question_id|references|null: false, foreign_key: true|
+|answer_id|references|null: false, foreign_key: true|
 
-Things you may want to cover:
 
-* Ruby version
+### Association
+- has_many :questions
+- has_many :answers
 
-* System dependencies
 
-* Configuration
+## questions table
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|text|text|null: false|
+|done|boolean|
+|category_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|answer_id|references|null: false, foreign_key: true|
 
-* Database initialization
+### Association
+- has_many :answers
+- belongs_to :user
+- belongs_to :category
+- has_one :pv
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## answers table
 
-* Deployment instructions
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|best_answer|boolean|
+|question_id|references|null: false, foreign_key: true|
 
-* ...
+### Association
+- belongs_to :user
+- belongs_to :question
+
+
+## categories table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|question_id|references|null: false, foreign_key: true|
+
+
+### Association
+- has_many :questions
+
+
+
+## pvs table
+
+|Column|Type|Options|
+|------|----|-------|
+|pv|integer|null: false|
+|question_id|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :question
+

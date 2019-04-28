@@ -7,8 +7,6 @@
 |sex|boolean|
 |money|integer|null: false|
 |bio|text|
-|question_id|references|null: false, foreign_key: true|
-|answer_id|references|null: false, foreign_key: true|
 
 
 ### Association
@@ -25,7 +23,6 @@
 |done|boolean|
 |category_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
-|answer_id|references|null: false, foreign_key: true|
 
 ### Association
 - has_many :answers
@@ -52,7 +49,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|question_id|references|null: false, foreign_key: true|
 
 
 ### Association

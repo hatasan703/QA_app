@@ -8,8 +8,26 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+  <h1><a href="/">QOTAELU</a></h1>
+  <%= form_tag('/', method: :get) do %>
+    <input name="keyword" placeholder="作品名で検索" type="text" value=""><button title="検索" type="submit"></button></input>
+  <% end %>
+
+  <button><%= link_to "カテゴリ一覧", questions_categories_path, class: '' %></button>
+  <button><%= link_to "ランキング", questions_ranking_path, class: '' %></button>
+  <button><%= link_to "回答受付中", questions_open_path, class: '' %></button>
+
+  <% if user_signed_in? %>
+    <button><a href="/users/<%= current_user.id %>">はたけだ</a></button>
+    <button><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+    <button><%= link_to "質問する", new_question_path, class: '' %></button>
+  <% else %>
+    <button><%= link_to "ログイン", new_user_session_path, class: '' %></button>
+    <button><%= link_to "新規登録", new_user_registration_path, class: '' %></button>
+  <% end %>
+
+
     <%= yield %>
   </body>
 </html>

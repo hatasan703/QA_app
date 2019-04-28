@@ -7,9 +7,11 @@ class QuestionsController < ApplicationController
   end
 
   def categories
+    @categories = Category.all
   end
 
   def category
+    @category = Category.find(params[:id])
   end
 
   def ranking

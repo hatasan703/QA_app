@@ -11,7 +11,7 @@
   <body>
   <h1><a href="/">QOTAELU</a></h1>
   <%= form_tag('/', method: :get) do %>
-    <input name="keyword" placeholder="質問を検索" type="text" value=""><button title="検索" type="submit"></button></input>
+    <input name="keyword" placeholder="作品名で検索" type="text" value=""><button title="検索" type="submit"></button></input>
   <% end %>
 
   <button><%= link_to "カテゴリ一覧", questions_categories_path, class: '' %></button>

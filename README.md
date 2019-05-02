@@ -7,7 +7,8 @@
 |sex|boolean|
 |money|integer|null: false|
 |bio|text|
-
+|uid|string|
+|provider|string|
 
 ### Association
 - has_many :questions

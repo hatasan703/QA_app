@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+    controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks'
+    }
   root 'top#index'
   resources :questions, only: [:new, :create]
   get 'questions/categories' => 'questions#categories'
@@ -7,8 +10,6 @@ Rails.application.routes.draw do
   get 'questions/ranking' => 'questions#ranking'
   get 'questions/open' => 'questions#open'
 end
-
-
 
 
 # get 'questions' => 'questions#index'

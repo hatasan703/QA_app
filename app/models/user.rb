@@ -3,19 +3,27 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :validatable, :omniauthable
+  # devise :database_authenticatable, :registerable,
+  # :recoverable, :rememberable, :validatable,
+  # :omniauthable, omniauth_providers: [:facebook]
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable,
-  :omniauthable, omniauth_providers: [:facebook]
+       :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :questions
   has_many :answers
 
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.nickname = auth.info.nickname
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
     end
+
+    user
   end
 
 end

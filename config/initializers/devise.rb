@@ -19,7 +19,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
 
-  config.omniauth :facebook, '2726367764056920', '975a29a04b86d110b961f97b1838f2b7'
+  config.omniauth :facebook, '408984039923543', 'c75d0f6c453664dd044f7eb0d2e9d3ee'
   # callback_url: Rails.application.secrets.facebook[:callback_url]
 
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'

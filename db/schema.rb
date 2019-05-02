@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_130808) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "provider"
-    t.string "nickname", null: false
+    t.string "nickname"
     t.boolean "sex"
     t.integer "money"
     t.text "bio"

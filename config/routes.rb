@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
   resources :questions, only: [:new, :create]
+  # resources :questions, only: :show do
+  #   resources :answers, only: [:new, :create]
+  #   end
   get 'questions/categories' => 'questions#categories'
   get 'questions/category/:id' => 'questions#category'
   get 'questions/ranking' => 'questions#ranking'

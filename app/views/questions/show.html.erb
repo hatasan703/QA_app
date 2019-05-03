@@ -5,3 +5,13 @@
   <p><%= @question.user.created_at %></p>
   <p><%= @question.text %></p>
 </div>
+
+<div class='answer_form'>
+
+<%= form_for [@question, @answer] do |f| %>
+
+    <%= f.text_area :review, placeholder: '回答を入力してください' %>
+    <%= f.submit "回答する" %>
+<% end %>
+
+</div>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'questions/category/:id' => 'questions#category'
   get 'questions/ranking' => 'questions#ranking'
   get 'questions/open' => 'questions#open'
+  get 'questions/:id' => 'questions#show'
 end
 
 

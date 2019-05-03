@@ -19,7 +19,7 @@
   <button><%= link_to "回答受付中", questions_open_path, class: '' %></button>
 
   <% if user_signed_in? %>
-    <button><a href="/users/<%= current_user.id %>">はたけだ</a></button>
+    <button><a href="/users/<%= current_user.id %>"><%= current_user.nickname %></a></button>
     <button><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
     <button><%= link_to "質問する", new_question_path, class: '' %></button>
   <% else %>

@@ -10,9 +10,11 @@ class QuestionsController < ApplicationController
     redirect_to :root
   end
 
-  # def show
-  #   @question = Question.find(params[:id])
-  # end
+  def show
+    @question = Question.find(params[:id])
+    @answer = Answer.new
+    @answers = @question.answers.includes(:user)
+  end
 
   def categories
     @categories = Category.all

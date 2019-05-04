@@ -7,11 +7,21 @@
 </div>
 
 <div class='answer_form'>
-
 <%= form_for [@question, @answer] do |f| %>
 
-    <%= f.text_area :review, placeholder: '回答を入力してください' %>
+    <%= f.text_area :text, placeholder: '回答を入力してください' %>
     <%= f.submit "回答する" %>
 <% end %>
+</div>
 
+<div class='answer_content'>
+<h4>回答</h4>
+      <% if @answers %>
+        <% @answers.each do |answer| %>
+          <p>
+            <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+            <%= answer.text %>
+          </p>
+        <% end %>
+      <% end %>
 </div>

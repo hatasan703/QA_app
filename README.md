@@ -39,6 +39,7 @@
 |text|text|null: false|
 |best_answer|boolean|
 |question_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user

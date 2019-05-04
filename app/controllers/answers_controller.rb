@@ -1,13 +1,8 @@
 class AnswersController < ApplicationController
 
-  def new
-    @question = Question.find(params[:question_id])
-    @answer = Answer.new
-  end
-
   def create
-    Answer.create(create_params)
-    redirect_to controller: :questions, action: :show
+    @answers = Answer.create(create_params)
+    redirect_to "/questions/#{@answers.question.id}"
   end
 
   private

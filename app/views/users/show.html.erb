@@ -1,0 +1,18 @@
+<h1>
+  <%= link_to "プロフィール", "/users/#{current_user.id}", class: '' %>
+</h1>
+<p>ニックネーム: <%= @user.nickname %></p>
+<p>年齢：</p>
+<p>性別：</p>
+<p>職業：</p>
+<p>自己紹介：</p>
+<h3><%= link_to "編集する", "/users/#{current_user.id}/edit", class: '' %></h3>
+
+
+<h1>
+  <%= link_to "質問一覧", "/users/#{current_user.id}/my_question", class: '' %>
+</h1>
+
+<h1>
+  <%= link_to "回答一覧", "/users/#{current_user.id}/my_answer", class: '' %>
+</h1>

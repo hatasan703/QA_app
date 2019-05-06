@@ -8,6 +8,7 @@
 |money|integer|null: false|
 |bio|text|
 |uid|string|
+|age|integer|
 |provider|string|
 
 ### Association

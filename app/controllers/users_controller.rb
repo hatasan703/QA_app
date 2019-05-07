@@ -39,13 +39,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_sex = @user.sex
   end
 
 
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :sex, :bio, :age)
+    params.require(:user).permit(:nickname, :sex, :bio, :age, :role)
   end
 
 end

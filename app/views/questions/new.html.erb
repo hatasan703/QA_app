@@ -1,7 +1,7 @@
 <h1>質問投稿</h1>
 
 
-<%= form_for @question do |f| %>
+<%= form_with(model: @question, local: true, url: {action: 'confirm'}) do |f| %>
   <p>
     <%= f.label :title, "タイトル" %><br>
     <%= f.text_field :title %><br>
@@ -13,12 +13,7 @@
   <p>
     <%= f.label :"カテゴリ" %><br>
     <%= f.collection_select :category_id, @categories, :id, :name %>
-
   </p>
     <%= f.submit "投稿" %>
 <% end %>
-
-
-
-
 

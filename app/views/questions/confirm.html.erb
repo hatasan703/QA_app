@@ -1,0 +1,22 @@
+<div>
+  <%= form_for @question do |f| %>
+    <div class="field">
+      タイトル: <%= @question.title %>
+      <%= f.hidden_field :title %>
+    </div>
+    <div class="field">
+      質問本文: <%= @question.text %>
+      <%= f.hidden_field :text %>
+    </div>
+    <div class="field">
+      カテゴリ: <%= @question.category.name %>
+      <%= f.hidden_field :category_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit '投稿画面に戻る', name: 'back' %>
+    </div>
+    <div class="actions">
+      <%= f.submit '投稿する' %>
+    </div>
+  <% end %>
+</div>

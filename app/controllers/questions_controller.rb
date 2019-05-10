@@ -5,9 +5,28 @@ class QuestionsController < ApplicationController
     @categories = Category.all
   end
 
+  def confirm
+    @question = Question.new(create_params)
+    render :new if @question.invalid?
+    # @categories = Category.all
+  end
+
+  # def back
+  #   @question = Question.new(create_params)
+  #   render :new
+  # end
+
   def create
-    Question.create(create_params)
-    redirect_to :root
+    @question = Question.new(create_params)
+    respond_to do |format|
+        if params[:back]
+          format.html { render :new }
+        elsif @question.save
+          format.html { redirect_to root_path }
+        else
+          format.html { render :new }
+        end
+    end
   end
 
   def show

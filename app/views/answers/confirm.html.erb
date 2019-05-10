@@ -1,0 +1,14 @@
+<div>
+  <%= form_for [@question, @answer] do |f| %>
+    <div class="field">
+      回答本文: <%= @answer.text %>
+      <%= f.hidden_field :text %>
+    </div>
+    <div class="actions">
+      <%= f.submit '投稿画面に戻る', name: 'back' %>
+    </div>
+    <div class="actions">
+      <%= f.submit '投稿する' %>
+    </div>
+  <% end %>
+</div>

@@ -28,6 +28,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @answers = @question.answers.includes(:user)
+
+    @is_questioner = false
+    if current_user != nil
+      @is_questioner = current_user.id == @question.user_id
+    end
   end
 
   def categories

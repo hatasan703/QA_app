@@ -1,10 +1,5 @@
 class AnswersController < ApplicationController
 
-  # def create
-  #   @answers = Answer.create(create_params)
-  #   redirect_to "/questions/#{@answers.question.id}"
-  # end
-
   def confirm
     @answer = Answer.new(create_params)
     @question = Question.find(@answer.question_id)

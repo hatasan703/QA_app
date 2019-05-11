@@ -13,6 +13,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(create_params)
+    @question = Question.find(@answer.question_id)
     respond_to do |format|
         if params[:back]
           format.html { render template: "questions/show" }
@@ -24,11 +25,6 @@ class AnswersController < ApplicationController
         end
     end
   end
-
-  # def back
-  #   @answer = Answer.new(create_params)
-  #   render template: "questions/show"
-  # end
 
   private
   def create_params

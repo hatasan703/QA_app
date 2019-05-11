@@ -30,9 +30,13 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.includes(:user)
 
     @is_questioner = false
+    @answerable = true # TODO: 変数名は後で直す
     if current_user != nil
       @is_questioner = current_user.id == @question.user_id
+      @user_ids = @answers.ids
+      @answerable = !@user_ids.find(current_user.id)
     end
+
   end
 
   def categories

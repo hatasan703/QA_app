@@ -13,8 +13,8 @@
     <%= link_to "回答する", new_user_session_path %>
   </h3>
 
-<% elsif @is_questioner %>
-  <div> 質問者なのでかいとうできません </div>
+<% elsif @is_questioner || !@answerable %> <%#  サインインしている状態 %>
+  <h3> 質問者 or 既に回答しているのでできません </h3>
 <% else %>
   <div class='answer_form'>
     <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>

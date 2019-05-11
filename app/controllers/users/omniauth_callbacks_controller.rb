@@ -1,6 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def facebook
     callback_from :facebook
+  end
+
+  def after_sign_in_path_for(resource)
+    "/users/#{current_user.id}/edit" # サインイン後のリダイレクト先URL
   end
 
   private

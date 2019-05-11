@@ -1,0 +1,19 @@
+
+
+
+<h1>
+  <%= link_to "プロフィール", "/users/#{current_user.id}", class: '' %>
+</h1>
+
+<h1>
+  <%= link_to "質問一覧", "/users/#{current_user.id}/my_question", class: '' %>
+</h1>
+
+<h1>
+<%= link_to "回答一覧", "/users/#{current_user.id}/my_answer", class: '' %>
+</h1>
+<% @answers.each do |answer| %>
+  <%= link_to "#{answer.text}", "/questions/#{answer.question.id}/", method: :get %>
+<% end %>
+
+<h1>〜さんの回答一覧</h1>

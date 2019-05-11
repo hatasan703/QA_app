@@ -2,10 +2,27 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
   resources :questions, only: [:new, :create]
+  resources :users, only: [:edit, :update]
+  resources :users, only: [:show] do
+    get 'my_question' => 'users#my_question'
+    get 'my_answer' => 'users#my_answer'
+  end
+
   get 'questions/categories' => 'questions#categories'
   get 'questions/category/:id' => 'questions#category'
   get 'questions/ranking' => 'questions#ranking'
   get 'questions/open' => 'questions#open'
+  post '/questions/confirm' => 'questions#confirm'
+
+  # post :new, path: :new, as: :new, action: :back
+  # get 'new', to: 'questions#back', as: :back
+
+
+  resources :questions, only: :show do
+    resources :answers, only: [:create]
+    post 'confirm' => 'answers#confirm'
+  end
+
 end
 
 

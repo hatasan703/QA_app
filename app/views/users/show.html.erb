@@ -1,0 +1,24 @@
+<h1>
+  <%= link_to "プロフィール", "/users/#{current_user.id}", class: '' %>
+</h1>
+<p>ニックネーム: <%= @user.nickname %></p>
+<p>年齢：<%= @user.age %></p>
+<p>性別：
+  <% if @user_sex == true %>
+    <%= '女性' %>
+  <% else %>
+    <%= '男性' %>
+  <% end %>
+</p>
+<p>職業：<%= @user.role %></p>
+<p>自己紹介：<%= @user.bio %></p>
+<h3><%= link_to "編集する", "/users/#{current_user.id}/edit", class: '' %></h3>
+
+
+<h1>
+  <%= link_to "質問一覧", "/users/#{current_user.id}/my_question", class: '' %>
+</h1>
+
+<h1>
+  <%= link_to "回答一覧", "/users/#{current_user.id}/my_answer", class: '' %>
+</h1>

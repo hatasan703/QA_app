@@ -8,16 +8,11 @@ class QuestionsController < ApplicationController
   def confirm
     @question = Question.new(create_params)
     render :new if @question.invalid?
-    # @categories = Category.all
   end
-
-  # def back
-  #   @question = Question.new(create_params)
-  #   render :new
-  # end
 
   def create
     @question = Question.new(create_params)
+    @categories = Category.all
     respond_to do |format|
         if params[:back]
           format.html { render :new }

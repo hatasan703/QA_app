@@ -8,18 +8,16 @@ Rails.application.routes.draw do
     get 'my_answer' => 'users#my_answer'
   end
 
+
   get 'questions/categories' => 'questions#categories'
   get 'questions/category/:id' => 'questions#category'
   get 'questions/ranking' => 'questions#ranking'
   get 'questions/open' => 'questions#open'
-  post '/questions/confirm' => 'questions#confirm'
-
-  # post :new, path: :new, as: :new, action: :back
-  # get 'new', to: 'questions#back', as: :back
+  post 'questions/confirm' => 'questions#confirm'
 
 
   resources :questions, only: :show do
-    resources :answers, only: [:create]
+    resources :answers, only: [:create, :update]
     post 'confirm' => 'answers#confirm'
   end
 

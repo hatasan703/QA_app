@@ -1,13 +1,13 @@
 class AnswersController < ApplicationController
 
   def confirm
-    @answer = Answer.new(create_params)
+    @answer = Answer.new(answer_params)
     @question = Question.find(@answer.question_id)
     render template: "questions/show" if @answer.invalid?
   end
 
   def create
-    @answer = Answer.new(create_params)
+    @answer = Answer.new(answer_params)
     @question = Question.find(@answer.question_id)
     respond_to do |format|
         if params[:back]
@@ -21,9 +21,15 @@ class AnswersController < ApplicationController
     end
   end
 
+  def update
+    answer = Answer.find(params[:id])
+    answer.update(answer_params)
+    redirect_to root_path
+  end
+
   private
-  def create_params
-    params.require(:answer).permit(:text).merge(question_id: params[:question_id], user_id: current_user.id)
+  def answer_params
+    params.require(:answer).permit(:text, :best_answer).merge(question_id: params[:question_id], user_id: current_user.id)
   end
 
 end

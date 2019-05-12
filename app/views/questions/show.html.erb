@@ -34,6 +34,12 @@
           <p>
             <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
             <%= answer.text %>
+            <h3>
+              <%= form_for answer, url: question_answer_path(@question, answer) do |f| %>
+                <%= f.hidden_field :best_answer, value: true %>
+                <%= f.submit "ベストアンサーに選ぶ" %>
+              <% end %>
+            </h3>
           </p>
         <% end %>
       <% end %>

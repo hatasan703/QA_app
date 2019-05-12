@@ -6,12 +6,12 @@ class QuestionsController < ApplicationController
   end
 
   def confirm
-    @question = Question.new(create_params)
+    @question = Question.new(question_params)
     render :new if @question.invalid?
   end
 
   def create
-    @question = Question.new(create_params)
+    @question = Question.new(question_params)
     @categories = Category.all
     respond_to do |format|
         if params[:back]
@@ -34,7 +34,8 @@ class QuestionsController < ApplicationController
     if current_user != nil
       @is_questioner = current_user.id == @question.user_id
       @user_ids = @answers.ids
-      @answerable = !@user_ids.find(current_user.id)
+      @answerable = !@user_ids.find(current_user.id) #修正必要
+      # @answerable  = @answers.where(user_id: current_user.id)
     end
 
   end
@@ -57,7 +58,7 @@ class QuestionsController < ApplicationController
   end
 
   private
-  def create_params
+  def question_params
     params.require(:question).permit(:title, :text, :category_id).merge(user_id: current_user.id)
   end
 

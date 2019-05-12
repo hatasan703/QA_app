@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
         if params[:back]
           format.html { render template: "questions/show" }
         elsif @answer.save
-          format.html { redirect_to root_path }
+          format.html { redirect_to root_path } #あとで直す
         else
           format.html { render template: "questions/show" }
 
@@ -21,10 +21,16 @@ class AnswersController < ApplicationController
     end
   end
 
+  def ba_confirm
+    @answer = Answer.find(params[:id])
+    @question = Question.find(@answer.question_id)
+    render template: "questions/show" if @answer.invalid?
+  end
+
   def update
     answer = Answer.find(params[:id])
     answer.update(answer_params)
-    redirect_to root_path
+    redirect_to root_path　#あとで直す
   end
 
   private

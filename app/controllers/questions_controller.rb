@@ -33,9 +33,9 @@ class QuestionsController < ApplicationController
     @answerable = true # TODO: 変数名は後で直す
     if current_user != nil
       @is_questioner = current_user.id == @question.user_id
-      @user_ids = @answers.ids
-      @answerable = !@user_ids.find(current_user.id) #修正必要
-      # @answerable  = @answers.where(user_id: current_user.id)
+      # @user_ids = @answers.ids
+      # @answerable = !@user_ids.find(current_user.id) #修正必要
+      @answerable  = @answers.where(user_id: current_user.id)
     end
 
   end

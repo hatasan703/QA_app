@@ -13,7 +13,7 @@
     <%= link_to "回答する", new_user_session_path %>
   </h3>
 
-<% elsif @is_questioner || !@answerable %> <%#  サインインしている状態 %>
+<% elsif @is_questioner || @answerable.present? %> <%#  サインインしている状態 %>
   <h3> 質問者 or 既に回答しているのでできません </h3>
 <% else %>
   <div class='answer_form'>

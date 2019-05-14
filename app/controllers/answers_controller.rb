@@ -30,7 +30,7 @@ class AnswersController < ApplicationController
   def update
     answer = Answer.find(params[:id])
     answer.update(answer_params)
-    redirect_to root_path　#あとで直す
+    redirect_to root_path
   end
 
   private

@@ -27,17 +27,35 @@
   </div>
 <% end %>
 
-<div class='answer_content'>
-<h4>回答一覧</h4>
-      <% if @answers %>
-        <% @answers.each do |answer| %>
-          <p>
-            <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-            <%= answer.text %>
-            <h3>
-              <%= link_to "ベストアンサーに選ぶ", "#{@question.id}/answers/#{answer.id}/ba_confirm", class: '' %>
-            </h3>
-          </p>
+
+
+
+<% if !@is_questioner || @ba_present %>
+  <div class='answer_content'>
+    <h4>回答一覧</h4>
+          <% if @answers %>
+            <% @answers.each do |answer| %>
+              <p>
+                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                <%= answer.text %>
+                <h3>自分の質問ではないor解決済み</h3>
+              </p>
+            <% end %>
+          <% end %>
+    </div>
+<% else %>
+  <div class='answer_content'>
+  <h4>回答一覧</h4>
+        <% if @answers %>
+          <% @answers.each do |answer| %>
+            <p>
+              <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+              <%= answer.text %>
+              <h3>
+                <%= link_to "ベストアンサーに選ぶ", "#{@question.id}/answers/#{answer.id}/ba_confirm", class: '' %>
+              </h3>
+            </p>
+          <% end %>
         <% end %>
-      <% end %>
-</div>
+  </div>
+<% end %>

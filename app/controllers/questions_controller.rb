@@ -34,6 +34,8 @@ class QuestionsController < ApplicationController
     if current_user != nil
       @is_questioner = current_user.id == @question.user_id
       @answerable  = @answers.exists?(user_id: current_user.id)
+
+      @ba_present = @answers.exists?(best_answer: true)
     end
 
   end
@@ -61,5 +63,3 @@ class QuestionsController < ApplicationController
   end
 
 end
-
-

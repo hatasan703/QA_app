@@ -14,7 +14,7 @@
   </h3>
 
 <% elsif @is_questioner || @answerable %> <%#  サインインしている状態 %>
-  <h3> 質問者 or 既に回答しているのでできません </h3>
+  <h3> 質問者 or 回答済み </h3>
 <% else %>
   <div class='answer_form'>
     <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
@@ -30,7 +30,7 @@
 
 
 
-<% if !@is_questioner || @ba_present %>
+<% if !@is_questioner || @resolved %>
   <div class='answer_content'>
     <h4>回答一覧</h4>
           <% if @answers %>

@@ -35,9 +35,9 @@ class QuestionsController < ApplicationController
       @is_questioner = current_user.id == @question.user_id
       @answerable  = @answers.exists?(user_id: current_user.id)
 
-      @ba_present = @answers.exists?(best_answer: true)
+      @resolved = @question.done.present?
     end
-
+    # binding.pry
   end
 
   def categories

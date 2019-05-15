@@ -17,9 +17,9 @@
        </div>
 
   <% else %>
-    <% if @answerable %>
+    <% if @answerable && !@resolved %>
+
       <h3>回答済み </h3>
-        <h3><%= link_to "回答する", new_user_session_path %></h3>
         <div class='answer_content'>
         <h4>回答一覧</h4>
               <% if @answers %>
@@ -31,7 +31,15 @@
                 <% end %>
               <% end %>
         </div>
+
+    <% elsif @resolved %>
+
+      <h3>質問者&被質問者(ログイン済み)&被質問者(未ログイン)
+      ・①解決済みページ
+      </h3>
+
     <% else %>
+
       <div class='answer_form'>
         <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
           <p>
@@ -44,27 +52,61 @@
     <% end %>
 
   <% end %>
-<% elsif @resolved %>
-    質問者&被質問者(ログイン済み)&被質問者(未ログイン)
-    ・①解決済みページ
 <% else %>
-  <h3><%= link_to "回答する", new_user_session_path %></h3>
-  <div class='answer_content'>
-  <h4>回答一覧</h4>
-        <% if @answers %>
-          <% @answers.each do |answer| %>
-            <p>
-              <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-              <%= answer.text %>
-            </p>
+
+  <% if @resolved %>
+
+    <h3>質問者&被質問者(ログイン済み)&被質問者(未ログイン)
+      ・①解決済みページ
+      </h3>
+
+  <% else %>
+
+    <h3><%= link_to "回答する", new_user_session_path %></h3>
+    <div class='answer_content'>
+    <h4>回答一覧</h4>
+          <% if @answers %>
+            <% @answers.each do |answer| %>
+              <p>
+                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                <%= answer.text %>
+              </p>
+            <% end %>
           <% end %>
-        <% end %>
-  </div>
+    </div>
+
+  <% end %>
 <% end %>
 
 
 
 
+
+<% if user_signed_in? %>
+  <% if @is_questioner && !@resolved %>
+     質問者（ログイン済み）
+    ・②回答受付中ページ（BA選定）
+  <% else %>
+    <% if @answerable && !@resolved %>
+      ・④回答済み
+    <% elsif @resolved %>
+      質問者&非質問者(ログイン済み)&非質問者(未ログイン)
+      ・①解決済みページ
+    <% else %>
+       非質問者（ログイン済み）
+      ・③回答受付中（回答できる）
+    <% end %>
+
+  <% end %>
+<% else %>
+  <% if @resolved %>
+    質問者&非質問者(ログイン済み)&非質問者(未ログイン)
+    ・①解決済みページ
+  <% else %>
+    非質問者（未ログイン）
+    ・⑤回答受付中（回答できない）
+  <% end %>
+<% end %>
 
 
 <%# 質問者（ログイン済み）
@@ -79,3 +121,4 @@
 非質問者（未ログイン）
 ・①解決済みページ
 ・⑤回答受付中（回答できない） %>
+

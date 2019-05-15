@@ -6,46 +6,11 @@
   <p><%= @question.text %></p>
 </div>
 
+<% if user_signed_in? %>
+  <% if @is_questioner && !@resolved %>
 
-
-<% if !user_signed_in? %>
-  <h3>
-    <%= link_to "回答する", new_user_session_path %>
-  </h3>
-
-<% elsif @is_questioner || @answerable %> <%#  サインインしている状態 %>
-  <h3> 質問者 or 回答済み </h3>
-<% else %>
-  <div class='answer_form'>
-    <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
-    <p>
-      <%= f.label :text, "回答本文" %><br>
-      <%= f.text_area :text %><br>
-    </p>
-      <%= f.submit "投稿" %>
-    <% end %>
-  </div>
-<% end %>
-
-
-
-
-<% if !@is_questioner || @resolved %>
-  <div class='answer_content'>
-    <h4>回答一覧</h4>
-          <% if @answers %>
-            <% @answers.each do |answer| %>
-              <p>
-                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                <%= answer.text %>
-                <h3>自分の質問ではないor解決済み</h3>
-              </p>
-            <% end %>
-          <% end %>
-    </div>
-<% else %>
-  <div class='answer_content'>
-  <h4>回答一覧</h4>
+      <div class='answer_content'>
+        <h4>回答一覧</h4>
         <% if @answers %>
           <% @answers.each do |answer| %>
             <p>
@@ -57,5 +22,66 @@
             </p>
           <% end %>
         <% end %>
-  </div>
+       </div>
+
+  <% else %>
+    <% if @answerable && !@resolved %>
+
+      <h3>回答済み </h3>
+        <div class='answer_content'>
+        <h4>回答一覧</h4>
+              <% if @answers %>
+                <% @answers.each do |answer| %>
+                  <p>
+                    <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                    <%= answer.text %>
+                  </p>
+                <% end %>
+              <% end %>
+        </div>
+
+    <% elsif @resolved %>
+
+      <h3>質問者&被質問者(ログイン済み)&被質問者(未ログイン)
+      ・①解決済みページ
+      </h3>
+
+    <% else %>
+
+      <div class='answer_form'>
+        <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
+          <p>
+          <%= f.label :text, "回答本文" %><br>
+          <%= f.text_area :text %><br>
+          </p>
+          <%= f.submit "投稿" %>
+        <% end %>
+      </div>
+    <% end %>
+
+  <% end %>
+<% else %>
+
+  <% if @resolved %>
+
+    <h3>質問者&被質問者(ログイン済み)&被質問者(未ログイン)
+      ・①解決済みページ
+      </h3>
+
+  <% else %>
+
+    <h3><%= link_to "回答する", new_user_session_path %></h3>
+    <div class='answer_content'>
+    <h4>回答一覧</h4>
+          <% if @answers %>
+            <% @answers.each do |answer| %>
+              <p>
+                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                <%= answer.text %>
+              </p>
+            <% end %>
+          <% end %>
+    </div>
+
+  <% end %>
 <% end %>

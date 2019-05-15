@@ -34,9 +34,8 @@ class QuestionsController < ApplicationController
     if current_user != nil
       @is_questioner = current_user.id == @question.user_id
       @answerable  = @answers.exists?(user_id: current_user.id)
-
-      @resolved = @question.done.present?
     end
+    @resolved = @question.done.present?
     # binding.pry
   end
 

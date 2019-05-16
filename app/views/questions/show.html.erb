@@ -10,7 +10,7 @@
   <% if @is_questioner && !@resolved %>
 
       <div class='answer_content'>
-        <h4>回答一覧</h4>
+        <h3>回答一覧</h3>
         <% if @answers %>
           <% @answers.each do |answer| %>
             <p>
@@ -29,7 +29,7 @@
 
       <h3>回答済み </h3>
         <div class='answer_content'>
-        <h4>回答一覧</h4>
+        <h3>回答一覧</h3>
               <% if @answers %>
                 <% @answers.each do |answer| %>
                   <p>
@@ -42,9 +42,22 @@
 
     <% elsif @resolved %>
 
-      <h3>質問者&被質問者(ログイン済み)&被質問者(未ログイン)
-      ・①解決済みページ
-      </h3>
+      <h3>ベストアンサー</h3>
+      <% if @best_answer %>
+        <%= @best_answer.text %>
+      <% end %>
+
+      <div class='answer_content'>
+      <h3>その他の回答</h3>
+            <% if @answers %>
+              <% @answers.each do |answer| %>
+                <p>
+                  <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                  <%= answer.text %>
+                </p>
+              <% end %>
+            <% end %>
+      </div>
 
     <% else %>
 
@@ -64,15 +77,28 @@
 
   <% if @resolved %>
 
-    <h3>質問者&被質問者(ログイン済み)&被質問者(未ログイン)
-      ・①解決済みページ
-      </h3>
+    <h3>ベストアンサー</h3>
+    <% if @best_answer %>
+      <%= @best_answer.text %>
+    <% end %>
+
+    <div class='answer_content'>
+    <h3>その他の回答</h3>
+          <% if @answers %>
+            <% @answers.each do |answer| %>
+              <p>
+                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                <%= answer.text %>
+              </p>
+            <% end %>
+          <% end %>
+    </div>
 
   <% else %>
 
     <h3><%= link_to "回答する", new_user_session_path %></h3>
     <div class='answer_content'>
-    <h4>回答一覧</h4>
+    <h3>回答一覧</h3>
           <% if @answers %>
             <% @answers.each do |answer| %>
               <p>

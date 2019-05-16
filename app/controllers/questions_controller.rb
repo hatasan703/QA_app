@@ -27,13 +27,15 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
-    @answers = @question.answers.includes(:user)
+    @all_answers = @question.answers.includes(:user)
+    @answers = @all_answers.where(best_answer: nil)
+    @best_answer = @all_answers.find_by(best_answer: true)
 
     @is_questioner = false
     @answerable = true # TODO: 変数名は後で直す
     if current_user != nil
       @is_questioner = current_user.id == @question.user_id
-      @answerable  = @answers.exists?(user_id: current_user.id)
+      @answerable  = @all_answers.exists?(user_id: current_user.id)
     end
     @resolved = @question.done.present?
     # binding.pry

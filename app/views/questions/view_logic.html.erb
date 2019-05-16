@@ -122,3 +122,19 @@
 ・①解決済みページ
 ・⑤回答受付中（回答できない） %>
 
+
+
+<h3>ベストアンサー</h3>
+<%= @best_answer.text %>
+
+<div class='answer_content'>
+<h4>回答一覧</h4>
+      <% if @answers %>
+        <% @answers.each do |answer| %>
+          <p>
+            <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+            <%= answer.text %>
+          </p>
+        <% end %>
+      <% end %>
+</div>

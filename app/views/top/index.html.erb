@@ -1,5 +1,47 @@
 <!-- main contents -->
     <main class="main">
+      <% if user_signed_in? %>
+          <div class="container">
+            <div class="howTo">
+                <section>
+                    <h2 class="howToTtl">
+                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+                    </h2>
+                </section>
+
+                <div class="howToWrap">
+
+                    <div class="howToItem">
+                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
+                        <%= image_tag("howTo_item01.png", alt: "") %>
+
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
+                        <%= image_tag("howTo_item02.png", alt: "") %>
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
+                        <%= image_tag("howTo_item03.png", alt: "") %>
+                    </div>
+
+                    <div class="discussionBtn sp">
+                        <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
+                        <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+                    </div>
+
+                </div>
+                <div class="discussionBtn pc">
+                    <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
+                    <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+                </div>
+            </div>
+        </div>
+
+      <% else %>
 
         <div class="container">
             <div class="howTo">
@@ -35,6 +77,7 @@
                 <a href="#" class="howToUseBtn pc">使ってみる</a>
             </div>
         </div>
+      <% end %>
 
         <div class="container">
             <div class="qanda">

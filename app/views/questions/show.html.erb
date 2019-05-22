@@ -1,10 +1,14 @@
+
+
+
+<%#
 <h1>トップ▶︎<%= @question.category.name %></h1>
-<div class='question_content'>
-  <h2><%= @question.title %></h2>
-  <p><%= @question.user.nickname %></p>
-  <p><%= @question.user.created_at %></p>
-  <p><%= @question.text %></p>
-</div>
+<%# <div class='question_content'> %>
+  <%# <h2><%= @question.title %></h2> %>
+  <%# <p><%= @question.user.nickname %></p> %>
+  <%# <p><%= @question.created_at %></p> %>
+  <%# <p><%= @question.text %></p> %>
+<%# </div> %> %>
 
 <% if user_signed_in? %>
   <% if @is_questioner && !@resolved %>
@@ -42,22 +46,7 @@
 
     <% elsif @resolved %>
 
-      <h3>ベストアンサー</h3>
-      <% if @best_answer %>
-        <%= @best_answer.text %>
-      <% end %>
-
-      <div class='answer_content'>
-      <h3>その他の回答</h3>
-            <% if @answers %>
-              <% @answers.each do |answer| %>
-                <p>
-                  <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                  <%= answer.text %>
-                </p>
-              <% end %>
-            <% end %>
-      </div>
+      <%= render partial: "resolved" %>
 
     <% else %>
 
@@ -77,22 +66,7 @@
 
   <% if @resolved %>
 
-    <h3>ベストアンサー</h3>
-    <% if @best_answer %>
-      <%= @best_answer.text %>
-    <% end %>
-
-    <div class='answer_content'>
-    <h3>その他の回答</h3>
-          <% if @answers %>
-            <% @answers.each do |answer| %>
-              <p>
-                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                <%= answer.text %>
-              </p>
-            <% end %>
-          <% end %>
-    </div>
+    <%= render partial: "resolved" %>
 
   <% else %>
 

@@ -1,0 +1,77 @@
+<div class=container>
+  <section><h3 class="question_status"><%= @question.category.name %></h3></section>
+  <div class="qandaWrap">
+      <div class="qandaItem">
+          <article>
+              <div class="qandaItemStatus">
+                  <a href="#" class="answer">解決済み</a>
+              </div>
+              <section><h3><div class="question_title"><%= @question.title %></div></h3></section>
+              <div class="qanda_middle_items">
+                  <div class='question_user'>
+                    <%= image_tag  @question.user.image, class: "question_user_image" %>
+                    <%= link_to @question.user.nickname, "/users/#{@question.user_id}", class: "question_user_name" %>
+                  </div>
+                    <time><%= @question.created_at %></time>
+                    <a href="#">2</a>
+                    <a href="#">2</a>
+              </div>
+              <p>
+                  <%= @question.text %>
+              </p>
+          </article>
+      </div>
+  </div>
+
+
+  <div class=container>
+  <section><h3 class="question_status">ベストアンサー</h3></section>
+  <div class="qandaWrap">
+      <div class="qandaItem">
+          <article>
+              <div class="qanda_middle_items answer_middle_items">
+                  <div class='question_user'>
+                    <%= image_tag  @best_answer.user.image, class: "question_user_image" %>
+                    <%= link_to @best_answer.user.nickname, "/users/#{@best_answer.user_id}", class: "question_user_name" %>
+                  </div>
+                    <time><%= @best_answer.created_at %></time>
+                    <a href="#">2</a>
+                    <a href="#">2</a>
+              </div>
+              <p>
+                <% if @best_answer %>
+                  <%= @best_answer.text %>
+                <% end %>
+              </p>
+          </article>
+      </div>
+  </div>
+
+
+  <div class=container>
+  <section><h3 class="question_status">ベストアンサー以外の回答</h3></section>
+  <div class="qandaWrap">
+
+    <% if @answers %>
+    <% @answers.each do |answer| %>
+      <div class="qandaItem">
+          <article>
+              <div class="qanda_middle_items answer_middle_items">
+                  <div class='question_user'>
+                    <%= image_tag  answer.user.image, class: "question_user_image" %>
+                    <%= link_to answer.user.nickname, "/users/#{answer.user_id}", class: "question_user_name" %>
+                  </div>
+                    <time><%= answer.created_at %></time>
+                    <a href="#">2</a>
+                    <a href="#">2</a>
+              </div>
+              <p>
+                <%= answer.text %>
+              </p>
+          </article>
+      </div>
+    <% end %>
+    <% end %>
+
+  </div>
+

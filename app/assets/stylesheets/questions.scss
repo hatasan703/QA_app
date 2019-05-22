@@ -1,3 +1,100 @@
-// Place all the styles related to the questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.question_user{
+  margin-right: auto;
+  font-size: 16px;
+
+  &_image {
+    width: 45px;
+    height: 45px;
+  }
+  &_name{
+    vertical-align: top;
+  }
+}
+
+.question_title{
+  font-size: 28px;
+}
+
+.qanda_middle_items{
+  padding: 30px 0px;
+}
+
+.qanda_middle_items > a:hover {
+	opacity: .7;
+}
+
+.qanda_middle_items {
+	display: flex;
+  justify-content: flex-ezznd;
+	align-items: center;
+}
+
+.qanda_middle_items > time {
+	font-size: 1.5rem;
+	font-weight: 600;
+  color: #d1dbde;
+}
+
+.qanda_middle_items > a {
+	font-size: 1.5rem;
+	color: #222;
+	display: flex;
+	align-items: center;
+}
+
+.qanda_middle_items > a:first-of-type {
+	margin: 0 25px;
+}
+
+.qanda_middle_items > a:first-of-type::before {
+	content: "";
+	width: 22px;
+	height: 19px;
+	margin: 0 5px 0 0;
+	background: url("comment.png");
+	background-size: cover;
+	display: block;
+}
+
+.qanda_middle_items > a:last-of-type::before {
+	content: "";
+	width: 27px;
+	height: 18px;
+	margin: 0 5px 0 0;
+	background: url("view.png");
+	background-size: cover;
+	display: block;
+}
+
+
+.question_status {
+	font-size: 2.5rem;
+	// font-weight: 600;
+	color: #333;
+	padding: 25px 40px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom: 1px solid #dae1e3;
+	background: #fff;
+	display: flex;
+	align-items: center;
+}
+.question_status::after {
+	content: "";
+	width: 8px;
+	height: 16px;
+	margin: 0 0 0 15px;
+	background: url("./arrow_right.png");
+	background-size: cover;
+	display: block;
+}
+
+// .question_category_status {
+//   font-size: 1.8rem;
+//   padding: 6% 5%;
+// }
+
+.answer_middle_items{
+  padding: 0px 0px 30px 0px
+}
+

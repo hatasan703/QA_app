@@ -1,11 +1,3 @@
-
-
-
-
-  <%# <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %> %>
-
-
-
 <div class='container'>
   <section><h3 class="arrowTtl"><%= @category.name %></h3></section>
     <% @questions.each do |question| %>
@@ -13,7 +5,11 @@
           <div class="qandaItem">
               <article>
                   <div class="qandaItemStatus">
-                      <a href="#" class="question">回答受付中</a>
+                       <% if question.done.present? %>
+                        <a href="#" class="answer">解決済み</a>
+                       <% else %>
+                        <a href="#" class="question">回答受付中</a>
+                       <% end %>
                       <%= link_to "#{@category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat", method: :get %>
                   </div>
                   <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>

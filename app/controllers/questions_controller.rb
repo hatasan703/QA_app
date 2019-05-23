@@ -55,7 +55,8 @@ class QuestionsController < ApplicationController
   end
 
   def open
-    @questions = Question.all
+    @all_questions = Question.all
+    @questions = @all_questions.where(done: nil)
   end
 
   private

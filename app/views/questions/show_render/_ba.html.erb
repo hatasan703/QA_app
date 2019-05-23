@@ -1,0 +1,14 @@
+      <div class='answer_content'>
+        <h3>回答一覧</h3>
+        <% if @answers %>
+          <% @answers.each do |answer| %>
+            <p>
+              <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+              <%= answer.text %>
+              <h3>
+                <%= link_to "ベストアンサーに選ぶ", "#{@question.id}/answers/#{answer.id}/ba_confirm", class: '' %>
+              </h3>
+            </p>
+          <% end %>
+        <% end %>
+       </div>

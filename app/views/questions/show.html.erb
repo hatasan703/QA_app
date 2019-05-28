@@ -55,16 +55,7 @@
       <%= render :file => "/questions/show_render/_resolved.html.erb" %>
 
     <% else %>
-
-      <div class='answer_form'>
-        <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
-          <p>
-          <%= f.label :text, "回答本文" %><br>
-          <%= f.text_area :text %><br>
-          </p>
-          <%= f.submit "投稿" %>
-        <% end %>
-      </div>
+    <%= render :file => "/questions/show_render/_answerable.html.erb" %>
     <% end %>
 
   <% end %>

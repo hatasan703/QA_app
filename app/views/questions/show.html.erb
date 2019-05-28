@@ -36,20 +36,7 @@
 
   <% else %>
     <% if @answerable && !@resolved %>
-
-      <h3>回答済み </h3>
-        <div class='answer_content'>
-        <h3>回答一覧</h3>
-              <% if @answers %>
-                <% @answers.each do |answer| %>
-                  <p>
-                    <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                    <%= answer.text %>
-                  </p>
-                <% end %>
-              <% end %>
-        </div>
-
+      <%= render :file => "/questions/show_render/_answered.html.erb" %>
     <% elsif @resolved %>
 
       <%= render :file => "/questions/show_render/_resolved.html.erb" %>

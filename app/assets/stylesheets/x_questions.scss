@@ -112,6 +112,7 @@
   width: 100%;
   height: 90px;
   font-size: 1.3rem;
+  border-radius: 5px;
 }
 
 .answer_form p{
@@ -123,7 +124,7 @@
   display: inline-block;
   width: 200px;
   border: 1px solid #d1dbde;
-  border-radius: 3px;
+  border-radius: 5px;
   background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
   box-shadow: 0 1px 0 #fcfcfd inset;
   text-align: center;
@@ -131,4 +132,24 @@
   line-height: 1;
   padding: 0.7em;
   font-size: 1.5rem;
+}
+
+.answer_form .answer_submit_btn:hover{
+  color: #fff;
+  background: #4fc1ea;
+}
+
+.answer_delete_btn ul li a{
+  display: inline-block;
+  width: 200px;
+  border: 1px solid #d1dbde;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
+  box-shadow: 0 1px 0 #fcfcfd inset;
+  text-align: center;
+  color: #333;
+  line-height: 1;
+  padding: 0.7em;
+  font-size: 1.5rem;
+  font-weight: 300;
 }

@@ -134,7 +134,7 @@
   font-size: 1.5rem;
 }
 
-.answer_form .answer_submit_btn:hover{
+.answer_form .answer_submit_btn, .answer_login_btn a:hover{
   color: #fff;
   background: #4fc1ea;
 }
@@ -152,4 +152,24 @@
   padding: 0.7em;
   font-size: 1.5rem;
   font-weight: 300;
+}
+
+
+.answer_login_btn{
+  text-align: center;
+  margin-bottom: 70px;
+}
+ .answer_login_btn a{
+  display: inline-block;
+  width: 300px;
+  border: 1px solid #d1dbde;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
+  box-shadow: 0 1px 0 #fcfcfd inset;
+  color: #333;
+  line-height: 1;
+  padding: 0.7em;
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
 }

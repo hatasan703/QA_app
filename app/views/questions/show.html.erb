@@ -53,19 +53,7 @@
     <%= render :file => "/questions/show_render/_resolved.html.erb" %>
 
   <% else %>
-
-    <h3><%= link_to "回答する", new_user_session_path %></h3>
-    <div class='answer_content'>
-    <h3>回答一覧</h3>
-          <% if @answers %>
-            <% @answers.each do |answer| %>
-              <p>
-                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                <%= answer.text %>
-              </p>
-            <% end %>
-          <% end %>
-    </div>
+    <%= render :file => "/questions/show_render/_not_login.html.erb" %>
 
   <% end %>
 <% end %>

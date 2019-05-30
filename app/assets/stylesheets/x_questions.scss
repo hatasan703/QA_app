@@ -107,6 +107,8 @@
   color: #666e71;
 }
 
+// 回答可能
+
 .answer_text_area{
   border: 2px solid #d1dbde;
   width: 100%;
@@ -139,6 +141,8 @@
   background: #4fc1ea;
 }
 
+// 回答済み
+
 .answer_delete_btn ul li a{
   display: inline-block;
   width: 200px;
@@ -154,6 +158,8 @@
   font-weight: 300;
 }
 
+
+// 未ログイン
 
 .answer_login_btn{
   text-align: center;

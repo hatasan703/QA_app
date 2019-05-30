@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'my_answer' => 'users#my_answer'
   end
 
-
+  get 'questions/search' => 'questions#search'
   get 'questions/categories' => 'questions#categories'
   get 'questions/category/:id' => 'questions#category'
   get 'questions/ranking' => 'questions#ranking'

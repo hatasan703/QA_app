@@ -17,7 +17,7 @@
                       <%= link_to "#{question.text}", "/questions/#{question.id}", method: :get %>
                   </p>
                   <div class="qandaItemFooter">
-                      <time>2019/05/16 15:36</time>
+                      <time><%= question.created_at %></time>
                       <a href="#">2</a>
                       <a href="#">2</a>
                   </div>

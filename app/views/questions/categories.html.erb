@@ -1,8 +1,10 @@
-<h1>カテゴリ一覧</h1>
-
-<div>
-<% @categories.each do |category| %>
-  <%= link_to "#{category.name}", "/questions/category/#{category.id}", method: :get %>
-<% end %>
+<div class='container'>
+  <section><h3 class="arrowTtl">カテゴリ一覧</h3></section>
+    <div class="qandaWrap qandaWrapCat">
+        <ul>
+          <% @categories.each do |category| %>
+            <li><%= link_to "#{category.name}", "/questions/category/#{category.id}", method: :get %></li>
+          <% end %>
+        </ul>
+    </div>
 </div>
-

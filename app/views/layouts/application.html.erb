@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>QOTAELU</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,25 +12,164 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <h1><a href="/">QOTAELU</a></h1>
-  <%= form_tag('/', method: :get) do %>
-    <input name="keyword" placeholder="質問を検索" type="text" value=""><button title="検索" type="submit"></button></input>
-  <% end %>
+    <header class="header">
+      <div class="headerWrap">
 
-  <button><%= link_to "カテゴリ一覧", questions_categories_path, class: '' %></button>
-  <button><%= link_to "ランキング", questions_ranking_path, class: '' %></button>
-  <button><%= link_to "回答受付中", questions_open_path, class: '' %></button>
+            <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
+            <!-- pc search -->
+            <div class="search">
+                <%= form_tag('/', method: :get, class: "searchForm") do %>
+                    <input name="keyword" size="25" placeholder="キーワード検索" type="text" value="">
+                    <input type="submit" value="">
+                <% end %>
+            </div>
+
+
+
 
   <% if user_signed_in? %>
-    <button><a href="/users/<%= current_user.id %>"><%= current_user.nickname %></a></button>
-    <button><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
-    <button><%= link_to "質問する", new_question_path, class: '' %></button>
+    <!-- *ログインの場合 -->
+    <div class="account">
+
+        <div class="dropdown">
+            <input id="tg" class="dropInput" type="checkbox">
+            <label for="tg" class="dropLabel">
+                <span class="userName"><%= current_user.nickname %></span>さん
+            </label>
+            <ul class="menu animation">
+              <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'item' %></li>
+              <li><%= link_to "アカウント設定", "/", class: 'item' %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'item' %></li>
+          </ul>
+        </div>
+
+        <a href="/" class="noticeLinkBtn"><span>1</span></a>
+        <a href="/" class="pointLinkBtn"><span>100</span></a>
+
+        <div id="humberger" class="sp">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="drawernav" class="sp">
+        <div class="container">
+            <nav>
+                <ul>
+                  <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'item' %></li>
+                  <li><%= link_to "アカウント設定", "/", class: 'item' %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'item' %></li>
+                </ul>
+
+                <section><h3>みんなの&amp;A</h3></section>
+                <ul>
+                    <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
+                    <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
+                    <li><%= link_to "カテゴリ", questions_categories_path, class: '' %></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
   <% else %>
-    <button><%= link_to "ログイン", new_user_session_path, class: '' %></button>
-    <button><%= link_to "新規登録", new_user_registration_path, class: '' %></button>
+    <!-- *未ログインの場合 -->
+        <div class="account">
+            <%= link_to "ログイン", new_user_session_path, class: 'loginLinkBtn' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'signupLinkBtn' %>
+            <div id="humberger" class="sp">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="drawernav" class="sp">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><%= link_to "ログイン", new_user_session_path, class: '' %></li>
+                    <li><%= link_to "新規登録", new_user_registration_path, class: '' %></li>
+                </ul>
+
+                <section><h3>みんなの&amp;A</h3></section>
+                <ul>
+                    <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
+                    <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
+                    <li><%= link_to "カテゴリ", questions_categories_path, class: '' %></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
   <% end %>
+
+  <!-- *main navigation -->
+        <nav class="mainNav">
+            <ul class="mainNavWrap">
+                <li><%= link_to "カテゴリ", questions_categories_path, class: '' %></li>
+                <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
+                <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
+            </ul>
+        </nav>
+
+        <!-- sp search -->
+        <div class="spSearch">
+            <%= form_tag('/', method: :get, class: "searchForm") do %>
+                <input name="keyword" size="25" placeholder="質問を検索" type="text" value="">
+                <input type="submit" value="">
+            <% end %>
+        </div>
+
+    </header>
 
 
     <%= yield %>
+
+
+       <!-- footer -->
+    <footer class="footer">
+        <div class="footerWrap">
+
+            <a href="/" class="footerLogo sp"><%= image_tag("f_logo.png", alt: "QOTAELU") %></a>
+
+            <nav class="footerNav">
+                <ul>
+                    <li><section><h4>QOTAELUについて</h4></section></li>
+                    <li><a href="/">運営会社</a></li>
+                    <li><a href="/">ヘルプ</a></li>
+                    <li><a href="/">お問い合わせ</a></li>
+                </ul>
+                <ul>
+                    <li><section><h4>プライバシーと利用規約</h4></section></li>
+                    <li><a href="/">プライバシーポリシー</a></li>
+                    <li><a href="/">利用規約</a></li>
+                </ul>
+                <ul>
+                    <li><section><h4>SNS</h4></section></li>
+                    <li><a href="/">Facebook</a></li>
+                    <li><a href="/">Twitter</a></li>
+                </ul>
+            </nav>
+
+            <a href="/" class="footerLogo pc"><%= image_tag("f_logo.png", alt: "QOTAELU") %></a>
+
+
+            <small class="copyright">&copy; 2019 QOTAELU.</small>
+
+        </div>
+    </footer>
+
+
+
+
+
   </body>
 </html>

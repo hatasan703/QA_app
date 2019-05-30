@@ -68,3 +68,5 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'pry-rails'
 gem 'kaminari'
+
+gem 'jquery-rails'

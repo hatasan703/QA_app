@@ -1,3 +1,194 @@
-<button>使ってみる</button>
+<!-- main contents -->
+    <main class="main">
+      <% if user_signed_in? %>
+          <div class="container">
+            <div class="howTo">
+                <section>
+                    <h2 class="howToTtl">
+                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+                    </h2>
+                </section>
+
+                <div class="howToWrap">
+
+                    <div class="howToItem">
+                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
+                        <%= image_tag("howTo_item01.png", alt: "") %>
+
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
+                        <%= image_tag("howTo_item02.png", alt: "") %>
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
+                        <%= image_tag("howTo_item03.png", alt: "") %>
+                    </div>
+
+                    <div class="discussionBtn sp">
+                        <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
+                        <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+                    </div>
+
+                </div>
+                <div class="discussionBtn pc">
+                    <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
+                    <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+                </div>
+            </div>
+        </div>
+
+      <% else %>
+
+        <div class="container">
+            <div class="howTo">
+                <section>
+                    <h2 class="howToTtl">
+                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+                    </h2>
+                </section>
+
+                <div class="howToWrap">
+
+                    <div class="howToItem">
+                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
+                        <%= image_tag("howTo_item01.png", alt: "") %>
+
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
+                        <%= image_tag("howTo_item02.png", alt: "") %>
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
+                        <%= image_tag("howTo_item03.png", alt: "") %>
+                    </div>
+
+                    <a href="#" class="howToUseBtn sp">使ってみる</a>
+
+                </div>
+
+                <a href="#" class="howToUseBtn pc">使ってみる</a>
+            </div>
+        </div>
+      <% end %>
+
+        <div class="container">
+            <div class="qanda">
+                <section>
+                    <h2 class="qandaTtl">
+                        <span>みんなの</span>
+                        <%= image_tag("qanda_q.png", alt: "Q") %>
+
+                        <span>&amp;</span>
+                        <%= image_tag("qanda_a.png", alt: "A") %>
+                    </h2>
+                </section>
+
+                <section><h3 class="arrowTtl">ランキング</h3></section>
+                <div class="qandaWrap">
+                    <div class="qandaItem">
+                        <article>
+                            <div class="qandaItemStatus">
+                                <a href="#" class="question">回答受付中</a>
+                                <a href="#" class="qandaItemStatusCat">恋愛相談</a>
+                            </div>
+                            <section><h3>友人の彼氏と浮気しています</h3></section>
+                            <p>
+                                友人の彼氏と浮気しています。もともと友人と付き合う前からその人が好きで猛アタックしていたのですが、友人と付き合うことになりました。１ヶ月もすると私
+                            </p>
+                            <div class="qandaItemFooter">
+                                <time>2019/05/16 15:36</time>
+                                <a href="#">2</a>
+                                <a href="#">2</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="qandaItem">
+                        <article>
+                            <div class="qandaItemStatus">
+                                <a href="#" class="answer">解決済み</a>
+                                <a href="#" class="qandaItemStatusCat">恋愛相談</a>
+                            </div>
+                            <section><h3>友人の彼氏と浮気しています</h3></section>
+                            <p>
+                                友人の彼氏と浮気しています。もともと友人と付き合う前からその人が好きで猛アタックしていたのですが、友人と付き合うことになりました。１ヶ月もすると私
+                            </p>
+                            <div class="qandaItemFooter">
+                                <time>2019/05/16 15:36</time>
+                                <a href="#">2</a>
+                                <a href="#">2</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <section><h3 class="arrowTtl">回答受付中</h3></section>
+                <div class="qandaWrap">
+                    <div class="qandaItem">
+                        <article>
+                            <div class="qandaItemStatus">
+                                <a href="#" class="question">回答受付中</a>
+                                <a href="#" class="qandaItemStatusCat">恋愛相談</a>
+                            </div>
+                            <section><h3>友人の彼氏と浮気しています</h3></section>
+                            <p>
+                                友人の彼氏と浮気しています。もともと友人と付き合う前からその人が好きで猛アタックしていたのですが、友人と付き合うことになりました。１ヶ月もすると私
+                            </p>
+                            <div class="qandaItemFooter">
+                                <time>2019/05/16 15:36</time>
+                                <a href="#">2</a>
+                                <a href="#">2</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="qandaItem">
+                        <article>
+                            <div class="qandaItemStatus">
+                                <a href="#" class="question">回答受付中</a>
+                                <a href="#" class="qandaItemStatusCat">恋愛相談</a>
+                            </div>
+                            <section><h3>友人の彼氏と浮気しています</h3></section>
+                            <p>
+                                友人の彼氏と浮気しています。もともと友人と付き合う前からその人が好きで猛アタックしていたのですが、友人と付き合うことになりました。１ヶ月もすると私
+                            </p>
+                            <div class="qandaItemFooter">
+                                <time>2019/05/16 15:36</time>
+                                <a href="#">2</a>
+                                <a href="#">2</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <section><h3 class="arrowTtl">カテゴリー</h3></section>
+                <div class="qandaWrap qandaWrapCat">
+                    <ul>
+                        <li><a href="#">人間関係・人生相談</a></li>
+                        <li><a href="#">趣味・娯楽・エンタメ</a></li>
+                        <li><a href="#">生活・暮らし</a></li>
+                        <li><a href="#">健康・病気</a></li>
+                        <li><a href="#">学問・教育</a></li>
+                        <li><a href="#">パソコン・スマホ</a></li>
+                        <li><a href="#">インターネット・WEBサービス</a></li>
+                        <li><a href="#">美容・ファッション</a></li>
+                        <li><a href="#">製造業・ファッション</a></li>
+                        <li><a href="#">ビジネス・キャリア</a></li>
+                        <li><a href="#">社会</a></li>
+                        <li><a href="#">大規模災害</a></li>
+                        <li><a href="#">お金</a></li>
+                        <li><a href="#">パソコン・スマホ</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
 
 
+    </main>

@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @all_answers = @question.answers.includes(:user)
-    @answers = @all_answers.where(best_answer: nil)
+    @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
     @best_answer = @all_answers.find_by(best_answer: true)
 
     @is_questioner = false
@@ -55,7 +55,8 @@ class QuestionsController < ApplicationController
   end
 
   def open
-    @questions = Question.all
+    @all_questions = Question.all
+    @questions = @all_questions.where(done: nil)
   end
 
   private

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :questions, only: [:new, :create]
   resources :users, only: [:edit, :update]
-  resources :users, only: [:show] do
-    get 'my_question' => 'users#my_question'
-    get 'my_answer' => 'users#my_answer'
-  end
+  resources :users, only: [:show]
+    get 'my_question/:id' => 'users#my_question'
+    get 'my_answer/:id' => 'users#my_answer'
+
 
   get 'questions/search' => 'questions#search'
   get 'questions/categories' => 'questions#categories'

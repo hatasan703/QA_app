@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
   def my_question
-    user = current_user.id
-    @user = User.find(user)
-    @questions = @user.questions.page(params[:page]).per(5).order("created_at DESC")
+    # user = current_user.id
+    # @user = User.find(user)
+    @user = User.find(params[:id])
+    @questions = @user.questions.page(params[:page]).order("created_at DESC")
   end
 
   def my_answer

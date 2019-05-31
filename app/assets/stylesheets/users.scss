@@ -7,6 +7,7 @@
 
 .myprNav {
   background-color: #fff;
+  margin-bottom: 40px;
 }
 
 .mypr{
@@ -57,7 +58,7 @@
 
 .proname{
 	display: block;
-	text-align: center
+  text-align: center
 }
 
 .proname1 {
@@ -98,4 +99,13 @@
 }
 .user_edit_btn{
   color: #888e92;
+}
+
+
+.my_answer_item{
+  padding-bottom: 5px;
+}
+
+.my_answer_item p{
+  margin: 15px 0;
 }

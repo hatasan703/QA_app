@@ -108,3 +108,40 @@
 .my_answer_item p{
   margin: 15px 0;
 }
+
+// プロフィール情報編集
+
+.user_profile_edit{
+  font-size: 1.5rem;
+  padding: 20px 0;
+  width: 330px;
+  margin: 0 auto;
+}
+.user_edit_form{
+  border: 0.5px solid #343636;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+.user_edit_content{
+  margin:30px;
+
+}
+
+.profile_edit_label{
+}
+
+.user_profile_edit_btn{
+  display: inline-block;
+  width: 200px;
+  border: 1px solid #d1dbde;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
+  box-shadow: 0 1px 0 #fcfcfd inset;
+  color: #333;
+  line-height: 1;
+  padding: 0.7em;
+  font-size: 13px;
+  font-weight: 300;
+  text-align: center;
+}

@@ -10,7 +10,7 @@
                   </div>
                   <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                   <p>
-                      <%= link_to "#{question.text}", "/questions/#{question.id}", method: :get %>
+                      <%= question.text %>
                   </p>
                   <div class="qandaItemFooter">
                       <time><%= question.created_at %></time>

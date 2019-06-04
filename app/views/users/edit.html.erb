@@ -1,33 +1,42 @@
-<h2>ユーザー編集</h2>
 
-<%= form_for(@user) do |f| %>
+  <div class="container mypage">
+    <nav class="myprNav">
+        <ul class="MyNavWrap">
+            <li><%= link_to "プロフィール", "/users/#{@user.id}", class: '' %></li>
+            <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
+            <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
+        </ul>
+    </nav>
+  </div>
 
- <div class="form-group">
-<%= f.label :nickname, 'ニックネーム' %>
-<%= f.text_field :nickname, class: 'form-control' %>
-</div>
+  <div class="container myprNav">
+    <%= form_for(@user) do |f| %>
+      <div class="user_profile_edit">
+        <div class="user_edit_content">
+          <%= f.label :nickname, 'ニックネーム', class: "profile_edit_label" %>
+          <%= f.text_field :nickname, class: 'user_edit_form' %>
+        </div>
 
+        <div class="user_edit_content">
+          <%= f.label :sex, '性別', class:'profile_edit_label' %>
+          <%= f.select :sex, [["",""], ["女性",true], ["男性",false]], {},   class: 'user_edit_form edit_sex' %>
+        </div>
 
-<div class="col-xs-6 form-group">
-    <%= f.label :sex, '性別', class:'control-label' %>
-    <%= f.select :sex, [["",""], ["女性",true], ["男性",false]], {},   class: 'form-control' %>
-</div>
-</div>
+        <div class="user_edit_content">
+          <%= f.label :age, '年齢', class:'profile_edit_label' %>
+          <%= f.select :age, [["",""], ["10代",10], ["20代",20], ["30代",30], ["40代",40], ["50代",50], ["60代",60], ["70代以上",70] ], {},   class: 'user_edit_form edit_age' %>
+        </div>
 
-<div class="row">
-<div class="col-xs-6 form-group">
-    <%= f.label :age, '年齢', class:'control-label' %>
-    <%= f.select :age, [["",""], ["10代",10], ["20代",20], ["30代",30], ["40代",40], ["50代",50], ["60代",60], ["70代以上",70] ], {},   class: 'form-control' %>
-</div>
+        <div class="user_edit_content">
+          <%= f.label :bio, '自己紹介（255文字未満）' ,class: 'profile_edit_label' %>
+          <%= f.text_area :bio, :maxlength => "255", :size => "80x5",  class: 'user_edit_form edit_bio'  %>
+        </div>
 
-<div class="form-group">
-<%= f.label :bio, '自己紹介（255文字未満）' %>
-<%= f.text_area :bio, :maxlength => "255", :size => "80x5",  class: 'form-control'  %>
-</div>
+        <div class="user_edit_content">
+          <%= f.submit 'プロフィール編集を完了する', class: 'user_profile_edit_btn' %>
+        </div>
 
+      </div>
 
-</div>
-
-<div class="al-c"><%= f.submit 'プロフィール編集を完了する', class: 'btn btn-primary' %></div>
-
-<% end %>
+    <% end %>
+  </div>

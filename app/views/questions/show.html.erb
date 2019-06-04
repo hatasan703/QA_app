@@ -17,7 +17,7 @@
                     <%= link_to @question.user.nickname, "/users/#{@question.user_id}", class: "question_user_name" %>
                   </div>
                     <time><%= @question.created_at %></time>
-                    <a href="#">2</a>
+                    <a href="#"><%= @question.answers.count %></a>
                     <a href="#">2</a>
               </div>
               <p>

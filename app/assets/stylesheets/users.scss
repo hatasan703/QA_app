@@ -1,50 +1,147 @@
-.btn{
-  display:inline-block;
-  cursor:pointer;
-  width: 335px;
-  padding: 23px 0;
+// ユーザーページ
+
+.mypage {
+	margin: 0 auto;
+}
+
+.myprNav {
+  background-color: #fff;
+  margin-bottom: 40px;
+}
+
+.mypr{
+  margin-bottom: 40px;
+}
+
+.MyNavWrap {
+	width: 410px;
+	margin: 0 auto;
+	padding: 18px 0;
+	display: flex;
+	align-items: center;
+}
+
+.MyNavWrap > li > a {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #343636;
+	padding: 0 30px;
+}
+
+.prNavWrap {
+	width: 330px;
+	margin: 0 auto;
+	padding: 18px 0;
+	align-items: center;
+}
+
+.prNavWrap > li {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #343636;
+	padding: 0 10px;
+}
+
+.prNavWrap2 {
+	width: 345px;
+	margin: 0 auto;
+	padding: 18px 0;
+	align-items: center;
+}
+.prNavWrap2 > li {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #343636;
+	padding: 0 30px;
+}
+
+.proname{
+	display: block;
+  text-align: center
+}
+
+.proname1 {
+	float: left;
+}
+
+.profile {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #343636;
+	margin: 15px;
+  padding: 0;
+}
+
+.box12 {
+	position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #60cef0;
+    border-radius: 8px;
+}
+
+.box12 .box-title {
+	position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #343636;
+    font-weight: bold;
+}
+
+.pro_edit_btn{
+  text-align: end;
+}
+.user_edit_btn{
+  color: #888e92;
+}
+
+
+.my_answer_item{
+  padding-bottom: 5px;
+}
+
+.my_answer_item p{
+  margin: 15px 0;
+}
+
+// プロフィール情報編集
+
+.user_profile_edit{
+  font-size: 1.5rem;
+  padding: 20px 0;
+  width: 330px;
   margin: 0 auto;
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #fff;
-  font-family: “Noto Sans JP”;
+}
+.user_edit_form{
+  border: 0.5px solid #343636;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+.user_edit_content{
+  margin:30px;
+
+}
+
+.profile_edit_label{
+}
+
+.user_profile_edit_btn{
+  display: inline-block;
+  width: 200px;
+  border: 1px solid #d1dbde;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
+  box-shadow: 0 1px 0 #fcfcfd inset;
+  color: #333;
+  line-height: 1;
+  padding: 0.7em;
+  font-size: 13px;
+  font-weight: 300;
   text-align: center;
-  background: #4f7ce0;
-  border-radius: 50px;
-  display: block;
-  box-shadow: 10px 10px #ddd;
-  margin-bottom:50px;
-  opacity:1;
-}
-
-.login-formsns{
-  border: 1px solid #b0b7ba;
-  background-color:#eee;
-  height:500px;
-  margin:0px 250px 50px 250px;
-}
-
-.login-title{
-padding-top:20px;
-border-bottom:1px solid red;
-margin-bottom:40px;
-font-weight: 700;
-}
-
-.sign-up-title{
-  text-align:center;
-  font-size:30px;
-  padding-bottom:30px;
-  font-family: “Noto Sans JP”;
-}
-
-.btn:hover{
-  opacity:0.9;
-}
-
-.btn:active{
-  position:relative;
-  top:10px;
-  left:10px;
-  box-shadow:none;
 }

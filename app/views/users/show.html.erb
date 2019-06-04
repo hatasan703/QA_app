@@ -1,24 +1,38 @@
-<h1>
-  <%= link_to "プロフィール", "/users/#{current_user.id}", class: '' %>
-</h1>
-<p>ニックネーム: <%= @user.nickname %></p>
-<p>年齢：<%= @user.age %></p>
-<p>性別：
-  <% if @user_sex == true %>
-    <%= '女性' %>
-  <% else %>
-    <%= '男性' %>
-  <% end %>
-</p>
-<p>職業：<%= @user.role %></p>
-<p>自己紹介：<%= @user.bio %></p>
-<h3><%= link_to "編集する", "/users/#{current_user.id}/edit", class: '' %></h3>
+  <div class="container mypage">
+            <nav class="myprNav">
+                <ul class="MyNavWrap">
+                    <li><%= link_to "プロフィール", "/users/#{@user.id}", class: '' %></li>
+                    <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
+                    <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container mypage">
+            <nav class="myprNav mypr">
+                <ul class="prNavWrap">
+                    <li><span class="proname1">ニックネーム：</span><span class="proname"><%= @user.nickname %></span></li><hr noshade><br>
+                    <li><span class="proname1">年齢：</span><span class="proname"><%= @user.age %></span></li><hr noshade><br>
+                    <li><span class="proname1">性別：</span>
+                      <span class="proname">
+                          <% if @user_sex == true %>
+                            <%= '女性' %>
+                          <% else %>
+                            <%= '男性' %>
+                          <% end %>
+                      </span></li><hr noshade><br>
+                    <li><span class="proname1">職業：</span><span class="proname"><%= @user.role %></span></li><hr noshade><br>
+                    <li class='pro_edit_btn'><%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %></li>
+                </ul>
+                <ul class="prNavWrap2">
+
+                    <div class="box12">
+                      <span class="box-title">自己紹介</span>
+                        <p class="profile">
+                          <%= @user.bio %>
+                        </p>
+                    </div>
+                </ul>
+            </nav>
+        </div>
 
 
-<h1>
-  <%= link_to "質問一覧", "/users/#{current_user.id}/my_question", class: '' %>
-</h1>
-
-<h1>
-  <%= link_to "回答一覧", "/users/#{current_user.id}/my_answer", class: '' %>
-</h1>

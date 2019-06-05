@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+  impressionist actions: [:show]
+
   def new
     @question = Question.new
     @categories = Category.all
@@ -26,6 +28,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    impressionist(@question, nil, unique: [:session_hash])
     @answer = Answer.new
     @all_answers = @question.answers.includes(:user)
     @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
@@ -48,7 +51,6 @@ class QuestionsController < ApplicationController
   def category
     @category = Category.find(params[:id])
     @questions = @category.questions.includes(:user)
-
   end
 
   def ranking

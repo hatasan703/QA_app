@@ -4,4 +4,5 @@ class Question < ApplicationRecord
   belongs_to :category
   has_one :pv
 
+  is_impressionable
 end

@@ -1,6 +1,8 @@
 .qa_status_content{
-  // display: flex;
+  display: flex;
+  margin-top: 10px;
   margin-bottom: 50px;
+
 }
 
 // ソートボタン
@@ -45,7 +47,7 @@
     text-align: center;
     color: #14181a;
     border: 1px solid #b0b7ba;
-    border-radius: 3px;
+    // border-radius: 3px;
     display: block;
     cursor: pointer;
 }
@@ -106,7 +108,7 @@
 .left_content{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 
 .status_btn{
@@ -116,7 +118,9 @@
   align-items: center;
   font-size: 1.5rem;
   width: 150px;
-  height: 35px;
+  height: 45px;
+  // border-radius: 3px;
+  background-color: #fff;
 }
 .status_open{
   font-weight: 600;
@@ -137,31 +141,7 @@
   // width: 100%;
 }
 
-
-.search_result{
-  // font-size: 2.5rem;
-	font-weight: 600;
-	color: #333;
-	// border-top-left-radius: 6px;
-	// border-top-right-radius: 6px;
-	// border-bottom: 1px solid #dae1e3;
-	background: #fff;
-	display: flex;
-  // align-items: center;
-  width: 100%;
-
-}
-
-
-
-
-
 // 検索結果、回答受付中、ランキング
-
-// .arrowTtl2 {
-//   font-size: 1.8rem;
-//   padding: 6% 5%;
-// }
 
 .arrowTtl2 {
 	font-size: 2.5rem;

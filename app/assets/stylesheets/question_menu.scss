@@ -109,22 +109,34 @@
   width: 100%;
   display: flex;
   justify-content: start;
+
+  .status_btn{
+    border: 1px solid #b0b7ba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    width: 150px;
+    height: 45px;
+    // border-radius: 3px;
+    background-color: #fff;
+
+    :hover{
+      opacity: .7;
+    }
+
+    a{
+      color: #333;
+    }
+  }
+
+  .status_resolved,
+  .status_open{
+    font-weight: 600;
+  }
 }
 
-.status_btn{
-  border: 1px solid #b0b7ba;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  width: 150px;
-  height: 45px;
-  // border-radius: 3px;
-  background-color: #fff;
-}
-.status_open{
-  font-weight: 600;
-}
+
 
 
 .search_content {

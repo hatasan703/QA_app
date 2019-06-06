@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
   def search
     @search = Question.ransack(params[:q])
-    @search_questions = @search.result.page(params[:page])
+    @all_search_questions = @search.result.page(params[:page])
+    @search_questions = @all_search_questions.where(done: true)
   end
 
 end

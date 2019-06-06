@@ -18,12 +18,10 @@
             <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
             <!-- pc search -->
             <div class="search">
-
-               <%= form_tag(questions_search_path, method: :get, class: "searchForm") do %>
-                  <input name="keyword" size="25" placeholder="キーワード検索" type="text" value="">
-                  <input type="submit" value="">
-                <% end %>
-
+              <%= search_form_for(@search, url: questions_search_path, class: "searchForm") do |f| %>
+                <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
+                <%= f.submit ("") , class: 'search-btn', value: '' %>
+              <% end %>
             </div>
 
 

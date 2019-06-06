@@ -61,10 +61,6 @@ class QuestionsController < ApplicationController
     @questions = @all_questions.where(done: nil)
   end
 
-  def search
-    @questions = Question.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
-  end
-
   private
   def question_params
     params.require(:question).permit(:title, :text, :category_id).merge(user_id: current_user.id)

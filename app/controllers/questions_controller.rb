@@ -50,7 +50,14 @@ class QuestionsController < ApplicationController
 
   def category
     @category = Category.find(params[:id])
-    @questions = @category.questions.includes(:user)
+    @all_questions = @category.questions.includes(:user)
+    @questions = @all_questions.where(done: true)
+  end
+
+  def category_open
+    @category = Category.find(params[:id])
+    @all_questions = @category.questions.includes(:user)
+    @questions = @all_questions.where(done: nil)
   end
 
   def ranking

@@ -10,11 +10,14 @@
   </div>
 
   <div class="container myprNav">
+    <div class="edit-profile">
+    プロフィール編集
+    </div>
     <%= form_for(@user) do |f| %>
       <div class="user_profile_edit">
         <div class="user_edit_content">
           <%= f.label :nickname, 'ニックネーム', class: "profile_edit_label" %>
-          <%= f.text_field :nickname, class: 'user_edit_form' %>
+          <%= f.text_field :nickname, class: 'user_edit_form edit_nickname' %>
         </div>
 
         <div class="user_edit_content">
@@ -28,13 +31,20 @@
         </div>
 
         <div class="user_edit_content">
+          <%= f.label :role, '職業', class:'profile_edit_label' %>
+          <%= f.select :role, [["",""], ["営業","営業"], ["事務・オフィスワーク","事務・オフィスワーク"], ["販売","販売"], ["飲食・フード","飲食・フード"], ["サービス・警備・清掃","サービス・警備・清掃"], ["イベント・レジャ・娯楽","イベント・レジャ・娯楽"], ["教育・カルチャー・スポーツ","教育・カルチャー・スポーツ"], ["美容","美容"],["医療・介護・福祉","医療・介護・福祉"],["ドライバー・配達","ドライバー・配達"],["製造・工場・倉庫","製造・工場・倉庫"],["IT・エンジニア","IT・エンジニア"],["編集・出版","編集・出版"],["専門職","専門職"],["土木・建設・農水産","土木・建設・農水産"] ], {},   class: 'user_edit_form edit_age' %>
+        </div>
+
+        <div class="user_edit_content">
           <%= f.label :bio, '自己紹介（255文字未満）' ,class: 'profile_edit_label' %>
           <%= f.text_area :bio, :maxlength => "255", :size => "80x5",  class: 'user_edit_form edit_bio'  %>
         </div>
 
         <div class="user_edit_content">
-          <%= f.submit 'プロフィール編集を完了する', class: 'user_profile_edit_btn' %>
+          <%= f.submit '編集を完了', class: 'user_profile_edit_btn' %>
+          <a href="#" class="user_profile_edit_btn2">キャンセル</a>
         </div>
+        
 
       </div>
 

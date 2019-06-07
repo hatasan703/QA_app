@@ -27,7 +27,6 @@
       </div>
      </div>
 </div>
-
 <%= form_for [@question, @answer] do |f| %>
   <div class="container">
     <section><h3 class="question_status"><%= @answer.user.nickname %>さんの回答</h3></section>
@@ -35,6 +34,7 @@
       <div class="qandaItem">
         <article>
             <p><%= @answer.text %></p>
+            <%= f.hidden_field :text %>
         </article>
       </div>
     </div>

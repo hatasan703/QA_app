@@ -73,7 +73,7 @@ class QuestionsController < ApplicationController
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
     @search_open_questions = @search_questions.where(done: nil)
-
+    # binding.pry
   end
 
   def search_resolved
@@ -89,7 +89,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:title, :text, :category_id).merge(user_id: current_user.id)
   end
 
-  #前検索のパラメータ保持
+  # 前検索のパラメータ保持
   def set_prev_search_params
     prev_q = URI(request.referer).query
     prev_params = Rack::Utils.parse_nested_query(prev_q)

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     @search = Question.ransack(params[:q])
     @all_search_questions = @search.result.page(params[:page])
     @search_questions = @all_search_questions.where(done: true)
+    # binding.pry
   end
 
 end

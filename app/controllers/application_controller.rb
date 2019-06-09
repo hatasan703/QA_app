@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action :search
+  before_action :search, except: [:search_resolved, :search_open]
 
   def search
     @search = Question.ransack(params[:q])

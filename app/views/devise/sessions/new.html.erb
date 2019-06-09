@@ -24,3 +24,39 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+
+        <div class="loginnav">
+
+            <div class="logo loginlogo"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="loginnav2">
+
+                    <p class="loginnav3"><%= f.label :メールアドレス %></p>
+                    <p class='wakusen'><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス' %></p>
+
+                    <p class="loginnav4"><%= f.label :パスワード %><br /></p>
+                    <p class='wakusen'><%= f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード' %></p>
+
+                     <% if devise_mapping.rememberable? %>
+                      <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                      </div>
+                     <% end %>
+
+
+                      <%# ログインボタンのcssが適応されない %>
+                      <%# ↓↓まだやってない %>
+                     <div class='loginBtn'><%= f.submit "ログインする" %></div>
+                </div>
+
+              <% end %>
+                <hr  class="noshade1" noshade>
+                <p class="snslogin">SNSでログイン</p>
+                <a href="#" class="loginBtnFb">facebookで登録</a>
+                <a href="#" class="loginBtnTw">twitterで登録</a>
+            </div>
+
+        </div>

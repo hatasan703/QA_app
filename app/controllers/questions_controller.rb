@@ -93,11 +93,9 @@ class QuestionsController < ApplicationController
   def set_prev_search_params
     prev_q = URI(request.referer).query
     prev_params = Rack::Utils.parse_nested_query(prev_q)
-    binding.pry
-    if prev_params['q'][':title_cont'].present?
-      prev_params['q']['title_cont'] = prev_params['q'][':title_cont']
-    end
+    prev_params['q']['title_cont'] = prev_params['q'][':title_cont'] if prev_params['q'][':title_cont'].present?
     params[:q] = prev_params['q']
+    # binding.pry
   end
 
 end

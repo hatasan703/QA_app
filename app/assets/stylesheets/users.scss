@@ -1,7 +1,7 @@
 // ログイン,新規登録
 
 .loginnav {
-	width: 750px;
+	width: 350px;
   margin: 0 auto;
 }
 
@@ -13,9 +13,9 @@
 .loginlogo {
 	text-align: center;
 	background-color: #FFF;
-  height: 500px;
   padding: 20px 0;
   margin: 20px 0;
+  padding-bottom: 40px;
 }
 
  .wakusen {
@@ -54,7 +54,8 @@ input.loginBtn,
 
 .loginBtnFb {
 	width: 250px;
-  padding: 10px 0;
+  // padding: 10px 0;
+  padding: 15px 0;
   margin: auto;
   font-size: 1.5rem;
   font-weight: 700;
@@ -64,12 +65,13 @@ input.loginBtn,
   border-radius: 50px;
   display: inline-block;
 	box-shadow: 0 0 10px #ddd;
-	margin-bottom: 10px;
+  // margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .loginBtnTw {
 	width: 250px;
-  padding: 10px 0;
+  padding: 15px 0;
   margin: auto;
   // margin-bottom: 10px;
   font-size: 1.5rem;

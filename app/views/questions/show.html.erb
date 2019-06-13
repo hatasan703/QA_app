@@ -22,6 +22,13 @@
               </div>
               <p>
                   <%= @question.text %>
+                  <% if @answers.empty? %>
+                    <div class=" ba_btn answer_delete_btn">
+                      <ul>
+                        <li><%= link_to "削除", question_path(@question), method: :delete, class: 'answer_delete_btn' %></li>
+                      </ul>
+                    </div>
+                  <% end %>
               </p>
           </article>
       </div>

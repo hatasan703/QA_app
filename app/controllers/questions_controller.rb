@@ -26,6 +26,15 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    question = Question.find(params[:id])
+    @answers = question.answers.includes(:user)
+    if @answers.empty?
+      question.destroy if question.user_id == current_user.id
+    end
+    redirect_to root_path
+  end
+
   def show
     @question = Question.find(params[:id])
     # impressionist(@question, nil, unique: [:session_hash])

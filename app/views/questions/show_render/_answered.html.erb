@@ -1,20 +1,4 @@
-<%# 回答済み %>
-
-<h3>回答済み </h3>
-        <div class='answer_content'>
-        <h3>回答一覧</h3>
-              <% if @answers %>
-                <% @answers.each do |answer| %>
-                  <p>
-                    <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                    <%= answer.text %>
-                  </p>
-                <% end %>
-              <% end %>
-        </div>
-
-
-        <div class=container>
+   <div class=container>
     <section><h3 class="question_status">回答<%= @answers.count %>件</h3></section>
     <div class="qandaWrap">
       <% if @answers %>
@@ -32,7 +16,7 @@
               <% if answer.user_id == current_user.id %>
                 <div class=" ba_btn answer_delete_btn">
                     <ul>
-                      <li><%= link_to "削除", class: 'answer_delete_btn' %></li>
+                      <li><%= link_to "削除", "/questions/#{answer.question_id}/answers/#{answer.id}", method: :delete, class: 'answer_delete_btn' %></li>
                     </ul>
                 </div>
                 <% else %>

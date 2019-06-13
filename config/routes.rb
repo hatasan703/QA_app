@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
-  resources :questions, only: [:new, :create]
+  resources :questions, only: [:new, :create, :destroy]
   resources :users, only: [:edit, :update]
   resources :users, only: [:show]
     get 'my_question/:id' => 'users#my_question'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :questions, only: :show do
-    resources :answers, only: [:create, :update]
+    resources :answers, only: [:create, :update, :destroy]
     post 'confirm' => 'answers#confirm'
     get 'answers/:id/ba_confirm' => 'answers#ba_confirm'
   end

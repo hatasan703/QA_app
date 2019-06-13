@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+  impressionist actions: [:show]
+
   def new
     @question = Question.new
     @categories = Category.all
@@ -26,6 +28,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    # impressionist(@question, nil, unique: [:session_hash])
     @answer = Answer.new
     @all_answers = @question.answers.includes(:user)
     @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
@@ -47,8 +50,14 @@ class QuestionsController < ApplicationController
 
   def category
     @category = Category.find(params[:id])
-    @questions = @category.questions.includes(:user)
+    @all_questions = @category.questions.includes(:user)
+    @questions = @all_questions.where(done: true)
+  end
 
+  def category_open
+    @category = Category.find(params[:id])
+    @all_questions = @category.questions.includes(:user)
+    @questions = @all_questions.where(done: nil)
   end
 
   def ranking
@@ -59,13 +68,34 @@ class QuestionsController < ApplicationController
     @questions = @all_questions.where(done: nil)
   end
 
-  def search
-    @questions = Question.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
+  def search_open
+    set_prev_search_params
+    @search = Question.ransack(params[:q])
+    @search_questions = @search.result.page(params[:page])
+    @search_open_questions = @search_questions.where(done: nil)
+    # binding.pry
+  end
+
+  def search_resolved
+    set_prev_search_params
+    @search = Question.ransack(params[:q])
+    @search_questions = @search.result.page(params[:page])
+    @search_resolved_questions = @search_questions.where(done: true)
+    # binding.pry
   end
 
   private
   def question_params
     params.require(:question).permit(:title, :text, :category_id).merge(user_id: current_user.id)
+  end
+
+  # 前検索のパラメータ保持
+  def set_prev_search_params
+    prev_q = URI(request.referer).query
+    prev_params = Rack::Utils.parse_nested_query(prev_q)
+    prev_params['q']['title_cont'] = prev_params['q'][':title_cont'] if prev_params['q'][':title_cont'].present?
+    params[:q] = prev_params['q']
+    # binding.pry
   end
 
 end

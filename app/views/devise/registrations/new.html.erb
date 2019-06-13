@@ -1,33 +1,11 @@
-<h2>Sign up</h2>
+ <div class="loginnav">
 
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+            <div class="loginlogo"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %>
+                <p class="snslogin">SNSで登録</p>
+                <%= link_to "Facebookで登録", "/users/auth/facebook", class: 'loginBtnFb' %>
+                <%= link_to "Twitterで登録", "/users/auth/twitter" , class: 'loginBtnTw' %>
+            </div>
+        </div>
 
 
 

@@ -1,13 +1,14 @@
 <div class="container">
   <section><div class="search_content">
-    <div class='search_result arrowTtl2'>検索結果<%= @search_questions.count %>件</div>
+    <div class='search_result arrowTtl2'>検索結果<%= @search_resolved_questions.count %>件</div>
     </div>
   </section>
 </div>
+
 <div class='container qa_status_content'>
   <div class='left_content'>
         <div class='status_btn status_resolved'>解決済み</div>
-        <div class='status_btn'><%= link_to "回答受付中", questions_search_open_path('q[:title_cont]': params[:q][:title_cont])  %></div>
+        <div class='status_btn'><%= link_to "回答受付中", questions_search_open_path('q[:title_cont]': params[:q][:title_cont]) %></div>
       </div>
       <div class='right_content'>
         <div class="dropdown2">
@@ -26,7 +27,7 @@
 
 
 <div class='container'>
-      <% @search_questions .each do |question| %>
+      <% @search_resolved_questions.each do |question| %>
         <div class="qandaWrap">
             <div class="qandaItem">
                 <article>

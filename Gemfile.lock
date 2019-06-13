@@ -93,6 +93,8 @@ GEM
     hashie (3.6.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     io-like (0.3.0)
     jaro_winkler (1.5.2)
     jbuilder (2.9.1)
@@ -199,6 +201,11 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (12.3.2)
+    ransack (2.1.1)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      i18n
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -276,6 +283,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  impressionist
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
@@ -287,6 +295,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.1)
+  ransack
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver

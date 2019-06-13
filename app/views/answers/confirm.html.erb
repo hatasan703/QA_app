@@ -1,14 +1,52 @@
-<div>
-  <%= form_for [@question, @answer] do |f| %>
-    <div class="field">
-      回答本文: <%= @answer.text %>
-      <%= f.hidden_field :text %>
-    </div>
-    <div class="actions">
-      <%= f.submit '投稿画面に戻る', name: 'back' %>
-    </div>
-    <div class="actions">
-      <%= f.submit '投稿する' %>
-    </div>
-  <% end %>
+<div class="container">
+    <section><h3 class="question_status"><%= @question.category.name %></h3></section>
+     <div class="qandaWrap">
+      <div class="qandaItem">
+          <article>
+              <div class="qandaItemStatus">
+                <% if @resolved %>
+                  <a href="#" class="answer">解決済み</a>
+                <% else %>
+                  <a href="#" class="question">回答受付中</a>
+                <% end %>
+              </div>
+              <section><h3><div class="question_title"><%= @question.title %></div></h3></section>
+              <div class="qanda_middle_items">
+                  <div class='question_user'>
+                    <%= image_tag  @question.user.image, class: "question_user_image" %>
+                    <%= link_to @question.user.nickname, "/users/#{@question.user_id}", class: "question_user_name" %>
+                  </div>
+                    <time><%= @question.created_at %></time>
+                    <a href="#"><%= @question.answers.count %></a>
+                    <a href="#"><%= @question.impressionist_count %></a>
+              </div>
+              <p>
+                  <%= @question.text %>
+              </p>
+          </article>
+      </div>
+     </div>
 </div>
+<%= form_for [@question, @answer] do |f| %>
+  <div class="container">
+    <section><h3 class="question_status"><%= @answer.user.nickname %>さんの回答</h3></section>
+    <div class="qandaWrap">
+      <div class="qandaItem">
+        <article>
+            <p><%= @answer.text %></p>
+            <%= f.hidden_field :text %>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class='container_answer'>
+    <div class="answer_actions answer_back">
+          <%= f.submit '投稿画面に戻る', name: 'back' %>
+        </div>
+        <div class="answer_actions answer_create">
+          <%= f.submit '投稿する' %>
+        </div>
+    </div>
+  <div>
+<% end %>

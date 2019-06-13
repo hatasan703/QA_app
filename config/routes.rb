@@ -9,8 +9,13 @@ Rails.application.routes.draw do
 
 
   get 'questions/search' => 'questions#search'
+  get 'questions/search_open' => 'questions#search_open'
+  get 'questions/search_resolved' => 'questions#search_resolved'
+
   get 'questions/categories' => 'questions#categories'
   get 'questions/category/:id' => 'questions#category'
+  get 'questions/category/:id/category_open' => 'questions#category_open'
+
   get 'questions/ranking' => 'questions#ranking'
   get 'questions/open' => 'questions#open'
   post 'questions/confirm' => 'questions#confirm'

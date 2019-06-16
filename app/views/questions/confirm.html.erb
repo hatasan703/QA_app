@@ -1,22 +1,35 @@
-<div>
-  <%= form_for @question do |f| %>
-    <div class="field">
-      タイトル: <%= @question.title %>
-      <%= f.hidden_field :title %>
+<%= form_for @question do |f| %>
+  <div class="qanda">
+     <h2 class="qandaTtl">
+        <span class="shitumon">確認画面</span>
+    </h2>
+
+    <div class='QA'>
+      <p>
+        <div class='inputMy'>タイトル</div>
+        <div class='answerFirst'><%= @question.title %></div>
+        <%= f.hidden_field :title %>
+      </p>
+      <p>
+        <div class='inputMy'>質問本文</div>
+        <div class='answerSecond'><%= @question.text %></div>
+        <%= f.hidden_field :text %>
+      </p>
+      <p>
+        <div class='inputMy'>カテゴリ</div>
+        <div class='answerThird'><%= @question.category.name %></div>
+        <%= f.hidden_field :category_id %>
+      </p>
+      <p>
+        <div class='inputMy'>お礼</div>
+        <div class='answerThird'><%= @question.point %></div>
+        <%= f.hidden_field :point %>
+      </p>
+      <p class="btn-wrapper">
+          <%= f.submit '戻る', name: 'back', class: 'qa_back_btn' %>
+          <%= f.submit '投稿する' , class: 'qa_submit_btn' %>
+      </p>
     </div>
-    <div class="field">
-      質問本文: <%= @question.text %>
-      <%= f.hidden_field :text %>
-    </div>
-    <div class="field">
-      カテゴリ: <%= @question.category.name %>
-      <%= f.hidden_field :category_id %>
-    </div>
-    <div class="actions">
-      <%= f.submit '投稿画面に戻る', name: 'back' %>
-    </div>
-    <div class="actions">
-      <%= f.submit '投稿する' %>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
+

@@ -95,7 +95,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:title, :text, :category_id).merge(user_id: current_user.id)
+    params.require(:question).permit(:title, :text, :category_id, :point).merge(user_id: current_user.id)
   end
 
   # 前検索のパラメータ保持

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
     get 'my_question/:id' => 'users#my_question'
     get 'my_answer/:id' => 'users#my_answer'
+    get 'identification/:id' => 'users#identification'
+    get 'card/:id' => 'users#card'
+    get 'bank/:id' => 'users#bank'
 
 
   get 'questions/search' => 'questions#search'

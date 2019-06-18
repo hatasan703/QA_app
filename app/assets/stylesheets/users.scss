@@ -114,7 +114,8 @@ input.loginBtn,
 // ユーザーページ
 
 .mypage {
-	margin: 0 auto;
+    width: 1120px;
+    margin: 0 auto;
 }
 
 .myprNav {
@@ -136,9 +137,11 @@ input.loginBtn,
 
 .MyNavWrap > li > a {
 	font-size: 1.5rem;
-	font-weight: 600;
 	color: #343636;
-	padding: 0 30px;
+  padding: 0 30px;
+  &:hover{
+    opacity: .7;
+  }
 }
 
 .prNavWrap {
@@ -222,6 +225,7 @@ input.loginBtn,
   margin: 15px 0;
 }
 
+
 // プロフィール情報編集
 
 .user_profile_edit{
@@ -232,7 +236,6 @@ input.loginBtn,
 }
 .user_edit_form{
   border: 0.5px solid #666e71;
-  // border-radius: 3px;
   height: 25px;
   display: block;
   margin-top: 5px;
@@ -261,28 +264,11 @@ input.loginBtn,
   font-weight: 600;
 }
 
-// .user_profile_edit_btn{
-//   display: inline-block;
-//   width: 200px;
-//   border: 1px solid #d1dbde;
-//   border-radius: 5px;
-//   background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
-//   box-shadow: 0 1px 0 #fcfcfd inset;
-//   color: #333;
-//   line-height: 1;
-//   padding: 0.7em;
-//   font-size: 13px;
-//   font-weight: 300;
-//   text-align: center;
-// }
-
 .user_profile_edit_btn{
   display: inline-block;
   width: 90px;
   border: 1px solid #d1dbde;
-  // border-radius: 40px;
   background: linear-gradient(to bottom, #60cef0, #60cef0);
-  // box-shadow: 0 1px 0 #fcfcfd inset;
   color: #fff;
   line-height: 1;
   padding: 0.7em;
@@ -292,12 +278,9 @@ input.loginBtn,
 }
 
 .user_profile_edit_btn2{
-  // display: inline-block;
   width: 200px;
   border: 1px solid #d1dbde;
-  // border-radius: 40px;
   background: linear-gradient(to bottom, #ed2751, #ed2751);
-  // box-shadow: 0 1px 0 #fcfcfd inset;
   color: #fff;
   line-height: 1;
   padding: 0.7em;
@@ -316,5 +299,18 @@ input.loginBtn,
   font-weight: 600;
 }
 
+.show_profile,
+.my_question_list,
+.my_answer_list,
+{
+  font-weight: 600;
+}
 
+// アカウント設定
 
+.indetification,
+.card_info,
+.bank_info,
+{
+  font-weight: 600;
+}

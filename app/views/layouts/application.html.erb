@@ -38,7 +38,7 @@
             </label>
             <ul class="menu animation">
               <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'item' %></li>
-              <li><%= link_to "アカウント設定", "/", class: 'item' %></li>
+              <li><%= link_to "アカウント設定", "/identification/#{current_user.id}", class: 'item' %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'item' %></li>
           </ul>
         </div>

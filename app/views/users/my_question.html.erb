@@ -2,7 +2,7 @@
   <nav class="myprNav">
     <ul class="MyNavWrap">
         <li><%= link_to "プロフィール", "/users/#{@user.id}", class: '' %></li>
-        <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
+        <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: 'my_question_list' %></li>
         <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
     </ul>
     </nav>

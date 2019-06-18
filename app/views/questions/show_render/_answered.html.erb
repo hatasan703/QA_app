@@ -16,7 +16,7 @@
               <% if answer.user_id == current_user.id %>
                 <div class=" ba_btn answer_delete_btn">
                     <ul>
-                      <li><%= link_to "削除", "/questions/#{answer.question_id}/answers/#{answer.id}", method: :delete, class: 'answer_delete_btn' %></li>
+                      <li><%= link_to "削除", "/questions/#{answer.question_id}/answers/#{answer.id}", method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' } %></li>
                     </ul>
                 </div>
                 <% else %>

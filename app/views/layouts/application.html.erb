@@ -144,13 +144,13 @@
                 <ul>
                     <li><section><h4>QOTAELUについて</h4></section></li>
                     <li><a href="/">運営会社</a></li>
-                    <li><a href="/">ヘルプ</a></li>
-                    <li><a href="/">お問い合わせ</a></li>
+                    <li><%= link_to "ヘルプ", help_path, class: '' %></li>
+                    <li><%= link_to "お問い合わせ", contact_path, class: '' %></li>
                 </ul>
                 <ul>
                     <li><section><h4>プライバシーと利用規約</h4></section></li>
-                    <li><a href="/">プライバシーポリシー</a></li>
-                    <li><a href="/">利用規約</a></li>
+                    <li><%= link_to "プライバシーポリシー", privacy_policy_path, class: '' %></li>
+                    <li><%= link_to "利用規約", rule_path, class: '' %></li>
                 </ul>
                 <ul>
                     <li><section><h4>SNS</h4></section></li>

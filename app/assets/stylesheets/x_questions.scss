@@ -133,6 +133,9 @@
   line-height: 1;
   padding: 0.7em;
   font-size: 1.5rem;
+  &:hover{
+    opacity: .7;
+  }
 }
 
 .answer_form .answer_submit_btn, .answer_login_btn a:hover{

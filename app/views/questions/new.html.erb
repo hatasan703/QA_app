@@ -1,18 +1,36 @@
-<h1>質問投稿</h1>
 
 
 <%= form_with(model: @question, local: true, url: {action: 'confirm'}) do |f| %>
-  <p>
-    <%= f.label :title, "タイトル" %><br>
-    <%= f.text_field :title %><br>
-  </p>
-  <p>
-    <%= f.label :text, "本文" %><br>
-    <%= f.text_area :text %><br>
-  </p>
-  <p>
-    <%= f.label :"カテゴリ" %><br>
-    <%= f.collection_select :category_id, @categories, :id, :name %>
-  </p>
-    <%= f.submit "投稿" %>
+  <div class="create_qa">
+    <h2 class="qandaTtl">
+        <%= image_tag("qanda_q.png", alt: "Q") %>
+        <%= image_tag("qanda_a.png", alt: "A") %>
+        <span class="shitumon">質問投稿</span>
+    </h2>
+
+    <div class="QA">
+      <p>
+        <%= f.label :title, "タイトル", class: 'inputMy' %><br>
+        <%= f.text_field :title , class: 'answerFirst' %><br>
+      </p>
+      <p>
+        <%= f.label :text, "本文", class: 'inputMy' %><br>
+        <%= f.text_area :text, class: 'answerSecond' %><br>
+      </p>
+      <p>
+        <%= f.label :category_id, "カテゴリ", class: 'inputMy' %><br>
+        <%= f.collection_select :category_id, @categories, :id, :name, class: 'answerThird' %>
+      </p>
+
+      <p>
+        <%= f.label :お礼, class: 'inputMy' %><br>
+        <%= f.select :point, [['10P', 10], ['50P', 50], ['100P', 100], ['300P', 300], ['500P', 500], ['1000P', 1000], ['2000P', 2000], ['3000P', 3000]], class: 'answerThird' %>
+      </p>
+
+      <div class="btn-wrapper">
+        <%= f.submit "投稿する", class: 'qa_submit_btn' %>
+      </div>
+
+    </div>
+  </div>
 <% end %>

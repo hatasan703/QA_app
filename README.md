@@ -22,6 +22,7 @@
 |------|----|-------|
 |title|string|null: false|
 |text|text|null: false|
+|point|integer|null: false|
 |done|boolean|
 |category_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|

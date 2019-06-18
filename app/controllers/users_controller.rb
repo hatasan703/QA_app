@@ -41,6 +41,16 @@ class UsersController < ApplicationController
   end
 
 
+  def identification
+  end
+
+  def card
+  end
+
+  def bank
+  end
+
+
   private
 
   def user_params

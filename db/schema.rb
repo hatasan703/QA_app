@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_064757) do
+ActiveRecord::Schema.define(version: 2019_06_16_050851) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_064757) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point", null: false
     t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end

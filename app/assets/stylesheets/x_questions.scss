@@ -133,6 +133,9 @@
   line-height: 1;
   padding: 0.7em;
   font-size: 1.5rem;
+  &:hover{
+    opacity: .7;
+  }
 }
 
 .answer_form .answer_submit_btn, .answer_login_btn a:hover{
@@ -155,6 +158,9 @@
   padding: 0.7em;
   font-size: 1.5rem;
   font-weight: 300;
+  :hover{
+    opacity: 7;
+  }
 }
 
 
@@ -179,3 +185,108 @@
   text-align: center;
 }
 
+
+
+// 質問投稿画面
+
+.questionRelease {
+  font-size: 3.4rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 25px;
+  display: flex;
+  align-items: center;
+}
+
+.QA{
+  background-color: white;
+  margin-bottom: 40px;
+ }
+
+.shitumon{
+  padding-top: 7px;
+  padding-left: 7px;
+}
+
+.create_qa{
+  margin: 0 auto;
+  width: 600px;
+}
+
+
+.answerFirst{
+  font-size: 15px;
+	color: #333;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border: 5px solid #dae1e3;
+	background: #fff;
+  display: flex;
+  margin: 10px auto;
+  width: 95%
+}
+
+.answerSecond{
+  font-size: 15px;
+	color: #333;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border: 5px solid #dae1e3;
+	background: #fff;
+  display: flex;
+  margin: 10px auto;
+  width: 95%;
+  height: 300px;
+
+
+
+}
+select#question_category_id,
+select#question_point,
+.answerThird{
+  font-size: 15px;
+	color: #333;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border: 5px solid #dae1e3;
+	background: #fff;
+  display: flex;
+  margin: 10px auto;
+  width: 95%
+}
+
+.btn-wrapper {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.qa_submit_btn,
+.qa_back_btn{
+  color: white;
+  display: inline-block;
+  border-radius: 4px;
+  height: 40px;
+  width: 200px;
+  font-size: 25px;
+  font-weight: 600;
+  background-color: #60cef0;
+  &:hover{
+    opacity: 0.8;
+  }
+}
+
+.qa_back_btn{
+  margin-right: 50px;
+  background: #ed2751;
+  }
+
+.btn:hover{
+  opacity: 1;
+}
+
+.inputMy{
+  font-size: 2.0rem;
+	font-weight: 600;
+	color: #333;
+  margin-left: 10px;
+}

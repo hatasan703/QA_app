@@ -16,13 +16,21 @@ class AnswersController < ApplicationController
           @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
           format.html { render template: "questions/show" }
         elsif @answer.save
-          format.html { redirect_to root_path } #あとで直す
+          format.html { redirect_to controller: 'questions', action: 'show', id: @answer.question_id }
         else
           format.html { render template: "questions/show" }
 
         end
     end
 
+  end
+
+  def destroy
+    answer = Answer.find(params[:id])
+    if answer.best_answer.nil?
+      answer.destroy if answer.user_id == current_user.id
+    end
+    redirect_to controller: 'questions', action: 'show', id: answer.question_id
   end
 
   def ba_confirm
@@ -33,16 +41,12 @@ class AnswersController < ApplicationController
 
   def update
     answer = Answer.find(params[:id])
-    answer.update(ba_params)
+    answer.update(answer_params)
     redirect_to root_path
   end
 
   private
   def answer_params
-    params.require(:answer).permit(:text).merge(question_id: params[:question_id], user_id: current_user.id)
-  end
-
-  def ba_params
     params.require(:answer).permit(:text, :best_answer).merge(question_id: params[:question_id], user_id: current_user.id)
   end
 

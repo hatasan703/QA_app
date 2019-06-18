@@ -19,11 +19,20 @@ class QuestionsController < ApplicationController
         if params[:back]
           format.html { render :new }
         elsif @question.save
-          format.html { redirect_to root_path }
+          format.html { redirect_to controller: 'questions', action: 'show', id: @question.id }
         else
           format.html { render :new }
         end
     end
+  end
+
+  def destroy
+    question = Question.find(params[:id])
+    @answers = question.answers.includes(:user)
+    if @answers.empty?
+      question.destroy if question.user_id == current_user.id
+    end
+    redirect_to root_path
   end
 
   def show
@@ -86,7 +95,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:title, :text, :category_id).merge(user_id: current_user.id)
+    params.require(:question).permit(:title, :text, :category_id, :point).merge(user_id: current_user.id)
   end
 
   # 前検索のパラメータ保持

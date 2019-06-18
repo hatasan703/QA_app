@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
         if params[:back]
           format.html { render :new }
         elsif @question.save
-          format.html { redirect_to root_path }
+          format.html { redirect_to controller: 'questions', action: 'show', id: @question.id }
         else
           format.html { render :new }
         end

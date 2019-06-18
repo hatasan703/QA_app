@@ -50,8 +50,4 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:text, :best_answer).merge(question_id: params[:question_id], user_id: current_user.id)
   end
 
-  # def ba_params
-  #   params.require(:answer).permit(:text, :best_answer).merge(question_id: params[:question_id], user_id: current_user.id)
-  # end
-
 end

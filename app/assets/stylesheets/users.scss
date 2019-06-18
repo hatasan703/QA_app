@@ -214,6 +214,9 @@ input.loginBtn,
 }
 .user_edit_btn{
   color: #888e92;
+  &:hover{
+    opacity: .7;
+  }
 }
 
 

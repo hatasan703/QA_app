@@ -5,6 +5,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  margin-bottom: 60px;
 }
 
 
@@ -23,8 +24,14 @@
 .answer_back{
   background: #ef323d;
   margin-right: 200px;
+  &:hover{
+    opacity: .7;
+  }
 }
 
 .answer_create{
   background: #4fc1ea;
+  &:hover{
+    opacity: .7;
+  }
 }

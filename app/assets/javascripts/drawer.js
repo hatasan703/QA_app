@@ -1,6 +1,7 @@
 ;(function($){
   var touch = false;
   $('#humberger').on('click touchstart',function(e){
+
       switch (e.type) {
           case 'touchstart':
               drawerToggle();

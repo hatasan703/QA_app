@@ -10,6 +10,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= analytics_init if Rails.env.production? %>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
   </head>
   <body>
     <header class="header">
@@ -23,9 +25,6 @@
                 <%= f.submit ("") , class: 'search-btn', value: '' %>
               <% end %>
             </div>
-
-
-
 
   <% if user_signed_in? %>
     <!-- *ログインの場合 -->
@@ -173,3 +172,34 @@
 
   </body>
 </html>
+
+
+
+
+        <script>
+      ;(function($){
+        var touch = false;
+        $('#humberger').on('click touchstart',function(e){
+
+            switch (e.type) {
+                case 'touchstart':
+                    drawerToggle();
+                    touch = true;
+                    return false;
+                break;
+                case 'click':
+                    if(!touch)
+                        drawerToggle();
+                    return false;
+                break;
+            }
+            function drawerToggle(){
+                $('body').toggleClass('drawer-opened');
+                touch = false;
+            }
+        })
+        $('#overlay').on('click touchstart',function(){
+            $('body').removeClass('drawer-opened');
+        })
+      })(jQuery);
+    </script>

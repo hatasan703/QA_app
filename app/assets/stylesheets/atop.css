@@ -191,7 +191,8 @@ header
 
 /* メインナビ */
 .mainNav {
-	background: #60cef0;
+  background: #60cef0;
+  /* background: #84d5ee; */
     box-shadow: 0 3px 10px 0 #59bfde inset;
 }
 .mainNavWrap {

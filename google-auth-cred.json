@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "qotaelu",
+  "private_key_id": "b45dae54a700569d00f612465dbad670df7aa3b2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDWm12MEFGpBd7X\nO2+8rjXbVLSe+MNZfYjCGzfSg5HOd5ORqm3KYNGbmdIkqedgR3rlcaxh+RclF8Fk\n/mgpxDBIAkLFf2pXATyMdqbxLMd44PFxS9HULuly7ULAUp4LxQpYiDEverLMFAyb\nC7hTY6kmOQ/7NPiXRNxSywigDexuBOhxzlUqv6I5ItkHakKJM1xh8QLWkVHlUsqi\nlq9fTwU53smJKNq95T5IZG6jWXh3JWLPkWt4lEv9qx+39XSwrKJaJLp1AqJ9J4UV\nh5UcDyAfNJRkZSZe0Y+eFeJwL1jy2cc3OwPdOQKe5+JnwxoggJ/98tsRcy3HmaSY\nugIX8PotAgMBAAECggEAAP+uGsXEq4W0eMn1BirFY2TshkTgG92CsmyQAPHNzukt\njaL+ac+zigbYPIVx5zfN8Z1q0PXozqpiowawE2mvU9Z22xZxtz/xOTIgKsUrlHtv\nhDh3HIavXXKPOffodmOPXcQcfn0SsfJx8JLIY9L16ZCga2nesk2GvPfm7V/DNuva\nvbMRi41XIB+ISDtu18nU+qROnA6joRajC9xzFVJv08lnBa74t3PkW+pKpsbHJ/0O\ngPEC4C0KADs5rgn2WWlhz9Os+xenlJOpyBWBKHMWact6nI7BsGPW7bnbWh1MvY+H\nKmtsw9Ye6Y1Cq81svMBLdBEItDoORdxz1TQBgERrgQKBgQD32ju/cWbXUDkAWAqt\n+2HRrdZRNXjI4rAFcSips2QlSZNb/PotZ+8k/o1AYb9dED0kYM0R2P0GwArCAI//\nKGiXem2iF5Se3xdQEz4aXtysbgg0DoAb+6q7Xmsjxl+iR19RBxA+PKhDm8uMVL7o\ny3HMyrOWHWmq1o4ohPBT6/cpDQKBgQDdqVvSeacfS2doaRuHxyq1HMg6IvxCu+hS\nn86X6MDIP9brYIqrTQ6ZB9NZAXONv7Lzu43yOhoPS7SVuw3Xa/QeAOE5S0UpMZVc\nq5gst/R0oVD3YwPjp4jD05JWm9W18pjoYgg0M4vrxbGNaxErTyfVajwaxGVrgntf\n1CIPTnSNoQKBgQCbAe5aBbc2s6Jil61eMBh2RU0DDvkSUcuaK7Itp9bbBw/U+PsR\nyK2kqlp2yGsg7dX/WVcHcXiVbyeLO0TTZFc9XUERncPCNG3lE5PEdE14vXv96o+u\ncI/PjPZesmL/H7n59/vtoIvvdJExm5KmDw6F8MOt/4klYfgYWUPgiHPURQKBgQDJ\nqZMIYfVR22Aw9a8+UEziiVUAz2OBs0MiKJHkUrVRegMmEacXQfvN7fiyOUfP5mAA\nrtntTj73O4EH2C43ltd5lINThM9fMuUYcmT4CkQ0966Z41NegsVCo/G3Kf+8kQHc\nKZQdKehakHmAl6//Hvy2hPg5wgQjU4q7HFwAYPhZAQKBgBbyXD2HgURp9sRwjwrK\nV/SKYpTlduarDztOuZ/h8FgmWw3bUWlDt6abrMX2db9fJHC4d+efRlGO5CZ2yBjx\n7cRdGOqasOVYqWsjQzabgUiHqYWrGfKtx4XlhmMKu+bwReQgZAkhUQL4ZgMZ8eRX\nvQinKHVLArX+JuByUjVcgYHN\n-----END PRIVATE KEY-----\n",
+  "client_email": "qotaelu-easy@qotaelu.iam.gserviceaccount.com",
+  "client_id": "113277020526314282262",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/qotaelu-easy%40qotaelu.iam.gserviceaccount.com"
+}

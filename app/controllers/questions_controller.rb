@@ -1,7 +1,5 @@
 class QuestionsController < ApplicationController
 
-  impressionist actions: [:show]
-
   def new
     @question = Question.new
     @categories = Category.all

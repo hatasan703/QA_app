@@ -23,6 +23,7 @@ Devise.setup do |config|
     config.omniauth :facebook, "465380670946243", "e413f99d870c3011c6f8fc8e9216a66f"
   when 'development'
     config.omniauth :facebook, "408984039923543", "c75d0f6c453664dd044f7eb0d2e9d3ee"
+  end
 
   config.omniauth :twitter, 'GnLlUdMzTOSvJREEPFeKDWVsv', 'AKjz67qzcsiHbVAhhNwNCx2U5KmYcKBEv9mxAV1Zw1Cfje8tcN'
   # callback_url: Rails.application.secrets.facebook[:callback_url]

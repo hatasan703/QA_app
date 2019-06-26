@@ -4,20 +4,21 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
 
-  def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+  # def self.find_for_oauth(auth)
+  #   user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        email:    auth.info.email,
-        password: Devise.friendly_token[0, 20]
-      )
-    end
+  #   unless user
+  #     user = User.create(
+  #       uid:      auth.uid,
+  #       provider: auth.provider,
+  #       email:    auth.info.email,
+  #       password: Devise.friendly_token[0, 20]
+  #       image: auth.info.image,
+  #     )
+  #   end
 
-    user
-  end
+  #   user
+  # end
 
 
   def self.find_for_oauth(auth)
@@ -29,7 +30,7 @@ class User < ApplicationRecord
         provider: auth.provider,
         email:    User.dummy_email(auth),
         password: Devise.friendly_token[0, 20],
-        image: auth.info.image,
+        image:    User.default_image,
         nickname: auth.info.nickname,
       )
     end
@@ -39,6 +40,9 @@ class User < ApplicationRecord
 
   private
 
+  def self.default_image
+    "https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png"
+  end
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end

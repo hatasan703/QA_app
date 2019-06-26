@@ -1,5 +1,9 @@
 class QuestionsController < ApplicationController
 
+  # impressionist actions: [:show]
+  # impressionist :unique => [:questions, :show, :session_hash]
+  impressionist :unique => [:session_hash]
+
   def new
     @question = Question.new
     @categories = Category.all
@@ -35,7 +39,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    # impressionist(@question, nil, unique: [:session_hash])
+    impressionist(@question, nil, :unique => [:session_hash])
+
     @answer = Answer.new
     @all_answers = @question.answers.includes(:user)
     @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
@@ -48,7 +53,7 @@ class QuestionsController < ApplicationController
       @answerable  = @all_answers.exists?(user_id: current_user.id)
     end
     @resolved = @question.done.present?
-    # binding.pry
+
   end
 
   def categories

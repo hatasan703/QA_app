@@ -76,3 +76,6 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'google-analytics-rails'
 gem 'google-api-client', '~> 0.9'
+
+gem "redis"
+gem "redis-objects"

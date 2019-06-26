@@ -9,6 +9,7 @@
 |bio|text|
 |uid|string|
 |age|integer|
+|image|text|
 |provider|string|
 
 ### Association

@@ -4,7 +4,7 @@ class Question < ApplicationRecord
   belongs_to :category
   has_one :pv
 
-  is_impressionable
+  is_impressionable counter_cache: true
 #  @question.impressionist_count
 #  @question.impressionist_count(:start_date=>"2011-01-01",:end_date=>"2011-01-05")
 #  @question.impressionist_count(:start_date=>"2011-01-01")  #specify start date only, end date = now

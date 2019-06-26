@@ -73,6 +73,15 @@ class QuestionsController < ApplicationController
   end
 
   def ranking
+    @all_questions = Question.all
+    @questions = @all_questions.where(done: true)
+    @ranking_questions = @questions.order('impressions_count DESC').limit(10)
+  end
+
+  def ranking_open
+    @all_questions = Question.all
+    @questions = @all_questions.where(done: nil)
+    @ranking_questions = @questions.order('impressions_count DESC').limit(10)
   end
 
   def open

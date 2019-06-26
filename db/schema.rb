@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_153731) do
+ActiveRecord::Schema.define(version: 2019_06_26_180129) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
@@ -55,15 +55,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_153731) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
-  create_table "page_views", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "count"
-    t.date "date"
-    t.bigint "question_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_page_views_on_question_id"
-  end
-
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -73,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_06_26_153731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "point", null: false
+    t.integer "impressions_count", default: 0
     t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
@@ -100,7 +92,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_153731) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "page_views", "questions"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "users"
 end

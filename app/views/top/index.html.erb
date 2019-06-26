@@ -93,40 +93,25 @@
 
                 <section><h3 class="arrowTtl">ランキング</h3></section>
                 <div class="qandaWrap">
-                    <div class="qandaItem">
-                        <article>
-                            <div class="qandaItemStatus">
-                                <a href="#" class="question">回答受付中</a>
-                                <a href="#" class="qandaItemStatusCat">恋愛相談</a>
-                            </div>
-                            <section><h3>友人の彼氏と浮気しています</h3></section>
-                            <p>
-                                友人の彼氏と浮気しています。もともと友人と付き合う前からその人が好きで猛アタックしていたのですが、友人と付き合うことになりました。１ヶ月もすると私
-                            </p>
-                            <div class="qandaItemFooter">
-                                <time>2019/05/16 15:36</time>
-                                <a href="#">2</a>
-                                <a href="#">2</a>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="qandaItem">
-                        <article>
-                            <div class="qandaItemStatus">
-                                <a href="#" class="answer">解決済み</a>
-                                <a href="#" class="qandaItemStatusCat">恋愛相談</a>
-                            </div>
-                            <section><h3>友人の彼氏と浮気しています</h3></section>
-                            <p>
-                                友人の彼氏と浮気しています。もともと友人と付き合う前からその人が好きで猛アタックしていたのですが、友人と付き合うことになりました。１ヶ月もすると私
-                            </p>
-                            <div class="qandaItemFooter">
-                                <time>2019/05/16 15:36</time>
-                                <a href="#">2</a>
-                                <a href="#">2</a>
-                            </div>
-                        </article>
-                    </div>
+                  <% @questions.each do |question| %>
+                      <div class="qandaItem">
+                          <article>
+                              <div class="qandaItemStatus">
+                                  <a href="#" class="question">回答受付中</a>
+                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                              </div>
+                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+                              <p>
+                                  <%= question.text %>
+                              </p>
+                              <div class="qandaItemFooter">
+                                  <time><%= question.created_at %></time>
+                                  <a href="#"><%= question.answers.count %></a>
+                                  <a href="#"><%= question.impressionist_count %></a>
+                              </div>
+                          </article>
+                      </div>
+                  <% end %>
                 </div>
 
                 <section><h3 class="arrowTtl">回答受付中</h3></section>
@@ -146,7 +131,7 @@
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at %></time>
                                   <a href="#"><%= question.answers.count %></a>
-                                  <a href="#">10</a>
+                                  <a href="#"><%= question.impressionist_count %></a>
                               </div>
                           </article>
                       </div>

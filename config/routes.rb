@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   # ランキング
   get 'questions/ranking' => 'questions#ranking'
+  get 'questions/ranking_open' => 'questions#ranking_open'
+
+
   get 'questions/open' => 'questions#open'
   post 'questions/confirm' => 'questions#confirm'
 

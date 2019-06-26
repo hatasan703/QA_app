@@ -73,7 +73,9 @@ gem 'omniauth-facebook'
 gem 'pry-rails'
 gem 'kaminari'
 gem 'jquery-rails'
-gem 'impressionist'
 gem 'ransack'
 gem 'google-analytics-rails'
 gem 'google-api-client', '~> 0.9'
+
+gem "redis"
+gem "redis-objects"

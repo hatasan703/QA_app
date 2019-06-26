@@ -112,8 +112,6 @@ GEM
     httpclient (2.8.3)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    impressionist (1.6.1)
-      nokogiri (~> 1)
     io-like (0.3.0)
     jaro_winkler (1.5.3)
     jbuilder (2.9.1)
@@ -235,6 +233,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.2)
+    redis-objects (1.4.3)
+      redis (~> 4.0)
     regexp_parser (1.5.1)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -321,7 +322,6 @@ DEPENDENCIES
   devise
   google-analytics-rails
   google-api-client (~> 0.9)
-  impressionist
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
@@ -335,6 +335,8 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails_12factor
   ransack
+  redis
+  redis-objects
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver

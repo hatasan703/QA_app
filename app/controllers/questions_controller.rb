@@ -1,7 +1,5 @@
 class QuestionsController < ApplicationController
 
-  impressionist actions: [:show]
-
   def new
     @question = Question.new
     @categories = Category.all
@@ -50,6 +48,7 @@ class QuestionsController < ApplicationController
       @answerable  = @all_answers.exists?(user_id: current_user.id)
     end
     @resolved = @question.done.present?
+    count_pv("show","users")
     # binding.pry
   end
 

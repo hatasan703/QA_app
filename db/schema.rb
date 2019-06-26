@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_050851) do
     t.integer "money"
     t.text "bio"
     t.string "role"
-    t.integer "age"
     t.text "image"
+    t.integer "age"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

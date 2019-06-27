@@ -1,30 +1,3 @@
-<div class="container">
-  <section><div class="search_content">
-    <div class='search_result arrowTtl2'><%= @category.name %></div>
-    </div>
-  </section>
-</div>
-
-<div class='container qa_status_content'>
-  <div class='left_content'>
-    <div class='status_btn status_resolved'>解決済み</div>
-    <div class='status_btn'><%= link_to "回答受付中", "/questions/category/#{@category.id}/category_open" %></div>
-  </div>
-      <div class='right_content'>
-        <div class="dropdown2">
-            <input id="tg2" class="dropInput2" type="checkbox">
-            <label for="tg2" class="dropLabel2">
-                <span class="userName">最新</span>
-            </label>
-            <ul class="menu2 animation2">
-              <li class='item2 top_item'><%= link_to "閲覧数", "#{@category.id}/category_pv" %></li>
-              <li class='item2'><%= link_to "回答数", "#{@category.id}/category_answer_count" %></li>
-              <li class='item2'><%= link_to "ポイント数", "#{@category.id}/category_point" %></li>
-            </ul>
-        </div>
-      </div>
-</div>
-
 <div class='container'>
     <% @questions.each do |question| %>
       <div class="qandaWrap">
@@ -52,4 +25,3 @@
       </div>
     <% end %>
 </div>
-

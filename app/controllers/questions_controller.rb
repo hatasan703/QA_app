@@ -77,26 +77,22 @@ class QuestionsController < ApplicationController
 
   # ランキング
   def ranking
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: true)
+    @questions = Question.where(done: true)
     @ranking_questions = @questions.order('impressions_count DESC').limit(10)
   end
 
   def ranking_open
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: nil)
+    @questions = Question.where(done: nil)
     @ranking_questions = @questions.order('impressions_count DESC').limit(10)
   end
 
   # 回答受付中
   def open
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: nil).order('created_at DESC').limit(10)
+    @questions = Question.where(done: nil).order('created_at DESC').limit(10)
   end
 
   def open_pv
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: nil).order('impressions_count DESC').limit(10)
+    @questions = Question.where(done: nil).order('impressions_count DESC').limit(10)
   end
 
   def open_answer_count

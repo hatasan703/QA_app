@@ -56,6 +56,8 @@ class QuestionsController < ApplicationController
 
   end
 
+
+  # カテゴリ
   def categories
     @categories = Category.all
   end
@@ -72,6 +74,8 @@ class QuestionsController < ApplicationController
     @questions = @all_questions.where(done: nil)
   end
 
+
+  # ランキング
   def ranking
     @all_questions = Question.all
     @questions = @all_questions.where(done: true)
@@ -96,18 +100,19 @@ class QuestionsController < ApplicationController
   end
 
   def open_answer_count
+    @questions = Question.where(done: nil).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
   end
 
   def open_point
   end
 
 
+  # 検索
   def search_open
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
     @search_open_questions = @search_questions.where(done: nil)
-    # binding.pry
   end
 
   def search_resolved
@@ -115,8 +120,9 @@ class QuestionsController < ApplicationController
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
     @search_resolved_questions = @search_questions.where(done: true)
-    # binding.pry
   end
+
+
 
   private
   def question_params

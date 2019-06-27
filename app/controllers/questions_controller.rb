@@ -84,10 +84,23 @@ class QuestionsController < ApplicationController
     @ranking_questions = @questions.order('impressions_count DESC').limit(10)
   end
 
+  # 回答受付中
   def open
     @all_questions = Question.all
-    @questions = @all_questions.where(done: nil)
+    @questions = @all_questions.where(done: nil).order('created_at DESC').limit(10)
   end
+
+  def open_pv
+    @all_questions = Question.all
+    @questions = @all_questions.where(done: nil).order('impressions_count DESC').limit(10)
+  end
+
+  def open_answer_count
+  end
+
+  def open_point
+  end
+
 
   def search_open
     set_prev_search_params

@@ -24,8 +24,13 @@ Rails.application.routes.draw do
   get 'questions/ranking' => 'questions#ranking'
   get 'questions/ranking_open' => 'questions#ranking_open'
 
-
+  # 回答受付中
   get 'questions/open' => 'questions#open'
+  get 'questions/open_pv' => 'questions#open_pv'
+  get 'questions/open_answer_count' => 'questions#open_answer_count'
+  get 'questions/open_point' => 'questions#open_point'
+
+
   post 'questions/confirm' => 'questions#confirm'
 
   # QA詳細

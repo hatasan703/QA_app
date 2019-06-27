@@ -25,31 +25,7 @@
       </div>
 </div>
 
-<div class='container'>
-    <% @questions.each do |question| %>
-      <div class="qandaWrap">
-          <div class="qandaItem">
-              <article>
-                  <div class="qandaItemStatus">
-                       <% if question.done.present? %>
-                        <a href="#" class="answer">解決済み</a>
-                       <% else %>
-                        <a href="#" class="question">回答受付中</a>
-                       <% end %>
-                      <%= link_to "#{@category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat", method: :get %>
-                  </div>
-                  <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
-                  <p>
-                      <%= link_to "#{question.text}", "/questions/#{question.id}", method: :get %>
-                  </p>
-                  <div class="qandaItemFooter">
-                      <time><%= question.created_at %></time>
-                      <a href="#"><%= question.answers.count %></a>
-                      <a href="#"><%= question.impressions_count %></a>
-                  </div>
-              </article>
-          </div>
-      </div>
-    <% end %>
-</div>
+<%= render file: "category/_question_list.html.erb" %>
+
+
 

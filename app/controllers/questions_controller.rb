@@ -100,6 +100,7 @@ class QuestionsController < ApplicationController
   end
 
   def open_point
+    @questions = Question.where(done: nil).order('point DESC').limit(10)
   end
 
 

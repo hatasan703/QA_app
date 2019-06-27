@@ -18,7 +18,15 @@ Rails.application.routes.draw do
   # カテゴリ
   get 'questions/categories' => 'questions#categories'
   get 'questions/category/:id' => 'questions#category'
+  get 'questions/category/:id/category_pv' => 'questions#category_pv'
+  get 'questions/category/:id/category_answer_count' => 'questions#category_answer_count'
+  get 'questions/category/:id/category_point' => 'questions#category_point'
+
   get 'questions/category/:id/category_open' => 'questions#category_open'
+  get 'questions/category/:id/category_open_pv' => 'questions#category_open_pv'
+  get 'questions/category/:id/category_open_answer_count' => 'questions#category_open_answer_count'
+  get 'questions/category/:id/category_open_point' => 'questions#category_open_point'
+
 
   # ランキング
   get 'questions/ranking' => 'questions#ranking'
@@ -47,43 +55,3 @@ Rails.application.routes.draw do
   get 'contact' => 'others#contact'
 
 end
-
-
-# get 'questions' => 'questions#index'
-# get 'questions/new' => 'questions#new'
-# post 'questions' => 'questions#create'
-# get 'users/:id' => 'users#show'
-# delete 'questions/:id' => 'questions#destroy'
-# patch 'questions/:id' => 'questions#update'
-# get 'questions/:id/edit' => 'questions#edit'
-# get 'questions/:id' => 'questions#show'
-
-
-
-
-# Rails.application.routes.draw do
-#   devise_for :users, controllers: {
-#     registrations: 'users/registrations',
-#     omniauth_callbacks: "users/omniauth_callbacks"
-#   }
-#   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-#   root to: 'products#index'
-#   resources :mypage, only: [:index]
-#   resources :products do
-#     resources :purchase, only: [:new, :create], module: :products
-#     resource :publications, only: [:update, :destroy], module: :products
-#   end
-#   resources :users, only: :edit
-
-#   namespace :users do
-#     namespace :sign_up do
-#       get 'address', to: 'address#new'
-#       get 'payment_methods', to: 'payment_methods#new'
-#       get 'registration', to: 'registration#new'
-
-#       resources :address, only: [:create]
-#       resources :payment_methods, only: [:create]
-#       resources :done, only: [:index]
-#     end
-#   end
-# end

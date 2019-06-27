@@ -16,17 +16,17 @@ Rails.application.routes.draw do
   get 'questions/search_resolved' => 'questions#search_resolved'
 
   # カテゴリ
-  get 'questions/categories' => 'questions#categories'
-  get 'questions/category/:id' => 'questions#category'
-  get 'questions/category/:id/category_pv' => 'questions#category_pv'
-  get 'questions/category/:id/category_answer_count' => 'questions#category_answer_count'
-  get 'questions/category/:id/category_point' => 'questions#category_point'
-
-  get 'questions/category/:id/category_open' => 'questions#category_open'
-  get 'questions/category/:id/category_open_pv' => 'questions#category_open_pv'
-  get 'questions/category/:id/category_open_answer_count' => 'questions#category_open_answer_count'
-  get 'questions/category/:id/category_open_point' => 'questions#category_open_point'
-
+  resources :category, only: %i(index show) do
+    member do
+      get :category_pv
+      get :category_answer_count
+      get :category_point
+      get :category_open
+      get :open_pv
+      get :open_answer_count
+      get :open_point
+    end
+  end
 
   # ランキング
   get 'questions/ranking' => 'questions#ranking'

@@ -3,7 +3,7 @@
     <div class="qandaWrap qandaWrapCat">
         <ul>
           <% @categories.each do |category| %>
-            <li><%= link_to "#{category.name}", "/questions/category/#{category.id}" %></li>
+            <li><%= link_to "#{category.name}", category_path(category) %></li>
           <% end %>
         </ul>
     </div>

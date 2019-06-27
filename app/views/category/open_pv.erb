@@ -7,20 +7,20 @@
 
 <div class='container qa_status_content'>
   <div class='left_content'>
-    <div class='status_btn status_resolved'>解決済み</div>
-    <div class='status_btn'><%= link_to "回答受付中", "/questions/category/#{@category.id}/category_open" %></div>
+    <div class='status_btn'><%= link_to "解決済み",  category_path(@category) %></div>
+    <div class='status_btn status_open'>回答受付中</div>
   </div>
       <div class='right_content'>
         <div class="dropdown2">
             <input id="tg2" class="dropInput2" type="checkbox">
             <label for="tg2" class="dropLabel2">
-                <span class="userName">回答数</span>
+                <span class="userName">閲覧数</span>
             </label>
             <ul class="menu2 animation2">
-              <li class='item2 top_item'><%= link_to "最新", "questions/category/#{@category.id}" %></li>
-              <li class='item2'><%= link_to "閲覧数", "category_pv" %></li>
-              <li class='item2'><%= link_to "ポイント数", "#{@category.id}/category_point" %></li>
-          </ul>
+              <li class='item2 top_item'><%= link_to "最新", category_open_category_path(@category) %></li>
+              <li class='item2'><%= link_to "回答数", open_answer_count_category_path(@category) %></li>
+              <li class='item2'><%= link_to "ポイント数", open_pv_category_path(@category) %></li>
+            </ul>
         </div>
       </div>
 </div>

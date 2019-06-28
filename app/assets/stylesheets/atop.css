@@ -819,7 +819,48 @@ BreakPoint
 }
 
 
+.point_show {
+	content: "";
+	width: 35px;
+	height: 35px;
+	margin-left: 20px;
+	background: url("img0828.png");
+	background-size: 35px 35px;
+	background-repeat: no-repeat;
+	display: block;
+}
 
+.point_show2 {
+	padding-left: 35px;
+	font-size: 2rem;
+}
+
+.point_show3 {
+	margin-top: 7px;
+}
+
+.fixed_question {
+	width: 150px;
+	height: 150px;
+	background-color: #4F7CE0;
+	border-radius: 100px;
+	position: fixed;
+	right: 40px;
+	bottom: 40px;
+	opacity: 1;
+}
+
+.fixed_question:hover {
+	background-color: #4F7CE0;
+	opacity: 0.9;
+}
+
+.fixed_question2 {
+	color: #fff;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 600;
+}
 
 
 

@@ -7,32 +7,40 @@
                 </ul>
             </nav>
         </div>
-        <div class="container mypage">
-            <nav class="myprNav mypr">
-                <ul class="prNavWrap">
-                    <li><span class="proname1">ニックネーム：</span><span class="proname"><%= @user.nickname %></span></li><hr noshade><br>
-                    <li><span class="proname1">年齢：</span><span class="proname"><%= @user.age %></span></li><hr noshade><br>
-                    <li><span class="proname1">性別：</span>
-                      <span class="proname">
-                          <% if @user_sex == true %>
-                            <%= '女性' %>
-                          <% else %>
-                            <%= '男性' %>
-                          <% end %>
-                      </span></li><hr noshade><br>
-                    <li><span class="proname1">職業：</span><span class="proname"><%= @user.role %></span></li><hr noshade><br>
-                    <li class='pro_edit_btn'><%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %></li>
-                </ul>
-                <ul class="prNavWrap2">
+        
 
-                    <div class="box12">
-                      <span class="box-title">自己紹介</span>
-                        <p class="profile">
-                          <%= @user.bio %>
-                        </p>
-                    </div>
-                </ul>
-            </nav>
+        <div class="container">
+            <div class="myprNav mypr">
+                  <div class="edit_pro">
+                      <div>ニックネーム:</div>
+                      <div class="centera"><%= @user.nickname %></div>
+                  </div>
+                  <div class="edit_pro">
+                      <div>年齢　　　　:</div>
+                      <div class="centera"><%= @user.age %></div>
+                  </div>
+                  <div class="edit_pro">
+                      <div>性別　　　　:</div>
+                      <div class="centera"><% if @user_sex == true %>
+                                <%= '女性' %>
+                              <% else %>
+                                <%= '男性' %>
+                              <% end %></div>
+                  </div>
+                  <div class="edit_pro">
+                  <div>職業　　　　:</div>
+                  <div class="centera"><%= @user.role %></div>
+                  </div>
+                  <div class='pro_edit_btn'><%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %>
+                  </div>
+
+                  <div class="box1212">
+                  <div class="box12">
+                       <span class="box-title">自己紹介</span>
+                         <p class="profile">
+                           <%= @user.bio %>
+                         </p>
+                     </div>
+                  </div>
+            </div>
         </div>
-
-

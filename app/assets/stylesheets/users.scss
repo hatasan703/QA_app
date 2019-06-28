@@ -114,7 +114,6 @@ input.loginBtn,
 // ユーザーページ
 
 .mypage {
-    width: 1120px;
     margin: 0 auto;
 }
 
@@ -188,36 +187,36 @@ input.loginBtn,
   padding: 0;
 }
 
-.box12 {
-	position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #60cef0;
-    border-radius: 8px;
-}
+// .box12 {
+// 	position: relative;
+//     margin: 2em 0;
+//     padding: 0.5em 1em;
+//     border: solid 3px #60cef0;
+//     border-radius: 8px;
+// }
 
-.box12 .box-title {
-	position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 19px;
-    background: #FFF;
-    color: #343636;
-    font-weight: bold;
-}
+// .box12 .box-title {
+// 	position: absolute;
+//     display: inline-block;
+//     top: -13px;
+//     left: 10px;
+//     padding: 0 9px;
+//     line-height: 1;
+//     font-size: 19px;
+//     background: #FFF;
+//     color: #343636;
+//     font-weight: bold;
+// }
 
-.pro_edit_btn{
-  text-align: end;
-}
-.user_edit_btn{
-  color: #888e92;
-  &:hover{
-    opacity: .7;
-  }
-}
+// .pro_edit_btn{
+//   text-align: end;
+// }
+// .user_edit_btn{
+//   color: #888e92;
+//   &:hover{
+//     opacity: .7;
+//   }
+// }
 
 
 .my_answer_item{
@@ -317,3 +316,93 @@ input.loginBtn,
 {
   font-weight: 600;
 }
+
+
+// <div class="container mypage">
+//             <nav class="myprNav mypr">
+//                 <ul class="prNavWrap">
+//                     <li><span class="proname1">ニックネーム：</span><span class="proname"><%= @user.nickname %></span></li><hr noshade><br>
+//                     <li><span class="proname1">年齢：</span><span class="proname"><%= @user.age %></span></li><hr noshade><br>
+//                     <li><span class="proname1">性別：</span>
+//                       <span class="proname">
+//                           <% if @user_sex == true %>
+//                             <%= '女性' %>
+//                           <% else %>
+//                             <%= '男性' %>
+//                           <% end %>
+//                       </span></li><hr noshade><br>
+//                     <li><span class="proname1">職業：</span><span class="proname"><%= @user.role %></span></li><hr noshade><br>
+//                     <li class='pro_edit_btn'><%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %></li>
+//                 </ul>
+//                 <ul class="prNavWrap2">
+
+//                     <div class="box12">
+//                       <span class="box-title">自己紹介</span>
+//                         <p class="profile">
+//                           <%= @user.bio %>
+//                         </p>
+//                     </div>
+//                 </ul>
+//             </nav>
+//         </div>
+
+.edit_pro {
+  border-bottom: solid 2px #343636;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  padding-top: 20px;
+
+  div {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    }
+  }
+
+  .centera {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .pro_edit_btn{
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .user_edit_btn{
+    color: #888e92;
+    &:hover{
+      opacity: .7;
+    }
+  }
+
+  .box12 {
+    position: relative;
+      margin: 0 auto;
+      border: solid 3px #60cef0;
+      border-radius: 8px;
+      width: 400px;
+  }
+  
+  .box12 .box-title {
+    position: absolute;
+      display: inline-block;
+      top: -13px;
+      left: 10px;
+      padding: 0 9px;
+      line-height: 1;
+      font-size: 19px;
+      background: #FFF;
+      color: #343636;
+      font-weight: bold;
+  }
+
+  .box1212 {
+    padding-bottom: 50px;
+  }

@@ -15,7 +15,14 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :open
+      get :open_pv
+      get :open_answer_count
+      get :open_point
+
       get :resolved
+      get :resolved_pv
+      get :resolved_answer_count
+      get :resolved_point
     end
   end
   # namespace :questions do

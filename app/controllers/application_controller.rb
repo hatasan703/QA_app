@@ -4,9 +4,10 @@ class ApplicationController < ActionController::Base
 
   def search
     @search = Question.ransack(params[:q])
-    @all_search_questions = @search.result.page(params[:page])
-    @questions = @all_search_questions.where(done: true)
-    # binding.pry
+    @search_questions = @search.result.page(params[:page])
+    @questions = @search_questions.where(done: true).order('created_at DESC').limit(10)
+    @question_count = @search_questions.where(done: true).count
   end
+
 
 end

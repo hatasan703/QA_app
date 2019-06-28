@@ -57,10 +57,6 @@ class QuestionsController < ApplicationController
   end
 
 
-  # カテゴリ
-
-
-
   # ランキング
   def ranking
     @questions = Question.where(done: true)
@@ -104,7 +100,6 @@ class QuestionsController < ApplicationController
     @search_questions = @search.result.page(params[:page])
     @search_resolved_questions = @search_questions.where(done: true)
   end
-
 
 
   private

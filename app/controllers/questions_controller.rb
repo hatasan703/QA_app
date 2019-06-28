@@ -56,45 +56,46 @@ class QuestionsController < ApplicationController
 
   end
 
-  def categories
-    @categories = Category.all
-  end
 
-  def category
-    @category = Category.find(params[:id])
-    @all_questions = @category.questions.includes(:user)
-    @questions = @all_questions.where(done: true)
-  end
+  # カテゴリ
 
-  def category_open
-    @category = Category.find(params[:id])
-    @all_questions = @category.questions.includes(:user)
-    @questions = @all_questions.where(done: nil)
-  end
 
+
+  # ランキング
   def ranking
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: true)
+    @questions = Question.where(done: true)
     @ranking_questions = @questions.order('impressions_count DESC').limit(10)
   end
 
   def ranking_open
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: nil)
+    @questions = Question.where(done: nil)
     @ranking_questions = @questions.order('impressions_count DESC').limit(10)
   end
 
+  # 回答受付中
   def open
-    @all_questions = Question.all
-    @questions = @all_questions.where(done: nil)
+    @questions = Question.where(done: nil).order('created_at DESC').limit(10)
   end
 
+  def open_pv
+    @questions = Question.where(done: nil).order('impressions_count DESC').limit(10)
+  end
+
+  def open_answer_count
+    @questions = Question.where(done: nil).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
+  end
+
+  def open_point
+    @questions = Question.where(done: nil).order('point DESC').limit(10)
+  end
+
+
+  # 検索
   def search_open
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
     @search_open_questions = @search_questions.where(done: nil)
-    # binding.pry
   end
 
   def search_resolved
@@ -102,8 +103,9 @@ class QuestionsController < ApplicationController
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
     @search_resolved_questions = @search_questions.where(done: true)
-    # binding.pry
   end
+
+
 
   private
   def question_params

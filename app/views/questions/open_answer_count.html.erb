@@ -22,26 +22,4 @@
 </div>
 
 
-<div class='container'>
-    <% @questions.each do |question| %>
-      <div class="qandaWrap">
-          <div class="qandaItem">
-              <article>
-                  <div class="qandaItemStatus">
-                      <a href="#" class="question">回答受付中</a>
-                      <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
-                  </div>
-                  <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
-                  <p>
-                      <%= question.text %>
-                  </p>
-                  <div class="qandaItemFooter">
-                      <time><%= question.created_at %></time>
-                      <a href="#"><%= question.answers.count %></a>
-                      <a href="#"><%= question.impressionist_count %></a>
-                  </div>
-              </article>
-          </div>
-      </div>
-    <% end %>
-</div>
+<%= render file: "partials/_question_list.html.erb" %>

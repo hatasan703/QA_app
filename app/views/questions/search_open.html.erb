@@ -1,6 +1,6 @@
 <div class="container">
   <section><div class="search_content">
-    <div class='search_result arrowTtl2'>検索結果<%= @search_open_questions.count %>件</div>
+    <div class='search_result arrowTtl2'>検索結果<%= @questions.count %>件</div>
     </div>
   </section>
 </div>
@@ -25,32 +25,4 @@
       </div>
 </div>
 
-
-<div class='container'>
-      <% @search_open_questions.each do |question| %>
-        <div class="qandaWrap">
-            <div class="qandaItem">
-                <article>
-                    <div class="qandaItemStatus">
-                            <% if question.done.present? %>
-                              <a href="#" class="answer">解決済み</a>
-                            <% else %>
-                              <a href="#" class="question">回答受付中</a>
-                            <% end %>
-                        <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat", method: :get %>
-                    </div>
-                    <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
-                    <p>
-                        <%= question.text %>
-                    </p>
-                    <div class="qandaItemFooter">
-                        <time><%= question.created_at %></time>
-                        <a href="#"><%= question.answers.count %></a>
-                        <a href="#"><%= question.impressionist_count %></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-      <% end %>
-  </div>
-</div>
+<%= render file: "partials/_question_list.html.erb" %>

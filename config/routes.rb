@@ -11,9 +11,11 @@ Rails.application.routes.draw do
     get 'bank/:id' => 'users#bank'
 
   # 検索
-  get 'questions/search' => 'questions#search'
-  get 'questions/search_open' => 'questions#search_open'
-  get 'questions/search_resolved' => 'questions#search_resolved'
+  namespace :questions do
+    get :search
+    get :search_open
+    get :search_resolved
+  end
 
   # カテゴリ
   resources :category, only: %i(index show) do
@@ -29,21 +31,26 @@ Rails.application.routes.draw do
   end
 
   # ランキング
-  get 'questions/ranking' => 'questions#ranking'
-  get 'questions/ranking_open' => 'questions#ranking_open'
+  namespace :questions do
+    get :ranking
+    get :ranking_open
+    get :open_answer_count
+    get :open_point
+  end
 
   # 回答受付中
-  get 'questions/open' => 'questions#open'
-  get 'questions/open_pv' => 'questions#open_pv'
-  get 'questions/open_answer_count' => 'questions#open_answer_count'
-  get 'questions/open_point' => 'questions#open_point'
-
+  namespace :questions do
+    get :open
+    get :open_pv
+    get :open_answer_count
+    get :open_point
+  end
 
   post 'questions/confirm' => 'questions#confirm'
 
   # QA詳細
   resources :questions, only: :show do
-    resources :answers, only: [:create, :update, :destroy]
+    resources :answers, only: %i(create update destroy)
     post 'confirm' => 'answers#confirm'
     get 'answers/:id/ba_confirm' => 'answers#ba_confirm'
   end

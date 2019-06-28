@@ -4,11 +4,10 @@
     </div>
   </section>
 </div>
-
 <div class='container qa_status_content'>
   <div class='left_content'>
-        <div class='status_btn'><%= link_to "解決済み", questions_search_resolved_path('q[:title_cont]': params[:q][:title_cont]) %></div>
-        <div class='status_btn status_open'>回答受付中</div>
+        <div class='status_btn status_resolved'>解決済み</div>
+        <div class='status_btn'><%= link_to "回答受付中", open_search_index_path('q[:title_cont]': params[:q][:title_cont])  %></div>
       </div>
       <div class='right_content'>
         <div class="dropdown2">
@@ -24,5 +23,6 @@
         </div>
       </div>
 </div>
+
 
 <%= render file: "partials/_question_list.html.erb" %>

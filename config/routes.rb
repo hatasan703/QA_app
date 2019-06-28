@@ -11,11 +11,18 @@ Rails.application.routes.draw do
     get 'bank/:id' => 'users#bank'
 
   # 検索
-  namespace :questions do
-    get :search
-    get :search_open
-    get :search_resolved
+  resources :search, only: %i() do
+    collection do
+      get :search
+      get :open
+      get :resolved
+    end
   end
+  # namespace :questions do
+  #   get :search
+  #   get :search_open
+  #   get :search_resolved
+  # end
 
   # カテゴリ
   resources :category, only: %i(index show) do

@@ -9,6 +9,7 @@
                        <% else %>
                         <a href="#" class="question">回答受付中</a>
                        <% end %>
+                       <div class="point_show"><div class="point_show3"><span class="point_show2">10</span></div></div>
                         <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
                   </div>
                   <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>

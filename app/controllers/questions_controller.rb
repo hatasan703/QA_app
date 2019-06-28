@@ -59,13 +59,13 @@ class QuestionsController < ApplicationController
 
   # ランキング
   def ranking
-    @questions = Question.where(done: true)
-    @ranking_questions = @questions.order('impressions_count DESC').limit(10)
+    @resolved_questions = Question.where(done: true)
+    @questions = @resolved_questions.order('impressions_count DESC').limit(10)
   end
 
   def ranking_open
-    @questions = Question.where(done: nil)
-    @ranking_questions = @questions.order('impressions_count DESC').limit(10)
+    @open_questions = Question.where(done: nil)
+    @questions = @open_questions.order('impressions_count DESC').limit(10)
   end
 
   # 回答受付中
@@ -91,14 +91,14 @@ class QuestionsController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @search_open_questions = @search_questions.where(done: nil)
+    @questions = @search_questions.where(done: nil)
   end
 
   def search_resolved
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @search_resolved_questions = @search_questions.where(done: true)
+    @questions = @search_questions.where(done: true)
   end
 
 

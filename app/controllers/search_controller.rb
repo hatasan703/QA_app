@@ -18,14 +18,6 @@ class SearchController < ApplicationController
     @open_question_count = @search_questions.where(done: nil).count
   end
 
-  def open_answer_count
-    set_prev_search_params
-    @search = Question.ransack(params[:q])
-    @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: nil).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
-    @open_question_count = @search_questions.where(done: nil).count
-  end
-
   def open_point
     set_prev_search_params
     @search = Question.ransack(params[:q])
@@ -48,14 +40,6 @@ class SearchController < ApplicationController
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
     @questions = @search_questions.where(done: true).order('impressions_count DESC').limit(10)
-    @question_count = @search_questions.where(done: true).count
-  end
-
-  def resolved_answer_count
-    set_prev_search_params
-    @search = Question.ransack(params[:q])
-    @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: true).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
     @question_count = @search_questions.where(done: true).count
   end
 

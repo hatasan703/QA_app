@@ -17,12 +17,6 @@ class CategoryController < ApplicationController
     @questions = @all_questions.where(done: true).order('impressions_count DESC').limit(10)
   end
 
-  def answer_count
-    @category = Category.find(params[:id])
-    @all_questions = @category.questions.includes(:user)
-    @questions = @all_questions.where(done: true).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
-  end
-
   def point
     @category = Category.find(params[:id])
     @all_questions = @category.questions.includes(:user)
@@ -41,12 +35,6 @@ class CategoryController < ApplicationController
     @category = Category.find(params[:id])
     @all_questions = @category.questions.includes(:user)
     @questions = @all_questions.where(done: nil).order('impressions_count DESC').limit(10)
-  end
-
-  def open_answer_count
-    @category = Category.find(params[:id])
-    @all_questions = @category.questions.includes(:user)
-    @questions = @all_questions.where(done: nil).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
   end
 
   def open_point

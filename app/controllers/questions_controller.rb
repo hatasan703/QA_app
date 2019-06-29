@@ -77,9 +77,6 @@ class QuestionsController < ApplicationController
     @questions = Question.where(done: nil).order('impressions_count DESC').limit(10)
   end
 
-  def open_answer_count
-    @questions = Question.where(done: nil).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
-  end
 
   def open_point
     @questions = Question.where(done: nil).order('point DESC').limit(10)
@@ -90,6 +87,10 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title, :text, :category_id, :point).merge(user_id: current_user.id)
+  end
+
+  def revive_active_record(arr)
+    arr.first.class.where(id: arr.map(&:id))
   end
 
 end

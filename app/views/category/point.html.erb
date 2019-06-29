@@ -8,7 +8,7 @@
 <div class='container qa_status_content'>
   <div class='left_content'>
     <div class='status_btn status_resolved'>解決済み</div>
-    <div class='status_btn'><%= link_to "回答受付中", open_answer_count_category_path(@category) %></div>
+    <div class='status_btn'><%= link_to "回答受付中", open_point_category_path(@category) %></div>
   </div>
       <div class='right_content'>
         <div class="dropdown2">
@@ -19,7 +19,6 @@
             <ul class="menu2 animation2">
               <li class='item2 top_item'><%= link_to "最新", category_path(@category) %></li>
               <li class='item2 '><%= link_to "閲覧数", pv_category_path(@category) %></li>
-              <li class='item2'><%= link_to "回答数", answer_count_category_path(@category) %></li>
           </ul>
         </div>
       </div>

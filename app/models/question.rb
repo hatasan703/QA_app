@@ -12,4 +12,8 @@ class Question < ApplicationRecord
   def self.ransackable_attributes(*)
     %w[title]
   end
+
+  def question_id
+    0
+  end
 end

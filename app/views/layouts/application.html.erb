@@ -20,7 +20,7 @@
             <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
             <!-- pc search -->
             <div class="search">
-              <%= search_form_for(@search, url: questions_search_path, class: "searchForm") do |f| %>
+              <%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
                 <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
                 <%= f.submit ("") , class: 'search-btn', value: '' %>
               <% end %>

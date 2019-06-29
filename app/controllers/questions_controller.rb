@@ -60,26 +60,26 @@ class QuestionsController < ApplicationController
   # ランキング
   def ranking
     @resolved_questions = Question.where(done: true)
-    @questions = @resolved_questions.order('impressions_count DESC').limit(10)
+    @questions = @resolved_questions.page(params[:page]).per(10).order('impressions_count DESC')
   end
 
   def ranking_open
     @open_questions = Question.where(done: nil)
-    @questions = @open_questions.order('impressions_count DESC').limit(10)
+    @questions = @open_questions.page(params[:page]).per(10).order('impressions_count DESC')
   end
 
   # 回答受付中
   def open
-    @questions = Question.where(done: nil).order('created_at DESC').limit(10)
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('created_at DESC')
   end
 
   def open_pv
-    @questions = Question.where(done: nil).order('impressions_count DESC').limit(10)
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('impressions_count DESC')
   end
 
 
   def open_point
-    @questions = Question.where(done: nil).order('point DESC').limit(10)
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('point DESC')
   end
 
 

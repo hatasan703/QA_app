@@ -6,7 +6,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: nil).order('created_at DESC').limit(10)
+    @questions = @search_questions.where(done: nil).page(params[:page]).per(10).order('created_at DESC')
     @open_question_count = @search_questions.where(done: nil).count
   end
 
@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: nil).order('impressions_count DESC').limit(10)
+    @questions = @search_questions.where(done: nil).page(params[:page]).per(10).order('impressions_count DESC')
     @open_question_count = @search_questions.where(done: nil).count
   end
 
@@ -22,7 +22,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: nil).order('point DESC').limit(10)
+    @questions = @search_questions.where(done: nil).page(params[:page]).per(10).order('point DESC')
     @open_question_count = @search_questions.where(done: nil).count
   end
 
@@ -31,7 +31,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: true).order('created_at DESC').limit(10)
+    @questions = @search_questions.where(done: true).page(params[:page]).per(10).order('created_at DESC')
     @question_count = @search_questions.where(done: true).count
   end
 
@@ -39,7 +39,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: true).order('impressions_count DESC').limit(10)
+    @questions = @search_questions.where(done: true).page(params[:page]).per(10).order('impressions_count DESC')
     @question_count = @search_questions.where(done: true).count
   end
 
@@ -47,7 +47,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: true).order('point DESC').limit(10)
+    @questions = @search_questions.where(done: true).page(params[:page]).per(10).order('point DESC')
     @question_count = @search_questions.where(done: true).count
   end
 

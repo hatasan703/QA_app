@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
 
   def my_question
-    user = current_user.id
-    @user = User.find(user)
-    @questions = @user.questions.page(params[:page]).per(5).order("created_at DESC")
+    @user = User.find(params[:id])
+    @questions = @user.questions.page(params[:page]).order("created_at DESC")
   end
 
   def my_answer
-    user = current_user.id
-    @user = User.find(user)
-    @answers = @user.answers.page(params[:page]).per(5).order("created_at DESC")
+    @user = User.find(params[:id])
+    @answers = @user.answers.page(params[:page]).order("created_at DESC")
   end
 
   def edit
@@ -40,6 +38,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_sex = @user.sex
+  end
+
+
+  def identification
+  end
+
+  def card
+  end
+
+  def bank
   end
 
 

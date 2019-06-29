@@ -1,3 +1,154 @@
-<button>使ってみる</button>
+<!-- main contents -->
+    <main class="main">
+      <% if user_signed_in? %>
+          <div class="container">
+            <div class="howTo">
+                <section>
+                    <h2 class="howToTtl">
+                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+                    </h2>
+                </section>
+
+                <div class="howToWrap">
+
+                    <div class="howToItem">
+                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
+                        <%= image_tag("howTo_item01.png", alt: "") %>
+
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
+                        <%= image_tag("howTo_item02.png", alt: "") %>
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
+                        <%= image_tag("howTo_item03.png", alt: "") %>
+                    </div>
+
+                    <div class="discussionBtn sp">
+                        <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
+                        <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+                    </div>
+
+                </div>
+                <div class="discussionBtn pc">
+                    <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
+                    <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+                </div>
+            </div>
+        </div>
+
+      <% else %>
+
+        <div class="container">
+            <div class="howTo">
+                <section>
+                    <h2 class="howToTtl">
+                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+                    </h2>
+                </section>
+
+                <div class="howToWrap">
+
+                    <div class="howToItem">
+                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
+                        <%= image_tag("howTo_item01.png", alt: "") %>
+
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
+                        <%= image_tag("howTo_item02.png", alt: "") %>
+                    </div>
+
+                    <div class="howToItem">
+                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
+                        <%= image_tag("howTo_item03.png", alt: "") %>
+                    </div>
+
+                    <a href="#" class="howToUseBtn sp">使ってみる</a>
+
+                </div>
+
+                <a href="#" class="howToUseBtn pc">使ってみる</a>
+            </div>
+        </div>
+      <% end %>
+
+        <div class="container">
+            <div class="qanda">
+                <section>
+                    <h2 class="qandaTtl">
+                        <span>みんなの</span>
+                        <%= image_tag("qanda_q.png", alt: "Q") %>
+
+                        <span>&amp;</span>
+                        <%= image_tag("qanda_a.png", alt: "A") %>
+                    </h2>
+                </section>
+
+                <section><h3 class="arrowTtl">ランキング</h3></section>
+                <div class="qandaWrap">
+                  <% @questions.each do |question| %>
+                      <div class="qandaItem">
+                          <article>
+                              <div class="qandaItemStatus">
+                                  <a href="#" class="question">回答受付中</a>
+                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                              </div>
+                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+                              <p>
+                                  <%= question.text %>
+                              </p>
+                              <div class="qandaItemFooter">
+                                  <time><%= question.created_at %></time>
+                                  <a href="#"><%= question.answers.count %></a>
+                                  <a href="#"><%= question.impressionist_count %></a>
+                              </div>
+                          </article>
+                      </div>
+                  <% end %>
+                </div>
+
+                <section><h3 class="arrowTtl">回答受付中</h3></section>
+
+                <div class="qandaWrap">
+                  <% @questions.each do |question| %>
+                      <div class="qandaItem">
+                          <article>
+                              <div class="qandaItemStatus">
+                                  <a href="#" class="question">回答受付中</a>
+                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                              </div>
+                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+                              <p>
+                                  <%= question.text %>
+                              </p>
+                              <div class="qandaItemFooter">
+                                  <time><%= question.created_at %></time>
+                                  <a href="#"><%= question.answers.count %></a>
+                                  <a href="#"><%= question.impressionist_count %></a>
+                              </div>
+                          </article>
+                      </div>
+                  <% end %>
+                </div>
+
+                <section><h3 class="arrowTtl">カテゴリー</h3></section>
+                <div class="qandaWrap qandaWrapCat">
+                    <ul>
+                      <% @categories.each do |category| %>
+                        <li><%= link_to "#{category.name}", "/questions/category/#{category.id}" %></li>
+                      <% end %>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
 
 
+    </main>

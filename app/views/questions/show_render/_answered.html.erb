@@ -1,0 +1,30 @@
+   <div class=container>
+    <section><h3 class="question_status">回答<%= @answers.count %>件</h3></section>
+    <div class="qandaWrap">
+      <% if @answers %>
+        <% @answers.each do |answer| %>
+          <div class="qandaItem ba_page">
+            <article>
+              <div class="qanda_middle_items answer_middle_items">
+                <div class='question_user'>
+                  <%= image_tag  answer.user.image, class: "question_user_image" %>
+                  <%= link_to answer.user.nickname, "/users/#{answer.user_id}", class: "question_user_name" %>
+                 </div>
+                <time><%= answer.created_at %></time>
+               </div>
+              <p><%= answer.text %></p>
+              <% if answer.user_id == current_user.id %>
+                <div class=" ba_btn answer_delete_btn">
+                    <ul>
+                      <li><%= link_to "削除", "/questions/#{answer.question_id}/answers/#{answer.id}", method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' } %></li>
+                    </ul>
+                </div>
+                <% else %>
+
+              <% end %>
+             </article>
+           </div>
+         <% end %>
+       <% end %>
+     </div>
+    </div>

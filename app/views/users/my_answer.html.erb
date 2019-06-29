@@ -1,19 +1,37 @@
+<div class='container'>
+  <nav class="myprNav">
+    <ul class="MyNavWrap">
+        <li><%= link_to "プロフィール", "/users/#{@user.id}", class: '' %></li>
+        <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
+        <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: 'my_answer_list' %></li>
+    </ul>
+    </nav>
+
+  <section><h3 class="arrowTtl"><%= @user.nickname %>さんの回答一覧</h3></section>
+    <% @answers.each do |answer| %>
+      <div class="qandaWrap">
+          <div class="qandaItem my_answer_item">
+              <article>
+                  <div class="qandaItemStatus">
+                       <% if answer.question.done.present? %>
+                        <a href="#" class="answer">解決済み</a>
+                       <% else %>
+                        <a href="#" class="question">回答受付中</a>
+                       <% end %>
+                      <%= link_to "#{answer.question.category.name}", "/questions/category/#{answer.question.category_id}", class: "qandaItemStatusCat", method: :get %>
+                  </div>
+                  <p>
+                      <%= link_to "#{answer.text}", "/questions/#{answer.question.id}", method: :get %>
+                  </p>
+                  <div class="qandaItemFooter">
+                      <time><%= answer.question.created_at %></time>
+                      <a href="#"><%= answer.question.answers.count %></a>
+                      <a href="#">2</a>
+                  </div>
+              </article>
+          </div>
+      </div>
+    <% end %>
+</div>
 
 
-
-<h1>
-  <%= link_to "プロフィール", "/users/#{current_user.id}", class: '' %>
-</h1>
-
-<h1>
-  <%= link_to "質問一覧", "/users/#{current_user.id}/my_question", class: '' %>
-</h1>
-
-<h1>
-<%= link_to "回答一覧", "/users/#{current_user.id}/my_answer", class: '' %>
-</h1>
-<% @answers.each do |answer| %>
-  <%= link_to "#{answer.text}", "/questions/#{answer.question.id}/", method: :get %>
-<% end %>
-
-<h1>〜さんの回答一覧</h1>

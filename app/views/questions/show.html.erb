@@ -1,75 +1,57 @@
-<h1>トップ▶︎<%= @question.category.name %></h1>
-<div class='question_content'>
-  <h2><%= @question.title %></h2>
-  <p><%= @question.user.nickname %></p>
-  <p><%= @question.user.created_at %></p>
-  <p><%= @question.text %></p>
+<div class=container>
+  <section><h3 class="question_status"><%= @question.category.name %></h3></section>
+    <div class="qandaWrap">
+      <div class="qandaItem">
+          <article>
+              <div class="qandaItemStatus">
+                <% if @resolved %>
+                  <a href="#" class="answer">解決済み</a>
+                  <div class="point_show"><div class="point_show3"><span class="point_show2"><%= @question.point %></span></div></div>
+                <% else %>
+                  <a href="#" class="question">回答受付中</a>
+                  <div class="point_show"><div class="point_show3"><span class="point_show2"><%= @question.point %></span></div></div>
+                <% end %>
+              </div>
+              <section><h3><div class="question_title"><%= @question.title %></div></h3></section>
+              <div class="qanda_middle_items">
+                  <div class='question_user'>
+                    <%= image_tag  @question.user.image, class: "question_user_image" %>
+                    <%= link_to @question.user.nickname, "/users/#{@question.user_id}", class: "question_user_name" %>
+                  </div>
+                    <time><%= @question.created_at %></time>
+                    <a href="#"><%= @question.answers.count %></a>
+                    <a href="#"><%= @question.impressionist_count %></a>
+              </div>
+              <p>
+                  <%= @question.text %>
+                  <% if @answers.empty? %>
+                    <div class=" ba_btn answer_delete_btn">
+                      <ul>
+                        <li><%= link_to "削除", question_path(@question), method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' }%></li>
+                      </ul>
+                    </div>
+                  <% end %>
+              </p>
+          </article>
+      </div>
+     </div>
 </div>
+
 
 <% if user_signed_in? %>
   <% if @is_questioner && !@resolved %>
 
-      <div class='answer_content'>
-        <h3>回答一覧</h3>
-        <% if @answers %>
-          <% @answers.each do |answer| %>
-            <p>
-              <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-              <%= answer.text %>
-              <h3>
-                <%= link_to "ベストアンサーに選ぶ", "#{@question.id}/answers/#{answer.id}/ba_confirm", class: '' %>
-              </h3>
-            </p>
-          <% end %>
-        <% end %>
-       </div>
+    <%= render :file => "/questions/show_render/_ba.html.erb" %>
 
   <% else %>
     <% if @answerable && !@resolved %>
-
-      <h3>回答済み </h3>
-        <div class='answer_content'>
-        <h3>回答一覧</h3>
-              <% if @answers %>
-                <% @answers.each do |answer| %>
-                  <p>
-                    <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                    <%= answer.text %>
-                  </p>
-                <% end %>
-              <% end %>
-        </div>
-
+      <%= render :file => "/questions/show_render/_answered.html.erb" %>
     <% elsif @resolved %>
 
-      <h3>ベストアンサー</h3>
-      <% if @best_answer %>
-        <%= @best_answer.text %>
-      <% end %>
-
-      <div class='answer_content'>
-      <h3>その他の回答</h3>
-            <% if @answers %>
-              <% @answers.each do |answer| %>
-                <p>
-                  <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                  <%= answer.text %>
-                </p>
-              <% end %>
-            <% end %>
-      </div>
+      <%= render :file => "/questions/show_render/_resolved.html.erb" %>
 
     <% else %>
-
-      <div class='answer_form'>
-        <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
-          <p>
-          <%= f.label :text, "回答本文" %><br>
-          <%= f.text_area :text %><br>
-          </p>
-          <%= f.submit "投稿" %>
-        <% end %>
-      </div>
+    <%= render :file => "/questions/show_render/_answerable.html.erb" %>
     <% end %>
 
   <% end %>
@@ -77,37 +59,10 @@
 
   <% if @resolved %>
 
-    <h3>ベストアンサー</h3>
-    <% if @best_answer %>
-      <%= @best_answer.text %>
-    <% end %>
-
-    <div class='answer_content'>
-    <h3>その他の回答</h3>
-          <% if @answers %>
-            <% @answers.each do |answer| %>
-              <p>
-                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                <%= answer.text %>
-              </p>
-            <% end %>
-          <% end %>
-    </div>
+    <%= render :file => "/questions/show_render/_resolved.html.erb" %>
 
   <% else %>
-
-    <h3><%= link_to "回答する", new_user_session_path %></h3>
-    <div class='answer_content'>
-    <h3>回答一覧</h3>
-          <% if @answers %>
-            <% @answers.each do |answer| %>
-              <p>
-                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
-                <%= answer.text %>
-              </p>
-            <% end %>
-          <% end %>
-    </div>
+    <%= render :file => "/questions/show_render/_not_login.html.erb" %>
 
   <% end %>
 <% end %>

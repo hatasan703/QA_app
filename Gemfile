@@ -62,6 +62,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -69,3 +73,9 @@ gem 'omniauth-facebook'
 gem 'pry-rails'
 gem 'kaminari'
 gem 'webpacker', github: 'rails/webpacker'
+gem 'jquery-rails'
+gem 'ransack'
+gem 'google-analytics-rails'
+gem 'google-api-client', '~> 0.9'
+
+gem 'impressionist'

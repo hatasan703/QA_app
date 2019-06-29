@@ -18,8 +18,14 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
+  case Rails.env
+  when 'production'
+    config.omniauth :facebook, "408984039923543", "c75d0f6c453664dd044f7eb0d2e9d3ee"
+  when 'development'
+    config.omniauth :facebook, "448742672579750", "7c9de248ab8acdf11d546b87b79ca1e7"
+  end
 
-  config.omniauth :facebook, '408984039923543', 'c75d0f6c453664dd044f7eb0d2e9d3ee'
+  config.omniauth :twitter, 'GnLlUdMzTOSvJREEPFeKDWVsv', 'AKjz67qzcsiHbVAhhNwNCx2U5KmYcKBEv9mxAV1Zw1Cfje8tcN'
   # callback_url: Rails.application.secrets.facebook[:callback_url]
 
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'

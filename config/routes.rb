@@ -25,19 +25,14 @@ Rails.application.routes.draw do
       get :resolved_point
     end
   end
-  # namespace :questions do
-  #   get :search
-  #   get :search_open
-  #   get :search_resolved
-  # end
 
   # カテゴリ
   resources :category, only: %i(index show) do
     member do
-      get :category_pv
-      get :category_answer_count
-      get :category_point
-      get :category_open
+      get :pv
+      get :answer_count
+      get :point
+      get :open
       get :open_pv
       get :open_answer_count
       get :open_point

@@ -29,13 +29,6 @@ export default {
             type: Number,
             required: true,
         },
-        logoutLink: {
-            type: String,
-            required: true,
-        }
     },
-    mounted() {
-        console.log(this.logoutLink);
-    }
 };
 </script>

@@ -13,7 +13,4 @@ class Question < ApplicationRecord
     %w[title]
   end
 
-  def question_id
-    0
-  end
 end

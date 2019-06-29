@@ -60,60 +60,37 @@ class QuestionsController < ApplicationController
   # ランキング
   def ranking
     @resolved_questions = Question.where(done: true)
-    @questions = @resolved_questions.order('impressions_count DESC').limit(10)
+    @questions = @resolved_questions.page(params[:page]).per(10).order('impressions_count DESC')
   end
 
   def ranking_open
     @open_questions = Question.where(done: nil)
-    @questions = @open_questions.order('impressions_count DESC').limit(10)
+    @questions = @open_questions.page(params[:page]).per(10).order('impressions_count DESC')
   end
 
   # 回答受付中
   def open
-    @questions = Question.where(done: nil).order('created_at DESC').limit(10)
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('created_at DESC')
   end
 
   def open_pv
-    @questions = Question.where(done: nil).order('impressions_count DESC').limit(10)
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('impressions_count DESC')
   end
 
-  def open_answer_count
-    @questions = Question.where(done: nil).joins(:answers).group("question_id").order('count(question_id) desc').limit(10)
-  end
 
   def open_point
-    @questions = Question.where(done: nil).order('point DESC').limit(10)
-  end
-
-
-  # 検索
-  def search_open
-    set_prev_search_params
-    @search = Question.ransack(params[:q])
-    @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: nil)
-  end
-
-  def search_resolved
-    set_prev_search_params
-    @search = Question.ransack(params[:q])
-    @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: true)
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('point DESC')
   end
 
 
   private
+
   def question_params
     params.require(:question).permit(:title, :text, :category_id, :point).merge(user_id: current_user.id)
   end
 
-  # 前検索のパラメータ保持
-  def set_prev_search_params
-    prev_q = URI(request.referer).query
-    prev_params = Rack::Utils.parse_nested_query(prev_q)
-    prev_params['q']['title_cont'] = prev_params['q'][':title_cont'] if prev_params['q'][':title_cont'].present?
-    params[:q] = prev_params['q']
-    # binding.pry
+  def revive_active_record(arr)
+    arr.first.class.where(id: arr.map(&:id))
   end
 
 end

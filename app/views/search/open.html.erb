@@ -1,13 +1,13 @@
 <div class="container">
   <section><div class="search_content">
-    <div class='search_result arrowTtl2'>検索結果<%= @questions.count %>件</div>
+    <div class='search_result arrowTtl2'>検索結果<%= @open_question_count %>件</div>
     </div>
   </section>
 </div>
 
 <div class='container qa_status_content'>
   <div class='left_content'>
-        <div class='status_btn'><%= link_to "解決済み", questions_search_resolved_path('q[:title_cont]': params[:q][:title_cont]) %></div>
+        <div class='status_btn'><%= link_to "解決済み", resolved_search_index_path('q[:title_cont]': params[:q][:title_cont]) %></div>
         <div class='status_btn status_open'>回答受付中</div>
       </div>
       <div class='right_content'>
@@ -17,9 +17,8 @@
                 <span class="userName">最新</span>
             </label>
             <ul class="menu2 animation2">
-              <li class='item2 top_item'>閲覧数</li>
-              <li class='item2'>回答数</li>
-              <li class='item2'>ポイント</li>
+              <li class='item2 top_item'><%= link_to "閲覧数", open_pv_search_index_path('q[:title_cont]': params[:q][:title_cont]) %></li>
+              <li class='item2'><%= link_to "ポイント", open_point_search_index_path('q[:title_cont]': params[:q][:title_cont]) %></li>
           </ul>
         </div>
       </div>

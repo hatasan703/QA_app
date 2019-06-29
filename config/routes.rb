@@ -11,19 +11,28 @@ Rails.application.routes.draw do
     get 'bank/:id' => 'users#bank'
 
   # 検索
-  namespace :questions do
-    get :search
-    get :search_open
-    get :search_resolved
+  resources :search, only: %i() do
+    collection do
+      get :search
+      get :open
+      get :open_pv
+      get :open_answer_count
+      get :open_point
+
+      get :resolved
+      get :resolved_pv
+      get :resolved_answer_count
+      get :resolved_point
+    end
   end
 
   # カテゴリ
   resources :category, only: %i(index show) do
     member do
-      get :category_pv
-      get :category_answer_count
-      get :category_point
-      get :category_open
+      get :pv
+      get :answer_count
+      get :point
+      get :open
       get :open_pv
       get :open_answer_count
       get :open_point

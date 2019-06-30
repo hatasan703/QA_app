@@ -4,7 +4,10 @@
         <label for="tg" class="dropLabel">
             <span class="userName">{{ nickName }}</span>さん
         </label>
-        <ul class="menu animation">
+        <ul
+            class="menu animation"
+            @click="onClick"
+        >
             <li class="item">
                 <a :href="`/users/${userId}`">マイページ</a>
             </li>
@@ -28,6 +31,16 @@ export default {
         userId: {
             type: Number,
             required: true,
+        },
+    },
+    data() {
+        return {
+            isShownMenu: false,
+        }
+    },
+    methods: {
+        onClick() {
+            this.isShownMenu = !this.isShownMenu;
         },
     },
 };

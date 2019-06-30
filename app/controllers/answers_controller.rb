@@ -8,15 +8,15 @@ class AnswersController < ApplicationController
 
   def create
     # binding.pry
-    @answer = Answer.new(answer_params)
-    @question = Question.find(@answer.question_id)
+    answer = Answer.new(answer_params)
+    @question = Question.find(answer.question_id)
     respond_to do |format|
         if params[:back]
           @all_answers = @question.answers.includes(:user)
           @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
           format.html { render template: "questions/show" }
-        elsif @answer.save
-          format.html { redirect_to controller: 'questions', action: 'show', id: @answer.question_id }
+        elsif answer.save
+          format.html { redirect_to controller: 'questions', action: 'show', id: answer.question_id }
         else
           format.html { render template: "questions/show" }
 
@@ -37,17 +37,49 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @question = Question.find(@answer.question_id)
     render template: "questions/show" if @answer.invalid?
+    # binding.pry
   end
 
   def update
     answer = Answer.find(params[:id])
-    answer.update(answer_params)
-    redirect_to root_path
+    question = Question.find(answer.question_id)
+    ba_user = User.find(answer.user_id)
+    ba_user_point = (question.point) + (ba_user.money)
+    question_user = User.find(question.user_id)
+    question_user_point = (question_user.money) - (question.point)
+
+    answer.update(ba_params)
+    question.update(done: true)
+    ba_user.update(money: ba_user_point)
+    question_user.update(money: question_user_point)
+
+    redirect_to controller: 'questions', action: 'show', id: answer.question_id
+
+
+
+    # binding.pry
+    # respond_to do |format|
+    #   if params[:back]
+    #     @all_answers = @question.answers.includes(:user)
+    #     @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
+    #     format.html { render template: "questions/show" }
+    #   elsif answer.update(answer_params)
+    #     format.html { redirect_to controller: 'questions', action: 'show', id: answer.question_id }
+    #   else
+    #     format.html { render template: "questions/show" }
+
+    #   end
+  # end
+    # redirect_to root_path
   end
 
   private
   def answer_params
     params.require(:answer).permit(:text, :best_answer).merge(question_id: params[:question_id], user_id: current_user.id)
+  end
+
+  def ba_params
+    params.require(:answer).permit(:best_answer).merge(question_id: params[:question_id])
   end
 
 end

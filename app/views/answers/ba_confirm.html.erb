@@ -1,6 +1,23 @@
 <%= form_for @answer, url: question_answer_path(@question, @answer) do |f| %>
-  <%= f.hidden_field :best_answer, value: true %>
-  <%= f.submit "ベストアンサーに選ぶ" %>
-<% end %>
+  <div class="container">
+    <section><h3 class="question_status"><%= @answer.user.nickname %>さんの回答</h3></section>
+    <div class="qandaWrap">
+      <div class="qandaItem">
+        <article>
+            <p><%= @answer.text %></p>
+              <%= f.hidden_field :best_answer, value: true %>
+        </article>
+      </div>
+    </div>
+  </div>
 
-<%= @answer.text %>
+  <div class='container_answer'>
+    <div class="answer_actions answer_back">
+          <%= f.submit '質問に戻る', name: 'back' %>
+        </div>
+        <div class="answer_actions answer_create">
+          <%= f.submit 'ベストアンサーに選ぶ' %>
+        </div>
+    </div>
+  <div>
+<% end %>

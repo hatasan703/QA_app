@@ -1,8 +1,6 @@
 class QuestionsController < ApplicationController
 
-  # impressionist actions: [:show]
-  # impressionist :unique => [:questions, :show, :session_hash]
-  impressionist :unique => [:session_hash]
+  impressionist unique: [:session_hash]
 
   def new
     @question = Question.new

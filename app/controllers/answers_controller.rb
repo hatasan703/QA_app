@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
 
+before_action :redirect_top
+
   def confirm
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)

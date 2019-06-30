@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
+
   impressionist unique: [:session_hash]
 
   def new

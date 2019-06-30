@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def redirect_top
+    redirect_to controller: :top, action: :index unless user_signed_in?
+  end
+
+
 end

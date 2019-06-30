@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+before_action :redirect_top, except: [:my_question, :my_answer]
+
   def my_question
     @user = User.find(params[:id])
     @questions = @user.questions.page(params[:page]).order("created_at DESC")

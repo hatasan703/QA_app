@@ -5,7 +5,7 @@
 |nickname|string|null: false, foreign_key: true|
 |role|string|
 |sex|boolean|
-|money|integer|null: false|
+|money|integer|default: 0|
 |bio|text|
 |uid|string|
 |age|integer|
@@ -25,6 +25,7 @@
 |text|text|null: false|
 |point|integer|null: false|
 |done|boolean|
+|impressions_count|integer|default: 0|
 |category_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 

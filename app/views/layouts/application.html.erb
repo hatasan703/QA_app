@@ -129,9 +129,13 @@
 
     <%= yield %>
 
-    <button class="new_question_btn">
-      <p class="new_question_btn2"><%= link_to "相談する", new_question_path %></p>
-    </button>
+    <% if user_signed_in? %>
+        <%# <% unless {controller: :questions, action: :new} %> %>
+            <button class="new_question_btn">
+            <p class="new_question_btn2"><%= link_to "相談する", new_question_path %></p>
+            </button>
+        <%# <% end %> %>
+    <% end %>
 
 
        <!-- footer -->

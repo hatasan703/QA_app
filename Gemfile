@@ -79,3 +79,4 @@ gem 'google-analytics-rails'
 gem 'google-api-client', '~> 0.9'
 
 gem 'impressionist'
+gem 'rack-user_agent'

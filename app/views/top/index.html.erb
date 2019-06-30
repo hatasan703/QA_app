@@ -10,33 +10,17 @@
                     </h2>
                 </section>
 
-                <div class="howToWrap">
-
-                    <div class="howToItem">
-                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
-                        <%= image_tag("howTo_item01.png", alt: "") %>
-
-                    </div>
-
-                    <div class="howToItem">
-                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
-                        <%= image_tag("howTo_item02.png", alt: "") %>
-                    </div>
-
-                    <div class="howToItem">
-                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
-                        <%= image_tag("howTo_item03.png", alt: "") %>
-                    </div>
-
-                    <div class="discussionBtn sp">
-                        <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
-                        <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
-                    </div>
-
+                <div class="js-section-with-image-list">
+                    <section-with-image-list />
                 </div>
-                <div class="discussionBtn pc">
-                    <%= link_to "相談する", new_question_path, class: "questionBtn", method: :get %>
-                    <%= link_to "回答する", questions_open_path, class: "answerBtn", method: :get %>
+
+                <div class="js-discussion-button-list">
+                    <discussion-button-list
+                        :is-pc="<%= request.from_pc? %>"
+                        :is-login="true"
+                        question-link="<%= url_for controller: 'questions', action: 'new' %>"
+                        answer-link="<%= url_for controller: 'questions', action: 'open' %>"
+                    />
                 </div>
             </div>
         </div>
@@ -52,29 +36,18 @@
                     </h2>
                 </section>
 
-                <div class="howToWrap">
-
-                    <div class="howToItem">
-                        <section><h3>回答者への報酬額を決めて、相談する</h3></section>
-                        <%= image_tag("howTo_item01.png", alt: "") %>
-
-                    </div>
-
-                    <div class="howToItem">
-                        <section><h3>集まった回答の中から<br>ベストアンサーを選ぶ</h3></section>
-                        <%= image_tag("howTo_item02.png", alt: "") %>
-                    </div>
-
-                    <div class="howToItem">
-                        <section><h3>ベストアンサーに選ばれた回答者は<br>報酬が貰える</h3></section>
-                        <%= image_tag("howTo_item03.png", alt: "") %>
-                    </div>
-
-                    <a href="#" class="howToUseBtn sp">使ってみる</a>
-
+                <div class="js-section-with-image-list">
+                    <section-with-image-list />
                 </div>
 
-                <a href="#" class="howToUseBtn pc">使ってみる</a>
+                <div class="js-discussion-button-list">
+                    <discussion-button-list
+                        :is-pc="<%= request.from_pc? %>"
+                        :is-login="false"
+                        question-link="<%= url_for controller: 'questions', action: 'new' %>"
+                        answer-link="<%= url_for controller: 'questions', action: 'open' %>"
+                    />
+                </div>
             </div>
         </div>
       <% end %>

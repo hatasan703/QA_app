@@ -35,6 +35,7 @@ class QuestionsController < ApplicationController
       question.destroy if question.user_id == current_user.id
     end
     redirect_to root_path
+    binding.pry
   end
 
   def show

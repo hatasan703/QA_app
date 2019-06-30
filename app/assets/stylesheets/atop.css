@@ -839,7 +839,7 @@ BreakPoint
 	margin-top: 7px;
 }
 
-.fixed_question {
+.new_question_btn {
 	width: 150px;
 	height: 150px;
 	background-color: #4F7CE0;
@@ -850,18 +850,17 @@ BreakPoint
 	opacity: 1;
 }
 
-.fixed_question:hover {
+.new_question_btn:hover {
 	background-color: #4F7CE0;
 	opacity: 0.9;
 }
 
-.fixed_question2 {
+.new_question_btn2 a {
 	color: #fff;
 	text-align: center;
 	font-size: 3rem;
 	font-weight: 600;
 }
-
 
 
 

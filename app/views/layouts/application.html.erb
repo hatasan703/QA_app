@@ -129,13 +129,9 @@
 
     <%= yield %>
 
-    <div class="container">
-      <a href="#">
-      <button class="fixed_question">
-      <p class="fixed_question2">相談する</p>
-      </button>
-      </a>
-    </div>
+    <button class="new_question_btn">
+      <p class="new_question_btn2"><%= link_to "相談する", new_question_path %></p>
+    </button>
 
 
        <!-- footer -->

@@ -6,7 +6,7 @@ import DiscussionButtonList from 'components/top/DiscussionButtonList.vue';
 
 Vue.use(TurbolinksAdapter);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
     if (document.querySelector('#js-dropdown')) {
         new Vue({
             el: "#js-dropdown",

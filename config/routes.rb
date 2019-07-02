@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'identification/:id' => 'users#identification'
     get 'card/:id' => 'users#card'
     get 'bank/:id' => 'users#bank'
+    get 'point/:id' => 'users#point'
+
 
   # 検索
   resources :search, only: %i() do

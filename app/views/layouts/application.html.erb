@@ -40,7 +40,7 @@
         </div>
 
         <a href="/" class="noticeLinkBtn"><span>1</span></a>
-        <a href="/" class="pointLinkBtn"><span><%= current_user.money %></span></a>
+        <a href="/" class="pointLinkBtn"><span><%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: '' %></span></a>
 
         <div id="humberger" class="sp">
             <span class="icon-bar"></span>
@@ -130,11 +130,9 @@
     <%= yield %>
 
     <% if user_signed_in? %>
-        <%# <% unless {controller: :questions, action: :new} %> %>
             <button class="new_question_btn">
             <p class="new_question_btn2"><%= link_to "相談する", new_question_path %></p>
             </button>
-        <%# <% end %> %>
     <% end %>
 
 

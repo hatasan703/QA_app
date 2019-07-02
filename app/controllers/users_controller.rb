@@ -52,6 +52,8 @@ before_action :redirect_top, except: [:my_question, :my_answer]
   def bank
   end
 
+  def point
+  end
 
   private
 

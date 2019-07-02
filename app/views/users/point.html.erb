@@ -1,10 +1,10 @@
-  <div class="container mypage">
+  <div class="mypage">
     <nav class="myprNav">
         <ul class="MyNavWrap">
             <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
             <li><%= link_to "支払い方法", "/card/#{current_user.id}", class: '' %></li>
-            <li><%= link_to "口座情報", "/bank/#{current_user.id}", class: 'bank_info' %></li>
-            <li><%= link_to "ポイント", "/point/#{current_user.id}", class: '' %></li>
+            <li><%= link_to "口座情報", "/bank/#{current_user.id}", class: '' %></li>
+            <li><%= link_to "ポイント", "/point/#{current_user.id}", class: 'point_info' %></li>
         </ul>
     </nav>
   </div>

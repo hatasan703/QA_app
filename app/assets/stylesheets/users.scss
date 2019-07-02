@@ -127,7 +127,7 @@ input.loginBtn,
 }
 
 .MyNavWrap {
-	width: 410px;
+	width: 500px;
 	margin: 0 auto;
 	padding: 18px 0;
 	display: flex;
@@ -313,6 +313,7 @@ input.loginBtn,
 .indetification,
 .card_info,
 .bank_info,
+.point_info
 {
   font-weight: 600;
 }
@@ -389,7 +390,7 @@ input.loginBtn,
       border-radius: 8px;
       width: 400px;
   }
-  
+
   .box12 .box-title {
     position: absolute;
       display: inline-block;

@@ -66,7 +66,7 @@
 
                 <section><h3 class="arrowTtl">ランキング</h3></section>
                 <div class="qandaWrap">
-                  <% @questions.each do |question| %>
+                  <% @ranking_questions.each do |question| %>
                       <div class="qandaItem">
                           <article>
                               <div class="qandaItemStatus">
@@ -80,7 +80,7 @@
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at %></time>
                                   <a href="#"><%= question.answers.count %></a>
-                                  <a href="#"><%= question.impressionist_count %></a>
+                                  <a href="#"><%= question.impressions_count %></a>
                               </div>
                           </article>
                       </div>
@@ -104,7 +104,7 @@
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at %></time>
                                   <a href="#"><%= question.answers.count %></a>
-                                  <a href="#"><%= question.impressionist_count %></a>
+                                  <a href="#"><%= question.impressions_count %></a>
                               </div>
                           </article>
                       </div>

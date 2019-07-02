@@ -70,7 +70,9 @@
                       <div class="qandaItem">
                           <article>
                               <div class="qandaItemStatus">
-                                  <a href="#" class="question">回答受付中</a>
+                                  <a href="#" class="answer">解決済み</a>
+                                <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+
                                   <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
@@ -95,6 +97,8 @@
                           <article>
                               <div class="qandaItemStatus">
                                   <a href="#" class="question">回答受付中</a>
+                                 <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+
                                   <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>

@@ -13,4 +13,8 @@ class Question < ApplicationRecord
     %w[title]
   end
 
+#   def created_at
+#     self.created_at.strftime('%Y/%m/%d/ %H:%M')
+#   end
+
 end

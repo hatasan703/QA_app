@@ -47,8 +47,6 @@ before_action :redirect_top
     question = Question.find(answer.question_id)
     ba_user = User.find(answer.user_id)
     ba_user_point = (question.point) + (ba_user.money)
-    question_user = User.find(question.user_id)
-    question_user_point = (question_user.money) - (question.point)
 
     respond_to do |format|
       if params[:back]
@@ -56,7 +54,6 @@ before_action :redirect_top
       elsif answer.update(ba_params)
         question.update(done: true)
         ba_user.update(money: ba_user_point)
-        question_user.update(money: question_user_point)
         format.html { redirect_to controller: 'questions', action: 'show', id: answer.question_id }
       else
         format.html { render template: "questions/show" }

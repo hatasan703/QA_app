@@ -59,8 +59,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_054648) do
     t.integer "visiter_id"
     t.integer "visited_id"
     t.integer "answer_id"
-    t.integer "ba_question_id"
-    t.integer "resolved_question_id"
+    t.integer "best_answer_id"
     t.string "action"
     t.boolean "check", default: false
     t.datetime "created_at", null: false

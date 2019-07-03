@@ -68,7 +68,7 @@
 |------|----|-------|
 |visiter_id|integer||
 |visited_id|integer||
-|answer_id|integer||
+|answered_question_id|integer||
 |best_answer_id|integer||
 |action|string||
 |check|boolean|default: false|

@@ -19,7 +19,7 @@ before_action :redirect_top
           @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
           format.html { render template: "questions/show" }
         elsif @answer.save
-          @question.create_notification_by(current_user)
+            @question.answered_create_notification_by(current_user)
           format.html { redirect_to controller: 'questions', action: 'show', id: @answer.question_id }
         else
           format.html { render template: "questions/show" }
@@ -54,6 +54,7 @@ before_action :redirect_top
       elsif answer.update(ba_params)
         question.update(done: true)
         ba_user.update(money: ba_user_point)
+        answer.ba_create_notification_by(current_user)
         format.html { redirect_to controller: 'questions', action: 'show', id: answer.question_id }
       else
         format.html { render template: "questions/show" }

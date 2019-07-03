@@ -12,25 +12,14 @@ class Answer < ApplicationRecord
 
 
 
-  #   自分の質問に回答がついたとき
-  def create_notification_by(current_user)
-    notification=current_user.active_notifications.new(
-    answer_id:self.id,
+   # 自分の回答がBAに選定されたとき通知メソッド
+   def ba_create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+    best_answer_id:self.id,
     visited_id:self.user.id,
-    action:"answer"
+    action:"best_answer"
     )
     notification.save if notification.valid?
-  end
-
-
-#   自分の回答がベストアンサーに選定されたとき
-#   def ba_create_notification_by(current_user)
-#     notification=current_user.active_notifications.new(
-#     answer_id:self.id,
-#     visited_id:self.user.id,
-#     action:"best_answer"
-#     )
-#     notification.save if notification.valid?
-# end
+   end
 
 end

@@ -40,7 +40,7 @@
         </div>
 
         <a href="/" class="noticeLinkBtn"><span>1</span></a>
-        <a href="/" class="pointLinkBtn"><span><%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: '' %></span></a>
+        <%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: 'pointLinkBtn' %>
 
         <div id="humberger" class="sp">
             <span class="icon-bar"></span>

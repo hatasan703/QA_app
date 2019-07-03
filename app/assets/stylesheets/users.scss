@@ -127,7 +127,7 @@ input.loginBtn,
 }
 
 .MyNavWrap {
-	width: 500px;
+	width: 410px;
 	margin: 0 auto;
 	padding: 18px 0;
 	display: flex;
@@ -135,6 +135,23 @@ input.loginBtn,
 }
 
 .MyNavWrap > li > a {
+	font-size: 1.5rem;
+	color: #343636;
+  padding: 0 30px;
+  &:hover{
+    opacity: .7;
+  }
+}
+
+.user_setting {
+	width: 500px;
+	margin: 0 auto;
+	padding: 18px 0;
+	display: flex;
+	align-items: center;
+}
+
+.user_setting > li > a {
 	font-size: 1.5rem;
 	color: #343636;
   padding: 0 30px;

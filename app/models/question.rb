@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_one :pv
+  has_many :notifications, dependent: :destroy
 
   is_impressionable counter_cache: true
 #  @question.impressionist_count
@@ -16,5 +17,16 @@ class Question < ApplicationRecord
 #   def created_at
 #     self.created_at.strftime('%Y/%m/%d/ %H:%M')
 #   end
+
+
+#   自分の質問に回答がついたとき
+    def create_notification_by(current_user)
+        notification=current_user.active_notifications.new(
+        answer_id:self.id,
+        visited_id:self.user.id,
+        action:"answer"
+        )
+        notification.save if notification.valid?
+    end
 
 end

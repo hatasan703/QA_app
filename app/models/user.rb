@@ -3,23 +3,8 @@ class User < ApplicationRecord
        :recoverable, :rememberable, :validatable, :omniauthable
   has_many :questions
   has_many :answers
-
-  # def self.find_for_oauth(auth)
-  #   user = User.where(uid: auth.uid, provider: auth.provider).first
-
-  #   unless user
-  #     user = User.create(
-  #       uid:      auth.uid,
-  #       provider: auth.provider,
-  #       email:    auth.info.email,
-  #       password: Devise.friendly_token[0, 20]
-  #       image: auth.info.image,
-  #     )
-  #   end
-
-  #   user
-  # end
-
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

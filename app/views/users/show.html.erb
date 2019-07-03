@@ -7,7 +7,7 @@
                 </ul>
             </nav>
         </div>
-        
+
 
         <div class="container">
             <div class="myprNav mypr">
@@ -31,8 +31,12 @@
                   <div>職業　　　　:</div>
                   <div class="centera"><%= @user.role %></div>
                   </div>
-                  <div class='pro_edit_btn'><%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %>
-                  </div>
+                  <% if @user.id == current_user.id %>
+                    <div class='pro_edit_btn'>
+                        <%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %>
+                    </div>
+                  <% end %>
+
 
                   <div class="box1212">
                   <div class="box12">

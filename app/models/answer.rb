@@ -8,11 +8,18 @@ class Answer < ApplicationRecord
   # private
   # def question_update
   #   self.question.update(done: true)
-
-  #   @answer = Answer.find(params[:id])
-  #   @question = Question.find(@answer.question_id)
-  #   question_point = @question.point
-  #   self.user.update(point: question_point)
   # end
+
+
+
+   # 自分の回答がBAに選定されたとき通知メソッド
+   def ba_create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+    best_answer_id:self.id,
+    visited_id:self.user.id,
+    action:"best_answer"
+    )
+    notification.save if notification.valid?
+   end
 
 end

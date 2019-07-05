@@ -1,0 +1,24 @@
+<div class="notify_down noticeLinkBtn">
+    <input id="tg3" class="dropInput3" type="checkbox">
+    <label for="tg3">
+        <span class='notify_checked'><%= unchecked_notice_count %></span>
+    </label>
+    <ul class="menu3 animation">
+        <% if notifications.exists? %>
+            <% notifications.each do |notify| %>
+                <% if notify.action == "answer" %>
+                    <li class='item3'>
+                        <%= link_to "#{User.find(notify.visiter_id).nickname}さんがあなたの質問に回答しました！", question_path(notify.answered_question_id) %>
+                    </li>
+                <% else %>
+                    <li class='item3'>
+                        <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.best_answer_id).question_id) %>
+                    </li>
+                <% end %>
+            <% end %>
+        <% else %>
+        <p class='item3'>通知はありません</p>
+        <% end %>
+        <li class='item2 '><%= link_to "すべての通知を見る", notifications_path %></li>
+    </ul>
+</div>

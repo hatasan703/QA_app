@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'bank/:id' => 'users#bank'
     get 'point/:id' => 'users#point'
 
+   resources :notifications, only: [:index]
+
 
   # 検索
   resources :search, only: %i() do

@@ -39,7 +39,12 @@
              />
         </div>
 
-        <a href="/" class="noticeLinkBtn"><span>1</span></a>
+
+            <%= render partial: "notifications/notification",locals: { notifications: @notifications } %>
+
+
+
+
         <%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: 'pointLinkBtn' %>
 
         <div id="humberger" class="sp">
@@ -52,6 +57,7 @@
 
     </div>
 
+<%# sp %>
     <div id="drawernav" class="sp">
         <div class="container">
             <nav>
@@ -70,6 +76,7 @@
             </nav>
         </div>
     </div>
+<%# <> %>
 
 
   <% else %>
@@ -86,6 +93,7 @@
 
     </div>
 
+<%# sp %>
     <div id="drawernav" class="sp">
         <div class="container">
             <nav>
@@ -103,6 +111,7 @@
             </nav>
         </div>
     </div>
+<%# <> %>
 
 
   <% end %>

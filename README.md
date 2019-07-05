@@ -33,8 +33,7 @@
 - has_many :answers
 - belongs_to :user
 - belongs_to :category
-- has_one :pv
-
+- has_many :notifications,dependent: :destroy
 
 ## answers table
 
@@ -48,6 +47,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :question
+- has_many :notifications,dependent: :destroy
 
 
 ## categories table
@@ -62,14 +62,22 @@
 
 
 
-## pvs table
+## notifications table
 
 |Column|Type|Options|
 |------|----|-------|
-|pv|integer|null: false|
-|question_id|references|null: false, foreign_key: true|
+|visiter_id|integer||
+|visited_id|integer||
+|answered_question_id|integer||
+|best_answer_id|integer||
+|action|string||
+|check|boolean|default: false|
+
+
+
 
 
 ### Association
-- belongs_to :question
+- belongs_to :micropost, optional: true
+
 

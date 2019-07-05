@@ -201,6 +201,7 @@
 .QA{
   background-color: white;
   margin-bottom: 40px;
+  padding-top: 20px;
  }
 
 .shitumon{
@@ -217,21 +218,23 @@
 .answerFirst{
   font-size: 15px;
 	color: #333;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
-	border: 5px solid #dae1e3;
+	// border-top-left-radius: 6px;
+  // border-top-right-radius: 6px;
+  border-radius: 6px;
+	border: 3px solid #dae1e3;
 	background: #fff;
   display: flex;
   margin: 10px auto;
-  width: 95%
+  width: 95%;
 }
 
 .answerSecond{
   font-size: 15px;
 	color: #333;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
-	border: 5px solid #dae1e3;
+	// border-top-left-radius: 6px;
+  // border-top-right-radius: 6px;
+  border-radius: 6px;
+	border: 3px solid #dae1e3;
 	background: #fff;
   display: flex;
   margin: 10px auto;
@@ -248,7 +251,7 @@ select#question_point,
 	color: #333;
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
-	border: 5px solid #dae1e3;
+	border: 3px solid #dae1e3;
 	background: #fff;
   display: flex;
   margin: 10px auto;

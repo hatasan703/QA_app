@@ -175,3 +175,57 @@
 	background-size: cover;
 	display: block;
 }
+
+
+
+// 通知ボタン
+
+.notify_down {
+	margin: 0 0 0 20px;
+	display: inline-block;
+	position: relative;
+}
+
+#tg3 {display: none;}
+.menu3 {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	top: 55px;
+	list-style: none;
+}
+
+
+
+.dropInput3:checked ~ .menu3 {
+	width: 100%;
+    height: 140px;
+    visibility: visible;
+    opacity: 1;
+    top: 45px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-sizing: border-box;
+}
+
+.item3 {
+	width: 160px;
+    display: block;
+    background-color: #fff;
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.item3 {
+	padding: 15px 20px;
+    font-size: 1.5rem;
+    border-left: 1px solid #b0b7ba;
+    border-right: 1px solid #b0b7ba;
+    border-bottom: 1px solid #b0b7ba;
+	display: flex;
+	align-items: center;
+}
+

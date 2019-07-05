@@ -1,1 +1,19 @@
-        <%= @notifications %>
+<div class="notify_down noticeLinkBtn">
+    <input id="tg3" class="dropInput3" type="checkbox">
+    <label for="tg3">
+        <span class='notify_checked'><%= unchecked_notifications.count %></span>
+    </label>
+    <ul class="menu3 animation">
+        <% if @notifications.exists? %>
+            <% @notifications.each do |notify| %>
+                <% if notify.action == "answer" %>
+                    <li class='item3'><%= User.find(notify.visiter_id).nickname %>さんがあなたの質問に回答しました！</li>
+                <% else %>
+                    <li class='item3'>あなたの回答がベストアンサーに選ばれました！</li>
+                <% end %>
+            <% end %>
+        <% else %>
+        <p>通知はありません</p>
+        <% end %>
+    </ul>
+</div>

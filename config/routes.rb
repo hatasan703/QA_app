@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     get 'bank/:id' => 'users#bank'
     get 'point/:id' => 'users#point'
 
-    get 'notify' => 'notifications#notify'
+    get 'notify' => 'notifications/notify'
+    get 'notify_checked' => 'notifications/notify_checked'
 
 
   # 検索

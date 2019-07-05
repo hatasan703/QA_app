@@ -1,0 +1,11 @@
+<% if @all_notify.exists? %>
+    <div class="container">
+        <% @all_notify.each do |notify| %>
+            <% if notify.action == "answer" %>
+                <li class='notice_item'><%= User.find(notify.visiter_id).nickname %>さんがあなたの質問に回答しました！</li>
+            <% else %>
+                <li class='notice_item'>あなたの回答がベストアンサーに選ばれました！</li>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>

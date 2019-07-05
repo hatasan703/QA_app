@@ -1,3 +1,13 @@
-// Place all the styles related to the notifications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notice_item {
+	padding: 15px 20px;
+    font-size: 1.5rem;
+    border-left: 1px solid #b0b7ba;
+    border-right: 1px solid #b0b7ba;
+    border-bottom: 1px solid #b0b7ba;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+

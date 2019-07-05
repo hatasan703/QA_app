@@ -56,7 +56,7 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
     @resolved = @question.done.present?
 
   end
-
+# Question.includes(:user).page(params[:page]).per(5).order("created_at DESC")
 
   # ランキング
   def ranking

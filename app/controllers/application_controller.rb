@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :search, except: [:search_resolved, :search_open]
+  before_action :unchecked_notifications
 
   def search
     @search = Question.ransack(params[:q])
@@ -14,10 +15,10 @@ class ApplicationController < ActionController::Base
     redirect_to controller: :top, action: :index unless user_signed_in?
   end
 
-
-#   def notify
-#     @notifications = current_user.passive_notifications.limit(10)
-#     binding.pry
-#   end
+  def unchecked_notifications
+    if user_signed_in?
+     @notifications=current_user.passive_notifications.where(check: false).order("created_at DESC").limit(3)
+    end
+  end
 
 end

@@ -24,7 +24,7 @@ before_action :redirect_top, except: [:my_question, :my_answer]
 
       if @user.update(user_params)
         flash[:success] = 'ユーザー情報を編集しました。'
-        redirect_to root_path
+        redirect_to action: :show
       else
         flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
         render :edit

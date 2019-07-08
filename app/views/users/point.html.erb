@@ -1,6 +1,6 @@
-  <div class="mypage">
+  <div class="container mypage">
     <nav class="myprNav">
-        <ul class="MyNavWrap">
+        <ul class="user_setting">
             <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
             <li><%= link_to "支払い方法", "/card/#{current_user.id}", class: '' %></li>
             <li><%= link_to "口座情報", "/bank/#{current_user.id}", class: '' %></li>

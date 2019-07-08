@@ -719,8 +719,8 @@ BreakPoint
         background-color: #4F7CE0;
         border-radius: 100px;
         position: fixed;
-        right: 40px;
-        bottom: 40px;
+        right: 10px !important;
+        bottom: 10px !important;
         opacity: 1;
     }
     .new_question_btn2 a {

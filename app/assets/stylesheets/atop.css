@@ -729,6 +729,10 @@ BreakPoint
         font-size: 18px !important;
         font-weight: 600;
     }
+
+    .create_qa{
+        width: 90% !important;
+    }
 }
 
 

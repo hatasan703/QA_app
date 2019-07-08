@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   has_one :pv
   has_many :notifications, dependent: :destroy
 
+  validates :title, :text, presence: true
+
   is_impressionable counter_cache: true
 #  @question.impressionist_count
 #  @question.impressionist_count(:start_date=>"2011-01-01",:end_date=>"2011-01-05")

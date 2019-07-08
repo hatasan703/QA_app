@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_054648) do
+ActiveRecord::Schema.define(version: 2019_07_08_040114) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2019_07_03_054648) do
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
+    t.string "title", null: false
+    t.text "text", null: false
     t.boolean "done"
     t.bigint "category_id", null: false
     t.bigint "user_id", null: false
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2019_07_03_054648) do
     t.integer "money", default: 0
     t.text "bio"
     t.string "role"
-    t.integer "age"
     t.text "image"
+    t.integer "age"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

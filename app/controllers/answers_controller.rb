@@ -5,7 +5,8 @@ before_action :redirect_top
   def confirm
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
-    render template: "questions/show" if @answer.invalid?
+    redirect_to controller: 'questions', action: 'show', id: @question.id if @answer.text.empty?
+
   end
 
   def create

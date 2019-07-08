@@ -2,14 +2,21 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
   resources :questions, only: [:new, :create, :destroy]
-  resources :users, only: [:edit, :update]
-  resources :users, only: [:show]
+  resources :users, only: [:edit, :update, :show]
+#   resources :users, only: [:show]
     get 'my_question/:id' => 'users#my_question'
     get 'my_answer/:id' => 'users#my_answer'
     get 'identification/:id' => 'users#identification'
     get 'card/:id' => 'users#card'
     get 'bank/:id' => 'users#bank'
     get 'point/:id' => 'users#point'
+    namespace :users do
+        get :my_question
+        get :my_answer
+        get :card
+        get :bank
+        get :point
+      end
 
    resources :notifications, only: [:index]
 

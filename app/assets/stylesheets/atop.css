@@ -517,6 +517,18 @@ footer
 /******************************
 BreakPoint
 ******************************/
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 640px) {
 	.pc {display: none !important;}
 	.sp {display: block !important;}
@@ -736,6 +748,19 @@ BreakPoint
         width: 100% !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .dropdown {

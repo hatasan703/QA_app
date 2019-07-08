@@ -2,9 +2,9 @@
     <div class="container">
         <% @all_notify.each do |notify| %>
             <% if notify.action == "answer" %>
-                <li class='notice_item'><%= User.find(notify.visiter_id).nickname %>さんがあなたの質問に回答しました！</li>
+                <li class='notice_item'><%= link_to "#{User.find(notify.visiter_id).nickname}さんがあなたの質問に回答しました！", question_path(notify.answered_question_id) %></li>
             <% else %>
-                <li class='notice_item'>あなたの回答がベストアンサーに選ばれました！</li>
+                <li class='notice_item'><%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.best_answer_id).question_id) %></li>
             <% end %>
         <% end %>
     </div>

@@ -42,7 +42,7 @@
 
         <div class="user_edit_content">
           <%= f.submit '編集を完了', class: 'user_profile_edit_btn' %>
-          <a href="#" class="user_profile_edit_btn2">キャンセル</a>
+          <%= link_to 'キャンセル', user_path(@user), class: 'user_profile_edit_btn2' %>
         </div>
 
 

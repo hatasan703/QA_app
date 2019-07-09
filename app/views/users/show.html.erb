@@ -17,19 +17,34 @@
                   </div>
                   <div class="edit_pro">
                       <div>年齢　　　　:</div>
-                      <div class="centera"><%= @user.age %></div>
+                      <div class="centera">
+                        <% if @user.age.nil? %>
+                          <p>未入力</p>
+                        <% else %>
+                          <%= @user.age %>
+                        <% end %>
+                      </div>
+
                   </div>
                   <div class="edit_pro">
                       <div>性別　　　　:</div>
                       <div class="centera"><% if @user_sex == true %>
-                                <%= '女性' %>
-                              <% else %>
-                                <%= '男性' %>
+                                    <p>女性</p>
+                              <% elsif @user_sex.nil? %>
+                                <p>未入力</p>
+                                <% else%>
+                                <p>男性</p>
                               <% end %></div>
                   </div>
                   <div class="edit_pro">
                   <div>職業　　　　:</div>
-                  <div class="centera"><%= @user.role %></div>
+                  <div class="centera">
+                    <% if @user.role.empty? %>
+                        <p>未入力</p>
+                    <% else %>
+                        <%= @user.role %>
+                    <% end %>
+                  </div>
                   </div>
                   <% if @user.id == current_user.id %>
                     <div class='pro_edit_btn'>
@@ -42,7 +57,7 @@
                   <div class="box12">
                        <span class="box-title">自己紹介</span>
                          <p class="profile">
-                           <%= @user.bio %>
+                             <%= @user.bio %>
                          </p>
                      </div>
                   </div>

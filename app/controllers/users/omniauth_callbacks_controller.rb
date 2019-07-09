@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource)
-    "/users/#{current_user.id}/edit" # サインイン後のリダイレクト先URL
+    root_path
   end
 
   private

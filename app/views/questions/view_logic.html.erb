@@ -6,7 +6,7 @@
         <% if @answers %>
           <% @answers.each do |answer| %>
             <p>
-              <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+              <%= link_to answer.user.user_name, "/users/#{answer.user_id}" %>
               <%= answer.text %>
               <h3>
                 <%= link_to "ベストアンサーに選ぶ", "#{@question.id}/answers/#{answer.id}/ba_confirm", class: '' %>
@@ -25,7 +25,7 @@
               <% if @answers %>
                 <% @answers.each do |answer| %>
                   <p>
-                    <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                    <%= link_to answer.user.user_name, "/users/#{answer.user_id}" %>
                     <%= answer.text %>
                   </p>
                 <% end %>
@@ -68,7 +68,7 @@
           <% if @answers %>
             <% @answers.each do |answer| %>
               <p>
-                <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+                <%= link_to answer.user.user_name, "/users/#{answer.user_id}" %>
                 <%= answer.text %>
               </p>
             <% end %>
@@ -132,7 +132,7 @@
       <% if @answers %>
         <% @answers.each do |answer| %>
           <p>
-            <%= link_to answer.user.nickname, "/users/#{answer.user_id}" %>
+            <%= link_to answer.user.user_name, "/users/#{answer.user_id}" %>
             <%= answer.text %>
           </p>
         <% end %>

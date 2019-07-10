@@ -8,7 +8,7 @@
               <div class="_middle_items">
                   <div class='question_user'>
                     <%= image_tag  current_user.image, class: "question_user_image" %>
-                    <%= link_to current_user.nickname, "/users/#{current_user.id}", class: "question_user_name" %>
+                    <%= link_to current_user.user_name, "/users/#{current_user.id}", class: "question_user_name" %>
                   </div>
               </div>
               <p>
@@ -37,7 +37,7 @@
               <div class="qanda_middle_items answer_middle_items">
                 <div class='question_user'>
                   <%= image_tag  answer.user.image, class: "question_user_image" %>
-                  <%= link_to answer.user.nickname, "/users/#{answer.user_id}", class: "question_user_name" %>
+                  <%= link_to answer.user.user_name, "/users/#{answer.user_id}", class: "question_user_name" %>
                  </div>
                 <time><%= answer.created_at %></time>
                </div>

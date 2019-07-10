@@ -1,6 +1,6 @@
 <%= form_for @answer, url: question_answer_path(@question, @answer) do |f| %>
   <div class="container">
-    <section><h3 class="question_status"><%= @answer.user.nickname %>さんの回答</h3></section>
+    <section><h3 class="question_status"><%= @answer.user.user_name %>さんの回答</h3></section>
     <div class="qandaWrap">
       <div class="qandaItem">
         <article>

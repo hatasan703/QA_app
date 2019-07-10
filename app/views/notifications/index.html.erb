@@ -1,35 +1,29 @@
-<% if @all_notify.exists? %>
-    <div class="container">
-        <% @all_notify.each do |notify| %>
-            <% if notify.action == "answer" %>
-                <li class='notice_item'><%= link_to "#{User.find(notify.visiter_id).nickname}さんがあなたの質問に回答しました！", question_path(notify.answered_question_id) %></li>
-            <% else %>
-                <li class='notice_item'><%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.best_answer_id).question_id) %></li>
-            <% end %>
-        <% end %>
-    </div>
-<% end %>
-
 
 <div class="container">
     <div class="notice_all">
         <h1 class="all_info">お知らせ一覧</h1>
         <div class="notice_box">
+         <% if @all_notify.exists? %>
+        <% @all_notify.each do |notify| %>
+          <% if notify.action == "answer" %>
             <div class="notice_mail">
-            <div class="notice_info">
-            <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
-            <a href="#">ご登録ありがとうざいます。<br>運営からのお知らせです。</a>
+                <div class="notice_info">
+                    <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
+                    <%= link_to "#{User.find(notify.visiter_id).nickname}さんがあなたの質問に回答しました！", question_path(notify.answered_question_id) %>
+                </div>
+                <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>
-            <div class="date">1日前</div>
-            </div>
+          <% else %>
             <div class="notice_mail">
-            <div class="notice_info">
-            <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
-            <a href="#">ご登録ありがとうざいます。<br>運営からのお知らせです。</a>
+                <div class="notice_info">
+                    <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
+                    <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.best_answer_id).question_id) %>
+                </div>
+                <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>
-            <div class="date">2日前</div>
-            </div>
-            </div>
+            <% end %>
+            <% end %>
+        <% end %>
         </div>
     </div>
 </div>

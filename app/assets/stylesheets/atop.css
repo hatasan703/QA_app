@@ -8,7 +8,7 @@ body {
 	-webkit-tap-highlight-color: transparent;
     tap-highlight-color: transparent;
 }
-.wrap{overflow: hidden;}
+/* .wrap{overflow: hidden;} */
 
 a {text-decoration: none;}
 ::selection {background: #4f7ce0;}

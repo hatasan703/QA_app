@@ -6,17 +6,25 @@
                     <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
                 </ul>
             </nav>
-        </div>
 
 
+        <section><h3 class="arrowTtl"><%= @user.user_name %>さんのプロフィール</h3></section>
         <div class="container">
             <div class="myprNav mypr">
+
+                 <% if @user.id == current_user.id %>
+                  <div class="edit_pro">
+                      <div>メールアドレス:</div>
+                      <div class="centera"><%= @user.email %></div>
+                  </div>
+                <% end %>
+
                   <div class="edit_pro">
                       <div>ユーザー名　　:</div>
                       <div class="centera"><%= @user.user_name %></div>
                   </div>
                   <div class="edit_pro">
-                      <div>年齢　　　　:</div>
+                      <div>年齢　　　　　:</div>
                       <div class="centera">
                         <% if @user.age.nil? %>
                           <p>未入力</p>
@@ -24,10 +32,9 @@
                           <%= @user.age %>
                         <% end %>
                       </div>
-
                   </div>
                   <div class="edit_pro">
-                      <div>性別　　　　:</div>
+                      <div>性別　　　　　:</div>
                       <div class="centera"><% if @user_sex == true %>
                                     <p>女性</p>
                               <% elsif @user_sex.nil? %>
@@ -37,7 +44,7 @@
                               <% end %></div>
                   </div>
                   <div class="edit_pro">
-                  <div>職業　　　　:</div>
+                  <div>職業　　　　　:</div>
                   <div class="centera">
                     <% if @user.role.empty? %>
                         <p>未入力</p>
@@ -63,3 +70,4 @@
                   </div>
             </div>
         </div>
+</div>

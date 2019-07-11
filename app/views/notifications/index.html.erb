@@ -9,7 +9,7 @@
             <div class="notice_mail">
                 <div class="notice_info">
                     <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
-                    <%= link_to "#{User.find(notify.visiter_id).nickname}さんがあなたの質問に回答しました！", question_path(notify.answered_question_id) %>
+                    <%= link_to "#{User.find(notify.visiter_id).user_name}さんがあなたの質問に回答しました！", question_path(notify.answered_question_id) %>
                 </div>
                 <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>

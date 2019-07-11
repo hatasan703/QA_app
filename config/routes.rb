@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     get 'my_answer/:id' => 'users#my_answer'
     get 'identification/:id' => 'users#identification'
     get 'card/:id' => 'users#card'
-    get 'bank/:id' => 'users#bank'
     get 'point/:id' => 'users#point'
     # namespace :users do
     #     get :my_question

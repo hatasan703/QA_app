@@ -16,7 +16,7 @@
               <div class="qanda_middle_items">
                   <div class='question_user'>
                     <%= image_tag  @question.user.image, class: "question_user_image" %>
-                    <%= link_to @question.user.nickname, "/users/#{@question.user_id}", class: "question_user_name" %>
+                    <%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
                   </div>
                     <time><%= @question.created_at %></time>
                     <a href="#"><%= @question.answers.count %></a>

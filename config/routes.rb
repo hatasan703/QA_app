@@ -79,5 +79,6 @@ Rails.application.routes.draw do
   get 'rule' => 'others#rule'
   get 'help' => 'others#help'
   get 'contact' => 'others#contact'
+  get 'company_info' => 'others#company_info'
 
 end

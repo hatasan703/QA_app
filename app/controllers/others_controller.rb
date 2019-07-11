@@ -11,4 +11,7 @@ class OthersController < ApplicationController
 
   def contact
   end
+
+  def company_info
+  end
 end

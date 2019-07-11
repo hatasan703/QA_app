@@ -762,6 +762,26 @@ BreakPoint
 				opacity: 0.8;
 			}
 		}
+
+		.dropLabel,
+.item {
+	width: 120px !important;
+    display: block;
+    background-color: #fff;
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.item {
+	padding: 15px 20px;
+    font-size: 1rem !important;
+    border-left: 1px solid #b0b7ba;
+    border-right: 1px solid #b0b7ba;
+    border-bottom: 1px solid #b0b7ba;
+	display: flex;
+	align-items: center;
+}
 }
 
 

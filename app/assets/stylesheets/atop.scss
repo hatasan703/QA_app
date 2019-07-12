@@ -725,7 +725,19 @@ BreakPoint
 
 
 
-    /* ------追加分 */
+		/* ------追加分 */
+		
+		.dropLabel2,
+		.item2 {
+				width: 135px !important;
+				display: block;
+				background-color: #fff;
+				position: relative;
+				color: #333;
+				text-decoration: none;
+				box-sizing: border-box;
+				justify-content: center;
+		}
 
     .new_question_btn {
         width: 80px !important;
@@ -792,7 +804,6 @@ BreakPoint
 		}
 
 		.wrap{overflow: hidden;}
-		}
 
 		.right_content{
 			width: 100% !important;
@@ -830,18 +841,47 @@ BreakPoint
 				font-weight: 600;
 			}
 		}
+		.right_content{
+			width: 100% !important;
+			text-align: end;
+			justify-content: end;
+		}
 
-		.dropLabel2,
-.item2 {
-	width: 135px !important;
-    display: block;
-    background-color: #fff;
-    position: relative;
-    color: #333;
-    text-decoration: none;
-    box-sizing: border-box;
-    justify-content: center;
-}
+		.left_content{
+			width: 50% !important;
+			display: flex;
+			justify-content: start;
+		
+			.status_btn{
+				border: 1px solid #b0b7ba;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1.5rem;
+				width: 150px;
+				height: 45px;
+				// border-radius: 3px;
+				background-color: #fff;
+		
+				:hover{
+					opacity: .7;
+				}
+		
+				a{
+					color: #333;
+				}
+			}
+		
+			.status_resolved,
+			.status_open{
+				font-weight: 600;
+			}
+		}
+
+
+		}
+
+		// ここまで@media
 
 
 

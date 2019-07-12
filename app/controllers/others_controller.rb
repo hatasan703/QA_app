@@ -14,4 +14,7 @@ class OthersController < ApplicationController
 
   def company_info
   end
+
+  def qotaelu_lp
+  end
 end

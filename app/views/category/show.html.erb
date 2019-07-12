@@ -6,6 +6,7 @@
 </div>
 
 <div class='container qa_status_content'>
+<div class="wrap_qa_status">
   <div class='left_content'>
     <div class='status_btn status_resolved'>解決済み</div>
     <div class='status_btn'><%= link_to "回答受付中", open_category_path(@category) %></div>
@@ -22,6 +23,7 @@
             </ul>
         </div>
       </div>
+</div>
 </div>
 
 <%= render file: "partials/_question_list.html.erb" %>

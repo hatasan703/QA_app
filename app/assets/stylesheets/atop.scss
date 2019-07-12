@@ -72,6 +72,7 @@ common
 font
 ******************************/
 html,body {
+	width: 1440px;
 	font-size: 62.5%;
     letter-spacing: 0;
 	font-family:"游ゴシック Medium",YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,sans-serif;
@@ -765,7 +766,7 @@ BreakPoint
 
 		.dropLabel,
 .item {
-	width: 100% !important;
+	width: 185px !important;
     display: block;
     background-color: #fff;
     position: relative;
@@ -782,6 +783,15 @@ BreakPoint
 	display: flex;
 	align-items: center;
 }
+
+html,body {
+	width: 100% !important;
+	font-size: 62.5%;
+    letter-spacing: 0;
+	font-family:"游ゴシック Medium",YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,sans-serif;
+}
+
+.wrap{overflow: hidden;}
 }
 
 
@@ -971,6 +981,7 @@ BreakPoint
 .pagination>li>a:hover {
   border-radius: 30px;    /*角を丸くする*/
 }
+
 
 
 

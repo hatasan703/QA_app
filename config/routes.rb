@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :questions, only: [:new, :create, :destroy]
   resources :users, only: [:edit, :update, :show]
+
+  resources :charges
     get 'my_question/:id' => 'users#my_question'
     get 'my_answer/:id' => 'users#my_answer'
     get 'identification/:id' => 'users#identification'

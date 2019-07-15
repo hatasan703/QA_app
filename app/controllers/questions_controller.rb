@@ -15,17 +15,46 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
   end
 
   def create
+
     @question = Question.new(question_params)
+
+
+
+
     @categories = Category.all
-    respond_to do |format|
         if params[:back]
-          format.html { render :new }
+          render :new
         elsif @question.save
-          format.html { redirect_to controller: 'questions', action: 'show', id: @question.id }
+                         # stripe決済
+       # Amount in cents
+       @amount = @question.point #引き落とす金額
+       ###この操作で、Stripe から帰ってきた情報を取得します
+        customer = Stripe::Customer.create(
+          :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
+          :source  => params[:stripeToken] #めちゃめちゃな文字列です
+        )
+
+        ###この操作で、決済をします
+        charge = Stripe::Charge.create(
+          :customer    => customer.id,
+          :amount      => @amount,
+          :description => 'Rails Stripe customer',
+          :currency    => 'jpy'
+        )
+        #  rescue Stripe::CardError => e
+        #     flash[:error] = e.message
+        #     redirect_to action: "show"
+        #  end
+
+            redirect_to controller: 'questions', action: 'show', id: @question.id
         else
-          format.html { render :new }
+            render :new
         end
-    end
+
+
+
+
+
   end
 
   def destroy

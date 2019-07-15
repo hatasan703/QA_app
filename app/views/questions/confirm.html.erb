@@ -27,10 +27,15 @@
       </p>
       <p class="btn-wrapper">
           <%= f.submit '戻る', name: 'back', class: 'qa_back_btn' %>
-          <%= f.submit '投稿する' , class: 'qa_submit_btn' %>
+         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="質問投稿"
+          data-amount="<%= @question.point %>"
+          data-locale="auto"
+          data-label="投稿する"
+          data-currency="jpy">
+        </script>
       </p>
     </div>
   </div>
 <% end %>
-
-

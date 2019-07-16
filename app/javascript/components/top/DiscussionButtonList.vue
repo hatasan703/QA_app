@@ -24,8 +24,9 @@
         :class="{ 'mobile-bottom': !isPc }"
     >
         <a
-            href="#"
             class="howToUseBtn"
+            data-method="get"
+            :href="lpLink"
         >
             使ってみる
         </a>

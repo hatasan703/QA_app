@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap&subset=japanese" rel="stylesheet">
+
+    <title>QOTAELU</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- header -->
+    <header class="header">
+        <div class="headerBorder"></div>
+        <div class="headerWrap">
+
+            <h1 class="logo"><a href="#">
+            <%= image_tag("h_logo.jpg", alt: "QOTAELU") %>
+            </a></h1>
+
+
+
+            <!-- *未ログインの場合 -->
+            <div class="account">
+                <a href="#" class="loginLinkBtn"><span>ログイン</span></a>
+                <a href="#" class="signupLinkBtn"><span>新規登録</span></a>
+            </div>
+
+
+        </div>
+
+
+
+    </header>
+
+    <!-- main contents -->
+    <div class="main-head">
+
+<h1>空いた時間で
+</h1>
+<h2>報酬を手に入れよう</h2>
+<p>無料で始める</p>
+</div>
+    <!-- div head -->
+<div class="main-body">
+<div class="body-1">
+<h1>QOTAELU<span>でなにができるの？</span></h1>
+<div class="namisen">
+<%= image_tag("namisen.png", alt: "wave_line") %>
+</div>
+<!-- div namisen -->
+
+</div>
+<!-- div body1 -->
+
+<div class="body-2">
+<h1>相談・質問に答えると、報酬がもらえる。</h1><br>
+<h2>QOTAELUは、回答で報酬を貰えるQ&Aサービスです。</h2>
+
+<div class="image-1">
+<p class="imagephoto-1">
+<%= image_tag("pixta_38408338_L.jpg", alt: "lp_image1", style: "width: 33%; height: 3%;" ) %>
+</p>
+<div class="imagesentense-1">
+    <p>1</p><br>
+    知りたい事や困っている事を<br><br>
+    <span>相談できる</span>
+</div>
+<!-- div imagesentense-1 -->
+
+</div>
+<!-- div image-1 -->
+
+<div class="tensen">
+<%= image_tag("tensen.png", alt: "dotted_line") %>
+
+</div>
+<!-- div tensen -->
+
+<div class="image-2">
+        <p class="imagephoto-2">
+        <%= image_tag("pixta_28294335_M.jpg", alt: "lp_image2", style: "width: 33%; height: 3%;" ) %>
+        </p>
+        <div class="imagesentense-2">
+            <p>2</p><br>
+            自分の回答が<br><br>
+            ベストアンサーに選ばれると<br><br>
+            <span>報酬を貰える</span>
+        </div>
+        <!-- div imagesentense-2 -->
+
+        </div>
+        <!-- div image-2 -->
+
+        <div class="tensen2">
+                <%= image_tag("tensen2.png", alt: "dotted_line", style: "height: 145px;" ) %>
+                </div>
+                <!-- div tensen2 -->
+
+                <div class="image-3">
+                        <p class="imagephoto-3">
+                        <%= image_tag("pixta_25235666_M.jpg", alt: "lp_image3", style: "width: 33%; height: 3%;" ) %>
+                        </p>
+                        <div class="imagesentense-3">
+                            <p>３</p><br>
+                            報酬が発生するので<br><br>
+                            <span>真剣な回答がくる</span>
+                        </div>
+                        <!-- div imagesentense-1 -->
+
+                        </div>
+                        <!-- div image-1 -->
+
+
+</div>
+<!-- div body-2 -->
+
+<div class="body-3">
+        <h1>サービス利用の流れ</h1>
+        <div class="namisen2">
+        <%= image_tag("namisen2.png", alt: "dotted_line", style: "width: 40%;" ) %>
+        </div>
+        </div>
+
+
+        <div class="body-4">
+                <h1>相談に答えて</h1><br>
+                <h2>ベストアンサーに選ばれると、報酬を獲得出来ます。</h2>
+                <%= image_tag("nagare.png", alt: "", style: "width: 70%; height: 30%;" ) %>
+
+
+            <div class="contents-item">
+                    <%= image_tag("talk.png", alt: "talk") %>
+                    <p>相談・質問者は<br>回答者への報酬額を決めて相談する。</p>
+                    </div>
+                        <!-- soudan -->
+
+                    <div class="contents-item">
+                    <%= image_tag("answer.png", alt: "anwser") %>
+                    <p>集まった回答の中から<br>ベストアンサーが選ばれる。</p>
+
+
+                        </div>
+                        <!-- kaitou -->
+
+                    <div class="contents-item">
+                    <%= image_tag("pay.png", alt: "pay") %>
+                    <p>ベストアンサーに選ばれた回答者は<br>報酬が貰える。</p>
+                        </div>
+                        <!-- housyu -->
+
+
+                    </div>
+                    <!-- body-4 -->
+
+
+                    <div class="body-6">
+                            <h1>基本登録は完全無料！</h1>
+                                <p>無料で登録する</p>
+                            </div>
+
+
+</div>
+<!-- div main-body -->
+
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footerWrap">
+
+            <nav class="footerNav">
+                <ul>
+                    <li><section><h4>QOTAELUについて</h4></section></li>
+                    <li><a href="#">運営会社</a></li>
+                    <li><a href="#">ヘルプ</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+                <ul>
+                    <li><section><h4>プライバシーと利用規約</h4></section></li>
+                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="#">利用規約</a></li>
+                </ul>
+                <ul>
+                    <li><section><h4>SNS</h4></section></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </nav>
+
+            <a href="#" class="footerLogo">
+                <%= image_tag("f_logo.png", alt: "QOTAELU") %>
+            </a>
+
+            <small class="copyright">&copy; 2019 QOTAELU.</small>
+
+        </div>
+    </footer>
+
+    </div>
+</body>
+</html>

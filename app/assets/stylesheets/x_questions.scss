@@ -274,8 +274,8 @@ select#question_point,
   display: inline-block;
   border-radius: 4px;
   height: 40px;
-  width: 200px;
-  font-size: 25px;
+  width: 130px;
+  font-size: 14px;
   font-weight: 600;
   background-color: #60cef0;
   &:hover{
@@ -303,4 +303,13 @@ select#question_point,
 .pagenation_design {
   text-align: center;
   font-size: 15px;
+}
+
+
+button.stripe-button-el, button.stripe-button-el>span {
+  padding: 0px !important;
+  line-height: 37px !important;
+  width: 130px !important ;
+  font-size: 15px !important;
+  height: 39px !important;
 }

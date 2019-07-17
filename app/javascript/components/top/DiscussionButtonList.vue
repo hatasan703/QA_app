@@ -25,7 +25,6 @@
     >
         <a
             class="howToUseBtn"
-            data-method="get"
             :href="lpLink"
         >
             使ってみる
@@ -41,6 +40,10 @@ export default {
             required: true,
         },
         answerLink: {
+            type: String,
+            required: true,
+        },
+        lpLink: {
             type: String,
             required: true,
         },

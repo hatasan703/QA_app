@@ -1,14 +1,13 @@
 {
-kauto-design11
-  "application.js": "/packs/js/application-9fa241b3e6c65fd2b65f.js",
-  "application.js.map": "/packs/js/application-9fa241b3e6c65fd2b65f.js.map",
+  "application.js": "/packs/js/application-ba86b4d51065d936a1f6.js",
+  "application.js.map": "/packs/js/application-ba86b4d51065d936a1f6.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-9fa241b3e6c65fd2b65f.js"
+        "/packs/js/application-ba86b4d51065d936a1f6.js"
       ],
       "js.map": [
-        "/packs/js/application-9fa241b3e6c65fd2b65f.js.map"
+        "/packs/js/application-ba86b4d51065d936a1f6.js.map"
       ]
     }
   }

@@ -24,7 +24,7 @@
               </div>
               <p>
                   <%= @question.text %>
-                  <% if @question.id == current_user.id %>
+                  <% if current_user && @question.id == current_user.id %>
                     <% if @all_answers.empty? %>
                         <div class=" ba_btn answer_delete_btn">
                         <ul>

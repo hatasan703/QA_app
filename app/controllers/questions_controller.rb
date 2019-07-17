@@ -64,7 +64,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
       question.destroy if question.user_id == current_user.id
     end
     redirect_to root_path
-    binding.pry
   end
 
   def show
@@ -83,7 +82,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
       @answerable  = @all_answers.exists?(user_id: current_user.id)
     end
     @resolved = @question.done.present?
-
   end
 # Question.includes(:user).page(params[:page]).per(5).order("created_at DESC")
 

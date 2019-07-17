@@ -12,7 +12,7 @@ class OthersController < ApplicationController
   def contact
   end
 
-  def company_info
+  def company
   end
 
   def lp

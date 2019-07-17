@@ -7,6 +7,11 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
   def new
     @question = Question.new
     @categories = Category.all
+    @title = params[:title]
+    @text = params[:text]
+    @category_id = params[:category_id]
+    @point = params[:point]
+    # binding.pry
   end
 
   def confirm
@@ -17,10 +22,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
   def create
 
     @question = Question.new(question_params)
-
-
-
-
     @categories = Category.all
         if params[:back]
           render :new

@@ -70,7 +70,7 @@ before_action :redirect_top, except: [:my_question, :my_answer]
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :sex, :bio, :age, :role, :email)
+    params.require(:user).permit(:user_name, :sex, :bio, :age, :role)
   end
 
 end

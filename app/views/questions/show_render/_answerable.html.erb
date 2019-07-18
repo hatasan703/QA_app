@@ -16,7 +16,7 @@
               <p>
                 <div class='answer_form'>
                 <%= form_for [@question, @answer] do |f| %>
-                    <%= f.text_area :text, class: "answer_text_area", required: true, placeholder: "回答を入力してください" %><br>
+                    <%= f.text_area :text, class: "answer_text_area", required: true, placeholder: "回答を入力してください(4000文字以内)" %><br>
                     <p><%= f.submit "答える", class: "answer_submit_btn", maxlength: '4000' data: { confirm: "回答を投稿しますか？"} %></p>
                   <% end %>
                   </div>

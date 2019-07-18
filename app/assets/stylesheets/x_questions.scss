@@ -230,19 +230,14 @@
 
 .answerSecond{
   font-size: 15px;
-	color: #333;
-	// border-top-left-radius: 6px;
-  // border-top-right-radius: 6px;
+  color: #333;
   border-radius: 6px;
-	border: 3px solid #dae1e3;
-	background: #fff;
-  display: flex;
+  border: 3px solid #dae1e3;
+  background: #fff;
   margin: 10px auto;
   width: 95%;
   height: 300px;
-
-
-
+  overflow: scroll;
 }
 select#question_category_id,
 select#question_point,

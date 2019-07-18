@@ -12,7 +12,9 @@
       </p>
       <p>
         <div class='inputMy'>質問本文</div>
-        <div class='answerSecond'><%= @question.text %></div>
+        <div class='answerSecond'>
+          <%= simple_format(@question.text) %>
+        </div>
         <%= f.hidden_field :text %>
       </p>
       <p>

@@ -62,6 +62,7 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
     question = Question.find(params[:id])
     @answers = question.answers.includes(:user)
     if @answers.empty?
+        # binding.pry
       question.destroy if question.user_id == current_user.id
     end
     redirect_to root_path

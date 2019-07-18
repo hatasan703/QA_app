@@ -12,7 +12,7 @@
                  </div>
                 <time><%= answer.created_at %></time>
                </div>
-              <p><%= answer.text %></p>
+              <%= simple_format(answer.text) %>
               <% if answer.user_id == current_user.id %>
                 <div class=" ba_btn answer_delete_btn">
                     <ul>

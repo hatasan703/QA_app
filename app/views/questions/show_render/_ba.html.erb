@@ -13,7 +13,7 @@
                  </div>
                 <time><%= answer.created_at %></time>
                </div>
-              <p><%= answer.text %></p>
+              <%= simple_format(answer.text) %>
 
                 <div class="qandaWrapCat ba_btn">
                   <ul>

@@ -13,7 +13,7 @@
               </div>
               <p>
                 <% if @best_answer %>
-                  <%= @best_answer.text %>
+                  <%= simple_format(@best_answer.text) %>
                 <% end %>
               </p>
           </article>
@@ -36,7 +36,7 @@
                 <time><%= answer.created_at %></time>
                </div>
               <p>
-                <%= answer.text %>
+                <%= simple_format(answer.text) %>
               </p>
              </article>
            </div>

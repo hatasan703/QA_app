@@ -24,18 +24,21 @@
     <header class="header">
         <div class="headerBorder"></div>
         <div class="headerWrap">
-
-            <h1 class="logo"><a href="#">
-            <%= image_tag("h_logo.jpg", alt: "QOTAELU") %>
+            <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
             </a></h1>
 
 
 
             <!-- *未ログインの場合 -->
             <div class="account">
-                <a href="#" class="loginLinkBtn"><span>ログイン</span></a>
-                <a href="#" class="signupLinkBtn"><span>新規登録</span></a>
-            </div>
+            	<%= link_to "ログイン", new_user_session_path, class: 'loginLinkBtn' %>
+            	<%= link_to "新規登録", new_user_registration_path, class: 'signupLinkBtn' %>
+            	<div id="humberger" class="sp">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            	</div>
+        		</div>
 
 
         </div>

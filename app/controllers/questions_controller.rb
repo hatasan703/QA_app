@@ -16,7 +16,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
   def confirm
     @question = Question.new(question_params)
-    # redirect_to action: 'new' if @question.invalid?
   end
 
   def create

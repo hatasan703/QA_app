@@ -5,7 +5,8 @@ class Question < ApplicationRecord
   has_one :pv
   has_many :notifications, dependent: :destroy
 
-  validates :title, :text, presence: true
+  validates :title, presence: true, length: { in: 1..25 }
+  validates :text, presence: true, length: { in: 1..2000 }
 
   is_impressionable counter_cache: true
 #  @question.impressionist_count

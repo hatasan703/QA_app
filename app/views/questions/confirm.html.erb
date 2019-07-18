@@ -26,7 +26,7 @@
         <%= f.hidden_field :point %>
       </p>
       <p class="btn-wrapper">
-          <%= link_to "戻る", :back, class: 'qa_back_btn', title: @question.title, text: @question.text, category_id: @question.category.id, point: @question.point %>
+          <%= link_to "戻る", controller: "questions", action: "new", class: 'qa_back_btn', title: @question.title, text: @question.text, category_id: @question.category.id, point: @question.point %>
 
          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

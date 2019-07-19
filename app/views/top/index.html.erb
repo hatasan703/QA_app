@@ -79,8 +79,8 @@
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                               <p>
-                                  <%= question.text %>
-                                 </p>
+                                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
+                              </p>
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at.to_formatted_s(:without_second) %></time>
                                   <a href="#"><%= question.answers.count %></a>
@@ -105,7 +105,7 @@
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                               <p>
-                                  <%= question.text %>
+                                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
                               </p>
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at.to_formatted_s(:without_second) %></time>

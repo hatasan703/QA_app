@@ -38,7 +38,7 @@
                   <div class="edit_pro">
                   <div>職業　　　　　:</div>
                   <div class="centera">
-                    <% if @user.role.empty? %>
+                    <% if @user.role.nil? or @user.role.empty? %>
                         <p>未入力</p>
                     <% else %>
                         <%= @user.role %>

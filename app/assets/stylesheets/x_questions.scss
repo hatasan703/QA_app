@@ -10,6 +10,7 @@
   }
   &_name{
     vertical-align: top;
+    margin-left: 10px;
   }
 }
 
@@ -151,7 +152,7 @@
   border: 1px solid #d1dbde;
   border-radius: 5px;
   background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
-  box-shadow: 0 1px 0 #fcfcfd inset;
+  // box-shadow: 0 1px 0 #fcfcfd inset;
   text-align: center;
   color: #333;
   line-height: 1;
@@ -161,6 +162,11 @@
   :hover{
     opacity: 7;
   }
+}
+
+.answer_delete_btn ul li a:hover {
+  background: #ed2751;
+  font-weight: 600;
 }
 
 
@@ -276,6 +282,11 @@ select#question_point,
   &:hover{
     opacity: 0.8;
   }
+  a {
+    display: inline-block;
+    padding-top: 12px;
+    color: white;
+  }
 }
 
 .qa_back_btn{
@@ -307,4 +318,8 @@ button.stripe-button-el, button.stripe-button-el>span {
   width: 130px !important ;
   font-size: 15px !important;
   height: 39px !important;
+}
+
+button.stripe-button-el, button.stripe-button-el>span:hover {
+  opacity: 0.9;
 }

@@ -104,6 +104,23 @@
   z-index: 10;
   width: 140px;
 }
+.item2_new {
+	padding: 15px 20px;
+    font-size: 1.5rem;
+    border-left: 1px solid #b0b7ba;
+    border-right: 1px solid #b0b7ba;
+    border-bottom: 1px solid #b0b7ba;
+	display: flex;
+  align-items: center;
+  z-index: 10;
+  background: white;
+  position: relative;
+  justify-content: center;
+}
+
+.item2_top {
+  border-top: 1px solid #b0b7ba;
+}
 
 .top_item {
 	border-top: 1px solid #b0b7ba;

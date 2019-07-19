@@ -38,15 +38,14 @@
 	font-size: 25px;
 	// position: absolute;
     // top: 58%;
-   color : inherit;
 	margin-left:63%;
 	margin-top: 280px;
-	color: #ffffff;
+	color: #ffffff!important;
 	background-color: #DA485B;
     padding: 30px 50px;
-    a{
-    text-decoration : none;
-    }
+}
+.main-head_item2 a{
+    color: inherit;
 }
 
 .headerBorder{
@@ -274,8 +273,10 @@ margin-left: 5%;
 	text-align: center;
 	font-family: 'Noto Sans JP', sans-serif;
 	font-weight: bold;
-	align-items: center;
-
+    align-items: center;
+}
+.free_start a{
+    color: inherit;
 }
 
 .body-6 h1{

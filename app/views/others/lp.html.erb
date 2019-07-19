@@ -30,15 +30,6 @@
 
 
             <!-- *未ログインの場合 -->
-            <div class="account">
-            	<%= link_to "ログイン", new_user_session_path, class: 'loginLinkBtn' %>
-            	<%= link_to "新規登録", new_user_registration_path, class: 'signupLinkBtn' %>
-            	<div id="humberger" class="sp">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            	</div>
-        		</div>
 
 
         </div>
@@ -173,9 +164,9 @@
 
 
                     <div class="body-6">
-                            <h1>基本登録は完全無料！</h1>
-                                <p>無料で登録する</p>
-                            </div>
+                      <h1>基本登録は完全無料！</h1>
+                      <p class="free_start"><%= link_to "無料で始める", new_user_registration_path %></p>
+                    </div>
 
 
 </div>
@@ -183,36 +174,8 @@
 
 
     <!-- footer -->
-    <footer class="footer">
-        <div class="footerWrap">
+    <%= render file: "partials/_footer.html.erb" %>
 
-            <nav class="footerNav">
-                <ul>
-                    <li><section><h4>QOTAELUについて</h4></section></li>
-                    <li><a href="#">運営会社</a></li>
-                    <li><a href="#">ヘルプ</a></li>
-                    <li><a href="#">お問い合わせ</a></li>
-                </ul>
-                <ul>
-                    <li><section><h4>プライバシーと利用規約</h4></section></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
-                    <li><a href="#">利用規約</a></li>
-                </ul>
-                <ul>
-                    <li><section><h4>SNS</h4></section></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                </ul>
-            </nav>
-
-            <a href="#" class="footerLogo">
-                <%= image_tag("f_logo.png", alt: "QOTAELU") %>
-            </a>
-
-            <small class="copyright">&copy; 2019 QOTAELU.</small>
-
-        </div>
-    </footer>
 
     </div>
 </body>

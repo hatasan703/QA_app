@@ -13,6 +13,9 @@ module QOTAELU
     config.i18n.default_locale = :ja
 
     config.time_zone = 'Tokyo'
+
+    config.assets.paths << config.root.join("vendor/assets/javascripts")
+    config.assets.paths << config.root.join("vendor/assets/stylesheets")
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

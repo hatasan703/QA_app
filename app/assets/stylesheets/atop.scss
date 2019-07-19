@@ -739,6 +739,18 @@ BreakPoint
 				justify-content: center;
 		}
 
+		.item2_new {
+			width: 135px !important;
+			display: block;
+			background-color: #fff;
+			position: relative;
+			color: #333;
+			text-decoration: none;
+			box-sizing: border-box;
+			justify-content: center;
+			font-size: 1.5rem !important;
+		}
+
     .new_question_btn {
         width: 80px !important;
         height: 80px !important;
@@ -748,7 +760,8 @@ BreakPoint
         position: fixed;
         right: 10px !important;
         bottom: 10px !important;
-        opacity: 1;
+				opacity: 1;
+				z-index: 20;
     }
     .new_question_btn2 a {
         color: #fff;
@@ -941,6 +954,12 @@ BreakPoint
 				}
 			}
 		
+		}
+
+		.answer_delete_btn ul li a {
+			width: 100px !important;
+			margin-left: 60px !important;
+			margin-bottom: 10px !important;
 		}
 		
 
@@ -1135,6 +1154,10 @@ BreakPoint
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
   border-radius: 30px;    /*角を丸くする*/
+}
+
+.item_top {
+	border-top: 1px solid gray;
 }
 
 

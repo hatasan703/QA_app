@@ -17,11 +17,6 @@ class Question < ApplicationRecord
     %w[title]
   end
 
-#   def created_at
-#     self.created_at.strftime('%Y/%m/%d/ %H:%M')
-#   end
-
-
    # 自分の質問に回答がついたときの通知メソッド
   def answered_create_notification_by(current_user)
     notification = current_user.active_notifications.new(
@@ -31,4 +26,5 @@ class Question < ApplicationRecord
     )
     notification.save if notification.valid?
   end
+
 end

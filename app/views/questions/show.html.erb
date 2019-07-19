@@ -18,7 +18,7 @@
                     <%= image_tag  @question.user.image, class: "question_user_image" %>
                     <%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
                   </div>
-                    <time><%= @question.created_at %></time>
+                    <time><%= @question.created_at.to_formatted_s(:without_second) %></time>
                     <a href="#"><%= @question.answers.count %></a>
                     <a href="#"><%= @question.impressionist_count %></a>
               </div>
@@ -28,7 +28,7 @@
                     <% if @all_answers.empty? %>
                         <div class=" ba_btn answer_delete_btn">
                         <ul>
-                            <li><%= link_to "削除", question_path(@question), method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' }%></li>
+                            <li><%= link_to "削除", question_path(@question), method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' } %></li>
                         </ul>
                         </div>
                     <% end %>

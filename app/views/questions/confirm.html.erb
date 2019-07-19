@@ -1,47 +1,56 @@
+
+
 <%= form_for @question do |f| %>
-  <div class="create_qa">
-     <h2 class="qandaTtl">
-        <span class="shitumon">確認画面</span>
-    </h2>
+	<%= f.hidden_field :title %>
+	<%= f.hidden_field :text %>
+	<%= f.hidden_field :category_id %>
+	<%= f.hidden_field :point %>
 
-    <div class='QA'>
-      <p>
-        <div class='inputMy'>タイトル</div>
-        <div class='answerFirst'><%= @question.title %></div>
-        <%= f.hidden_field :title %>
-      </p>
-      <p>
-        <div class='inputMy'>質問本文</div>
-        <div class='answerSecond'>
-          <%= simple_format(@question.text) %>
-        </div>
-        <%= f.hidden_field :text %>
-      </p>
-      <p>
-        <div class='inputMy'>カテゴリ</div>
-        <div class='answerThird'><%= @question.category.name %></div>
-        <%= f.hidden_field :category_id %>
-      </p>
-      <p>
-        <div class='inputMy'>お礼</div>
-        <div class='answerThird'><%= @question.point %></div>
-        <%= f.hidden_field :point %>
-      </p>
-      <div class="btn-wrapper">
-          <div class="qa_back_btn">
-          <%= link_to "戻る", controller: "questions", action: "new", title: @question.title, text: @question.text, category_id: @question.category.id, point: @question.point %>
-          </div>
+	<div class=container>
+		<h2 class="qandaTtl">
+			<span class="shitumon">確認画面</span>
+		</h2>
+		<section><h3 class="question_status"><%= @question.category.name %></h3></section>
+			<div class="qandaWrap">
+				<div class="qandaItem">
+					<article>
+						<div class="qandaItemStatus">
+							<% if @resolved %>
+								<a href="#" class="answer">解決済み</a>
+								<div class="point_show"><div class="point_show3"><span class="point_show2"><%= @question.point %></span></div></div>
+							<% else %>
+								<a href="#" class="question">回答受付中</a>
+								<div class="point_show"><div class="point_show3"><span class="point_show2"><%= @question.point %></span></div></div>
+							<% end %>
+						</div>
+						<section><h3><div class="question_title"><%= @question.title %></div></h3></section>
+						<div class="qanda_middle_items">
+							<div class='question_user'>
+								<%= image_tag  @question.user.image, class: "question_user_image" %>
+								<%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
+							</div>
+							<time><%= @question.created_at.to_formatted_s(:without_second) %></time>
+							<a href="#"><%= @question.answers.count %></a>
+							<a href="#"><%= @question.impressionist_count %></a>
+						</div>
+						<p><%= simple_format(@question.text) %></p>
+					</article>
+				</div>
+			</div>
+	</div>
 
-         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="質問投稿"
-          data-amount="<%= @question.point %>"
-          data-locale="auto"
-          data-label="投稿する"
-          data-currency="jpy">
-        </script>
-      </div>
-    </div>
-  </div>
+	<div class="btn-wrapper">
+		<div class="qa_back_btn">
+			<%= link_to "戻る", controller: "questions", action: "new", title: @question.title, text: @question.text, category_id: @question.category.id, point: @question.point %>
+		</div>
+
+		<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+		data-description="質問投稿"
+		data-amount="<%= @question.point %>"
+		data-locale="auto"
+		data-label="投稿する"
+		data-currency="jpy">
+		</script>
+	</div>
 <% end %>
-

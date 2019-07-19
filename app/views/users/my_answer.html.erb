@@ -24,7 +24,7 @@
                       <%= link_to "#{answer.text}", "/questions/#{answer.question.id}", method: :get %>
                   </p>
                   <div class="qandaItemFooter">
-                      <time><%= answer.question.created_at %></time>
+                      <time><%= answer.question.created_at.to_formatted_s(:without_second) %></time>
                       <a href="#"><%= answer.question.answers.count %></a>
                       <a href="#">2</a>
                   </div>

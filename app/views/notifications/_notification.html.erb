@@ -7,7 +7,7 @@
         <% if notifications.exists? %>
             <% notifications.each do |notify| %>
                 <% if notify.action == "answer" %>
-                    <li class='item3'>
+                    <li class='item2'>
                         <%= link_to "#{User.find(notify.visiter_id).user_name}さんがあなたの質問に回答しました！", question_path(notify.question_id) %>
                     </li>
                 <% else %>

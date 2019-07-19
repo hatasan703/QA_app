@@ -340,6 +340,7 @@ margin-left: 5%;
 			font-family: 'Noto Sans JP', sans-serif;
 			font-weight: bold;
 			visibility: hidden;
+			display: none;
 		}
 
 
@@ -375,7 +376,7 @@ margin-left: 5%;
 
         .body-1 h1{
 			font-size: 16px;
-			margin-top: -250px;
+			// margin-top: -250px;
         }
 
         .namisen img{
@@ -502,7 +503,7 @@ margin-left: 5%;
 
         .contents-item p{
             font-size: 5px;
-        }
+		}
 
 
 

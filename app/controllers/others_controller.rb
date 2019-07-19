@@ -16,5 +16,6 @@ class OthersController < ApplicationController
   end
 
   def lp
+    render layout: false
   end
 end

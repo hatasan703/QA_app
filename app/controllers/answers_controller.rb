@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
 
+    protect_from_forgery except: :confirm
 before_action :redirect_top
 
   def confirm

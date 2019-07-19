@@ -5,7 +5,8 @@ class Question < ApplicationRecord
   has_one :pv
   has_many :notifications, dependent: :destroy
 
-  validates :title, :text, presence: true
+  validates :title, presence: true, length: { in: 1..25 }
+  validates :text, presence: true, length: { in: 1..2000 }
 
   is_impressionable counter_cache: true
 #  @question.impressionist_count
@@ -24,7 +25,7 @@ class Question < ApplicationRecord
    # 自分の質問に回答がついたときの通知メソッド
   def answered_create_notification_by(current_user)
     notification = current_user.active_notifications.new(
-    answered_question_id:self.id,
+    question_id:self.id,
     visited_id:self.user.id,
     action:"answer"
     )

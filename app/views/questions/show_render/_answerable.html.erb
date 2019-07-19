@@ -11,14 +11,18 @@
                     <%= link_to current_user.user_name, "/users/#{current_user.id}", class: "question_user_name" %>
                   </div>
               </div>
+
+              <%# 回答フォーム %>
               <p>
                 <div class='answer_form'>
-                  <%= form_with(model: [@question, @answer], local: true, url: "#{@question.id}/confirm") do |f| %>
-                    <%= f.text_area :text, class: "answer_text_area", placeholder: "回答を入力してください" %><br>
-                    <p><%= f.submit "答える", class: "answer_submit_btn" %></p>
+                <%= form_for [@question, @answer] do |f| %>
+                    <%= f.text_area :text, class: "answer_text_area", required: true, placeholder: "回答を入力してください(4000文字以内)" %><br>
+                    <p><%= f.submit "答える", class: "answer_submit_btn", maxlength: '4000' data: { confirm: "回答を投稿しますか？"} %></p>
                   <% end %>
                   </div>
               </p>
+              <%# ここまで %>
+
           </article>
       </div>
      </div>
@@ -41,7 +45,7 @@
                  </div>
                 <time><%= answer.created_at %></time>
                </div>
-              <p><%= answer.text %></p>
+              <%= simple_format(answer.text) %>
              </article>
            </div>
          <% end %>

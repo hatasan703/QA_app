@@ -10,12 +10,12 @@
 
     <div class="QA">
       <p>
-        <%= f.label :title, "タイトル", class: 'inputMy' %><br>
-        <%= f.text_field :title , class: 'answerFirst', value: @title %><br>
+        <%= f.label :title, "タイトル(25文字以内)", class: 'inputMy' %><br>
+        <%= f.text_field :title , class: 'answerFirst', required: true, maxlength: '25', value: @title %><br>
       </p>
       <p>
-        <%= f.label :text, "本文", class: 'inputMy' %><br>
-        <%= f.text_area :text, class: 'answerSecond', value: @text %><br>
+        <%= f.label :text, "本文(2000字以内)", class: 'inputMy' %><br>
+        <%= f.text_area :text, class: 'answerSecond', required: true, maxlength: '2000', value: @text %><br>
       </p>
       <p>
         <%= f.label :category_id, "カテゴリ", class: 'inputMy' %><br>

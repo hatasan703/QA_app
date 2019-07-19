@@ -1,15 +1,12 @@
 class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
-  validates :text, presence: true
-
-
-
+  validates :text, presence: true, length: { in: 1..4000 }
 
    # 自分の回答がBAに選定されたとき通知メソッド
    def ba_create_notification_by(current_user)
     notification = current_user.active_notifications.new(
-    best_answer_id:self.id,
+    answer_id:self.id,
     visited_id:self.user.id,
     action:"best_answer"
     )

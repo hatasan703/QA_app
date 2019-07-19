@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap&subset=japanese" rel="stylesheet">
-
-    <title>QOTAELU</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application' %>
+	<%= analytics_init if Rails.env.production? %>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap&subset=japanese" rel="stylesheet">
+	<title>QOTAELU</title>
 </head>
 <body>
 
@@ -20,18 +24,21 @@
     <header class="header">
         <div class="headerBorder"></div>
         <div class="headerWrap">
-
-            <h1 class="logo"><a href="#">
-            <%= image_tag("h_logo.jpg", alt: "QOTAELU") %>
+            <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
             </a></h1>
 
 
 
             <!-- *未ログインの場合 -->
             <div class="account">
-                <a href="#" class="loginLinkBtn"><span>ログイン</span></a>
-                <a href="#" class="signupLinkBtn"><span>新規登録</span></a>
-            </div>
+            	<%= link_to "ログイン", new_user_session_path, class: 'loginLinkBtn' %>
+            	<%= link_to "新規登録", new_user_registration_path, class: 'signupLinkBtn' %>
+            	<div id="humberger" class="sp">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            	</div>
+        		</div>
 
 
         </div>

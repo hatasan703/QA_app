@@ -37,13 +37,16 @@
 	width: 150px;
 	font-size: 25px;
 	// position: absolute;
-	// top: 58%;
+    // top: 58%;
+   color : inherit;
 	margin-left:63%;
 	margin-top: 280px;
 	color: #ffffff;
 	background-color: #DA485B;
-	padding: 30px 50px;
-
+    padding: 30px 50px;
+    a{
+    text-decoration : none;
+    }
 }
 
 .headerBorder{

@@ -59,7 +59,6 @@ class SearchController < ApplicationController
     prev_params = Rack::Utils.parse_nested_query(prev_q)
     prev_params['q']['title_cont'] = prev_params['q'][':title_cont'] if prev_params['q'][':title_cont'].present?
     params[:q] = prev_params['q']
-    # binding.pry
   end
 
 end

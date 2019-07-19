@@ -198,10 +198,10 @@ input.loginBtn,
 
 .profile {
 	font-size: 1.5rem;
-	font-weight: 600;
-	color: #343636;
-	margin: 15px;
-  padding: 0;
+    font-weight: 600;
+    color: #666e71;
+    margin: 15px;
+    padding: 0;
 }
 
 .box12 {
@@ -372,6 +372,7 @@ input.loginBtn,
   padding-top: 20px;
 
   div {
+      color: #343636;
     font-size: 1.5rem;
     font-weight: 600;
     padding-top: 10px;
@@ -380,6 +381,8 @@ input.loginBtn,
   }
 
   .centera {
+    color: #343636;
+    color: #666e71!important;
     text-align: center;
     margin: 0 auto;
   }

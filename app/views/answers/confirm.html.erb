@@ -5,9 +5,9 @@
           <article>
               <div class="qandaItemStatus">
                 <% if @resolved %>
-                  <a href="#" class="answer">解決済み</a>
+                  <p class="answer">解決済み</p>
                 <% else %>
-                  <a href="#" class="question">回答受付中</a>
+                  <p class="question">回答受付中</p>
                 <% end %>
               </div>
               <section><h3><div class="question_title"><%= @question.title %></div></h3></section>

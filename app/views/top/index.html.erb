@@ -75,7 +75,7 @@
                                   <p class="answer">解決済み</p>
                                 <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
 
-                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                               <p>
@@ -101,7 +101,7 @@
                                   <p class="question">回答受付中</p>
                                  <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
 
-                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                               <p>

@@ -57,9 +57,7 @@ common
 .qandaItemStatusCat:hover {
 	opacity: .7;
 }
-.qandaItemFooter > a:hover {
-	opacity: .7;
-}
+
 .footerNav ul li > a:hover {
 	opacity: .7;
 }
@@ -419,16 +417,17 @@ main
 	font-weight: 600;
 	color: #d1dbde;
 }
-.qandaItemFooter > a {
+.qandaItemFooter > p {
 	font-size: 1.5rem;
 	color: #222;
 	display: flex;
-	align-items: center;
+    align-items: center;
+    margin-bottom: 0px;
 }
-.qandaItemFooter > a:first-of-type {
+.qandaItemFooter > p:first-of-type {
 	margin: 0 25px;
 }
-.qandaItemFooter > a:first-of-type::before {
+.qandaItemFooter > p:first-of-type::before {
 	content: "";
 	width: 22px;
 	height: 19px;
@@ -437,7 +436,7 @@ main
 	background-size: cover;
 	display: block;
 }
-.qandaItemFooter > a:last-of-type::before {
+.qandaItemFooter > p:last-of-type::before {
 	content: "";
 	width: 27px;
 	height: 18px;

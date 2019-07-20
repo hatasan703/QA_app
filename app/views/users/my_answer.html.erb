@@ -14,9 +14,9 @@
               <article>
                   <div class="qandaItemStatus">
                        <% if answer.question.done.present? %>
-                        <a href="#" class="answer">解決済み</a>
+                        <p class="answer">解決済み</p>
                        <% else %>
-                        <a href="#" class="question">回答受付中</a>
+                        <p class="question">回答受付中</p>
                        <% end %>
                       <%= link_to "#{answer.question.category.name}", "/questions/category/#{answer.question.category_id}", class: "qandaItemStatusCat", method: :get %>
                   </div>

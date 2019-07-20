@@ -1,5 +1,4 @@
 
-
 <%= form_with(model: @question, local: true, url: {action: 'confirm'}) do |f| %>
   <div class="container">
   <div class="create_qa">
@@ -25,7 +24,7 @@
 
       <p>
         <%= f.label :お礼, class: 'inputMy' %><br>
-        <%= f.select :point, [['50P', 50], ['100P', 100], ['300P', 300], ['500P', 500], ['1000P', 1000], ['2000P', 2000], ['3000P', 3000]], class: 'answerThird', selected: @point %>
+        <%= f.select :point, [['50P', 50], ['100P', 100], ['300P', 300], ['500P', 500], ['1000P', 1000], ['2000P', 2000], ['3000P', 3000], ['5000P', 5000], ['10000P', 10000], ['30000P', 30000], ['50000P', 50000], ['100000P', 100000] ], class: 'answerThird', selected: @point %>
       </p>
 
       <div class="btn-wrapper">

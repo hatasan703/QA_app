@@ -83,3 +83,5 @@ gem 'rack-user_agent'
 
 gem 'stripe'
 gem 'omniauth-stripe-connect'
+
+gem 'activeadmin'

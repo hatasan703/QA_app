@@ -199,7 +199,7 @@ input.loginBtn,
 .profile {
 	font-size: 1.5rem;
     font-weight: 600;
-    color: #666e71;
+    color: #343636;
     margin: 15px;
     padding: 0;
 }
@@ -382,7 +382,7 @@ input.loginBtn,
 
   .centera {
     color: #343636;
-    color: #666e71!important;
+    // color: #666e71!important;
     text-align: center;
     margin: 0 auto;
   }
@@ -397,7 +397,7 @@ input.loginBtn,
     padding-bottom: 40px;
   }
   .user_edit_btn{
-    color: #888e92;
+    color: black;
     &:hover{
       opacity: .7;
     }
@@ -514,5 +514,29 @@ input.loginBtn,
 
     h3 {
       font-size: 2rem;
+    }
+  }
+
+
+  @media screen and (max-width: 640px) {
+    .edit_pro {
+      width: 250px !important;
+    }
+
+    .pro_edit_btn {
+      width: 250px !important;
+    }
+
+    .box12 {
+      width: 250px !important;
+    }
+
+    .MyNavWrap {
+      width: 250px !important;
+    }
+
+    .MyNavWrap > li > a {
+      font-size: 0.5rem !important;
+      padding: 0 15px !important;
     }
   }

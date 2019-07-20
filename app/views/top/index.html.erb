@@ -72,10 +72,10 @@
                       <div class="qandaItem">
                           <article>
                               <div class="qandaItemStatus">
-                                  <a href="#" class="answer">解決済み</a>
+                                  <p class="answer">解決済み</p>
                                 <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
 
-                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                               <p>
@@ -83,8 +83,8 @@
                               </p>
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                  <a href="#"><%= question.answers.count %></a>
-                                  <a href="#"><%= question.impressions_count %></a>
+                                  <p><%= question.answers.count %></p>
+                                  <p><%= question.impressions_count %></p>
                               </div>
                           </article>
                       </div>
@@ -98,10 +98,10 @@
                       <div class="qandaItem">
                           <article>
                               <div class="qandaItemStatus">
-                                  <a href="#" class="question">回答受付中</a>
+                                  <p class="question">回答受付中</p>
                                  <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
 
-                                  <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
+                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
                               </div>
                               <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                               <p>
@@ -109,8 +109,8 @@
                               </p>
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                  <a href="#"><%= question.answers.count %></a>
-                                  <a href="#"><%= question.impressions_count %></a>
+                                  <p><%= question.answers.count %></p>
+                                  <p><%= question.impressions_count %></p>
                               </div>
                           </article>
                       </div>

@@ -7,6 +7,7 @@ class Question < ApplicationRecord
 
   validates :title, presence: true, length: { in: 1..25 }
   validates :text, presence: true, length: { in: 1..2000 }
+  validates :category_id, presence: true
 
   is_impressionable counter_cache: true
 #  @question.impressionist_count

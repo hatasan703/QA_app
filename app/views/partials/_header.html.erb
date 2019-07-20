@@ -46,7 +46,7 @@
             <nav>
                 <ul>
                   <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'item' %></li>
-                  <li><%= link_to "アカウント設定", "identification/#{current_user.id}", class: 'item' %></li>
+                  <li><%= link_to "アカウント設定", "identificastion/#{current_user.id}", class: 'item' %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'item' %></li>
                 </ul>
 
@@ -110,10 +110,10 @@
 
         <!-- sp search -->
         <div class="spSearch">
-            <%= form_tag('/', method: :get, class: "searchForm") do %>
-                <input name="keyword" size="25" placeholder="質問を検索" type="text" value="">
-                <input type="submit" value="">
-            <% end %>
+						<%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
+							<%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
+							<%= f.submit ("") , class: 'search-btn', value: '' %>
+						<% end %>
         </div>
 
     </header>

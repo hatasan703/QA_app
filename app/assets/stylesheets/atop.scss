@@ -52,14 +52,11 @@ common
 .answerBtn:hover {
 	opacity: .7;
 }
-.question:hover,
-.answer:hover,
+
 .qandaItemStatusCat:hover {
 	opacity: .7;
 }
-.qandaItemFooter > a:hover {
-	opacity: .7;
-}
+
 .footerNav ul li > a:hover {
 	opacity: .7;
 }
@@ -374,13 +371,14 @@ main
 	display: flex;
 	align-items: center;
 }
-.qandaItemStatus > a:first-of-type {
+.qandaItemStatus > p:first-of-type {
 	font-size: 1.4rem;
 	font-weight: 600;
 	color: #fff;
-	padding: 5px 18px;
+	padding: 2px 12px;
 	border-radius: 25px;
-	display: block;
+    display: block;
+    margin-bottom: 0px;
 }
 .qandaItemStatus > .question {
 	background: #4fc1ea;
@@ -407,7 +405,9 @@ main
 	line-height: 1.5em;
 	color: #333;
 	margin: 0 0 15px;
-	display: block;
+    display: block;
+    word-break:break-all;
+    word-wrap: break-word;
 }
 .qandaItemFooter {
 	display: flex;
@@ -419,16 +419,17 @@ main
 	font-weight: 600;
 	color: #d1dbde;
 }
-.qandaItemFooter > a {
+.qandaItemFooter > p {
 	font-size: 1.5rem;
 	color: #222;
 	display: flex;
-	align-items: center;
+    align-items: center;
+    margin-bottom: 0px;
 }
-.qandaItemFooter > a:first-of-type {
+.qandaItemFooter > p:first-of-type {
 	margin: 0 25px;
 }
-.qandaItemFooter > a:first-of-type::before {
+.qandaItemFooter > p:first-of-type::before {
 	content: "";
 	width: 22px;
 	height: 19px;
@@ -437,7 +438,7 @@ main
 	background-size: cover;
 	display: block;
 }
-.qandaItemFooter > a:last-of-type::before {
+.qandaItemFooter > p:last-of-type::before {
 	content: "";
 	width: 27px;
 	height: 18px;

@@ -18,9 +18,11 @@
                     <%= image_tag  @question.user.image, class: "question_user_image" %>
                     <%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
                   </div>
+                  <div class="qandaItemFooter">
                     <time><%= @question.created_at.to_formatted_s(:without_second) %></time>
                     <p><%= @question.answers.count %></p>
                     <p><%= @question.impressionist_count %></p>
+                	</div>
               </div>
               <p>
                   <%= simple_format(@question.text) %>

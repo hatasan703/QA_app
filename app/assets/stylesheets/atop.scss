@@ -375,7 +375,7 @@ main
 	font-size: 1.4rem;
 	font-weight: 600;
 	color: #fff;
-	padding: 3px 18px;
+	padding: 2px 12px;
 	border-radius: 25px;
     display: block;
     margin-bottom: 0px;
@@ -405,7 +405,9 @@ main
 	line-height: 1.5em;
 	color: #333;
 	margin: 0 0 15px;
-	display: block;
+    display: block;
+    word-break:break-all;
+    word-wrap: break-word;
 }
 .qandaItemFooter {
 	display: flex;

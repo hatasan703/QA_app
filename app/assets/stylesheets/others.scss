@@ -84,3 +84,112 @@
 	}
 
 }
+
+.contact_all {
+	background-color: #fff;
+	margin-bottom: 40px;
+}
+
+.contact_info {
+	margin: 0 auto;
+	border-bottom: 2px solid #595753;
+	width: 500px;
+
+	h1 {
+		font-size: 3rem;
+		font-weight: 600;
+		color: #595753;
+		padding-top: 40px;
+		padding-bottom: 20px;
+		text-align: center;
+	}
+}
+
+.contact_some {
+	text-align: center;
+	font-size: 1.5rem;
+	padding-top: 40px;
+}
+
+.contact_btn {
+	width: 500px;
+	margin: 0 auto;
+	padding-bottom: 60px;
+
+	.contact_btn_design {
+		background-color: #60cef0;
+		width: 300px;
+		margin: 0 auto;
+		margin-top: 30px;
+		border-radius: 30px;
+
+		div {
+			font-size: 2.5rem;
+			font-weight: 600;
+			color: #fff;
+			text-align: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	}
+
+	.contact_btn_design:hover {
+		opacity: 0.8;
+	}
+}
+
+// .contact_form {
+// 	margin: 0 auto;
+// 	width: 500px;
+
+// 	p {
+// 		font-size: 2rem;
+// 		font-weight: 600;
+// 		color: #595753;
+// 		padding-top: 40px;
+// 		padding-bottom: 40px;
+// 		text-align: center;
+// 	}
+// }
+
+// .contact_yes_or_no {
+// 	display: flex;
+// 	margin: 0 auto;
+// 	padding-bottom: 40px;
+
+// 	.contact_yes {
+// 		width: 150px;
+// 		margin: 0 auto;
+// 		background-color: #60cef0;
+// 		border-radius: 10px;
+
+// 		a {
+// 			margin: 0 auto;
+// 		}
+// 	}
+
+// 	.contact_no {
+// 		width: 150px;
+// 		margin: 0 auto;
+// 		background-color: #ed2751;
+// 		border-radius: 10px;
+// 	}
+
+// 	.yes {
+// 		font-size: 2.5rem;
+// 		font-weight: 600;
+// 		color: #fff;
+// 		padding-top: 40px;
+// 		padding-bottom: 40px;
+// 		text-align: center;
+// 	}
+
+// 	.no {
+// 		font-size: 2.5rem;
+// 		font-weight: 600;
+// 		color: #fff;
+// 		padding-top: 40px;
+// 		padding-bottom: 40px;
+// 		text-align: center;
+// 	}
+// }

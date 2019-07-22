@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: QOTAELU_production
-  username: QOTAELU
+  username: root
   password: <%= Rails.application.credentials.db[:password] %>

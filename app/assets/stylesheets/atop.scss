@@ -274,9 +274,13 @@ main
 	background: #4f7ce0;
 	border-radius: 50px;
 	display: block;
-	box-shadow: 0 0 10px #ddd;
+    box-shadow: 0 0 10px #ddd;
+    margin-top: 30px;
 }
-.discussionBtn {text-align: center;}
+.discussionBtn {
+    text-align: center;
+    margin-top: 30px;
+}
 .questionBtn {
 	width: 260px;
     padding: 23px 0;

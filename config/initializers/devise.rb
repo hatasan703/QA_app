@@ -20,9 +20,9 @@ Devise.setup do |config|
   # with default "from" parameter.
   case Rails.env
   when 'development'
-    config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key], Rails.application.credentials.facebook[:facebook_api_secret]
-  when 'production'
     config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key_dev], Rails.application.credentials.facebook[:facebook_api_secret_dev]
+  when 'production'
+    config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key], Rails.application.credentials.facebook[:facebook_api_secret]
   end
 
   config.omniauth :twitter, Rails.application.credentials.twitter[:twitter_api_key], Rails.application.credentials.twitter[:twitter_api_secret]

@@ -12,11 +12,11 @@
         <div class="container">
             <div class="myprNav mypr">
                   <div class="edit_pro">
-                      <div>ユーザー名　　:</div>
+                      <div class='user_info'>ユーザー名　　:</div>
                       <div class="centera"><%= @user.user_name %></div>
                   </div>
                   <div class="edit_pro">
-                      <div>年齢　　　　　:</div>
+                      <div class='user_info'>年齢　　　　　:</div>
                       <div class="centera">
                         <% if @user.age.nil? %>
                           <p>未入力</p>
@@ -26,7 +26,7 @@
                       </div>
                   </div>
                   <div class="edit_pro">
-                      <div>性別　　　　　:</div>
+                      <div class='user_info'>性別　　　　　:</div>
                       <div class="centera"><% if @user_sex == true %>
                                     <p>女性</p>
                               <% elsif @user_sex.nil? %>
@@ -36,7 +36,7 @@
                               <% end %></div>
                   </div>
                   <div class="edit_pro">
-                  <div>職業　　　　　:</div>
+                  <div class='user_info'>職業　　　　　:</div>
                   <div class="centera">
                     <% if @user.role.nil? or @user.role.empty? %>
                         <p>未入力</p>

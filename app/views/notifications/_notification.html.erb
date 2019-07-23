@@ -4,14 +4,15 @@
         <span class='notify_checked'><%= unchecked_notice_count %></span>
     </label>
     <ul class="menu3 animation">
+      <li class="item4 item2_top"></li>
         <% if notifications.exists? %>
             <% notifications.each do |notify| %>
                 <% if notify.action == "answer" %>
-                    <li class='item2 item2_top'>
+                    <li class='item2'>
                         <%= link_to "#{User.find(notify.visiter_id).user_name}さんがあなたの質問に回答しました！", question_path(notify.question_id) %>
                     </li>
                 <% else %>
-                    <li class='item2 item2_top'>
+                    <li class='item2'>
                         <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.answer_id).question_id) %>
                     </li>
                 <% end %>

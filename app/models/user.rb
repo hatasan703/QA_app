@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
        :recoverable, :rememberable, :validatable, :omniauthable
-  has_many :questions
-  has_many :answers
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :impressions, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   validates :user_name, presence: true, length: { maximum: 20 }, uniqueness: { case_sensitive: false }, format: { with: /\A[a-z0-9]+\z/i, message: "英数字以外の文字は使用できません" }

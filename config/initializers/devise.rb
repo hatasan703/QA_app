@@ -19,10 +19,10 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   case Rails.env
-  when 'production'
-    config.omniauth :facebook, "408984039923543", "c75d0f6c453664dd044f7eb0d2e9d3ee"
   when 'development'
-    config.omniauth :facebook, "448742672579750", "7c9de248ab8acdf11d546b87b79ca1e7"
+    config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key], Rails.application.credentials.facebook[:facebook_api_secret]
+  when 'production'
+    config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key_dev], Rails.application.credentials.facebook[:facebook_api_secret_dev]
   end
 
   config.omniauth :twitter, Rails.application.credentials.twitter[:twitter_api_key], Rails.application.credentials.twitter[:twitter_api_secret]

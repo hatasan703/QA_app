@@ -18,16 +18,17 @@
                        <% else %>
                         <p class="question">回答受付中</>
                        <% end %>
-                      <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat", method: :get %>
+                      <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+                      <%= link_to "#{question.category.name}", "/questions/category/#{question.category_id}", class: "qandaItemStatusCat" %>
                   </div>
                   <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
                   <p>
                       <%= link_to "#{question.text}", "/questions/#{question.id}", method: :get %>
                   </p>
                   <div class="qandaItemFooter">
-                      <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                      <a href="#"><%= question.answers.count %></a>
-                      <a href="#">2</a>
+                    <time><%= question.created_at.to_formatted_s(:without_second) %></time>
+                    <p><%= question.answers.count %></p>
+                    <p><%= question.impressions_count %></p>
                   </div>
               </article>
           </div>

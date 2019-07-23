@@ -82,9 +82,9 @@
                                 <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
                               </p>
                               <div class="qandaItemFooter">
-                                  <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                  <p><%= question.answers.count %></p>
-                                  <p><%= question.impressions_count %></p>
+                                <time><%= question.created_at.to_formatted_s(:without_second) %></time>
+                                <p><%= question.answers.count %></p>
+                                <p><%= question.impressions_count %></p>
                               </div>
                           </article>
                       </div>

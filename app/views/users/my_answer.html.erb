@@ -18,15 +18,15 @@
                        <% else %>
                         <p class="question">回答受付中</p>
                        <% end %>
+                       <div class="point_show"><div class="point_show3"><span class="point_show2"><%= answer.question.point %></span></div></div>
                       <%= link_to "#{answer.question.category.name}", "/questions/category/#{answer.question.category_id}", class: "qandaItemStatusCat", method: :get %>
                   </div>
                   <p>
                       <%= link_to "#{answer.text}", "/questions/#{answer.question.id}", method: :get %>
                   </p>
                   <div class="qandaItemFooter">
-                      <time><%= answer.question.created_at.to_formatted_s(:without_second) %></time>
-                      <a href="#"><%= answer.question.answers.count %></a>
-                      <a href="#">2</a>
+                    <time><%= answer.question.created_at.to_formatted_s(:without_second) %></time>
+
                   </div>
               </article>
           </div>

@@ -25,6 +25,8 @@ Devise.setup do |config|
     config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key], Rails.application.credentials.facebook[:facebook_api_secret]
   end
 
+  config.omniauth :google_oauth2, Rails.application.credentials.google[:google_client_id], Rails.application.credentials.google[:google_client_secret], { :skip_jwt => true }
+
   config.omniauth :twitter, Rails.application.credentials.twitter[:twitter_api_key], Rails.application.credentials.twitter[:twitter_api_secret]
   # callback_url: Rails.application.secrets.facebook[:callback_url]
 

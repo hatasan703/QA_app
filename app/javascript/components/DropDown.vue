@@ -9,12 +9,15 @@
             @click="onClick"
         >
             <li class="item">
+                <div class="img_human"></div>
                 <a :href="`/users/${userId}`">マイページ</a>
             </li>
             <li class="item">
+                <div class="img_config"></div>
                 <a :href="`/identification/${userId}`">アカウント設定</a>
             </li>
             <li class="item">
+                <div class="img_out"></div>
                 <a data-method="delete" href="/users/sign_out">ログアウト</a>
             </li>
         </ul>

@@ -758,20 +758,21 @@ BreakPoint
 
     .new_question_btn {
         width: 80px !important;
-        height: 80px !important;
+        height: 50px !important;
 
         background-color: #4F7CE0;
-        border-radius: 100px;
+        border-radius: 50%;
         position: fixed;
         right: 10px !important;
         bottom: 10px !important;
 				opacity: 1;
 				z-index: 20;
+				padding-top: 26px !important;
     }
-    .new_question_btn2 a {
+    .new_question_btn2 {
         color: #fff;
         text-align: center;
-        font-size: 18px !important;
+        font-size: 15px !important;
         font-weight: 600;
     }
 
@@ -1146,13 +1147,14 @@ BreakPoint
 
 .new_question_btn {
 	width: 150px;
-	height: 150px;
+	height: 95px;
 	background-color: #4F7CE0;
-	border-radius: 100px;
+	border-radius: 50%;
 	position: fixed;
 	right: 40px;
 	bottom: 40px;
 	opacity: 1;
+	padding-top: 50px;
 }
 
 .new_question_btn:hover {
@@ -1160,11 +1162,14 @@ BreakPoint
 	opacity: 0.9;
 }
 
-.new_question_btn2 a {
+.new_question_btn2 {
 	color: #fff;
 	text-align: center;
 	font-size: 3rem;
 	font-weight: 600;
+	// position: fixed;
+	// right: 55px;
+	// bottom: 95px;
 }
 
 /* ページネーションデザインの実装 */
@@ -1187,6 +1192,35 @@ BreakPoint
 
 .item_top {
 	border-top: 1px solid gray;
+}
+
+// ドロップダウン時のイラスト
+
+.img_human {
+    width: 17px;
+    height: 22px;
+    margin: 0 10px 0 0;
+    background: url(/assets/mypage.png);
+    background-size: cover;
+    display: block;
+}
+
+.img_config {
+	width: 22px;
+    height: 22px;
+    margin: 0 10px 0 0;
+    background: url(/assets/settings.png);
+    background-size: cover;
+    display: block;
+}
+
+.img_out {
+	width: 21px;
+    height: 19px;
+    margin: 0 10px 0 0;
+    background: url(/assets/login.png);
+    background-size: cover;
+    display: block;
 }
 
 

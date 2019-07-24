@@ -20,13 +20,14 @@ Devise.setup do |config|
   # with default "from" parameter.
   case Rails.env
   when 'development'
-    config.omniauth :facebook, '364842834180164', '559fb142c5253f0a06bfa5bd02e48208'
+    config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key_dev], Rails.application.credentials.facebook[:facebook_api_secret_dev]
+    config.omniauth :google_oauth2, Rails.application.credentials.google[:google_client_id_dev], Rails.application.credentials.google[:google_client_secret_dev], { :skip_jwt => true }
   when 'production'
     config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_api_key], Rails.application.credentials.facebook[:facebook_api_secret]
+    config.omniauth :google_oauth2, Rails.application.credentials.google[:google_client_id], Rails.application.credentials.google[:google_client_secret], { :skip_jwt => true }
   end
 
   config.omniauth :twitter, Rails.application.credentials.twitter[:twitter_api_key], Rails.application.credentials.twitter[:twitter_api_secret]
-  # callback_url: Rails.application.secrets.facebook[:callback_url]
 
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 

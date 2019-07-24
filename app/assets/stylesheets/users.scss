@@ -14,7 +14,7 @@
 	text-align: center;
 	background-color: #FFF;
   padding: 20px 0;
-  margin: 20px 0;
+  margin: 40px 0;
   padding-bottom: 40px;
 }
 
@@ -287,6 +287,11 @@ input.loginBtn,
   width: 90%;
 }
 
+.user_edit_content2{
+  display: flex;
+  margin:15px;
+
+}
 .user_edit_content{
   margin:15px;
 
@@ -303,23 +308,24 @@ input.loginBtn,
   background: linear-gradient(to bottom, #60cef0, #60cef0);
   color: #fff;
   line-height: 1;
-  padding: 0.7em;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
   text-align: center;
+  padding-top:13px;
+  padding-bottom: 13px;
 }
 
 .user_profile_edit_btn2{
-  width: 200px;
+  width: 90px;
   border: 1px solid #d1dbde;
   background: linear-gradient(to bottom, #ed2751, #ed2751);
   color: #fff;
   line-height: 1;
-  padding: 0.7em;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
   text-align: center;
-  margin-left: 5px;
+  margin-left: 10px;
+  padding-top: 13px;
 }
 
 .edit-profile {

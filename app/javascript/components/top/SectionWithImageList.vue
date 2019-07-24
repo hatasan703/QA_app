@@ -1,7 +1,7 @@
 <template>
     <div class="howToWrap">
         <section-with-image-item
-            title="回答者への報酬額を決めて、相談する"
+            title="回答者への報酬額を決めて<br>相談する"
             image-src="assets/howTo_item01.png"
             image-alt=""
         />

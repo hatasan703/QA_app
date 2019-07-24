@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
-  get 'identification/:id' => 'users#identification'
-
   resources :questions, only: [:new, :create, :destroy]
   resources :users, only: [:edit, :update, :show]
   resources :charges
@@ -12,6 +10,8 @@ Rails.application.routes.draw do
     get 'my_answer/:id' => 'users#my_answer'
     get 'card/:id' => 'users#card'
     get 'point/:id' => 'users#point'
+    get 'identification/:id' => 'users#identification'
+
     # namespace :users do
     #     get :my_question
     #     get :my_answer

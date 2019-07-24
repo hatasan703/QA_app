@@ -41,10 +41,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
           :description => 'Rails Stripe customer',
           :currency    => 'jpy'
         )
-        #  rescue Stripe::CardError => e
-        #     flash[:error] = e.message
-        #     redirect_to action: "show"
-        #  end
 
             redirect_to controller: 'questions', action: 'show', id: @question.id
         else
@@ -57,15 +53,14 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
   end
 
-  def destroy
-    question = Question.find(params[:id])
-    @answers = question.answers.includes(:user)
-    if @answers.empty?
-        # binding.pry
-      question.destroy if question.user_id == current_user.id
-    end
-    redirect_to root_path
-  end
+#   def destroy
+#     question = Question.find(params[:id])
+#     @answers = question.answers.includes(:user)
+#     if @answers.empty?
+#       question.destroy if question.user_id == current_user.id
+#     end
+#     redirect_to root_path
+#   end
 
   def show
     @question = Question.find(params[:id])

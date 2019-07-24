@@ -26,15 +26,6 @@
               </div>
               <p>
                   <%= simple_format(@question.text) %>
-                  <% if current_user && @question.user_id == current_user.id %>
-                    <% if @all_answers.empty? %>
-                        <div class=" ba_btn answer_delete_btn">
-                        <ul>
-                            <li><%= link_to "削除", question_path(@question), method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' } %></li>
-                        </ul>
-                        </div>
-                    <% end %>
-                  <% end %>
               </p>
           </article>
       </div>

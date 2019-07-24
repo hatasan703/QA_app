@@ -3,6 +3,7 @@
       <div class="qandaWrap">
           <div class="qandaItem">
               <article>
+                <a href="/questions/<%= question.id %>">
                   <div class="qandaItemStatus">
                        <% if question.done.present? %>
                         <p class="answer">解決済み</p>
@@ -10,17 +11,18 @@
                         <p class="question">回答受付中</p>
                        <% end %>
                        <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
-                        <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
+                        <div class='qandaItemStatusCat'><%= question.category.name %></div>
                   </div>
-                  <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+                  <section><h3> <%= question.title %></h3></section>
                   <p>
-                      <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
+                      <%= link_to "#{truncate(question.text, length:200)}", question_path(question) %>
                   </p>
                   <div class="qandaItemFooter">
                       <time><%= question.created_at.to_formatted_s(:without_second) %></time>
                       <p><%= question.answers.count %></p>
                       <p><%= question.impressions_count %></p>
                   </div>
+                </a>
               </article>
           </div>
       </div>

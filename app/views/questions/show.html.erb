@@ -13,15 +13,17 @@
                 <% end %>
               </div>
               <section><h3><div class="question_title"><%= @question.title %></div></h3></section>
-              <div class="qanda_middle_items">
+              <div class="qanda_middle_items2">
                   <div class='question_user'>
                     <%= image_tag  @question.user.image, class: "question_user_image" %>
                     <%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
                   </div>
-                  <div class="qandaItemFooter">
+                  <div class="qandaItemFooter2">
                     <time><%= @question.created_at.to_formatted_s(:without_second) %></time>
+                    <div class="qanda_flex qandaItemFooter2">
                     <p><%= @question.answers.count %></p>
                     <p><%= @question.impressionist_count %></p>
+                    </div>
                 	</div>
               </div>
               <p>

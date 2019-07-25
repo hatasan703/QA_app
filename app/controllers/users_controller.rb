@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
 
-before_action :redirect_top, except: [:my_question, :my_answer]
+before_action :redirect_top
 
   def my_question
+    unless @user == current_user
+        redirect_to root_path
+    end
     @user = User.find(params[:id])
     @questions = @user.questions.page(params[:page]).order("created_at DESC")
   end
 
   def my_answer
+    unless @user == current_user
+        redirect_to root_path
+    end
     @user = User.find(params[:id])
     @answers = @user.answers.page(params[:page]).order("created_at DESC")
   end

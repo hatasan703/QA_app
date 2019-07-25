@@ -86,3 +86,4 @@ gem 'stripe'
 gem 'omniauth-stripe-connect'
 
 gem 'activeadmin'
+gem 'slack-notifier'

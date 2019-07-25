@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: 2c2b9ffc055d13242b0ae60807609cc382bb0337
+  revision: cc98e59652f22c723fac0308199cff5a42ad49ce
   specs:
     webpacker (4.0.7)
       activesupport (>= 4.2)
@@ -196,7 +196,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mysql2 (0.5.2)
-    net-http-persistent (3.0.1)
+    net-http-persistent (3.1.0)
       connection_pool (~> 2.2)
     nio4r (2.4.0)
     nokogiri (1.10.3)
@@ -335,6 +335,7 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
+    slack-notifier (2.3.2)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -412,6 +413,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
+  slack-notifier
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe

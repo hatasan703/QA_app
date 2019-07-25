@@ -546,6 +546,10 @@ input.loginBtn,
   @media screen and (max-width: 640px) {
     .edit_pro {
       width: 250px !important;
+
+      div {
+        font-size: 1rem !important;
+      }
     }
 
     .pro_edit_btn {
@@ -564,4 +568,5 @@ input.loginBtn,
       font-size: 0.5rem !important;
       padding: 0 15px !important;
     }
+    
   }

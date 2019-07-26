@@ -66,31 +66,6 @@
                     </h2>
                 </section>
 
-                <section><h3 class="arrowTtl">ランキング</h3></section>
-                <div class="qandaWrap">
-                  <% @ranking_questions.each do |question| %>
-                      <div class="qandaItem">
-                          <article>
-                              <div class="qandaItemStatus">
-                                  <p class="answer">解決済み</p>
-                                <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
-
-                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
-                              </div>
-                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
-                              <p>
-                                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
-                              </p>
-                              <div class="qandaItemFooter">
-                                <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                <p><%= question.answers.count %></p>
-                                <p><%= question.impressions_count %></p>
-                              </div>
-                          </article>
-                      </div>
-                  <% end %>
-                </div>
-
                 <section><h3 class="arrowTtl">回答受付中</h3></section>
 
                 <div class="qandaWrap">
@@ -116,6 +91,32 @@
                       </div>
                   <% end %>
                 </div>
+
+                <section><h3 class="arrowTtl">ランキング</h3></section>
+                <div class="qandaWrap">
+                  <% @ranking_questions.each do |question| %>
+                      <div class="qandaItem">
+                          <article>
+                              <div class="qandaItemStatus">
+                                  <p class="answer">解決済み</p>
+                                <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+
+                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
+                              </div>
+                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+                              <p>
+                                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
+                              </p>
+                              <div class="qandaItemFooter">
+                                <time><%= question.created_at.to_formatted_s(:without_second) %></time>
+                                <p><%= question.answers.count %></p>
+                                <p><%= question.impressions_count %></p>
+                              </div>
+                          </article>
+                      </div>
+                  <% end %>
+                </div>
+
                 <section><h3 class="arrowTtl">カテゴリー</h3></section>
                 <div class="qandaWrap qandaWrapCat">
                     <ul>

@@ -359,7 +359,7 @@ main
 .qandaWrap {
 	padding: 0 40px;
 	margin: 0 0 50px;
-	background: #fff;
+    background: #fff;
 }
 .qandaWrap:last-of-type {
 	margin: 0 0 60px;
@@ -413,11 +413,14 @@ main
     word-break:break-all;
     word-wrap: break-word;
 }
+
+.qandaItem .qa_page_answers{
+    padding-bottom: 50px;
+}
 .qandaItemFooter {
 	display: flex;
 	justify-content: flex-end;
     align-items: center;
-    // margin-right: 25px;
 }
 .qandaItemFooter > time {
 	font-size: 1.5rem;
@@ -667,7 +670,7 @@ BreakPoint
 	    padding: 0 5%;
 	    margin: 0 0 25px;
 	    background: #fff;
-		box-shadow: 0 1px 0 #d1dcdf;
+        box-shadow: 0 1px 0 #d1dcdf;
 	}
 	.qandaItem {
     	padding: 5% 0;

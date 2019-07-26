@@ -12,15 +12,15 @@
                  </div>
                 <time><%= answer.created_at.to_formatted_s(:without_second) %></time>
                </div>
-              <%= simple_format(answer.text) %>
               <% if answer.user_id == current_user.id %>
+               <%= simple_format(answer.text) %>
                 <div class=" ba_btn answer_delete_btn">
                     <ul>
                       <li><%= link_to "削除", "/questions/#{answer.question_id}/answers/#{answer.id}", method: :delete, class: 'answer_delete_btn', data: { confirm: '削除しますか？' } %></li>
                     </ul>
                 </div>
                 <% else %>
-
+                <%= simple_format(answer.text, class: "qa_page_answers") %>
               <% end %>
              </article>
            </div>

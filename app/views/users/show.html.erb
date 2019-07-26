@@ -56,7 +56,11 @@
                   <div class="box12">
                        <span class="box-title">自己紹介</span>
                          <p class="profile">
-                             <%= @user.bio %>
+                            <% if @user.bio.empty? %>
+                              <p class='no_profile'>未入力</p>
+                            <% else %>
+                              <%= @user.bio %>
+                            <% end %>
                          </p>
                      </div>
                   </div>

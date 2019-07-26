@@ -209,12 +209,16 @@ input.loginBtn,
 	float: left;
 }
 
-.profile {
+.profile,
+.no_profile{
 	font-size: 1.5rem;
     font-weight: 600;
     color: #343636;
     margin: 15px;
     padding: 0;
+}
+.no_profile{
+    text-align: center;
 }
 
 .box12 {
@@ -568,5 +572,5 @@ input.loginBtn,
       font-size: 0.5rem !important;
       padding: 0 15px !important;
     }
-    
+
   }

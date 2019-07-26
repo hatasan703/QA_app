@@ -98,7 +98,11 @@
                       <div class="qandaItem">
                           <article>
                               <div class="qandaItemStatus">
-                                  <p class="answer">解決済み</p>
+                              <% if question.done.present? %>
+                                <p class="answer">解決済み</p>
+                              <% else %>
+                                <p class="question">回答受付中</p>
+                              <% end %>
                                 <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
 
                                   <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>

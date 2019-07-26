@@ -993,11 +993,6 @@ BreakPoint
 		}
 
 
-		// 追加分
-
-		.qanda_flex {
-			justify-content: end !important;
-		}
 
 
 
@@ -1276,13 +1271,12 @@ BreakPoint
     color: #222;
     display: flex;
     align-items: center;
-    margin-right: 25px;
+    width: 91px;
 }
 
 .qanda_middle_items2 {
 	justify-content: flex-end;
 	align-items: center;
-	display: flex;
 }
 
 .qanda_flex {

@@ -84,7 +84,7 @@
                               </p>
                               <div class="qandaItemFooter">
                                   <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                  <p><%= question.answers.count %></p>
+                                  <p class='answer_count'><%= question.answers.count %></p>
                                   <p><%= question.impressions_count %></p>
                               </div>
                           </article>
@@ -109,7 +109,7 @@
                               </p>
                               <div class="qandaItemFooter">
                                 <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                <p><%= question.answers.count %></p>
+                                <p class='answer_count'><%= question.answers.count %></p>
                                 <p><%= question.impressions_count %></p>
                               </div>
                           </article>

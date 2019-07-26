@@ -416,12 +416,15 @@ main
 .qandaItemFooter {
 	display: flex;
 	justify-content: flex-end;
-	align-items: center;
+    align-items: center;
+    // margin-right: 25px;
 }
 .qandaItemFooter > time {
 	font-size: 1.5rem;
 	font-weight: 600;
-	color: #d1dbde;
+    color: #d1dbde;
+    margin-right: 20px;
+
 }
 .qandaItemFooter > p {
 	font-size: 1.5rem;
@@ -429,9 +432,17 @@ main
 	display: flex;
     align-items: center;
     margin-bottom: 0px;
+    width: 75px;
+    display: inline-block;
+    display: flex;
+}
+
+.qandaItemFooter > .answer_count {
+    width:60px;
+
 }
 .qandaItemFooter > p:first-of-type {
-	margin: 0 25px;
+	// margin: 0 25px;
 }
 .qandaItemFooter > p:first-of-type::before {
 	content: "";
@@ -1225,54 +1236,6 @@ BreakPoint
     display: block;
 }
 
-
-
-// 追加分
-
-.qandaItemFooter2 {
-	justify-content: flex-end;
-    align-items: center;
-}
-
-
-
-
-.qandaItemFooter2 > p:first-of-type::before {
-	content: "";
-    width: 22px;
-    height: 19px;
-    margin: 0 5px 0 0;
-    background: url(comment.png);
-    background-size: cover;
-    display: block;
-}
-
-
-
-.qandaItemFooter2 > p:last-of-type::before {
-	content: "";
-    width: 27px;
-    height: 18px;
-    margin: 0 5px 0 0;
-    background: url(view.png);
-    background-size: cover;
-    display: block;
-}
-
-
-.qandaItemFooter2 > time {
-	font-size: 1.5rem;
-    font-weight: 600;
-    color: #d1dbde;
-}
-
-.qandaItemFooter2 > p {
-	font-size: 1.5rem;
-    color: #222;
-    display: flex;
-    align-items: center;
-    width: 91px;
-}
 
 .qanda_middle_items2 {
 	justify-content: flex-end;

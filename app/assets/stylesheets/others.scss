@@ -151,7 +151,8 @@
 }
 
 .text_caution {
-	font-size: 1.4rem;
+	font-size: 1.5rem;
+	color: #333;
 }
 
 .help_last {
@@ -161,6 +162,18 @@
     display: block;
     word-break: break-all;
     word-wrap: break-word;
+}
+
+
+
+@media screen and (max-width: 640px) {
+	.help_last {
+		font-size:1.3rem !important;
+	}
+
+	.text_caution {
+		font-size: 1.3rem !important;
+	}
 }
 
 // .contact_form {

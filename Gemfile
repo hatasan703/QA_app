@@ -85,5 +85,5 @@ gem 'rack-user_agent'
 gem 'stripe'
 gem 'omniauth-stripe-connect'
 
-gem 'activeadmin'
 gem 'slack-notifier'
+gem 'rails_admin', '~> 2.0.0.beta'

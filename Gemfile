@@ -86,4 +86,3 @@ gem 'stripe'
 gem 'omniauth-stripe-connect'
 
 gem 'slack-notifier'
-gem 'rails_admin', '~> 2.0.0.beta'

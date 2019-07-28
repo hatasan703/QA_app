@@ -1,13 +1,13 @@
   <div class="container mypage">
-    <% if @user.id == current_user.id %>
-        <nav class="myprNav">
-            <ul class="MyNavWrap">
-                <li><%= link_to "プロフィール", "/users/#{@user.id}", class: 'show_profile' %></li>
-                <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
-                <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
-            </ul>
-        </nav>
-    <% end %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+                <nav class="myprNav">
+                        <ul class="MyNavWrap">
+                                <li><%= link_to "プロフィール", "/users/#{@user.id}", class: 'show_profile' %></li>
+                                <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
+                                <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
+                        </ul>
+                </nav>
+        <% end %>
         <section><h3 class="arrowTtl"><%= @user.user_name %>さんのプロフィール</h3></section>
         <div class="container">
             <div class="myprNav mypr">
@@ -45,7 +45,8 @@
                     <% end %>
                   </div>
                   </div>
-                  <% if @user.id == current_user.id %>
+
+                  <% if user_signed_in? && @user.id == current_user.id %>
                     <div class='pro_edit_btn'>
                         <%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %>
                     </div>

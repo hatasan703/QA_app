@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :redirect_top
+before_action :redirect_top, except: :show
 
   def my_question
     @user = User.find(params[:id])

@@ -8,6 +8,9 @@
                         </ul>
                 </nav>
         <% end %>
+        <% if  current_user.try(:admin?) %>
+            <p class="admin_btn"><%= link_to "管理画面", "/admin" %></p>
+        <% end %>
         <section><h3 class="arrowTtl"><%= @user.user_name %>さんのプロフィール</h3></section>
         <div class="container">
             <div class="myprNav mypr">

@@ -2,7 +2,6 @@ class Question < ApplicationRecord
   has_many :answers
   belongs_to :user
   belongs_to :category
-  has_one :pv
   has_many :notifications, dependent: :destroy
 
   validates :title, presence: true, length: { in: 1..25 }

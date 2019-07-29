@@ -1,4 +1,4 @@
-git## users table
+## users table
 
 |Column|Type|Options|
 |------|----|-------|

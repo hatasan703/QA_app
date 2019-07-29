@@ -245,7 +245,7 @@ main
 	height: 171px;
 }
 .howToWrap > .howToItem:nth-of-type(2) img {
-	width: 149px;
+	width: 249px;
 	height: 165px;
 }
 .howToWrap > .howToItem:nth-of-type(3) img {
@@ -305,6 +305,7 @@ main
 	width: 260px;
 	margin: 0 60px 0 0;
 	font-size: 2.4rem;
+	text-align: center;
 }
 
 .questionBtn:active {
@@ -337,7 +338,7 @@ main
 	border-radius: 50px;
 	font-weight: 700;
 	width: 260px;
-	margin: 0 60px 0 0;
+	margin: 0 auto;
 	font-size: 2.4rem;
 
 }

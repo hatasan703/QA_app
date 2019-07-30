@@ -34,8 +34,8 @@ yarn-debug.log*
 .yarn-integrity
 public/packs/**/*.json
 
-
 /config/certs/*
+!/config/certs/.keep
 
 /config/certs/*
 !/config/certs/.keep

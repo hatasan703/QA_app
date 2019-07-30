@@ -245,7 +245,7 @@ main
 	height: 171px;
 }
 .howToWrap > .howToItem:nth-of-type(2) img {
-	width: 149px;
+	width: 249px;
 	height: 165px;
 }
 .howToWrap > .howToItem:nth-of-type(3) img {
@@ -281,33 +281,75 @@ main
     margin-top: 30px;
 }
 .questionBtn {
+	// width: 260px;
+  //   padding: 23px 0;
+  //   margin: 0 60px 0 0;
+  //   font-size: 2.4rem;
+  //   font-weight: 700;
+  //   color: #fff;
+  //   font-family: "Noto Sans JP";
+  //   text-align: center;
+  //   background: #4f7ce0;
+  //   border-radius: 50px;
+  //   display: inline-block;
+	// 	box-shadow: 0 0 10px #ddd;
+	// 	text-decoration: none;
+	display: inline-block;
+  padding: 23px 0;
+  text-decoration: none;
+  background: #4f7ce0;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 6.5px rgba(74, 79, 89, 0.5);
+	border-radius: 50px;
+	font-weight: 700;
 	width: 260px;
-    padding: 23px 0;
-    margin: 0 60px 0 0;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #fff;
-    font-family: "Noto Sans JP";
-    text-align: center;
-    background: #4f7ce0;
-    border-radius: 50px;
-    display: inline-block;
-    box-shadow: 0 0 10px #ddd;
+	margin: 0 60px 0 0;
+	font-size: 2.4rem;
+	text-align: center;
 }
+
+.questionBtn:active {
+	-webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+
 .answerBtn {
+	// width: 260px;
+  //   padding: 23px 0;
+  //   margin: 0 auto;
+  //   font-size: 2.4rem;
+  //   font-weight: 700;
+  //   color: #fff;
+  //   font-family: "Noto Sans JP";
+  //   text-align: center;
+  //   background: #ed2751;
+  //   border-radius: 50px;
+  //   display: inline-block;
+	//   box-shadow: 0 0 10px #ddd;
+	display: inline-block;
+  padding: 23px 0;
+  text-decoration: none;
+  background: #ed2751;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 6.5px rgba(156, 137, 141, 0.5);
+	border-radius: 50px;
+	font-weight: 700;
 	width: 260px;
-    padding: 23px 0;
-    margin: 0 auto;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #fff;
-    font-family: "Noto Sans JP";
-    text-align: center;
-    background: #ed2751;
-    border-radius: 50px;
-    display: inline-block;
-    box-shadow: 0 0 10px #ddd;
+	margin: 0 auto;
+	font-size: 2.4rem;
+
 }
+
+.answerBtn:active {
+	-webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
 
 .qandaTtl {
 	font-size: 3.4rem;

@@ -67,7 +67,9 @@
 
                <div class="edit_btn_pr">
 
-               <%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn2' %>
+               <% if user_signed_in? && @user.id == current_user.id %>
+                    <%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn2' %>
+                  <% end %>
 
                </div>
 

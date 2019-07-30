@@ -3,7 +3,7 @@
     <div class="notice_all">
         <h1 class="all_info">お知らせ一覧</h1>
         <div class="notice_box">
-         <% if @all_notify.exists? %>
+      <% if @all_notify.exists? %>
         <% @all_notify.each do |notify| %>
           <% if notify.action == "answer" %>
             <div class="notice_mail">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>
-          <% else %>
+          <% elsif notify.action == "best_answer" %>
             <div class="notice_mail">
                 <div class="notice_info">
                     <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
@@ -21,9 +21,19 @@
                 </div>
                 <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>
-            <% end %>
-            <% end %>
+          <% elsif notify.action == "question_dead" %>
+            <% if Question.find(notify.question_id).done.nil? && Question.find(notify.question_id).answers.present? && (Time.now.to_i - Question.find(notify.question_id).answers.first.created_at.to_i) >= 5 %>
+							<div class="notice_mail">
+									<div class="notice_info">
+											<%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
+											<%= link_to "ベストアンサーに選んでください！", question_path(notify_question.id) %>
+									</div>
+									<div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
+							</div>
+						 <% end %>
+					<% end %>
         <% end %>
+      <% end %>
         </div>
 
     </div>

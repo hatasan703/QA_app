@@ -25,27 +25,29 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
         if params[:back]
           render :new
         elsif @question.save
-                         # stripe決済
-       # Amount in cents
-       @amount = @question.point #引き落とす金額
-       ###この操作で、Stripe から帰ってきた情報を取得します
-        customer = Stripe::Customer.create(
-          :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
-          :source  => params[:stripeToken] #めちゃめちゃな文字列です
-        )
+					@question.question_dead_notification_by(current_user)
 
-        ###この操作で、決済をします
-        charge = Stripe::Charge.create(
-          :customer    => customer.id,
-          :amount      => @amount,
-          :description => 'Rails Stripe customer',
-          :currency    => 'jpy'
-        )
+					# stripe決済
+					# Amount in cents
+					@amount = @question.point #引き落とす金額
+					###この操作で、Stripe から帰ってきた情報を取得します
+						customer = Stripe::Customer.create(
+							:email => params[:stripeEmail], #emailは暗号化されずに受け取れます
+							:source  => params[:stripeToken] #めちゃめちゃな文字列です
+						)
 
-            redirect_to controller: 'questions', action: 'show', id: @question.id
-        else
-            render :new
-        end
+						###この操作で、決済をします
+						charge = Stripe::Charge.create(
+							:customer    => customer.id,
+							:amount      => @amount,
+							:description => 'Rails Stripe customer',
+							:currency    => 'jpy'
+						)
+
+								redirect_to controller: 'questions', action: 'show', id: @question.id
+						else
+								render :new
+						end
 
 
 

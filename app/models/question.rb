@@ -27,13 +27,4 @@ class Question < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  def question_dead_notification_by(current_user)
-    notification = current_user.active_notifications.new(
-    question_id:self.id,
-    visited_id:self.user.id,
-    action:"question_dead"
-    )
-    notification.save if notification.valid?
-  end
-
 end

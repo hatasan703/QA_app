@@ -25,7 +25,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
         if params[:back]
           render :new
         elsif @question.save
-					@question.question_dead_notification_by(current_user)
 
 					# stripe決済
 					# Amount in cents

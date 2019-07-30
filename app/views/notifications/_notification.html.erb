@@ -16,11 +16,9 @@
                         <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.answer_id).question_id) %>
                     </li>
                 <% elsif notify.action == "question_dead" %>
-                    <% if Question.find(notify.question_id).done.nil? && Question.find(notify.question_id).answers.present? && (Time.now.to_i - Question.find(notify.question_id).answers.first.created_at.to_i) >= 5 %>
                         <li class='item2'>
-                            <%= link_to "ベストアンサーに選んでください！", question_path(notify_question.id) %>
+                            <%= link_to "ベストアンサーに選んでいない質問があります！", question_path(notify.question_id) %>
                         </li>
-                    <% end %>
                 <% end %>
             <% end %>
         <% else %>

@@ -546,6 +546,116 @@ input.loginBtn,
     }
   }
 
+// プロフィールページレイアウト変更
+
+  .pr_show_page {
+    background-color: #FFF;
+    margin-bottom: 40px;
+  }
+
+  .pr_section1 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .pr_img {
+    background-image: url("logo_notice.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2, );
+    margin: 0 0 0 auto;
+  }
+
+  .pr_nickname {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 5px;
+    // color: #595753;
+  }
+
+  .pr_age {
+    font-size: 1.5rem;
+    padding-top: 30px;
+  }
+
+  .age_flex {
+    display: flex;
+  }
+
+  .pr_sex {
+    font-size: 1.5rem;
+    padding-top: 20px;
+  }
+
+  .sex_flex {
+    display: flex;
+  }
+
+  .pr_section2 {
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  .role_flex {
+    display: flex;
+  }
+
+  .pr_role {
+    font-size: 1.5rem;
+    padding-top: 20px;
+  }
+
+  .pr_self_line {
+    width: 300px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+  
+  .pr_self {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .self_pr {
+    // color: #595753;
+  }
+
+  .self_text {
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .edit_btn_pr {
+    width: 600px;
+    margin: 0 auto;
+    text-align: right;
+    padding-bottom: 30px;
+    padding-right: 20px;
+  }
+
+  .user_edit_btn2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FFF;
+    background-color: #60cef0;
+    padding: 10px;
+    border-radius: 40px;
+  }
+
+  .user_edit_btn2:hover {
+    opacity: 0.7;
+  }
+
 
   @media screen and (max-width: 640px) {
     .edit_pro {
@@ -571,6 +681,23 @@ input.loginBtn,
     .MyNavWrap > li > a {
       font-size: 0.5rem !important;
       padding: 0 15px !important;
+    }
+
+    .edit_btn_pr {
+      width: 340px !important;
+      padding-right: 30px !important;
+    }
+
+    .pr_section2 {
+      width: 360px !important;
+    }
+
+    .pr_section1 {
+      width: 360px !important;
+    }
+
+    .pr_img {
+      margin: 0 !important;
     }
 
   }

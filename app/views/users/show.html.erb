@@ -1,4 +1,4 @@
-  <div class="container mypage">
+<div class="container mypage">
         <% if user_signed_in? && @user.id == current_user.id %>
                 <nav class="myprNav">
                         <ul class="MyNavWrap">
@@ -12,62 +12,87 @@
             <p class="admin_btn"><%= link_to "管理画面", "/admin" %></p>
         <% end %>
         <section><h3 class="arrowTtl"><%= @user.user_name %>さんのプロフィール</h3></section>
+        
+        
+        
         <div class="container">
-            <div class="myprNav mypr">
-                  <div class="edit_pro">
-                      <div class='user_info'>ユーザー名　　:</div>
-                      <div class="centera"><%= @user.user_name %></div>
-                  </div>
-                  <div class="edit_pro">
-                      <div class='user_info'>年齢　　　　　:</div>
-                      <div class="centera">
-                        <% if @user.age.nil? %>
-                          <p>未入力</p>
-                        <% else %>
-                          <%= @user.age %>代
-                        <% end %>
+           <div class="pr_show_page">
+               <div class="pr_show_wrap">
+                   <div class="pr_section1">
+                      
+
+                      <div class="pr_info">
+                            <div class="pr_nickname"><%= @user.user_name %>さん</div>
+
+                            <div class="pr_age">
+                                 <div class="age_flex">
+                                 <p>年齢：</p>
+                                    <% if @user.age.nil? %>
+                                      <p>未入力</p>
+                                    <% else %>
+                                      <%= @user.age %>代
+                                    <% end %>
+                                  </div>
+                            </div>
+                            <div class="pr_sex">
+                                 <div class="sex_flex">
+                                 <p>性別：</p>
+                                    <% if @user_sex == true %>
+                                          <p>女性</p>
+                                    <% elsif @user_sex.nil? %>
+                                      <p>未入力</p>
+                                      <% else%>
+                                      <p>男性</p>
+                                    <% end %>
+                                  </div>
+                            </div>
+                            <div class="pr_role">
+                                 <div class="role_flex">
+                                 <p>職業：</p>
+                                    <% if @user.role.nil? or @user.role.empty? %>
+                                 <p>未入力</p>
+                                    <% else %>
+                                        <%= @user.role %>
+                                    <% end %>
+                                  </div>
+                            </div>
+
+                            
+                            
                       </div>
-                  </div>
-                  <div class="edit_pro">
-                      <div class='user_info'>性別　　　　　:</div>
-                      <div class="centera"><% if @user_sex == true %>
-                                    <p>女性</p>
-                              <% elsif @user_sex.nil? %>
-                                <p>未入力</p>
-                                <% else%>
-                                <p>男性</p>
-                              <% end %></div>
-                  </div>
-                  <div class="edit_pro">
-                  <div class='user_info'>職業　　　　　:</div>
-                  <div class="centera">
-                    <% if @user.role.nil? or @user.role.empty? %>
-                        <p>未入力</p>
-                    <% else %>
-                        <%= @user.role %>
-                    <% end %>
-                  </div>
-                  </div>
+                      <div class="pr_img"></div>
+                      
+                   </div>
+               </div>
 
-                  <% if user_signed_in? && @user.id == current_user.id %>
-                    <div class='pro_edit_btn'>
-                        <%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn' %>
-                    </div>
-                  <% end %>
+               <div class="edit_btn_pr">
+
+               <%= link_to "編集する", "/users/#{current_user.id}/edit", class: 'user_edit_btn2' %>
+
+               </div>
 
 
-                  <div class="box1212">
-                  <div class="box12">
-                       <span class="box-title">自己紹介</span>
-                         <p class="profile">
+               
+
+               <div class="pr_section2">
+                 <div class="pr_role">
+                    <div class="pr_self">
+                      <p class="self_pr">自己紹介</p>
+                            <div class="self_text">
                             <% if @user.bio.nil? or @user.bio.empty? %>
                               <p class='no_profile'>未入力</p>
                             <% else %>
-                              <%= @user.bio %>
+                              <%= simple_format(@user.bio) %>
                             <% end %>
-                         </p>
-                     </div>
-                  </div>
-            </div>
-        </div>
+                            </div>
+                            
+                    </div>
+                 </div>
+               </div>
+
+
+
+           </div>
+　      </div>
 </div>
+

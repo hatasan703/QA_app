@@ -48,6 +48,7 @@
 
 .notice_logo {
     border-radius: 30px;
+    width: 35px;
 }
 
 .date {
@@ -76,13 +77,23 @@
 	display: flex;
   align-items: center;
   z-index: 10;
-  width: 140px;
 }
 
+.item2_font_size {
+    font-size: 12px !important;
+}
 
 
 @media screen and (max-width: 640px) {
     .notice_info a {
         font-size: 1rem !important;
+    }
+
+    .all_info {
+        font-size: 20px !important;
+    }
+
+    .notice_logo {
+        width: 30px !important;
     }
 }

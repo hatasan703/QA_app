@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: cc98e59652f22c723fac0308199cff5a42ad49ce
+  revision: d393cc4f4c2e547fbfe0c131be74f562a3da4c49
   specs:
     webpacker (4.0.7)
       activesupport (>= 4.2)
@@ -340,7 +340,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stripe (4.21.3)
+    stripe (4.22.0)
       faraday (~> 0.13)
       net-http-persistent (~> 3.0)
     temple (0.8.1)

@@ -276,7 +276,7 @@ main
     box-shadow: 0 0 10px #ddd;
 		margin-top: 30px;
 		border-bottom: solid 6.5px rgba(74, 79, 89, 0.5);
-	
+
 }
 
 .howToUseBtn:active {
@@ -453,7 +453,10 @@ main
 	font-weight: 600;
 	color: #333;
 	padding: 20px 0 10px;
-	display: block;
+    display: block;
+    a{
+        color: #333;
+    }
 }
 .qandaItem p {
 	font-size: 1.5rem;
@@ -832,7 +835,7 @@ BreakPoint
         bottom: 10px !important;
 				opacity: 1;
 				z-index: 20;
-				padding-top: 26px !important;	
+				padding-top: 26px !important;
     }
     .new_question_btn2 {
         color: #fff;

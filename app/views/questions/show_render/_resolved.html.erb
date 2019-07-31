@@ -13,7 +13,7 @@
               </div>
               <p>
                 <% if @best_answer %>
-                  <%= simple_format(@best_answer.text) %>
+                  <%= text_url_to_link(h(simple_format(@best_answer.text))).html_safe %>
                 <% end %>
               </p>
           </article>
@@ -36,7 +36,7 @@
                 <time><%= answer.created_at.to_formatted_s(:without_second) %></time>
                </div>
               <p>
-                <%= simple_format(answer.text) %>
+                <%= text_url_to_link(h(simple_format(answer.text))).html_safe %>
               </p>
              </article>
            </div>

@@ -13,8 +13,7 @@
                  </div>
                 <time><%= answer.created_at.to_formatted_s(:without_second) %></time>
                </div>
-              <%= simple_format(answer.text) %>
-
+              <%= text_url_to_link(h(simple_format(answer.text))).html_safe %>
                 <div class="qandaWrapCat ba_btn">
                   <ul>
                     <li><%= link_to "ベストアンサーに選ぶ", "#{@question.id}/answers/#{answer.id}/ba_confirm", class: 'link_ba_btn' %></li>

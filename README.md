@@ -11,11 +11,15 @@
 |age|integer|
 |image|text|
 |provider|string|
+|admin|boolean|
 
 ### Association
-- has_many :questions
-- has_many :answers
-
+- has_many :questions, dependent: :destroy
+- has_many :answers, dependent: :destroy
+- has_many :impressions, dependent: :destroy
+-   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+- has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+- 
 
 ## questions table
 
@@ -68,16 +72,14 @@
 |------|----|-------|
 |visiter_id|integer||
 |visited_id|integer||
-|answered_question_id|integer||
-|best_answer_id|integer||
+|question_id|integer||
+|answer_id|integer||
 |action|string||
 |check|boolean|default: false|
 
 
-
-
-
 ### Association
-- belongs_to :micropost, optional: true
+- belongs_to :question, optional: true
+- belongs_to :answer, optional: true
 
 

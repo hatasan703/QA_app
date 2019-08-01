@@ -25,27 +25,28 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
         if params[:back]
           render :new
         elsif @question.save
-                         # stripe決済
-       # Amount in cents
-       @amount = @question.point #引き落とす金額
-       ###この操作で、Stripe から帰ってきた情報を取得します
-        customer = Stripe::Customer.create(
-          :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
-          :source  => params[:stripeToken] #めちゃめちゃな文字列です
-        )
 
-        ###この操作で、決済をします
-        charge = Stripe::Charge.create(
-          :customer    => customer.id,
-          :amount      => @amount,
-          :description => 'Rails Stripe customer',
-          :currency    => 'jpy'
-        )
+					# stripe決済
+					# Amount in cents
+					@amount = @question.point #引き落とす金額
+					###この操作で、Stripe から帰ってきた情報を取得します
+						customer = Stripe::Customer.create(
+							:email => params[:stripeEmail], #emailは暗号化されずに受け取れます
+							:source  => params[:stripeToken] #めちゃめちゃな文字列です
+						)
 
-            redirect_to controller: 'questions', action: 'show', id: @question.id
-        else
-            render :new
-        end
+						###この操作で、決済をします
+						charge = Stripe::Charge.create(
+							:customer    => customer.id,
+							:amount      => @amount,
+							:description => 'Rails Stripe customer',
+							:currency    => 'jpy'
+						)
+
+								redirect_to controller: 'questions', action: 'show', id: @question.id
+						else
+								render :new
+						end
 
 
 
@@ -65,7 +66,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
   def show
     @question = Question.find(params[:id])
     impressionist(@question, nil, :unique => [:session_hash])
-
     @answer = Answer.new
     @all_answers = @question.answers.includes(:user)
     @answers = @all_answers.where(best_answer: nil).order("created_at DESC")

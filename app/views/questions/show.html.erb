@@ -27,7 +27,7 @@
                 	</div>
               </div>
               <p>
-                  <%= simple_format(@question.text) %>
+                <%= text_url_to_link(h(simple_format(@question.text))).html_safe %>
               </p>
           </article>
       </div>

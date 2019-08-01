@@ -48,7 +48,7 @@
 
 .notice_logo {
     border-radius: 30px;
-    width: 35px;
+    width: 40px;
 }
 
 .date {
@@ -77,10 +77,15 @@
 	display: flex;
   align-items: center;
   z-index: 10;
+  width: 215px;
+}
+
+.notify_btn {
+    color: #fff;
 }
 
 .item2_font_size {
-    font-size: 12px !important;
+    font-size: 15px !important;
 }
 
 
@@ -91,9 +96,5 @@
 
     .all_info {
         font-size: 20px !important;
-    }
-
-    .notice_logo {
-        width: 30px !important;
     }
 }

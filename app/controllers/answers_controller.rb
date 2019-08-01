@@ -18,7 +18,7 @@ before_action :redirect_top
     respond_to do |format|
         if params[:back]
           @all_answers = @question.answers.includes(:user)
-          @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
+          @answers = @all_answers.where(best_answer: nil).order("updated_at DESC")
           format.html { render template: "questions/show" }
         elsif @answer.save
             @question.answered_create_notification_by(current_user)

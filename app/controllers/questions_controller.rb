@@ -26,27 +26,27 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
           render :new
         elsif @question.save
 
-					# stripe決済
-					# Amount in cents
-					@amount = @question.point #引き落とす金額
-					###この操作で、Stripe から帰ってきた情報を取得します
-						customer = Stripe::Customer.create(
-							:email => params[:stripeEmail], #emailは暗号化されずに受け取れます
-							:source  => params[:stripeToken] #めちゃめちゃな文字列です
-						)
+        # stripe決済
+        # Amount in cents
+        @amount = @question.point #引き落とす金額
+        ###この操作で、Stripe から帰ってきた情報を取得します
+            customer = Stripe::Customer.create(
+                :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
+                :source  => params[:stripeToken] #めちゃめちゃな文字列です
+            )
 
-						###この操作で、決済をします
-						charge = Stripe::Charge.create(
-							:customer    => customer.id,
-							:amount      => @amount,
-							:description => 'Rails Stripe customer',
-							:currency    => 'jpy'
-						)
+            ###この操作で、決済をします
+            charge = Stripe::Charge.create(
+                :customer    => customer.id,
+                :amount      => @amount,
+                :description => 'Rails Stripe customer',
+                :currency    => 'jpy'
+            )
 
-								redirect_to controller: 'questions', action: 'show', id: @question.id
-						else
-								render :new
-						end
+                    redirect_to controller: 'questions', action: 'show', id: @question.id
+            else
+                    render :new
+            end
 
 
 
@@ -68,7 +68,7 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
     impressionist(@question, nil, :unique => [:session_hash])
     @answer = Answer.new
     @all_answers = @question.answers.includes(:user)
-    @answers = @all_answers.where(best_answer: nil).order("created_at DESC")
+    @answers = @all_answers.where(best_answer: nil).order("updated_at DESC")
     @best_answer = @all_answers.find_by(best_answer: true)
 
     @is_questioner = false
@@ -79,7 +79,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
     end
     @resolved = @question.done.present?
   end
-# Question.includes(:user).page(params[:page]).per(5).order("created_at DESC")
 
   # ランキング
   def ranking
@@ -94,7 +93,7 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
   # 回答受付中
   def open
-    @questions = Question.where(done: nil).page(params[:page]).per(10).order('created_at DESC')
+    @questions = Question.where(done: nil).page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def open_pv

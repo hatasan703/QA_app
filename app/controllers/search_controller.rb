@@ -6,7 +6,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: nil).page(params[:page]).per(10).order('created_at DESC')
+    @questions = @search_questions.where(done: nil).page(params[:page]).per(10).order('updated_at DESC')
     @open_question_count = @search_questions.where(done: nil).count
   end
 
@@ -31,7 +31,7 @@ class SearchController < ApplicationController
     set_prev_search_params
     @search = Question.ransack(params[:q])
     @search_questions = @search.result.page(params[:page])
-    @questions = @search_questions.where(done: true).page(params[:page]).per(10).order('created_at DESC')
+    @questions = @search_questions.where(done: true).page(params[:page]).per(10).order('updated_at DESC')
     @question_count = @search_questions.where(done: true).count
   end
 

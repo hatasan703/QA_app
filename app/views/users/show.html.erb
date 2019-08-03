@@ -85,7 +85,7 @@
                             <% if @user.bio.nil? or @user.bio.empty? %>
                               <p class='no_profile'>未入力</p>
                             <% else %>
-                              <%= simple_format(@user.bio) %>
+                              <%= text_url_to_link(h(simple_format(@user.bio))).html_safe %>
                             <% end %>
                             </div>
 

@@ -7,10 +7,11 @@
                                 <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
                         </ul>
                 </nav>
+                <% if  current_user.try(:admin?) %>
+                    <p class="admin_btn"><%= link_to "管理画面", "/admin" %></p>
+                <% end %>
         <% end %>
-        <% if  current_user.try(:admin?) %>
-            <p class="admin_btn"><%= link_to "管理画面", "/admin" %></p>
-        <% end %>
+
         <section><h3 class="arrowTtl"><%= @user.user_name %>さんのプロフィール</h3></section>
 
 

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :impressions, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  validates :user_name, presence: true, length: { maximum: 20 }, uniqueness: { case_sensitive: false }, format: { with: /\A[a-z0-9-_]+\z/i, message: "英数字と-_以外の文字は使用できません" }
+  validates :user_name, presence: true, length: { maximum: 20 }, uniqueness: { case_sensitive: false }, format: { with: /\A[a-z0-9\-_]+\z/i, message: "英数字と-_以外の文字は使用できません" }
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "正しいメールアドレスを入力してください" }
 
   def self.find_for_oauth(auth)

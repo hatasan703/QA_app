@@ -24,8 +24,7 @@
 }
 
 .notice_box {
-    width: 50%;
-    margin: 0 auto;
+    margin: 0 20px;
     padding-bottom: 40px;
 }
 
@@ -53,7 +52,7 @@
 
 .date {
     text-align: right;
-    font-size: 1rem;
+    font-size: 2em;
 }
 
 .dropLabel2,
@@ -91,7 +90,8 @@
 
 @media screen and (max-width: 640px) {
     .notice_info a {
-        font-size: 1rem !important;
+        font-size: 2.5em !important;
+        line-height: normal;
     }
 
     .all_info {

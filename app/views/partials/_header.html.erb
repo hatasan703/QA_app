@@ -1,4 +1,5 @@
 <header class="header">
+    <div class="notice">運営からの通知がありました</div>
       <div class="headerWrap">
 
             <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
@@ -22,11 +23,7 @@
              />
         </div>
 
-
             <%= render partial: "notifications/notification",locals: { notifications: @notifications } %>
-
-
-
 
         <%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: 'pointLinkBtn' %>
 
@@ -37,7 +34,6 @@
         </div>
 
       </div>
-
     </div>
 
 <%# sp %>

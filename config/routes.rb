@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
   resources :questions, only: [:new, :create, :destroy]
+  resources :article, only: [:index]
   resources :users, only: [:edit, :update, :show]
   resources :charges
     get 'my_question/:id' => 'users#my_question'

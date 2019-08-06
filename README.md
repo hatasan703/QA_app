@@ -19,7 +19,7 @@
 - has_many :impressions, dependent: :destroy
 -   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
 - has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-- 
+- has_many :articles, dependent: :destroy
 
 ## questions table
 
@@ -83,3 +83,16 @@
 - belongs_to :answer, optional: true
 
 
+
+## articles table
+
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|text|text|null: false|
+|check|boolean|default: false|
+|user_id|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :user

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'top#index'
   resources :questions, only: [:new, :create, :destroy]
-  resources :articles, only: [:index]
+  resources :articles, only: [:index, :show, :new, :create]
   resources :users, only: [:edit, :update, :show]
   resources :charges
     get 'my_question/:id' => 'users#my_question'
@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   end
 
   post 'questions/confirm' => 'questions#confirm'
+  post 'articles/confirm' => 'articles#confirm'
+
 
   # QA詳細
   resources :questions, only: :show do

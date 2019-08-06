@@ -1,0 +1,14 @@
+<div class=container>
+    <div class="qandaWrap">
+      <div class="qandaItem">
+          <article>
+              <section><h3><div class="question_title"><%= @article.title %></div></h3></section>
+              <div class="qanda_middle_items2">
+              </div>
+              <p>
+                <%= text_url_to_link(h(simple_format(@article.text))).html_safe %>
+              </p>
+          </article>
+      </div>
+     </div>
+</div>

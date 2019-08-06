@@ -22,10 +22,8 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
     @question = Question.new(question_params)
     @categories = Category.all
-        if params[:back]
-          render :new
-        elsif @question.save
-
+        if params[:stripeToken]
+            binding.pry
         # stripe決済
         # Amount in cents
         @amount = @question.point #引き落とす金額
@@ -42,11 +40,11 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
                 :description => 'Rails Stripe customer',
                 :currency    => 'jpy'
             )
-
-                    redirect_to controller: 'questions', action: 'show', id: @question.id
-            else
-                    render :new
-            end
+            @question.save
+            redirect_to controller: 'questions', action: 'show', id: @question.id
+        else
+            redirect_to controller: 'questions', action: 'new'
+        end
 
   end
 

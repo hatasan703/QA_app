@@ -22,8 +22,7 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
     @question = Question.new(question_params)
     @categories = Category.all
-        if params[:stripeToken]
-            binding.pry
+        if params[:stripeToken] && params[:stripeEmail]
         # stripe決済
         # Amount in cents
         @amount = @question.point #引き落とす金額

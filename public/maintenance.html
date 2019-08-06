@@ -4,15 +4,78 @@
         <meta charset="UTF-8">
         <style type="text/css">
         <!--
-        h1 { color: red; }
+        .ment_main {
+             color: red;
+             text-align: center;
+             font-size: 40px;
+         }
+
+         .ment_subtext {
+           text-align: center;
+         }
+
+         .ment_info {
+           text-align: center;
+           font-size: 20px;
+           padding-top: 100px;
+           padding-bottom: 40px;
+         }
+
+         .ment_wrap {
+           width: 100%;
+           background-color: #60cef0;
+           height: 50px;
+         }
+
+         body {
+          background: #f5f9fa;
+	        -webkit-font-smoothing: antialiased;
+	        -moz-osx-font-smoothing: grayscale;
+	        -webkit-tap-highlight-color: transparent;
+          tap-highlight-color: transparent;
+          margin: 0;
+         }
+
+         body,#ment_wrapper {
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+         }
+
+         footer {
+          width: 100%;
+           background-color: #2a2b32;
+           height: 200px;
+           margin-top: auto;
+         }
+
+         .ment_logo {
+           padding-bottom: 20px;
+           padding-left: 50px;
+           padding-top: 30px;
+         }
+         
         -->
         </style>
     </head>
     <body>
-    <h1>現在メンテナンス中です。</h1>
-    <p>{{ reason }}</p>
+      <div id="ment_wrapper">
+      <header>
+        <div class="ment_logo">
+        <img src="f_logo.1.png" width="170px" height="45px">
+        </div>
+        <div class="ment_wrap">
+        </div>
+      </header>
+      <div class="ment_info">ご利用頂き有難う御座います。</div>
+        
+    <div class="ment_main">現在メンテナンス中です。</div>
+    <div class="ment_subtext">恐れ入りますが復旧まで今暫くお待ち下さい。</div>
+
+
+    <footer>
+    </footer>
+    </div>
+    
     </body>
 </html>
-
-
-

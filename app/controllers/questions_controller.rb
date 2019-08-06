@@ -48,10 +48,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
                     render :new
             end
 
-
-
-
-
   end
 
 #   def destroy

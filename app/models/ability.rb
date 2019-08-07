@@ -1,10 +1,11 @@
 class Ability
-  include CanCan::Ability
+    include CanCan::Ability
 
-  def initialize(user)
-    if user.try(:admin?)
-        can :access, :rails_admin
-        can :manage, :all
+    def initialize(user)
+        if user && user.admin?
+          can :access, :rails_admin
+          can :manage, :all
+          can :create, Article
+        end
       end
   end
-end

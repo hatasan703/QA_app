@@ -30,13 +30,13 @@
   </head>
   <body>
   <div class="wrap">
-    <div class="article_notice">
-      <% @unchecked_articles.each do |article| %>
-      <%= link_to "#{article.title}", article_path(article) %>
-      <% end %>
-    </div>
-<%= render file: "partials/_header.html.erb" %>
+    <%= render file: "partials/_header.html.erb" %>
 
+    <div class="article_notice">
+        <% @unchecked_articles.each do |article| %>
+        <%= link_to "#{article.title}", article_path(article) %>
+        <% end %>
+    </div>
 
     <%= yield %>
 

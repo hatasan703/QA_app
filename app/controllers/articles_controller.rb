@@ -1,12 +1,11 @@
 class ArticlesController < ApplicationController
 
-    def index
-    end
+    load_and_authorize_resource
 
     def new
-      @article = Article.new
-      @title = params[:title]
-      @text = params[:text]
+        @article = Article.new
+        @title = params[:title]
+        @text = params[:text]
     end
 
     def create

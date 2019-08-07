@@ -17,9 +17,10 @@ class ApplicationController < ActionController::Base
 
   def unchecked_notifications
     if user_signed_in?
-     @notifications=current_user.passive_notifications.where(check: false).order("created_at DESC").limit(3)
-     @unchecked_articles = Article.where(check: false).order("created_at DESC")
+     @notifications = current_user.passive_notifications.where(check: false).order("created_at DESC").limit(3)
     end
+     @unchecked_articles = Article.where(check: false).order("created_at DESC")
+
   end
 
 end

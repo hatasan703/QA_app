@@ -29,6 +29,7 @@
 .top_info_background {
   background-color: #f5f5f5;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .top_info {
@@ -46,6 +47,7 @@
 }
 
 .top_info_some {
+  display: flex;
 
 }
 
@@ -55,7 +57,6 @@
   padding-left: 100px;
   padding-right: 10px;
   padding-bottom: 10px;
-  display: inline-block;
   p {
     color: #FFF;
     background-color: #60cef0;
@@ -64,14 +65,18 @@
     font-weight: 600;
     padding-top: 5px;
     padding-bottom: 5px;
+    width: inherit;
   }
 }
 
 .top_info_text2 {
-    padding-top: 5px;
-    padding-bottom: 5px;
     font-size: 12px;
     color: #555;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.info_title {
+  
 }
 
 @media screen and (max-width: 640px) {

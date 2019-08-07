@@ -110,5 +110,20 @@
 							<%= f.submit ("") , class: 'search-btn', value: '' %>
 						<% end %>
         </div>
-
+        <%# お知らせ %>
+        <% if  @top_index %>
+            <div class="top_info_background">
+            <div class="top_info">
+                <p class="top_info_item1">お知らせ</p>
+            </div>
+            <% @unchecked_articles.each do |article| %>
+                    <div class="top_info_some">
+                        <div class="top_information">
+                                <p>お知らせ</p>
+                        </div>
+                        <%= link_to "#{article.title}", article_path(article), class:"top_info_text2" %>
+                    </div>
+            <% end %>
+            </div>
+        <% end %>
     </header>

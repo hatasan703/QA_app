@@ -1,0 +1,29 @@
+
+
+<%= form_for @article do |f| %>
+	<%= f.hidden_field :title %>
+	<%= f.hidden_field :text %>
+
+	<div class=container>
+		<h2 class="qandaTtl">
+			<span class="shitumon">確認画面</span>
+		</h2>
+			<div class="qandaWrap">
+				<div class="qandaItem">
+					<article>
+						<section><h3><div class="question_title"><%= @article.title %></div></h3></section>
+                        <%= text_url_to_link(h(simple_format(@article.text))).html_safe %>
+					</article>
+				</div>
+			</div>
+	</div>
+
+	<div class="btn-wrapper">
+		<div class="qa_back_btn">
+			<%= link_to "戻る", controller: "articles", action: "new", title: @article.title, text: @article.text %>
+		</div>
+
+        <%= f.submit "送信する", class: 'qa_submit_btn' %>
+
+	</div>
+<% end %>

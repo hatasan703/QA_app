@@ -32,11 +32,28 @@
   <div class="wrap">
     <%= render file: "partials/_header.html.erb" %>
 
-    <div class="article_notice">
-        <% @unchecked_articles.each do |article| %>
-        <%= link_to "#{article.title}", article_path(article) %>
-        <% end %>
+
+    <%# お知らせ機能 %>
+
+<div class="container top_info_background">
+  <div class="top_info">
+    <p class="top_info_item1">お知らせを表示する</p>
+  </div>
+      <% @unchecked_articles.each do |article| %>
+  <div class="top_info_some">
+    <div class="top_information">
+      <p>お知らせ</p>
     </div>
+        <%= link_to "#{article.title}", article_path(article), class:"top_info_text2" %>
+        
+  </div>
+  <% end %>
+</div>
+
+
+
+
+<%# お知らせ機能終了 %>
 
     <%= yield %>
 

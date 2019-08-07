@@ -1,3 +1,35 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .article_delete_btn{
+//     colo
+// }
+
+.answer_delete_btn a{
+    display: inline-block;
+    width: 200px;
+    border: 1px solid #d1dbde;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #f6f7f9, #e7e9ec);
+    // box-shadow: 0 1px 0 #fcfcfd inset;
+    text-align: center;
+    color: #333;
+    line-height: 1;
+    padding: 0.7em;
+    font-size: 1.5rem;
+    font-weight: 300;
+    :hover{
+      opacity: 7;
+    }
+  }
+
+  .answer_delete_btn {
+    font-weight: 600;
+    .article_delete{
+      background: #fa6c8b;
+    }
+    .article_edit{
+      background: #8ea3ff;
+    }
+  }

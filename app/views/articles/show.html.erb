@@ -10,5 +10,15 @@
               </p>
           </article>
       </div>
+      <% if current_user.try(:admin?) %>
+        <div class=" ba_btn answer_delete_btn">
+            <%= link_to "削除", article_path(@article), method: :delete, class: 'article_delete', data: { confirm: '削除しますか？' } %>
+            <%= link_to "編集する", edit_article_path(@article), class: 'article_edit' %>
+        </div>
+
+
+    <% end %>
+
      </div>
+
 </div>

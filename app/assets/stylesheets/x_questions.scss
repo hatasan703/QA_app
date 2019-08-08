@@ -11,6 +11,9 @@
   &_name{
     vertical-align: top;
     margin-left: 10px;
+    &:hover{
+        text-decoration: underline;
+    }
   }
 }
 

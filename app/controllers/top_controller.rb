@@ -31,7 +31,15 @@ class TopController < ApplicationController
             ba_user.update(money: ba_user_point)
             question.update(done: true)
             answer.ba_create_notification_by(question.user)
-		end
+        end
+
+        # 運営からのお知らせが１週間経過後表示されなくなるように
+        articles = Article.where(check: false)
+        articles.each do |article|
+            if (Time.now.to_i - article.created_at.to_i) / 60 / 60 / 24 >= 7
+                article.update(check: true)
+            end
+        end
 	  end
     # end
 

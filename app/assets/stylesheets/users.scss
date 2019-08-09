@@ -562,7 +562,6 @@ input.loginBtn,
   }
 
   .pr_img {
-    background-image: url("logo_notice.png");
     background-position: center;
     background-repeat: no-repeat;
     height: 100px;
@@ -618,7 +617,7 @@ input.loginBtn,
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
   }
-  
+
   .pr_self {
     font-size: 2rem;
     font-weight: 600;
@@ -675,17 +674,18 @@ input.loginBtn,
     }
 
     .MyNavWrap {
-      width: 250px !important;
+      width: 310px !important;
     }
 
     .MyNavWrap > li > a {
-      font-size: 0.5rem !important;
+      font-size: 1.5rem !important;
       padding: 0 15px !important;
     }
 
     .edit_btn_pr {
-      width: 340px !important;
+      width: 360px !important;
       padding-right: 30px !important;
+      margin: 0 0 0 auto !important;
     }
 
     .pr_section2 {
@@ -697,7 +697,7 @@ input.loginBtn,
     }
 
     .pr_img {
-      margin: 0 !important;
+      margin: 0 0 0 auto !important;
     }
 
   }

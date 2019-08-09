@@ -30,7 +30,7 @@
 								<%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
 							</div>
 						</div>
-						<p><%= simple_format(@question.text) %></p>
+                        <%= text_url_to_link(h(simple_format(@question.text))).html_safe %>
 					</article>
 				</div>
 			</div>

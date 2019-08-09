@@ -1,8 +1,14 @@
 <div class="notify_down noticeLinkBtn">
     <input id="tg3" class="dropInput3" type="checkbox">
+
     <label for="tg3">
-        <span class='notify_checked'><%= unchecked_notice_count %></span>
+        <span class="notify_checked"><%= unchecked_notice_count %></span>
     </label>
+
+    <label for="tg3" class="sp">
+        <span class="notify_checked"><%= link_to "#{unchecked_notice_count}", notifications_path ,class:"notify_btn" %></span>
+    </label>
+
     <ul class="menu3 animation">
       <li class="item4 item2_top"></li>
         <% if notifications.exists? %>
@@ -11,15 +17,19 @@
                     <li class='item2'>
                         <%= link_to "#{User.find(notify.visiter_id).user_name}さんがあなたの質問に回答しました！", question_path(notify.question_id) %>
                     </li>
-                <% else %>
+                <% elsif notify.action == "best_answer" %>
                     <li class='item2'>
                         <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.answer_id).question_id) %>
                     </li>
+                <% elsif notify.action == "question_dead" %>
+                        <li class='item2'>
+                            <%= link_to "ベストアンサーに選んでいない質問があります！", question_path(notify.question_id) %>
+                        </li>
                 <% end %>
             <% end %>
         <% else %>
-        <p class='item2 item2_top'>通知はありません</p>
+        <p class='item2 item2_top item2_font_size'>通知はありません</p>
         <% end %>
-        <li class='item2 '><%= link_to "すべての通知を見る", notifications_path %></li>
+        <li class='item2 item2_font_size'><%= link_to "すべての通知を見る", notifications_path %></li>
     </ul>
 </div>

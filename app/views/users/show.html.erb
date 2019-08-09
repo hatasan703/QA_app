@@ -7,19 +7,21 @@
                                 <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: '' %></li>
                         </ul>
                 </nav>
+                <% if  current_user.try(:admin?) %>
+                    <p class="admin_btn"><%= link_to "管理画面", "/admin" %></p>
+                     <p class="admin_btn"><%= link_to "お知らせ投稿", new_article_path %></p>
+                <% end %>
         <% end %>
-        <% if  current_user.try(:admin?) %>
-            <p class="admin_btn"><%= link_to "管理画面", "/admin" %></p>
-        <% end %>
+
         <section><h3 class="arrowTtl"><%= @user.user_name %>さんのプロフィール</h3></section>
-        
-        
-        
+
+
+
         <div class="container">
            <div class="pr_show_page">
                <div class="pr_show_wrap">
                    <div class="pr_section1">
-                      
+
 
                       <div class="pr_info">
                             <div class="pr_nickname"><%= @user.user_name %>さん</div>
@@ -57,11 +59,11 @@
                                   </div>
                             </div>
 
-                            
-                            
+
+
                       </div>
-                      <div class="pr_img"></div>
-                      
+                      <%= image_tag @user.image, class: 'pr_img' %>
+
                    </div>
                </div>
 
@@ -74,7 +76,7 @@
                </div>
 
 
-               
+
 
                <div class="pr_section2">
                  <div class="pr_role">
@@ -84,10 +86,10 @@
                             <% if @user.bio.nil? or @user.bio.empty? %>
                               <p class='no_profile'>未入力</p>
                             <% else %>
-                              <%= simple_format(@user.bio) %>
+                              <%= text_url_to_link(h(simple_format(@user.bio))).html_safe %>
                             <% end %>
                             </div>
-                            
+
                     </div>
                  </div>
                </div>

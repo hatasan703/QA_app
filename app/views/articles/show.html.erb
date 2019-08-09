@@ -1,0 +1,24 @@
+<div class=container>
+    <div class="qandaWrap">
+      <div class="qandaItem">
+          <article>
+              <section><h3><div class="question_title"><%= @article.title %></div></h3></section>
+              <div class="qanda_middle_items2">
+              </div>
+              <p>
+                <%= text_url_to_link(h(simple_format(@article.text))).html_safe %>
+              </p>
+          </article>
+      </div>
+      <% if current_user.try(:admin?) %>
+        <div class=" ba_btn answer_delete_btn">
+            <%= link_to "削除", article_path(@article), method: :delete, class: 'article_delete', data: { confirm: '削除しますか？' } %>
+            <%= link_to "編集する", edit_article_path(@article), class: 'article_edit' %>
+        </div>
+
+
+    <% end %>
+
+     </div>
+
+</div>

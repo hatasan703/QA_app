@@ -12,6 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+!/tmp/maintenance.yml
 
 # Ignore uploaded files in development
 /storage/*
@@ -22,6 +23,7 @@
 
 /public/assets
 /public/packs
+
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.

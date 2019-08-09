@@ -8,7 +8,7 @@ class CategoryController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @all_questions = @category.questions.includes(:user)
-    @questions = @all_questions.where(done: true).page(params[:page]).per(10).order('created_at DESC')
+    @questions = @all_questions.where(done: true).page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def pv
@@ -28,7 +28,7 @@ class CategoryController < ApplicationController
   def open
     @category = Category.find(params[:id])
     @all_questions = @category.questions.includes(:user)
-    @questions = @all_questions.where(done: nil).page(params[:page]).per(10).order('created_at DESC')
+    @questions = @all_questions.where(done: nil).page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def open_pv

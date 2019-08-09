@@ -1,3 +1,4 @@
+
 <!-- main contents -->
     <main class="main">
       <% if user_signed_in? %>
@@ -90,7 +91,13 @@
                           </article>
                       </div>
                   <% end %>
+                  <div class="all_qa">
+                  <a href="/questions/open" class="all_qa_btn">もっと見る
+                    <span class="right_arrow"></span>
+                    </a>
+                  </div>
                 </div>
+
 
                 <section><h3 class="arrowTtl">ランキング</h3></section>
                 <div class="qandaWrap">
@@ -119,6 +126,11 @@
                           </article>
                       </div>
                   <% end %>
+                  <div class="all_qa">
+                  <a href="/questions/ranking" class="all_qa_btn">もっと見る
+                    <span class="right_arrow"></span>
+                    </a>
+                  </div>
                 </div>
 
                 <section><h3 class="arrowTtl">カテゴリー</h3></section>

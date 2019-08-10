@@ -76,7 +76,7 @@ export default {
             border-color: #222222 transparent transparent transparent;
             position: absolute;
             top: 26%;
-            right: 315px;
+            right: 48%;
         }
     }
 }

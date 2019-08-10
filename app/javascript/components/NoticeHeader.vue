@@ -1,7 +1,12 @@
 <template>
     <div v-if="!isEmptyNoticeList" class="notice">
         <p class="notice__title">お知らせ</p>
-        <div class="notice__list">
+        <button class="notice__button" @click="changeIsShown">
+            開く
+        </button>
+        <div
+            v-if="isShown"
+            class="notice__list">
             <div
                 v-for="(notice, index) in noticeList"
                 :key="index"
@@ -30,6 +35,11 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            isShown: false,
+        };
+    },
     computed: {
         isEmptyNoticeList() {
             return this.noticeList.length === 0;
@@ -38,6 +48,9 @@ export default {
     methods: {
         makeNoticeUrl(id) {
             return `${this.noticeLink}/${id}`;
+        },
+        changeIsShown() {
+            this.isShown = !this.isShown;
         }
     }
 }
@@ -46,9 +59,9 @@ export default {
 <style lang="scss" scoped>
 .notice {
     padding: 10px 100px;
+    text-align: center;
 
     &__title {
-        text-align: center;
         font-size: 3em;
         font-weight: bold;
         color: #555;

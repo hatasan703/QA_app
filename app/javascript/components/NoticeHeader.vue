@@ -74,8 +74,9 @@ export default {
             border-style: solid;
             border-width: 6px 5px 0 5px;
             border-color: #222222 transparent transparent transparent;
-            top: 45%;
-            right: 10px;
+            position: absolute;
+            top: 26%;
+            right: 315px;
         }
     }
 }

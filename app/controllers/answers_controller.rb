@@ -54,7 +54,8 @@ before_action :redirect_top
       if params[:back]
         format.html { redirect_to controller: 'questions', action: 'show', id: answer.question_id }
       elsif answer.update(ba_params)
-        question.update(done: true)
+        now = Date.today
+        question.update(done: true, done_date: now)
         ba_user.update(money: ba_user_point)
         answer.ba_create_notification_by(current_user)
         format.html { redirect_to controller: 'questions', action: 'show', id: answer.question_id }

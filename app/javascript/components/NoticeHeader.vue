@@ -66,6 +66,18 @@ export default {
         font-weight: bold;
         color: #555;
     }
+
+    &__button {
+        font-size: 2.5em;
+        &::after {
+            content: '';
+            border-style: solid;
+            border-width: 6px 5px 0 5px;
+            border-color: #222222 transparent transparent transparent;
+            top: 45%;
+            right: 10px;
+        }
+    }
 }
 
 .notice-item {

@@ -26,27 +26,3 @@
   font-size: 15px;
   position: relative;
 }
-
-@media screen and (max-width: 640px) {
-  .top_info_item1 {
-    font-size: 15px !important;
-  }
-
-  .top_information {
-    padding-left: 10px;
-    width: 55px !important;
-
-    .top_info_text2 {
-      padding-top: 3px;
-      padding-bottom: 3px;
-      font-size: 5px !important;
-    }
-  }
-
-  .top_info_text {
-    p {
-      padding-top: 3px;
-      padding-bottom: 3px;
-    }
-  }
-}

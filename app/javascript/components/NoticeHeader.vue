@@ -77,4 +77,12 @@ export default {
         padding: 5px 0;
     }
 }
+
+@media screen and (max-width: 640px) {
+    .notice {
+        padding: 10px 50px;
+
+    }
+}
+
 </style>

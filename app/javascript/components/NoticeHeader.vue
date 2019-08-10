@@ -1,9 +1,10 @@
 <template>
     <div v-if="!isEmptyNoticeList" class="notice">
         <p class="notice__title">お知らせ</p>
-        <button class="notice__button" @click="changeIsShown">
-            開く
-        </button>
+            <button class="notice__button" @click="changeIsShown">
+                開く
+            </button>
+            <span class="notice__arrow"></span>
         <div
             v-if="isShown"
             class="notice__list">
@@ -69,15 +70,15 @@ export default {
 
     &__button {
         font-size: 2.5em;
-        &::after {
-            content: '';
-            border-style: solid;
-            border-width: 6px 5px 0 5px;
-            border-color: #222222 transparent transparent transparent;
-            position: absolute;
-            top: 26%;
-            right: 48%;
-        }
+    }
+
+    &__arrow {
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: #222222 transparent transparent transparent;
+        display: inline-block;
+        margin-bottom: 3px;
+
     }
 }
 

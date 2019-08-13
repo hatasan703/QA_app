@@ -10,7 +10,7 @@ class UserRankingController < ApplicationController
         end
         @user_point = {}
         weekly_question.each do |question|
-            user_id = question.user_id
+            user_id = question.answers.where(best_answer: true).first.user_id
             point = question.point
 
             if @user_point[user_id]
@@ -26,15 +26,15 @@ class UserRankingController < ApplicationController
 
     def month
         questions = Question.where(done: true)
-        weekly_question = []
+        monthly_question = []
         questions.each do |question|
             if (Time.now.to_i - question.done_date.to_i) / 60 / 60 / 24 <= 30
-                weekly_question << question
+                monthly_question << question
             end
         end
         @user_point = {}
-        weekly_question.each do |question|
-            user_id = question.user_id
+        monthly_question.each do |question|
+            user_id = question.answers.where(best_answer: true).first.user_id
             point = question.point
 
             if @user_point[user_id]
@@ -52,7 +52,7 @@ class UserRankingController < ApplicationController
         questions = Question.where(done: true)
         @user_point = {}
         questions.each do |question|
-            user_id = question.user_id
+            user_id = question.answers.where(best_answer: true).first.user_id
             point = question.point
 
             if @user_point[user_id]

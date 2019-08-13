@@ -39,6 +39,16 @@ Rails.application.routes.draw do
     end
   end
 
+#   ユーザーランク
+resources :user_ranking, only: %i() do
+    collection do
+        get :week
+        get :month
+        get :total
+    end
+end
+
+
   # カテゴリ
   resources :category, only: %i(index show) do
     member do

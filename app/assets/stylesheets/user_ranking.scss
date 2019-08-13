@@ -1,0 +1,349 @@
+// Place all the styles related to the user_ranking controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.rankname {
+	display: flex;
+
+}
+
+
+.rank {
+  font-size: 20px;
+  font-weight: bold;
+	margin-bottom: 3%;
+  margin-right: 2%;
+  
+}
+
+.rank span {
+  margin: 5px ;
+  width: 60px;
+  border-radius: 20px 20px ;
+  background-color: #fff;
+  height: 10px;
+  
+  color: #4fc1ea;
+
+  
+  
+
+  
+}
+
+
+.ikon_img {
+  // margin: 0 0 0 auto !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 70px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 50%;
+  margin-left: 78px !important;
+  margin-top: -195px!important;
+ 
+}
+
+.one h2{
+  font-size: 50px;
+  margin-top: -10px;
+  color: rgb(238, 208, 21)
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.one h3{
+  font-size: 30px;
+  margin-left: 300px;
+  margin-top: -75px;
+  padding-top: 25px;
+}
+
+.one h4 {
+font-size: 30px;
+margin-left: 715px;
+margin-top: -28px;
+}
+
+
+.qandaIkon {
+  border-bottom: 1px solid #dae1e3;
+}
+
+
+.ranking {
+  padding: 60px 30px 50px 30px;
+  border-bottom: 1px solid #dae1e3;
+  
+  background-color: #fff
+
+}
+
+.rankWrap {
+  padding-bottom: 20px;
+  
+    
+}
+
+.ranking2 {
+  padding: 50px 30px;
+  border-bottom: 1px solid #dae1e3;
+  
+  background-color: rgb(235, 246, 247,)
+}
+
+.two h2{
+  font-size: 50px;
+  margin-top: -10px;
+  color: rgb(192, 192, 192)
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.two h3{
+  font-size: 20px;
+  margin-left: 338px;
+  margin-top: -75px;
+  padding-top: 25px;
+}
+
+.two h4 {
+  font-size: 20px;
+margin-left: 737px;
+margin-top: -10px;
+
+}
+
+.three h2{
+  font-size: 50px;
+  margin-top: -10px;
+  color: rgb(196, 194, 70)
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.three h3{
+  font-size: 20px;
+  margin-left: 338px;
+  margin-top: -75px;
+  padding-top: 25px;
+}
+
+.three h4 {
+  font-size: 20px;
+margin-left: 737px;
+margin-top: -10px;
+}
+
+.etc h2{
+  font-size: 50px;
+  margin-top: -10px;
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.etc h3{
+  font-size: 20px;
+  margin-left: 338px;
+  margin-top: -75px;
+  padding-top: 25px;
+}
+
+.etc h4 {
+  font-size: 20px;
+margin-left: 737px;
+margin-top: -10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and(max-width:640px) {
+.rankname {
+	display: flex;
+
+}
+
+
+.rank {
+  font-size: 20px;
+  font-weight: bold;
+	margin-bottom: 3%;
+  margin-right: 2%;
+  
+}
+
+.rank span {
+  margin: 5px ;
+  width: 60px;
+  border-radius: 20px 20px ;
+  background-color: #fff;
+  height: 10px;
+  
+  color: #4fc1ea;
+
+  
+  
+
+  
+}
+
+.ikon_img {
+  // margin: 0 0 0 auto !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 70px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 50%;
+  margin-left: 60px !important;
+  margin-top: -195px!important;
+ 
+}
+
+.one h2{
+  font-size: 50px;
+  margin-top: -10px;
+  color: rgb(238, 208, 21)
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.one h3{
+  font-size: 30px;
+  margin-left: 180px;
+  margin-top: -95px;
+}
+
+.one h4 {
+font-size: 20px;
+margin-left: 230px;
+padding-top: 32px;
+}
+
+
+.qandaIkon {
+  border-bottom: 1px solid #dae1e3;
+}
+
+
+.ranking {
+  padding: 60px 30px 50px 30px;
+  border-bottom: 1px solid #dae1e3;
+  
+  background-color: #fff
+
+}
+
+.rankWrap {
+  padding-bottom: 20px;
+  
+    
+}
+
+.ranking2 {
+  padding: 50px 30px;
+  border-bottom: 1px solid #dae1e3;
+  
+  background-color: rgb(235, 246, 247,)
+}
+
+.two h2{
+  font-size: 50px;
+  margin-top: -10px;
+  color: rgb(192, 192, 192)
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.two h3{
+  font-size: 20px;
+  margin-left: 208px;
+  margin-top: -80px;
+}
+
+.two h4 {
+  font-size: 20px;
+margin-left: 228px;
+margin-top: 3px;
+
+}
+
+.three h2{
+  font-size: 50px;
+  margin-top: -10px;
+  color: rgb(196, 194, 70)
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.three h3{
+  font-size: 20px;
+  margin-left: 208px;
+  margin-top: -80px;
+}
+
+.three h4 {
+  font-size: 20px;
+margin-left: 228px;
+margin-top: 3px;
+
+}
+
+.etc h2{
+  font-size: 50px;
+  margin-top: -10px;
+  // padding-bottom: 15px;
+  
+}
+
+
+
+.etc h3{
+  font-size: 20px;
+  margin-left: 208px;
+  margin-top: -80px;
+}
+
+.etc h4 {
+  font-size: 20px;
+margin-left: 228px;
+margin-top: 3px;
+
+}
+}

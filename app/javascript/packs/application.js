@@ -3,6 +3,7 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import DropDown from 'components/DropDown.vue';
 import SectionWithImageList from 'components/top/SectionWithImageList.vue';
 import DiscussionButtonList from 'components/top/DiscussionButtonList.vue';
+import NoticeHeader from "components/NoticeHeader.vue";
 
 Vue.use(TurbolinksAdapter);
 
@@ -33,6 +34,16 @@ document.addEventListener('turbolinks:load', () => {
             name: 'discussion-button-list',
             components: {
                 DiscussionButtonList,
+            },
+        });
+    }
+
+    if (document.querySelector('#js-notice-header')) {
+        new Vue({
+            el: "#js-notice-header",
+            name: 'notice-header',
+            components: {
+                NoticeHeader,
             },
         });
     }

@@ -22,11 +22,7 @@
              />
         </div>
 
-
             <%= render partial: "notifications/notification",locals: { notifications: @notifications } %>
-
-
-
 
         <%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: 'pointLinkBtn' %>
 
@@ -37,7 +33,6 @@
         </div>
 
       </div>
-
     </div>
 
 <%# sp %>
@@ -94,8 +89,6 @@
             </nav>
         </div>
     </div>
-<%# <> %>
-
 
   <% end %>
 
@@ -110,10 +103,21 @@
 
         <!-- sp search -->
         <div class="spSearch">
-						<%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
-							<%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
-							<%= f.submit ("") , class: 'search-btn', value: '' %>
-						<% end %>
+            <%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
+                <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
+               <%= f.submit ("") , class: 'search-btn', value: '' %>
+            <% end %>
         </div>
+
+        <% if @unchecked_articles.present? %>
+            <% if  @top_index %>
+                <div id="js-notice-header">
+                    <notice-header
+                        notice-link="/articles"
+                        :notice-list="<%= @unchecked_articles.to_json %>"
+                     />
+                </div>
+            <% end %>
+        <% end %>
 
     </header>

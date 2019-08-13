@@ -30,16 +30,15 @@
   </head>
   <body>
   <div class="wrap">
-
-<%= render file: "partials/_header.html.erb" %>
-
-
+    <%= render file: "partials/_header.html.erb" %>
     <%= yield %>
 
-    <% if user_signed_in? %>
-            <button>
-            <%= link_to "相談する", new_question_path,class:"new_question_btn new_question_btn2" %>
+    <% if user_signed_in? && %>
+        <% unless @question_new || @question_confirm %>
+          <button>
+            <%= link_to "相談する", new_question_path, class: "new_question_btn new_question_btn2" %>
             </button>
+        <% end %>
     <% end %>
 
 <%= render file: "partials/_footer.html.erb" %>

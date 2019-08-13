@@ -19,8 +19,12 @@
          <% @user_point.each do |user_id, point| %>
             <div class="ranking">
                 <article>
-                    <% if num < 3 %>
+                    <% if num == 0 %>
                         <div class="one">
+                    <% elsif num == 1 %>
+                        <div class="two">
+                    <% elsif num == 2 %>
+                        <div class="three">
                     <% else %>
                         <div class="etc">
                     <% end %>

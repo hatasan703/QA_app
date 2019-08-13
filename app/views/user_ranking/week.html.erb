@@ -1,4 +1,5 @@
  <div class="container">
+
     <div class="qanda">
         <section>
             <div class="rankname">
@@ -19,8 +20,12 @@
          <% @user_point.each do |user_id, point| %>
             <div class="ranking">
                 <article>
-                    <% if num < 3 %>
+                   <% if num == 0 %>
                         <div class="one">
+                    <% elsif num == 1 %>
+                        <div class="two">
+                    <% elsif num == 2 %>
+                        <div class="three">
                     <% else %>
                         <div class="etc">
                     <% end %>
@@ -36,3 +41,45 @@
         </div>
     </div>
 </div>
+
+
+
+       <%# <div class="ranking2">
+                <article>
+                    <div class="two">
+                    <h2 class="two">2</h2>
+                    <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
+                    <h3 class="one_name">username</h3>
+                    <h4>2121</h4>
+                </article>
+            </div>
+
+            <div class="ranking">
+                <article>
+                    <div class="three">
+                    <h2 class="three">3</h2>
+                    <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
+                    <h3 class="one_name">username</h3>
+                    <h4>2121</h4>
+                </article>
+            </div>
+
+            <div class="ranking2">
+                <article>
+                    <div class=etc>
+                    <h2 class="etc">4</h2>
+                    <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
+                    <h3 class="one_name">username</h3>
+                    <h4>2121</h4>
+                </article>
+            </div>
+
+            <div class="ranking">
+                <article>
+                    <div class="etc">
+                    <h2 class="etc">5</h2>
+                    <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
+                    <h3 class="one_name">username</h3>
+                    <h4>2121</h4>>
+                </article>
+            </div> %>

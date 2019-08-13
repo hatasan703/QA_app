@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_08_09_050722) do
     t.datetime "updated_at", null: false
     t.integer "point", null: false
     t.integer "impressions_count", default: 0
-    t.date "done_date"
+    t.datetime "done_date"
     t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end

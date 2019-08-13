@@ -3,30 +3,43 @@
         <section>
             <div class="rankname">
                 <h2 class="rank">
-                    <span>Week</span>
+                    <%= link_to "Week",week_user_ranking_index_path %>
                 </h2>
                 <h2 class="rank">
-                    <span>Month</span>
+                    <%= link_to "Month",month_user_ranking_index_path %>
                 </h2>
                 <h2 class="rank">
-                    <span>Total</span>
+                    <%= link_to "Total",total_user_ranking_index_path %>
                 </h2>
             </div>
         </section>
 
         <div class="rankWrap">
+        <% num = 0 %>
+         <% @user_point.each do |user_id, point| %>
             <div class="ranking">
                 <article>
-                    <div class="one">
-                    <h2 class="one">1</h2>
-                    <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
-                    <h3 class="one_name">username</h3>
-                    <h4>2121</h4>
+                    <% if num < 3 %>
+                        <div class="one">
+                    <% else %>
+                        <div class="etc">
+                    <% end %>
+                        <h2 class="one"><%= @user_rank[num] %></h2>
+                        <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
+                        <h3 class="one_name"><%= User.find(user_id).user_name %></h3>
+                        <h4><%= point %>P</h4>
+                    </div>
                 </article>
             </div>
+            <% num += 1 %>
+         <% end %>
+        </div>
+    </div>
+</div>
 
 
-            <div class="ranking2">
+
+       <%# <div class="ranking2">
                 <article>
                     <div class="two">
                     <h2 class="two">2</h2>
@@ -64,7 +77,4 @@
                     <h3 class="one_name">username</h3>
                     <h4>2121</h4>>
                 </article>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> %>

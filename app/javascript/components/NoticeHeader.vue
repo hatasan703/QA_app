@@ -61,6 +61,7 @@ export default {
 .notice {
     padding: 10px 100px;
     text-align: center;
+    background-color: rgba(224, 222, 222, 0.5);
 
     &__title {
         font-size: 3em;

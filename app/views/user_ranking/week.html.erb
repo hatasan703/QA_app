@@ -30,8 +30,8 @@
                         <div class="etc">
                     <% end %>
                         <h2 class="one"><%= @user_rank[num] %></h2>
-                        <img class="ikon_img" src="https://files-uploader.xzy.pw/upload/20190626132827_5a4a477861.png">
-                        <h3 class="one_name"><%= User.find(user_id).user_name %></h3>
+                        <%= image_tag User.find(user_id).image, class: "ikon_img" %>
+                        <h3 class="one_name"><%= link_to "#{User.find(user_id).user_name}", user_path(user_id) %></h3>
                         <h4><%= point %>P</h4>
                     </div>
                 </article>

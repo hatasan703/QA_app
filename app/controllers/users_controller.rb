@@ -142,13 +142,12 @@ before_action :redirect_top, except: :show
         }
       )
 
-      account.save
-    # binding.pry
+      binding.pry
 
+      account.individual.verification.document.front = verification_document.id
+      account.save
 
       # アップロードされたドキュメントのID番号
-    #   account.legal_entity.verification.document = verification_document.id
-
 
     current_user.update(connect_id: account[:id])
     @user = User.find(params[:id])

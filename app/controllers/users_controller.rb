@@ -54,9 +54,110 @@ before_action :redirect_top, except: :show
 
   def identification
     @user = User.find(params[:id])
+    if @user.connect_id.present?
+        stripe_account = Stripe::Account.retrieve(@user.connect_id)
+        @postal = stripe_account.individual.address_kana.postal_code
+        @state = stripe_account.individual.address_kanji.state
+        @city = stripe_account.individual.address_kanji.city
+        @town = stripe_account.individual.address_kanji.town
+        @line1 = stripe_account.individual.address_kanji.line1
+        @line2 = stripe_account.individual.address_kanji.line2
+
+        @state_kana = stripe_account.individual.address_kana.state
+        @city_kana = stripe_account.individual.address_kana.city
+        @town_kana = stripe_account.individual.address_kana.town
+        @line1_kana = stripe_account.individual.address_kana.line1
+        @line2_kana = stripe_account.individual.address_kana.line2
+
+        @first_name = stripe_account.individual.first_name_kanji
+        @last_name = stripe_account.individual.last_name_kanji
+        @first_name_kana = stripe_account.individual.first_name_kana
+        @last_name_kana = stripe_account.individual.last_name_kana
+
+        @day = stripe_account.individual.dob.day
+        @month = stripe_account.individual.dob.month
+        @year = stripe_account.individual.dob.year
+        phone = stripe_account.individual.phone
+        @phone = phone.sub("+81","0")
+        # binding.pry
+        @gender = stripe_account.individual.gender
+    end
+    # binding.pry
     unless @user == current_user
         redirect_to root_path
     end
+  end
+
+  def create_identification
+    Stripe.api_key = 'sk_test_AVkRwTJjwN4s5cfyoOEItiTd00bLraU4fw'
+    # binding.pry
+    account = Stripe::Account.create({
+        country: 'JP',
+        type: 'custom',
+        business_type: 'individual',
+        individual: {
+            address_kanji: {
+                postal_code: params[:postal],
+                state: params[:state],
+                city: params[:city],
+                town: params[:town],
+                line1: params[:line1],
+                line2: params[:line2],
+            },
+            address_kana: {
+                postal_code: params[:postal],
+                state: params[:state_kana],
+                city: params[:city_kana],
+                town: params[:town_kana],
+                line1: params[:line1_kana],
+                line2: params[:line2_kana],
+            },
+
+            dob: {
+                day: params[:day],
+                month: params[:month],
+                year: params[:year],
+            },
+
+            first_name_kanji: params[:first_name],
+            last_name_kanji: params[:last_name],
+            first_name_kana: params[:first_name_kana],
+            last_name_kana: params[:last_name_kana],
+            gender: params[:gender],
+
+            phone: "+81 " + params[:phone_number],
+
+
+
+        },
+    })
+    # binding.pry
+    verification_document = Stripe::FileUpload.create(
+        {
+          purpose: 'identity_document',
+          file: File.new(params[:id_file].tempfile)
+        },
+        {
+          stripe_account: current_user.connect_id
+        }
+      )
+
+      account.save
+    # binding.pry
+
+
+      # アップロードされたドキュメントのID番号
+    #   account.legal_entity.verification.document = verification_document.id
+
+
+    current_user.update(connect_id: account[:id])
+    @user = User.find(params[:id])
+
+    # binding.pry
+
+
+    # account.save
+    redirect_to controller: 'users', action: 'identification', id: @user.id
   end
 
   def card

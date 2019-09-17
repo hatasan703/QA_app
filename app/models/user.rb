@@ -19,7 +19,9 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20],
         image:    User.default_image,
         user_name: User.rondom_name,
+        connect_id: account[:id]
       )
+
       notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
                                       username: "なーちゃん"
       notifier.ping "#{auth.provider}からユーザー登録がありました！\n現在ユーザー数は#{User.count}です！"

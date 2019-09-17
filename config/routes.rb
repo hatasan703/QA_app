@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'card/:id' => 'users#card'
     get 'point/:id' => 'users#point'
     get 'identification/:id' => 'users#identification'
+    post 'identification/:id' => 'users#create_identification'
 
     # namespace :users do
     #     get :my_question

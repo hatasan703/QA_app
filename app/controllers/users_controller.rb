@@ -91,6 +91,8 @@ before_action :redirect_top, except: :show
   def create_identification
     Stripe.api_key = 'sk_test_AVkRwTJjwN4s5cfyoOEItiTd00bLraU4fw'
     # binding.pry
+
+    if current_user.connect_id.nil? || current_user.connect_id.empty?
     account = Stripe::Account.create({
         country: 'JP',
         type: 'custom',
@@ -131,21 +133,60 @@ before_action :redirect_top, except: :show
 
         },
     })
+    current_user.update(connect_id: account[:id])
+    else
+        account = Stripe::Account.retrieve(current_user.connect_id)
+        account.individual.address_kana.postal_code = params[:postal]
+        account.individual.address_kanji.state = params[:state]
+        account.individual.address_kanji.city = params[:city]
+        account.individual.address_kanji.town = params[:town]
+        account.individual.address_kanji.line1 = params[:line1]
+        account.individual.address_kanji.line2 = params[:line2]
+
+        account.individual.address_kana.state = params[:state_kana]
+        account.individual.address_kana.city = params[:city_kana]
+        account.individual.address_kana.town = params[:town_kana]
+        account.individual.address_kana.line1 = params[:line1_kana]
+        account.individual.address_kana.line2 =params[:line2_kana]
+
+        account.individual.first_name_kanji = params[:first_name]
+        account.individual.last_name_kanji = params[:last_name]
+        account.individual.first_name_kana = params[:first_name_kana]
+        account.individual.last_name_kana = params[:last_name_kana]
+
+        account.individual.dob.day = params[:day]
+        account.individual.dob.month = params[:month]
+        account.individual.dob.year = params[:year]
+        account.individual.phone = "+81 " + params[:phone_number]
+        account.individual.gender = params[:gender]
+    end
     # binding.pry
+
+    if params[:id_file_front].present?
     verification_document = Stripe::FileUpload.create(
         {
           purpose: 'identity_document',
-          file: File.new(params[:id_file].tempfile)
+          file: File.new(params[:id_file_front].tempfile)
         },
         {
           stripe_account: current_user.connect_id
         }
       )
 
-      binding.pry
-
+      verification_document_back = Stripe::FileUpload.create(
+        {
+          purpose: 'identity_document',
+          file: File.new(params[:id_file_back].tempfile)
+        },
+        {
+          stripe_account: current_user.connect_id
+        }
+      )
       account.individual.verification.document.front = verification_document.id
-      account.save
+      account.individual.verification.document.back = verification_document_back.id
+    end
+
+    account.save
 
       # アップロードされたドキュメントのID番号
 
@@ -164,6 +205,13 @@ before_action :redirect_top, except: :show
     unless @user == current_user
         redirect_to root_path
     end
+  end
+
+  def bank_create
+    @user = User.find(params[:id])
+
+
+    redirect_to controller: 'users', action: 'card', id: @user.id
   end
 
   def point

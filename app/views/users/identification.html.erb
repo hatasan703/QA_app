@@ -14,47 +14,51 @@
     <div class="edit_id_info">
     <%= form_tag("/identification/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
         <li class="id_info">郵便番号(ハイフンなし)</li>
-        <input name="postal" title="郵便番号" value="1760004" type="text" value="<%= @postal %>" class="user_edit_form">
+        <input name="postal" title="郵便番号" placeholder="1760004" type="text" value="<%= @postal %>" class="user_edit_form">
         <li class="id_info">都道府県</li>
-        <input name="state" title="都道府県" value="東京都" type="text" value="<%= @state %>" class="user_edit_form">
+        <input name="state" title="都道府県" placeholder="東京都" type="text" value="<%= @state %>" class="user_edit_form">
         <li class="id_info">区市町村</li>
-        <input name="city" title="区市町村" value="練馬区" type="text" value="<%= @city %>" class="user_edit_form">
+        <input name="city" title="区市町村" placeholder="練馬区" type="text" value="<%= @city %>" class="user_edit_form">
         <li class="id_info">町名(丁目まで)</li>
-        <input name="town" title="町名(丁目まで)" value="小竹町" type="text" value="<%= @town %>" class="user_edit_form">
+        <input name="town" title="町名(丁目まで)" placeholder="小竹町" type="text" value="<%= @town %>" class="user_edit_form">
         <li class="id_info">番地、号</li>
-        <input name="line1" title="番地、号" value="1-24-1" type="text" value="<%= @line1 %>" class="user_edit_form">
+        <input name="line1" title="番地、号" placeholder="1-24-1" type="text" value="<%= @line1 %>" class="user_edit_form">
         <li class="id_info">建物・部屋番号</li>
-        <input name="line2" title="建物・部屋番号" value="sereno garden 106" type="text" value="<%= @line2 %>" class="user_edit_form">
+        <input name="line2" title="建物・部屋番号" placeholder="sereno garden 106" type="text" value="<%= @line2 %>" class="user_edit_form">
 
         <li class="id_info">都道府県（かな）</li>
-        <input name="state_kana" title="都道府県（カナ）" value="トウキョウト" type="text" value="<%= @state_kana %>" class="user_edit_form">
+        <input name="state_kana" title="都道府県（カナ）" placeholder="トウキョウト" type="text" value="<%= @state_kana %>" class="user_edit_form">
         <li class="id_info">区市町村（かな）</li>
-        <input name="city_kana" title="区市町村（カナ）" value="ネリマク" type="text" value="<%= @city_kana %>" class="user_edit_form">
+        <input name="city_kana" title="区市町村（カナ）" placeholder="ネリマク" type="text" value="<%= @city_kana %>" class="user_edit_form">
         <li class="id_info">町名(丁目まで、かな)</li>
-        <input name="town_kana" title="町名(丁目まで、カナ)" value="コタケチョウ" type="text" value="<%= @town_kana %>" class="user_edit_form">
+        <input name="town_kana" title="町名(丁目まで、カナ)" placeholder="コタケチョウ" type="text" value="<%= @town_kana %>" class="user_edit_form">
         <li class="id_info">番地、号（かな）</li>
-        <input name="line1_kana" title="番地、号（カナ）" value="1-24-1" type="text" value="<%= @line1_kana %>" class="user_edit_form">
+        <input name="line1_kana" title="番地、号（カナ）" placeholder="1-24-1" type="text" value="<%= @line1_kana %>" class="user_edit_form">
         <li class="id_info">建物・部屋番号(かな)</li>
-        <input name="line2_kana" title="建物・部屋番号(カナ)" value="セレノガーデン106" type="text" value="<%= @line2_kana %>" class="user_edit_form">
+        <input name="line2_kana" title="建物・部屋番号(カナ)" placeholder="セレノガーデン106" type="text" value="<%= @line2_kana %>" class="user_edit_form">
 
         <li class="id_info">生年月日（年）</li>
-        <input name="year" title="生年月日（年）" value="1997" type="text" value="<%= @year %>" class="user_edit_form">
+        <input name="year" title="生年月日（年）" placeholder="1997" type="text" value="<%= @year %>" class="user_edit_form">
         <li class="id_info">生年月日（月）</li>
-        <input name="month" title="生年月日（月）" value="09" type="text" value="<%= @month %>" class="user_edit_form">
+        <input name="month" title="生年月日（月）" placeholder="09" type="text" value="<%= @month %>" class="user_edit_form">
         <li class="id_info">生年月日（日）</li>
-        <input name="day" title="生年月日（日）" value="22" type="text" value="<%= @day %>" class="user_edit_form">
+        <input name="day" title="生年月日（日）" placeholder="22" type="text" value="<%= @day %>" class="user_edit_form">
 
         <li class="id_info">姓（漢字）</li>
-        <input name="last_name" title="姓（漢字）" value="圃田" type="text" value="<%= @last_name %>" class="user_edit_form">
-        <li class="id_info">名前（漢字）</li>
-        <input name="first_name" title="名前（漢字）" value="洋貴" type="text" value="<%= @first_name %>" class="user_edit_form">
+        <input name="last_name" title="姓（漢字）" placeholder="圃田" type="text" value="<%= @last_name %>" class="user_edit_form">
+
+
+        <li class="id_info">名前（漢字)</li>
+        <input name="first_name" title="名前（漢字）" placeholder="洋貴" type="text" value="<%= @first_name %>" class="user_edit_form">
+
+
         <li class="id_info">姓（カナ）</li>
-        <input name="last_name_kana" title="姓（カナ）" value="ハタケダ" type="text" value="<%= @last_name_kana %>" class="user_edit_form">
+        <input name="last_name_kana" title="姓（カナ）" placeholder="ハタケダ" type="text" value="<%= @last_name_kana %>" class="user_edit_form">
         <li class="id_info">名前（カナ）</li>
-        <input name="first_name_kana" title="名前（カナ）" value="ヒロキ" type="text" value="<%= @first_name_kana %>" class="user_edit_form">
+        <input name="first_name_kana" title="名前（カナ）" placeholder="ヒロキ" type="text" value="<%= @first_name_kana %>" class="user_edit_form">
 
         <li class="id_info">電話番号</li>
-        <input name="phone_number" title="電話番号" value="08045141674" type="tel" value="<%= @phone %>" locked=true class="user_edit_form">
+        <input name="phone_number" title="電話番号" placeholder="08045141674" type="tel" value="<%= @phone %>" locked=true class="user_edit_form">
         <li class="id_info">性別</li>
         <select name="gender" class="user_edit_form">
             <option value="male" selected>
@@ -71,6 +75,11 @@
             <% end %>
         </select>
         <div class="mainItem">
+
+
+ <div class="edit-profile">
+    本人確認
+    </div>
   <div class="label">
     <p>本人確認書類(表面)</p>
   </div>
@@ -100,6 +109,8 @@
     </div>
   </div>
 </div>
+
+<div class="verifie"><%= @verifie  %></div>
 
 
 

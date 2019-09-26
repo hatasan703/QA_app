@@ -54,6 +54,7 @@ before_action :redirect_top, except: :show
 
   def identification
     @user = User.find(params[:id])
+    @verifie = "未提出"
     if @user.connect_id.present?
         stripe_account = Stripe::Account.retrieve(@user.connect_id)
         @postal = stripe_account.individual.address_kana.postal_code
@@ -81,17 +82,20 @@ before_action :redirect_top, except: :show
         @phone = phone.sub("+81","0")
         # binding.pry
         @gender = stripe_account.individual.gender
+        if stripe_account.individual.verification.status == "verified"
+            @verifie = "本人確認済み"
+        else
+            @verifie = "未提出"
+        end
     end
-    # binding.pry
+    binding.pry
     unless @user == current_user
         redirect_to root_path
     end
+    # binding.pry
   end
 
   def create_identification
-    Stripe.api_key = 'sk_test_AVkRwTJjwN4s5cfyoOEItiTd00bLraU4fw'
-    # binding.pry
-
     if current_user.connect_id.nil? || current_user.connect_id.empty?
     account = Stripe::Account.create({
         country: 'JP',
@@ -126,14 +130,35 @@ before_action :redirect_top, except: :show
             first_name_kana: params[:first_name_kana],
             last_name_kana: params[:last_name_kana],
             gender: params[:gender],
-
             phone: "+81 " + params[:phone_number],
-
-
-
         },
     })
+
     current_user.update(connect_id: account[:id])
+
+    verification_document = Stripe::FileUpload.create(
+        {
+          purpose: 'identity_document',
+          file: File.new(params[:id_file_front].tempfile)
+        },
+        {
+          stripe_account: current_user.connect_id
+        }
+      )
+
+      verification_document_back = Stripe::FileUpload.create(
+        {
+          purpose: 'identity_document',
+          file: File.new(params[:id_file_back].tempfile)
+        },
+        {
+          stripe_account: current_user.connect_id
+        }
+      )
+      account.individual.verification.document.front = verification_document.id
+      account.individual.verification.document.back = verification_document_back.id
+
+
     else
         account = Stripe::Account.retrieve(current_user.connect_id)
         account.individual.address_kana.postal_code = params[:postal]
@@ -159,32 +184,32 @@ before_action :redirect_top, except: :show
         account.individual.dob.year = params[:year]
         account.individual.phone = "+81 " + params[:phone_number]
         account.individual.gender = params[:gender]
+
+        # binding.pry
+        # verification_document = Stripe::FileUpload.update(
+        #     {
+        #       purpose: 'identity_document',
+        #       file: File.new(params[:id_file_front].tempfile)
+        #     },
+        #     {
+        #       stripe_account: current_user.connect_id
+        #     }
+        #   )
+
+        #   verification_document_back = Stripe::FileUpload.update(
+        #     {
+        #       purpose: 'identity_document',
+        #       file: File.new(params[:id_file_back].tempfile)
+        #     },
+        #     {
+        #       stripe_account: current_user.connect_id
+        #     }
+        #   )
+        #   account.individual.verification.document.front = verification_document.id
+        #   account.individual.verification.document.back = verification_document_back.id
+
     end
     # binding.pry
-
-    if params[:id_file_front].present?
-    verification_document = Stripe::FileUpload.create(
-        {
-          purpose: 'identity_document',
-          file: File.new(params[:id_file_front].tempfile)
-        },
-        {
-          stripe_account: current_user.connect_id
-        }
-      )
-
-      verification_document_back = Stripe::FileUpload.create(
-        {
-          purpose: 'identity_document',
-          file: File.new(params[:id_file_back].tempfile)
-        },
-        {
-          stripe_account: current_user.connect_id
-        }
-      )
-      account.individual.verification.document.front = verification_document.id
-      account.individual.verification.document.back = verification_document_back.id
-    end
 
     account.save
 
@@ -205,11 +230,76 @@ before_action :redirect_top, except: :show
     unless @user == current_user
         redirect_to root_path
     end
+    if current_user.connect_id.present?
+    stripe_account = Stripe::Account.retrieve(@user.connect_id)
+    # binding.pry
+    @bank_account = stripe_account.external_accounts.data
+
+        # if stripe_account.external_accounts.data.present?
+        # bank_account = Stripe::Account.retrieve_external_account(
+        #     stripe_account.id,
+        #     stripe_account.external_accounts.data[0].id,
+        #     )
+        # end
+    end
+
+
   end
 
   def bank_create
     @user = User.find(params[:id])
+    unless @user == current_user
+        redirect_to root_path
+    end
+    # binding.pry
+    if current_user.connect_id.present?
+        stripe_account = Stripe::Account.retrieve(@user.connect_id)
 
+        Stripe::Account.update(
+            @user.connect_id,
+            {
+              tos_acceptance: {
+                date: Time.now.to_i,
+                ip: request.remote_ip, # Assumes you're not using a proxy
+              },
+            }
+          )
+
+        if stripe_account.external_accounts.data.present?
+
+
+            # notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
+            #                           username: "なーちゃん"
+            # notifier.ping "#{@user.user_name}から銀行口座の削除依頼がきました。stipe_connect_idは#{stripe_account.id}です"
+        else
+            # 銀行口座作成
+        bank_account = Stripe::Account.create_external_account(@user.connect_id,
+            {
+
+                external_account: {
+                    # object: "list"
+                    # data: [
+                    #     {
+                        object: "bank_account",
+                        country: 'JP',
+                        currency: 'jpy',
+                        account_holder_name: params[:last_name] + " #{params[:first_name]}",
+                        account_holder_type: "individual",
+                        routing_number: "1100000", #テスト環境
+                        # routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
+                        account_number: "00012345", #テスト環境
+                        # account_number: params[:account_number],
+                        bank_name: params[:bank_name],
+                #     },
+                # ],
+                },
+
+                    }
+            )
+        end
+
+        # binding.pry
+    end
 
     redirect_to controller: 'users', action: 'card', id: @user.id
   end

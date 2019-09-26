@@ -13,39 +13,40 @@
     銀行口座登録
     </div>
     <div class="edit_id_info">
+    <%= @bank_account %>
     <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
-        <li class="id_info">郵便番号(ハイフンなし)</li>
-        <input name="postal" title="郵便番号" value="1760004" type="text" value="<%= @postal %>" class="user_edit_form">
-        <li class="id_info">都道府県</li>
-        <input name="state" title="都道府県" value="東京都" type="text" value="<%= @state %>" class="user_edit_form">
-        <li class="id_info">区市町村</li>
-        <input name="city" title="区市町村" value="練馬区" type="text" value="<%= @city %>" class="user_edit_form">
-        <li class="id_info">町名(丁目まで)</li>
-        <input name="town" title="町名(丁目まで)" value="小竹町" type="text" value="<%= @town %>" class="user_edit_form">
-        <li class="id_info">番地、号</li>
-        <input name="line1" title="番地、号" value="1-24-1" type="text" value="<%= @line1 %>" class="user_edit_form">
-        <li class="id_info">建物・部屋番号</li>
-        <input name="line2" title="建物・部屋番号" value="sereno garden 106" type="text" value="<%= @line2 %>" class="user_edit_form">
-        <li class="id_info">都道府県（かな）</li>
-        <input name="state_kana" title="都道府県（カナ）" value="トウキョウト" type="text" value="<%= @state_kana %>" class="user_edit_form">
-        <li class="id_info">区市町村（かな）</li>
-        <input name="city_kana" title="区市町村（カナ）" value="ネリマク" type="text" value="<%= @city_kana %>" class="user_edit_form">
-        <li class="id_info">町名(丁目まで、かな)</li>
-        <input name="town_kana" title="町名(丁目まで、カナ)" value="コタケチョウ" type="text" value="<%= @town_kana %>" class="user_edit_form">
-        <li class="id_info">番地、号（かな）</li>
-        <input name="line1_kana" title="番地、号（カナ）" value="1-24-1" type="text" value="<%= @line1_kana %>" class="user_edit_form">
-        <li class="id_info">建物・部屋番号(かな)</li>
-        <input name="line2_kana" title="建物・部屋番号(カナ)" value="セレノガーデン106" type="text" value="<%= @line2_kana %>" class="user_edit_form">
-
-
+        <li class="id_info">銀行名</li>
+        <select name="bank_code" class="user_edit_form">
+            <option value="0005">三菱UFJ銀行</option>
+            <option value="0001">みずほ銀行</option>
+            <option value="0010">りそな銀行</option>
+            <option value="0017">埼玉りそな銀行</option>
+            <option value="0009">三井住友銀行</option>
+            <option value="0033">ジャパンネット銀行</option>
+            <option value="0036">楽天銀行</option>
+            <option value="9900">ゆうちょ銀行</option>
+        </select>
+        <li class="id_info">支店コード</li>
+        <input name="code" title="支店コード" placeholder="838" type="text" value="<%=  %>" class="user_edit_form">
+        <li class="id_info">口座番号</li>
+        <input name="account_number" title="口座番号" placeholder="2090682" type="text" value="<%=  %>" class="user_edit_form">
+        <li class="id_info">口座名義(セイ)</li>
+        <input name="last_name" title="口座名義(セイ)" placeholder="ハタケダ" type="text" value="<%=  %>" class="user_edit_form">
+        <li class="id_info">口座名義(メイ)</li>
+        <input name="first_name" title="口座名義(メイ)" placeholder="ヒロキ" type="text" value="<%=  %>" class="user_edit_form">
         <div class="mainItem">
 
-<div class="user_profile_edit_btn"><button class="" title="送信" type="submit">送信</button></div>
+        <div class="user_profile_edit_btn"><button class="" title="登録" type="submit">登録</button></div>
+
+
+
+
 
     <% end %>
 </div>
 
 
-</div>
+    </div>
 
-  </div>
+    </div>
+</div>

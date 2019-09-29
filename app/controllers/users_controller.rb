@@ -1,28 +1,20 @@
 class UsersController < ApplicationController
 
 before_action :redirect_top, except: :show
+before_action :only_current_user, except: :show
 
   def my_question
     @user = User.find(params[:id])
-    unless @user == current_user
-        redirect_to root_path
-    end
     @questions = @user.questions.page(params[:page]).order("created_at DESC")
   end
 
   def my_answer
     @user = User.find(params[:id])
-    unless @user == current_user
-        redirect_to root_path
-    end
     @answers = @user.answers.page(params[:page]).order("created_at DESC")
   end
 
   def edit
     @user = User.find(params[:id])
-    unless @user == current_user
-        redirect_to root_path
-    end
   end
 
   def update
@@ -30,7 +22,6 @@ before_action :redirect_top, except: :show
 
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
     if current_user == @user
-
       if @user.update(user_params)
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to action: :show
@@ -80,17 +71,12 @@ before_action :redirect_top, except: :show
         @year = stripe_account.individual.dob.year
         phone = stripe_account.individual.phone
         @phone = phone.sub("+81","0")
+        @email = stripe_account.individual.email
         # binding.pry
         @gender = stripe_account.individual.gender
         if stripe_account.individual.verification.status == "verified"
             @verifie = "本人確認済み"
-        else
-            @verifie = "未提出"
         end
-    end
-    binding.pry
-    unless @user == current_user
-        redirect_to root_path
     end
     # binding.pry
   end
@@ -131,6 +117,7 @@ before_action :redirect_top, except: :show
             last_name_kana: params[:last_name_kana],
             gender: params[:gender],
             phone: "+81 " + params[:phone_number],
+            email: params[:email],
         },
     })
 
@@ -157,7 +144,7 @@ before_action :redirect_top, except: :show
       )
       account.individual.verification.document.front = verification_document.id
       account.individual.verification.document.back = verification_document_back.id
-
+# binding.pry
 
     else
         account = Stripe::Account.retrieve(current_user.connect_id)
@@ -183,34 +170,10 @@ before_action :redirect_top, except: :show
         account.individual.dob.month = params[:month]
         account.individual.dob.year = params[:year]
         account.individual.phone = "+81 " + params[:phone_number]
+        account.individual.email = params[:email]
         account.individual.gender = params[:gender]
-
-        # binding.pry
-        # verification_document = Stripe::FileUpload.update(
-        #     {
-        #       purpose: 'identity_document',
-        #       file: File.new(params[:id_file_front].tempfile)
-        #     },
-        #     {
-        #       stripe_account: current_user.connect_id
-        #     }
-        #   )
-
-        #   verification_document_back = Stripe::FileUpload.update(
-        #     {
-        #       purpose: 'identity_document',
-        #       file: File.new(params[:id_file_back].tempfile)
-        #     },
-        #     {
-        #       stripe_account: current_user.connect_id
-        #     }
-        #   )
-        #   account.individual.verification.document.front = verification_document.id
-        #   account.individual.verification.document.back = verification_document_back.id
-
     end
     # binding.pry
-
     account.save
 
       # アップロードされたドキュメントのID番号
@@ -220,37 +183,28 @@ before_action :redirect_top, except: :show
 
     # binding.pry
 
-
     # account.save
     redirect_to controller: 'users', action: 'identification', id: @user.id
   end
 
-  def card
+  def bank
     @user = User.find(params[:id])
-    unless @user == current_user
-        redirect_to root_path
-    end
     if current_user.connect_id.present?
     stripe_account = Stripe::Account.retrieve(@user.connect_id)
-    # binding.pry
-    @bank_account = stripe_account.external_accounts.data
+        if stripe_account.external_accounts.data.present?
+            @bank_account = stripe_account.external_accounts.data
 
-        # if stripe_account.external_accounts.data.present?
-        # bank_account = Stripe::Account.retrieve_external_account(
-        #     stripe_account.id,
-        #     stripe_account.external_accounts.data[0].id,
-        #     )
-        # end
+            @bank_name = stripe_account.external_accounts.data[0]
+            @bank_code = stripe_account.external_accounts.data[0].routing_number.slice(0..3)
+            @code = stripe_account.external_accounts.data[0].routing_number.slice(4..6)
+        end
     end
 
 
   end
 
-  def bank_create
+  def create_bank
     @user = User.find(params[:id])
-    unless @user == current_user
-        redirect_to root_path
-    end
     # binding.pry
     if current_user.connect_id.present?
         stripe_account = Stripe::Account.retrieve(@user.connect_id)
@@ -265,50 +219,61 @@ before_action :redirect_top, except: :show
             }
           )
 
-        if stripe_account.external_accounts.data.present?
-
-
-            # notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
-            #                           username: "なーちゃん"
-            # notifier.ping "#{@user.user_name}から銀行口座の削除依頼がきました。stipe_connect_idは#{stripe_account.id}です"
-        else
+        # unless stripe_account.external_accounts.data.present?
             # 銀行口座作成
-        bank_account = Stripe::Account.create_external_account(@user.connect_id,
-            {
+            bank_account = Stripe::Account.create_external_account(@user.connect_id,
+                {
 
-                external_account: {
-                    # object: "list"
-                    # data: [
-                    #     {
-                        object: "bank_account",
-                        country: 'JP',
-                        currency: 'jpy',
-                        account_holder_name: params[:last_name] + " #{params[:first_name]}",
-                        account_holder_type: "individual",
-                        routing_number: "1100000", #テスト環境
-                        # routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
-                        account_number: "00012345", #テスト環境
-                        # account_number: params[:account_number],
-                        bank_name: params[:bank_name],
-                #     },
-                # ],
-                },
+                    external_account: {
+                            object: "bank_account",
+                            # account_holder_type: "individual",
+                            routing_number: "1100000", #テスト環境
+                            # routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
+                            account_number: "00012345", #テスト環境
+                            # account_number: params[:account_number],
+                            # bank_name: params[:bank_name],
+                            account_holder_name: params[:last_name] + " #{params[:first_name]}",
+                            currency: 'jpy',
+                            country: 'JP',
+                    },
 
-                    }
-            )
-        end
+                        }
+                )
+        # end
 
         # binding.pry
     end
 
-    redirect_to controller: 'users', action: 'card', id: @user.id
+    redirect_to controller: 'users', action: 'bank', id: @user.id
   end
 
   def point
     @user = User.find(params[:id])
-    unless @user == current_user
-        redirect_to root_path
-    end
+  end
+
+  def payout_confirmation
+    @user = User.find(params[:id])
+  end
+
+  def payout_point
+    @user = User.find(params[:id])
+    transfer = Stripe::Transfer.create({
+      amount: @user.money,
+      currency: 'jpy',
+      destination: @user.connect_id,
+      # transfer_group: 'ORDER_95',
+    })
+
+    payout = Stripe::Payout.create({
+        amount: @user.money,
+        currency: 'jpy',
+        # source_type: "card",
+        # source_type: 'bank_account',
+      }, {stripe_account: @user.connect_id})
+
+      current_user.update(money: 0)
+      # binding.pry
+    redirect_to controller: 'users', action: 'point', id: @user.id, notice: '振込が完了しました'
   end
 
   private

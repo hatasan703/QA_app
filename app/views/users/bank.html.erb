@@ -2,18 +2,16 @@
     <nav class="myprNav">
         <ul class="user_setting">
             <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
-            <li><%= link_to "支払い方法", "/card/#{current_user.id}", class: 'card_info' %></li>
+            <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: 'card_info' %></li>
             <li><%= link_to "お礼", "/point/#{current_user.id}", class: '' %></li>
         </ul>
     </nav>
-
 
 <div class="container myprNav">
     <div class="edit-profile">
     銀行口座登録
     </div>
     <div class="edit_id_info">
-    <%= @bank_account %>
     <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
         <li class="id_info">銀行名</li>
         <select name="bank_code" class="user_edit_form">

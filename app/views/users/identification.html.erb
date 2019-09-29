@@ -2,7 +2,7 @@
     <nav class="myprNav">
         <ul class="user_setting">
             <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: 'indetification' %></li>
-            <li><%= link_to "支払い方法", "/card/#{current_user.id}", class: '' %></li>
+            <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: '' %></li>
             <li><%= link_to "お礼", "/point/#{current_user.id}", class: '' %></li>
         </ul>
     </nav>
@@ -26,15 +26,15 @@
         <li class="id_info">建物・部屋番号</li>
         <input name="line2" title="建物・部屋番号" placeholder="sereno garden 106" type="text" value="<%= @line2 %>" class="user_edit_form">
 
-        <li class="id_info">都道府県（かな）</li>
+        <li class="id_info">都道府県（カナ）</li>
         <input name="state_kana" title="都道府県（カナ）" placeholder="トウキョウト" type="text" value="<%= @state_kana %>" class="user_edit_form">
-        <li class="id_info">区市町村（かな）</li>
+        <li class="id_info">区市町村（カナ）</li>
         <input name="city_kana" title="区市町村（カナ）" placeholder="ネリマク" type="text" value="<%= @city_kana %>" class="user_edit_form">
-        <li class="id_info">町名(丁目まで、かな)</li>
+        <li class="id_info">町名(丁目まで、カナ)</li>
         <input name="town_kana" title="町名(丁目まで、カナ)" placeholder="コタケチョウ" type="text" value="<%= @town_kana %>" class="user_edit_form">
-        <li class="id_info">番地、号（かな）</li>
+        <li class="id_info">番地、号（カナ）</li>
         <input name="line1_kana" title="番地、号（カナ）" placeholder="1-24-1" type="text" value="<%= @line1_kana %>" class="user_edit_form">
-        <li class="id_info">建物・部屋番号(かな)</li>
+        <li class="id_info">建物・部屋番号(カナ)</li>
         <input name="line2_kana" title="建物・部屋番号(カナ)" placeholder="セレノガーデン106" type="text" value="<%= @line2_kana %>" class="user_edit_form">
 
         <li class="id_info">生年月日（年）</li>
@@ -59,6 +59,8 @@
 
         <li class="id_info">電話番号</li>
         <input name="phone_number" title="電話番号" placeholder="08045141674" type="tel" value="<%= @phone %>" locked=true class="user_edit_form">
+        <li class="id_info">メールアドレス</li>
+        <input name="email" title="メールアドレス" placeholder="qotaelu@gmail.com" type="text" value="<%= @email %>"  class="user_edit_form">
         <li class="id_info">性別</li>
         <select name="gender" class="user_edit_form">
             <option value="male" selected>

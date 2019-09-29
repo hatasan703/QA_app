@@ -45,8 +45,9 @@ before_action :only_current_user, except: :show
 
   def identification
     @user = User.find(params[:id])
-    @verifie = "未提出"
+
     if @user.connect_id.present?
+        @verifie = "審査中"
         stripe_account = Stripe::Account.retrieve(@user.connect_id)
         @postal = stripe_account.individual.address_kana.postal_code
         @state = stripe_account.individual.address_kanji.state

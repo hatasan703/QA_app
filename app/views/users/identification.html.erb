@@ -14,28 +14,28 @@
     <div class="edit_id_info">
         <%= form_tag("/identification/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
             <li class="id_info">郵便番号(ハイフンなし)</li>
-            <input name="postal" title="郵便番号" placeholder="1760004" type="text" value="<%= @postal %>" class="user_edit_form">
+            <input name="postal" title="郵便番号" placeholder="1750093" type="text" value="<%= @postal %>" class="user_edit_form">
             <li class="id_info">都道府県</li>
             <input name="state" title="都道府県" placeholder="東京都" type="text" value="<%= @state %>" class="user_edit_form">
             <li class="id_info">区市町村</li>
-            <input name="city" title="区市町村" placeholder="練馬区" type="text" value="<%= @city %>" class="user_edit_form">
+            <input name="city" title="区市町村" placeholder="板橋区" type="text" value="<%= @city %>" class="user_edit_form">
             <li class="id_info">町名</li>
-            <input name="town" title="町名(丁目まで)" placeholder="小竹町" type="text" value="<%= @town %>" class="user_edit_form">
+            <input name="town" title="町名(丁目まで)" placeholder="赤塚新町" type="text" value="<%= @town %>" class="user_edit_form">
             <li class="id_info">番地、号</li>
-            <input name="line1" title="番地、号" placeholder="1-24-1" type="text" value="<%= @line1 %>" class="user_edit_form">
+            <input name="line1" title="番地、号" placeholder="1-16-2" type="text" value="<%= @line1 %>" class="user_edit_form">
             <li class="id_info">建物・部屋番号</li>
-            <input name="line2" title="建物・部屋番号" placeholder="sereno garden 106" type="text" value="<%= @line2 %>" class="user_edit_form">
+            <input name="line2" title="建物・部屋番号" placeholder="ハイツ101" type="text" value="<%= @line2 %>" class="user_edit_form">
 
             <li class="id_info">都道府県（カナ）</li>
             <input name="state_kana" title="都道府県（カナ）" placeholder="トウキョウト" type="text" value="<%= @state_kana %>" class="user_edit_form">
             <li class="id_info">区市町村（カナ）</li>
-            <input name="city_kana" title="区市町村（カナ）" placeholder="ネリマク" type="text" value="<%= @city_kana %>" class="user_edit_form">
+            <input name="city_kana" title="区市町村（カナ）" placeholder="イタバシク" type="text" value="<%= @city_kana %>" class="user_edit_form">
             <li class="id_info">町名(丁目まで、カナ)</li>
-            <input name="town_kana" title="町名(丁目まで、カナ)" placeholder="コタケチョウ" type="text" value="<%= @town_kana %>" class="user_edit_form">
+            <input name="town_kana" title="町名(丁目まで、カナ)" placeholder="アカツカシンマチ" type="text" value="<%= @town_kana %>" class="user_edit_form">
             <li class="id_info">番地、号（カナ）</li>
-            <input name="line1_kana" title="番地、号（カナ）" placeholder="1-24-1" type="text" value="<%= @line1_kana %>" class="user_edit_form">
+            <input name="line1_kana" title="番地、号（カナ）" placeholder="1-16-2" type="text" value="<%= @line1_kana %>" class="user_edit_form">
             <li class="id_info">建物・部屋番号(カナ)</li>
-            <input name="line2_kana" title="建物・部屋番号(カナ)" placeholder="セレノガーデン106" type="text" value="<%= @line2_kana %>" class="user_edit_form">
+            <input name="line2_kana" title="建物・部屋番号(カナ)" placeholder="ハイツ101" type="text" value="<%= @line2_kana %>" class="user_edit_form">
 
             <li class="id_info">生年月日（年）</li>
             <input name="year" title="生年月日（年）" placeholder="1997" type="text" value="<%= @year %>" class="user_edit_form">
@@ -58,7 +58,7 @@
             <input name="first_name_kana" title="名前（カナ）" placeholder="ヒロキ" type="text" value="<%= @first_name_kana %>" class="user_edit_form">
 
             <li class="id_info">電話番号</li>
-            <input name="phone_number" title="電話番号" placeholder="08045141674" type="tel" value="<%= @phone %>" locked=true class="user_edit_form">
+            <input name="phone_number" title="電話番号" placeholder="080123456789" type="tel" value="<%= @phone %>" locked=true class="user_edit_form">
             <li class="id_info">メールアドレス</li>
             <input name="email" title="メールアドレス" placeholder="qotaelu@gmail.com" type="text" value="<%= @email %>"  class="user_edit_form">
             <li class="id_info">性別</li>

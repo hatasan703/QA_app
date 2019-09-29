@@ -14,6 +14,13 @@ class ApplicationController < ActionController::Base
     redirect_to controller: :top, action: :index unless user_signed_in?
   end
 
+  def only_current_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+        redirect_to root_path
+    end
+  end
+
   def unchecked_notifications
     if user_signed_in?
      @notifications = current_user.passive_notifications.where(check: false).order("created_at DESC").limit(3)

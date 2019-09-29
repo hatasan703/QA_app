@@ -2,17 +2,144 @@
     <nav class="myprNav">
         <ul class="user_setting">
             <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: 'indetification' %></li>
-            <li><%= link_to "支払い方法", "/card/#{current_user.id}", class: '' %></li>
+            <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: '' %></li>
             <li><%= link_to "お礼", "/point/#{current_user.id}", class: '' %></li>
         </ul>
     </nav>
 
+  <div class="container myprNav">
+    <div class="edit-profile">
+    本人情報登録
+    </div>
+    <div class="edit_id_info">
+        <%= form_tag("/identification/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
+            <li class="id_info">郵便番号(ハイフンなし)</li>
+            <input name="postal" title="郵便番号" placeholder="1760004" type="text" value="<%= @postal %>" class="user_edit_form">
+            <li class="id_info">都道府県</li>
+            <input name="state" title="都道府県" placeholder="東京都" type="text" value="<%= @state %>" class="user_edit_form">
+            <li class="id_info">区市町村</li>
+            <input name="city" title="区市町村" placeholder="練馬区" type="text" value="<%= @city %>" class="user_edit_form">
+            <li class="id_info">町名(丁目まで)</li>
+            <input name="town" title="町名(丁目まで)" placeholder="小竹町" type="text" value="<%= @town %>" class="user_edit_form">
+            <li class="id_info">番地、号</li>
+            <input name="line1" title="番地、号" placeholder="1-24-1" type="text" value="<%= @line1 %>" class="user_edit_form">
+            <li class="id_info">建物・部屋番号</li>
+            <input name="line2" title="建物・部屋番号" placeholder="sereno garden 106" type="text" value="<%= @line2 %>" class="user_edit_form">
 
-     <div class="preparation">
-        <div class="preparaiton_info">
-          <h1>QOTAELU<span>を使ってくれてありがとう！</span><h1>
-          <h2>※このページは只今準備中です。</h2>
-          <h3>実装まで今しばらくお待ちください。</h3>
-        </div>
-     </div>
+            <li class="id_info">都道府県（カナ）</li>
+            <input name="state_kana" title="都道府県（カナ）" placeholder="トウキョウト" type="text" value="<%= @state_kana %>" class="user_edit_form">
+            <li class="id_info">区市町村（カナ）</li>
+            <input name="city_kana" title="区市町村（カナ）" placeholder="ネリマク" type="text" value="<%= @city_kana %>" class="user_edit_form">
+            <li class="id_info">町名(丁目まで、カナ)</li>
+            <input name="town_kana" title="町名(丁目まで、カナ)" placeholder="コタケチョウ" type="text" value="<%= @town_kana %>" class="user_edit_form">
+            <li class="id_info">番地、号（カナ）</li>
+            <input name="line1_kana" title="番地、号（カナ）" placeholder="1-24-1" type="text" value="<%= @line1_kana %>" class="user_edit_form">
+            <li class="id_info">建物・部屋番号(カナ)</li>
+            <input name="line2_kana" title="建物・部屋番号(カナ)" placeholder="セレノガーデン106" type="text" value="<%= @line2_kana %>" class="user_edit_form">
+
+            <li class="id_info">生年月日（年）</li>
+            <input name="year" title="生年月日（年）" placeholder="1997" type="text" value="<%= @year %>" class="user_edit_form">
+            <li class="id_info">生年月日（月）</li>
+            <input name="month" title="生年月日（月）" placeholder="09" type="text" value="<%= @month %>" class="user_edit_form">
+            <li class="id_info">生年月日（日）</li>
+            <input name="day" title="生年月日（日）" placeholder="22" type="text" value="<%= @day %>" class="user_edit_form">
+
+            <li class="id_info">姓（漢字）</li>
+            <input name="last_name" title="姓（漢字）" placeholder="圃田" type="text" value="<%= @last_name %>" class="user_edit_form">
+
+
+            <li class="id_info">名前（漢字)</li>
+            <input name="first_name" title="名前（漢字）" placeholder="洋貴" type="text" value="<%= @first_name %>" class="user_edit_form">
+
+
+            <li class="id_info">姓（カナ）</li>
+            <input name="last_name_kana" title="姓（カナ）" placeholder="ハタケダ" type="text" value="<%= @last_name_kana %>" class="user_edit_form">
+            <li class="id_info">名前（カナ）</li>
+            <input name="first_name_kana" title="名前（カナ）" placeholder="ヒロキ" type="text" value="<%= @first_name_kana %>" class="user_edit_form">
+
+            <li class="id_info">電話番号</li>
+            <input name="phone_number" title="電話番号" placeholder="08045141674" type="tel" value="<%= @phone %>" locked=true class="user_edit_form">
+            <li class="id_info">メールアドレス</li>
+            <input name="email" title="メールアドレス" placeholder="qotaelu@gmail.com" type="text" value="<%= @email %>"  class="user_edit_form">
+            <li class="id_info">性別</li>
+            <select name="gender" class="user_edit_form">
+                <option value="male" selected>
+                <% if @gender == "male" %>
+                <p>男性</p>
+                <% else %>
+                <p>女性</p>
+                <% end %>
+                </option>
+                <% if @gender == "male" %>
+                <option value="female">女性</option>
+                <% else %>
+                <option value="male">男性</option>
+                <% end %>
+            </select>
+            <div class="mainItem">
+
+
+            <div class="edit-profile">
+            本人確認書類提出
+                <div class="verifile_list">
+                    <p>
+                    以下の書類のうち、住所、氏名、生年月日、書類発行元が確認できるものをご用意ください。<br>
+                    運転免許証<br>
+                    住民基本台帳カード（顔写真付きのみ）<br>
+                    ※マイナンバーカード（個人番号カード、通知カード）は受付できません<br>
+                    各種健康保険証・共済組合会員証（カード型健康保険証）<br>
+                    ※有効期限の記載がないものは、発行から10年以内のものに限ります<br>
+                    各種健康保険証（紙型健康保険証）<br>
+                    ※発行から10年以内のものに限ります<br><br>
+                    各種年金手帳（厚生年金、国民年金、共済年金等）
+                    ※青色手帳は、住所の記載がないため受付できません<br>
+                    ※平成9年1月以降に発行された年金手帳（青色手帳）は、住所の記載がないため受付対象外となります<br>
+                    ※「氏名・現住所・生年月日」を確認できるページ、「発行元・発行印」を確認できるページを撮影いただく必要がございます<br>
+                    各種福祉手帳<br>
+                    印鑑登録証明書<br>
+                    ※発行から6ヶ月以内のものに限ります<br>
+                    在留カード<br>
+                    特別永住者証明書<br>
+                    </p>
+                </div>
+            </div>
+            <div class="label">
+                <p>本人確認書類(表面)</p>
+            </div>
+            <div class="mainForm">
+                <div class="inputFile">
+                <div
+                    class="preview"
+                    style="background-image: url('../assets/img/verification.png')"
+                >
+                    <input accept="image/*" id="id_file_front" name="id_file_front" type="file" />
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="label">
+                <p>本人確認書類(裏面)</p>
+            </div>
+            <div class="mainForm">
+                <div class="inputFile">
+                <div
+                    class="preview"
+                    style="background-image: url('../assets/img/verification.png')"
+                >
+                    <input accept="image/*" id="id_file_back" name="id_file_back" type="file" />
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="verifie"><%= @verifie  %></div>
+
+            <div class="user_profile_edit_btn verifie_btn"><button class="" title="送信" type="submit">送信</button></div>
+
+        <% end %>
+</div>
+
+
+</div>
   </div>

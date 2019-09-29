@@ -5,12 +5,18 @@ Rails.application.routes.draw do
   resources :questions, only: [:new, :create, :destroy]
   resources :articles
   resources :users, only: [:edit, :update, :show]
-  resources :charges
+#   resources :charges
     get 'my_question/:id' => 'users#my_question'
     get 'my_answer/:id' => 'users#my_answer'
-    get 'card/:id' => 'users#card'
+    get 'bank/:id' => 'users#bank'
     get 'point/:id' => 'users#point'
+    get 'payout_confirmation/:id' => 'users#payout_confirmation'
     get 'identification/:id' => 'users#identification'
+
+    post 'identification/:id' => 'users#create_identification'
+    post 'bank/:id' => 'users#create_bank'
+    post 'payaout/:id' => 'users#payout_point'
+
 
     # namespace :users do
     #     get :my_question

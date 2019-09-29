@@ -10,21 +10,12 @@
     <div class="point_info">
       <div class="point_all">
         <div class="point_some">
-          <p>現在の残高</p>
+          <p>振込金額</p>
           <div>¥<%= @user.money %></div>
+
         </div>
-        <div class="point_some">
-          <p>振込申請</p>
-          <div class="icon_point">
-          <%= link_to "", "" , class: "icon_point2" %>
-          <%# /payout_confirmation/#{@user.id} %>
-          </div>
-        </div>
-        <div class="point_some">
-          <p>お礼とは？</p>
-          <div class="icon_point">
-          <%= link_to "", "/help" , class: "icon_point2" %>
-          </div>
+        <div class="pay_btn">
+        <%= link_to "振込", "/payaout/#{@user.id}", method: :post %>
         </div>
       </div>
     </div>

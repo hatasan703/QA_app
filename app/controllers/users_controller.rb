@@ -72,13 +72,11 @@ before_action :only_current_user, except: :show
         phone = stripe_account.individual.phone
         @phone = phone.sub("+81","0")
         @email = stripe_account.individual.email
-        # binding.pry
         @gender = stripe_account.individual.gender
         if stripe_account.individual.verification.status == "verified"
             @verifie = "本人確認済み"
         end
     end
-    # binding.pry
   end
 
   def create_identification
@@ -144,7 +142,6 @@ before_action :only_current_user, except: :show
       )
       account.individual.verification.document.front = verification_document.id
       account.individual.verification.document.back = verification_document_back.id
-# binding.pry
 
     else
         account = Stripe::Account.retrieve(current_user.connect_id)
@@ -173,17 +170,10 @@ before_action :only_current_user, except: :show
         account.individual.email = params[:email]
         account.individual.gender = params[:gender]
     end
-    # binding.pry
     account.save
-
-      # アップロードされたドキュメントのID番号
 
     current_user.update(connect_id: account[:id])
     @user = User.find(params[:id])
-
-    # binding.pry
-
-    # account.save
     redirect_to controller: 'users', action: 'identification', id: @user.id
   end
 
@@ -191,13 +181,20 @@ before_action :only_current_user, except: :show
     @user = User.find(params[:id])
     if current_user.connect_id.present?
     stripe_account = Stripe::Account.retrieve(@user.connect_id)
-        if stripe_account.external_accounts.data.present?
-            @bank_account = stripe_account.external_accounts.data
 
-            @bank_name = stripe_account.external_accounts.data[0]
-            @bank_code = stripe_account.external_accounts.data[0].routing_number.slice(0..3)
-            @code = stripe_account.external_accounts.data[0].routing_number.slice(4..6)
+        if stripe_account.external_accounts.data.present?
+
+            bank_account = Stripe::Account.retrieve_external_account(
+                @user.connect_id,
+                stripe_account.external_accounts.data[0].id)
+
+            @bank_account = bank_account
+            @name = bank_account.account_holder_name
+            @bank_name = bank_account.bank_name
+            @bank_code = bank_account.routing_number.slice(0..3)
+            @code = bank_account.routing_number.slice(4..6)
         end
+
     end
 
 
@@ -205,7 +202,6 @@ before_action :only_current_user, except: :show
 
   def create_bank
     @user = User.find(params[:id])
-    # binding.pry
     if current_user.connect_id.present?
         stripe_account = Stripe::Account.retrieve(@user.connect_id)
 
@@ -219,7 +215,7 @@ before_action :only_current_user, except: :show
             }
           )
 
-        # unless stripe_account.external_accounts.data.present?
+        unless stripe_account.external_accounts.data.present?
             # 銀行口座作成
             bank_account = Stripe::Account.create_external_account(@user.connect_id,
                 {
@@ -232,14 +228,32 @@ before_action :only_current_user, except: :show
                             account_number: "00012345", #テスト環境
                             # account_number: params[:account_number],
                             # bank_name: params[:bank_name],
-                            account_holder_name: params[:last_name] + " #{params[:first_name]}",
+                            account_holder_name: params[:name],
                             currency: 'jpy',
                             country: 'JP',
                     },
 
                         }
                 )
-        # end
+
+            # 銀行口座更新
+            # else
+
+            #     bank_account = Stripe::Account.update_external_account(
+            #         @user.connect_id,
+            #         stripe_account.external_accounts.data[0].id,
+            #         {
+            #             metadata: {order_id: '6735'},
+            #             # account_holder_type: "individual",
+            #             routing_number: "1100000", #テスト環境
+            #             # routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
+            #             account_number: "00012345", #テスト環境
+            #             # account_number: params[:account_number],
+            #             # bank_name: params[:bank_name],
+            #             account_holder_name: params[:name],
+            #           }
+            #     )
+        end
 
         # binding.pry
     end
@@ -257,23 +271,29 @@ before_action :only_current_user, except: :show
 
   def payout_point
     @user = User.find(params[:id])
-    transfer = Stripe::Transfer.create({
-      amount: @user.money,
-      currency: 'jpy',
-      destination: @user.connect_id,
-      # transfer_group: 'ORDER_95',
-    })
 
-    payout = Stripe::Payout.create({
-        amount: @user.money,
-        currency: 'jpy',
-        # source_type: "card",
-        # source_type: 'bank_account',
-      }, {stripe_account: @user.connect_id})
+    if current_user.connect_id.present?
+        account = Stripe::Account.retrieve(current_user.connect_id)
+        if account.individual.verification.status == "verified" && account.external_accounts.data.present?
+            transfer = Stripe::Transfer.create({
+            amount: @user.money,
+            currency: 'jpy',
+            destination: @user.connect_id,
+            })
 
-      current_user.update(money: 0)
-      # binding.pry
-    redirect_to controller: 'users', action: 'point', id: @user.id, notice: '振込が完了しました'
+            payout = Stripe::Payout.create({
+                amount: @user.money,
+                currency: 'jpy',
+            }, {stripe_account: @user.connect_id})
+
+            current_user.update(money: 0)
+
+            redirect_to controller: 'users', action: 'point', id: @user.id, notice: '振込が完了しました'
+        end
+    else
+        redirect_to controller: 'users', action: 'point', id: @user.id, notice: '振込に失敗しました'
+    end
+
   end
 
   private

@@ -7,5 +7,11 @@ class Ability
           can :manage, :all
           can :create, :articles
         end
-      end
+    end
+
   end
+
+
+        #   can :identification, :users
+        #   can :bank, :users
+        #   can :point, :users

@@ -7,42 +7,44 @@
         </ul>
     </nav>
 
-<div class="container myprNav">
-    <div class="edit-profile">
-    銀行口座登録
-    </div>
-    <div class="edit_id_info">
-    <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
-        <li class="id_info">銀行名</li>
-        <select name="bank_code" class="user_edit_form">
-            <option value="0005">三菱UFJ銀行</option>
-            <option value="0001">みずほ銀行</option>
-            <option value="0010">りそな銀行</option>
-            <option value="0017">埼玉りそな銀行</option>
-            <option value="0009">三井住友銀行</option>
-            <option value="0033">ジャパンネット銀行</option>
-            <option value="0036">楽天銀行</option>
-            <option value="9900">ゆうちょ銀行</option>
-        </select>
-        <li class="id_info">支店コード</li>
-        <input name="code" title="支店コード" placeholder="838" type="text" value="<%=  %>" class="user_edit_form">
-        <li class="id_info">口座番号</li>
-        <input name="account_number" title="口座番号" placeholder="2090682" type="text" value="<%=  %>" class="user_edit_form">
-        <li class="id_info">口座名義(セイ)</li>
-        <input name="last_name" title="口座名義(セイ)" placeholder="ハタケダ" type="text" value="<%=  %>" class="user_edit_form">
-        <li class="id_info">口座名義(メイ)</li>
-        <input name="first_name" title="口座名義(メイ)" placeholder="ヒロキ" type="text" value="<%=  %>" class="user_edit_form">
-        <div class="mainItem">
+    <div class="container myprNav">
+        <div class="edit-profile">
+        銀行口座登録
+        </div>
+        <div class="edit_id_info">
+            <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
+                <li class="id_info">銀行名</li>
+                <select name="bank_code" class="user_edit_form">
+                    <option value="0005">三菱UFJ銀行</option>
+                    <option value="0001">みずほ銀行</option>
+                    <option value="0010">りそな銀行</option>
+                    <option value="0017">埼玉りそな銀行</option>
+                    <option value="0009">三井住友銀行</option>
+                    <option value="0033">ジャパンネット銀行</option>
+                    <option value="0036">楽天銀行</option>
+                    <option value="9900">ゆうちょ銀行</option>
+                </select>
+                <li class="id_info">支店コード</li>
+                <input name="code" title="支店コード" placeholder="838" type="text" class="user_edit_form">
+                <li class="id_info">口座番号</li>
+                <input name="account_number" title="口座番号" placeholder="2090682" type="text" class="user_edit_form">
+                <li class="id_info">口座名義(セイ メイ)</li>
+                <input name="name" title="口座名義(セイ メイ)" placeholder="ハタケダ ヒロキ" type="text" class="user_edit_form">
+                <div class="mainItem">
 
-        <div class="user_profile_edit_btn"><button class="" title="登録" type="submit">登録</button></div>
+                <div class="user_profile_edit_btn verifie_btn"><button class="" title="登録" type="submit">登録</button></div>
+            <% end %>
+        </div>
 
-
-
-
-
-    <% end %>
-</div>
-
+      <div class="bank_list">
+        <div class="edit-profile">
+        登録済み銀行口座
+        </div>
+        <div class="bank_name">
+            <%= @bank_name %><br>
+            <%= @name %>
+        </div>
+      </div>
 
     </div>
 

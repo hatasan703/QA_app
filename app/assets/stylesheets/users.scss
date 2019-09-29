@@ -703,6 +703,50 @@ input.loginBtn,
   }
 
 
+// 設定
+
+
+.edit_id_info{
+    // width:300px;/
+    text-align: center;
+    li {
+        margin-top: 10px;
+    }
+
+    select, input,{
+        margin: 0 auto;
+    }
+
+    .mainItem{
+        margin: 10px 0 10px 0;
+    }
+}
+
+.verifie{
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+.verifile_list{
+    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight : 100;
+}
+
+.edit-profile p{
+    margin-left: 20%;
+    margin-bottom: 10px;
+    text-align: left;
+
+}
+
+.verifie_btn{
+    display: block;
+    margin: 0 auto;
+}
+
+
 
 // 本人情報登録
 .id_info{
@@ -736,4 +780,13 @@ input.loginBtn,
     color:#666e71;
 
     }
+}
+
+
+.bank_list{
+    padding-bottom: 20px;
+
+}
+.bank_name{
+    font-size: 1.5rem;
 }

@@ -223,10 +223,10 @@ before_action :only_current_user, except: :show
                     external_account: {
                             object: "bank_account",
                             # account_holder_type: "individual",
-                            routing_number: "1100000", #テスト環境
-                            # routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
-                            account_number: "00012345", #テスト環境
-                            # account_number: params[:account_number],
+                            # routing_number: "1100000", #テスト環境
+                            routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
+                            # account_number: "00012345", #テスト環境
+                            account_number: params[:account_number],
                             # bank_name: params[:bank_name],
                             account_holder_name: params[:name],
                             currency: 'jpy',

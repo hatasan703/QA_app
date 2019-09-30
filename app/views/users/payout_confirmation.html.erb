@@ -12,8 +12,8 @@
         <div class="point_some">
           <p>振込金額</p>
           <div>¥<%= @user.money %></div>
-
         </div>
+        <div class="payout_fee">振込手数料を別途差し引いた上でお振込を行います。（5万円未満：300円　5万円以上：500円）</div>
         <div class="pay_btn">
         <%= link_to "振込", "/payaout/#{@user.id}", method: :post %>
         </div>

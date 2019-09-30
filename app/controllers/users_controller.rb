@@ -268,6 +268,10 @@ before_action :only_current_user, except: :show
 
   def payout_confirmation
     @user = User.find(params[:id])
+    if @user.money < 350
+        redirect_to controller: 'users', action: 'point', id: @user.id
+        flash[:notice] = "振込は¥350からになります。"
+    end
   end
 
   def payout_point
@@ -275,7 +279,7 @@ before_action :only_current_user, except: :show
 
     if current_user.connect_id.present?
         account = Stripe::Account.retrieve(current_user.connect_id)
-        if account.individual.verification.status == "verified" && account.external_accounts.data.present?
+        if account.individual.verification.status == "verified" && account.external_accounts.data.present? && @user.money >= 350
             transfer = Stripe::Transfer.create({
             amount: @user.money,
             currency: 'jpy',
@@ -283,16 +287,17 @@ before_action :only_current_user, except: :show
             })
 
             payout = Stripe::Payout.create({
-                amount: @user.money,
+                amount: @user.money - 300,
                 currency: 'jpy',
             }, {stripe_account: @user.connect_id})
-
             current_user.update(money: 0)
 
-            redirect_to controller: 'users', action: 'point', id: @user.id, notice: '振込が完了しました'
+            redirect_to controller: 'users', action: 'point', id: @user.id
+            flash[:notice] = "振込申請が完了しました"
         end
     else
-        redirect_to controller: 'users', action: 'point', id: @user.id, notice: '振込に失敗しました'
+        redirect_to controller: 'users', action: 'point', id: @user.id
+        flash[:notice] = "振込申請に失敗しました"
     end
 
   end

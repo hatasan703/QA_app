@@ -11,6 +11,9 @@
         <div class="edit-profile">
         銀行口座登録
         </div>
+    <% if current_user.connect_id.present? %>
+
+
         <div class="edit_id_info">
             <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
                 <li class="id_info">銀行名</li>
@@ -45,6 +48,12 @@
             <%= @name %>
         </div>
       </div>
+
+    <% else %>
+        <div class="no_bank">
+            <%= link_to "本人情報の登録を行ってください", "/identification/#{current_user.id}", class: '' %>
+        </div>
+    <% end %>
 
     </div>
 

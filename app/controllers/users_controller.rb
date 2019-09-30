@@ -216,26 +216,44 @@ before_action :only_current_user, except: :show
             }
           )
 
-        unless stripe_account.external_accounts.data.present?
+        # unless stripe_account.external_accounts.data.present?
             # 銀行口座作成
-            bank_account = Stripe::Account.create_external_account(@user.connect_id,
-                {
+            case Rails.env
+            when "development"
+                bank_account = Stripe::Account.create_external_account(@user.connect_id,
+                    {
+                        external_account: {
+                                object: "bank_account",
+                                # account_holder_type: "individual",
+                                routing_number: "1100000", #テスト環境
+                                account_number: "00012345", #テスト環境
+                                # bank_name: params[:bank_name],
+                                account_holder_name: params[:name],
+                                currency: 'jpy',
+                                country: 'JP',
+                        },
 
-                    external_account: {
-                            object: "bank_account",
-                            # account_holder_type: "individual",
-                            # routing_number: "1100000", #テスト環境
-                            routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
-                            # account_number: "00012345", #テスト環境
-                            account_number: params[:account_number],
-                            # bank_name: params[:bank_name],
-                            account_holder_name: params[:name],
-                            currency: 'jpy',
-                            country: 'JP',
-                    },
+                            }
+                    )
 
-                        }
-                )
+            when "production"
+                bank_account = Stripe::Account.create_external_account(@user.connect_id,
+                    {
+                        external_account: {
+                                object: "bank_account",
+                                # account_holder_type: "individual",
+                                routing_number: params[:bank_code] + params[:code], #銀行コード+支店コード
+                                account_number: params[:account_number],
+                                # bank_name: params[:bank_name],
+                                account_holder_name: params[:name],
+                                currency: 'jpy',
+                                country: 'JP',
+                        },
+
+                            }
+                    )
+            end
+
 
             # 銀行口座更新
             # else
@@ -254,7 +272,7 @@ before_action :only_current_user, except: :show
             #             account_holder_name: params[:name],
             #           }
             #     )
-        end
+        # end
 
         # binding.pry
     end
@@ -268,9 +286,9 @@ before_action :only_current_user, except: :show
 
   def payout_confirmation
     @user = User.find(params[:id])
-    if @user.money < 350
+    if @user.money < 50
         redirect_to controller: 'users', action: 'point', id: @user.id
-        flash[:notice] = "振込は¥350からになります。"
+        flash[:notice1] = "振込は¥50からになります。"
     end
   end
 
@@ -287,17 +305,17 @@ before_action :only_current_user, except: :show
             })
 
             payout = Stripe::Payout.create({
-                amount: @user.money - 300,
+                amount: @user.money,
                 currency: 'jpy',
             }, {stripe_account: @user.connect_id})
             current_user.update(money: 0)
 
             redirect_to controller: 'users', action: 'point', id: @user.id
-            flash[:notice] = "振込申請が完了しました"
+            flash[:notice1] = "振込申請が完了しました"
         end
     else
         redirect_to controller: 'users', action: 'point', id: @user.id
-        flash[:notice] = "振込申請に失敗しました"
+        flash[:notice1] = "振込申請に失敗しました"
     end
 
   end

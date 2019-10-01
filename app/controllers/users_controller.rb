@@ -34,7 +34,7 @@ before_action :only_current_user, except: :show
         redirect_to root_url
     end
 
-    end
+  end
 
 
   def show
@@ -42,7 +42,7 @@ before_action :only_current_user, except: :show
     @user_sex = @user.sex
   end
 
-  end
+
 
   private
 

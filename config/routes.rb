@@ -8,14 +8,16 @@ Rails.application.routes.draw do
 #   resources :charges
     get 'my_question/:id' => 'users#my_question'
     get 'my_answer/:id' => 'users#my_answer'
-    get 'bank/:id' => 'users#bank'
-    get 'point/:id' => 'users#point'
-    get 'payout_confirmation/:id' => 'users#payout_confirmation'
-    get 'identification/:id' => 'users#identification'
 
-    post 'identification/:id' => 'users#create_identification'
-    post 'bank/:id' => 'users#create_bank'
-    post 'payaout/:id' => 'users#payout_point'
+
+    # 決済まわり
+    get 'bank/:id' => 'charges#bank'
+    get 'point/:id' => 'charges#point'
+    get 'payout_confirmation/:id' => 'charges#payout_confirmation'
+    get 'identification/:id' => 'charges#identification'
+    post 'identification/:id' => 'charges#create_identification'
+    post 'bank/:id' => 'charges#create_bank'
+    post 'payaout/:id' => 'charges#payout_point'
 
 
     # namespace :users do

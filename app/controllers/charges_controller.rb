@@ -1,5 +1,8 @@
 class ChargesController < ApplicationController
 
+    before_action :redirect_top
+    before_action :only_current_user
+
     def identification
         @user = User.find(params[:id])
 

@@ -2,23 +2,20 @@ class UsersController < ApplicationController
 
 before_action :redirect_top, except: :show
 before_action :only_current_user, except: :show
+before_action :set_user
 
   def my_question
-    @user = User.find(params[:id])
     @questions = @user.questions.page(params[:page]).order("created_at DESC")
   end
 
   def my_answer
-    @user = User.find(params[:id])
     @answers = @user.answers.page(params[:page]).order("created_at DESC")
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
 
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
     if current_user == @user
@@ -38,7 +35,6 @@ before_action :only_current_user, except: :show
 
 
   def show
-    @user = User.find(params[:id])
     @user_sex = @user.sex
   end
 
@@ -48,6 +44,10 @@ before_action :only_current_user, except: :show
 
   def user_params
     params.require(:user).permit(:user_name, :sex, :bio, :age, :role)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
 
-before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
-
-  impressionist unique: [:session_hash]
+	before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
+	before_action :set_open_question, only: [:open, :open_pv, :open_point]
+	impressionist unique: [:session_hash]
 
   def new
     @question = Question.new
@@ -47,15 +47,6 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
   end
 
-#   def destroy
-#     question = Question.find(params[:id])
-#     @answers = question.answers.includes(:user)
-#     if @answers.empty?
-#       question.destroy if question.user_id == current_user.id
-#     end
-#     redirect_to root_path
-#   end
-
   def show
     @question = Question.find(params[:id])
     impressionist(@question, nil, :unique => [:session_hash])
@@ -86,16 +77,16 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
   # 回答受付中
   def open
-    @questions = Question.where(done: nil).page(params[:page]).per(10).order('updated_at DESC')
+    @questions = @questions.order('updated_at DESC')
   end
 
   def open_pv
-    @questions = Question.where(done: nil).page(params[:page]).per(10).order('impressions_count DESC')
+    @questions =  @questions.order('impressions_count DESC')
   end
 
 
   def open_point
-    @questions = Question.where(done: nil).page(params[:page]).per(10).order('point DESC')
+    @questions =  @questions.order('point DESC')
   end
 
 
@@ -107,6 +98,10 @@ before_action :redirect_top, only: [:new, :confirm, :create, :destroy]
 
   def revive_active_record(arr)
     arr.first.class.where(id: arr.map(&:id))
+  end
+
+  def set_open_question
+    @questions = Question.where(done: nil).page(params[:page]).per(10)
   end
 
 end

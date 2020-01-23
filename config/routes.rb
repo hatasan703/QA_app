@@ -49,11 +49,11 @@ Rails.application.routes.draw do
 
 #   ユーザーランク
 resources :user_ranking, only: %i() do
-    collection do
-        get :week
-        get :month
-        get :total
-    end
+  collection do
+    get :week
+    get :month
+    get :total
+  end
 end
 
 

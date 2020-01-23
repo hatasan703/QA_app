@@ -1,36 +1,35 @@
 <div class='container'>
   <nav class="myprNav">
     <ul class="MyNavWrap">
-        <li><%= link_to "プロフィール", "/users/#{@user.id}", class: '' %></li>
-        <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
-        <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: 'my_answer_list' %></li>
+      <li><%= link_to "プロフィール", "/users/#{@user.id}", class: '' %></li>
+      <li><%= link_to "質問一覧", "/my_question/#{@user.id}", class: '' %></li>
+      <li><%= link_to "回答一覧", "/my_answer/#{@user.id}", class: 'my_answer_list' %></li>
     </ul>
-    </nav>
+  </nav>
 
   <section><h3 class="arrowTtl"><%= @user.user_name %>さんの回答一覧</h3></section>
-    <% @answers.each do |answer| %>
-      <div class="qandaWrap">
-          <div class="qandaItem my_answer_item">
-              <article>
-                  <div class="qandaItemStatus">
-                       <% if answer.question.done.present? %>
-                        <p class="answer">解決済み</p>
-                       <% else %>
-                        <p class="question">回答受付中</p>
-                       <% end %>
-                       <div class="point_show"><div class="point_show3"><span class="point_show2"><%= answer.question.point %></span></div></div>
-                      <%= link_to "#{answer.question.category.name}", "/questions/category/#{answer.question.category_id}", class: "qandaItemStatusCat", method: :get %>
-                  </div>
-                  <p>
-                      <%= link_to "#{answer.text}", "/questions/#{answer.question.id}", method: :get %>
-                  </p>
-                  <div class="qandaItemFooter">
-                    <time><%= answer.question.created_at.to_formatted_s(:without_second) %></time>
-
-                  </div>
-              </article>
-          </div>
+  <% @answers.each do |answer| %>
+    <div class="qandaWrap">
+      <div class="qandaItem my_answer_item">
+        <article>
+            <div class="qandaItemStatus">
+              <% if answer.question.done.present? %>
+              <p class="answer">解決済み</p>
+              <% else %>
+              <p class="question">回答受付中</p>
+              <% end %>
+              <div class="point_show"><div class="point_show3"><span class="point_show2"><%= answer.question.point %></span></div></div>
+              <%= link_to "#{answer.question.category.name}", "/questions/category/#{answer.question.category_id}", class: "qandaItemStatusCat", method: :get %>
+            </div>
+            <p>
+              <%= link_to "#{answer.text}", "/questions/#{answer.question.id}", method: :get %>
+            </p>
+            <div class="qandaItemFooter">
+              <time><%= answer.question.created_at.to_formatted_s(:without_second) %></time>
+            </div>
+        </article>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>
 

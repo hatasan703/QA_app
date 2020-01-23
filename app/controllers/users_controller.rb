@@ -33,15 +33,11 @@ before_action :set_user
 
   end
 
-
   def show
     @user_sex = @user.sex
   end
 
-
-
   private
-
   def user_params
     params.require(:user).permit(:user_name, :sex, :bio, :age, :role)
   end

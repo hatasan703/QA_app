@@ -20,7 +20,6 @@
     <title>QOTAELU</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
@@ -29,49 +28,43 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
   <body>
-  <div class="wrap">
-    <% if flash[:notice1] %>
-        <div class="flash_notice"><%= flash[:notice1] %></div>
-    <% end %>
     <%= render file: "partials/_header.html.erb" %>
-    <%= yield %>
-
-    <% if user_signed_in? && %>
+    <div class="wrap">
+      <% if flash[:notice1] %>
+        <div class="flash_notice"><%= flash[:notice1] %></div>
+      <% end %>
+      <%= yield %>
+      <% if user_signed_in? && %>
         <% unless @question_new || @question_confirm %>
           <button>
             <%= link_to "相談する", new_question_path, class: "new_question_btn new_question_btn2" %>
-            </button>
+          </button>
         <% end %>
-    <% end %>
-
-<%= render file: "partials/_footer.html.erb" %>
-
-
+      <% end %>
+    </div>
+    <%= render file: "partials/_footer.html.erb" %>
   </body>
 </html>
 
+  <script>
+;(function($){
+  var touch = false;
+  $('#humberger').on('click touchstart',function(e){
 
-
-
-        <script>
-      ;(function($){
-        var touch = false;
-        $('#humberger').on('click touchstart',function(e){
-
-            switch (e.type) {
-                case 'touchstart':
-                    drawerToggle();
-                    touch = true;
-                    return false;
-                break;
-            }
-            function drawerToggle(){
-                $('body').toggleClass('drawer-opened');
-                touch = false;
-            }
-        })
-        $('#overlay').on('click touchstart',function(){
-            $('body').removeClass('drawer-opened');
-        })
-      })(jQuery);
-    </script>
+      switch (e.type) {
+          case 'touchstart':
+              drawerToggle();
+              touch = true;
+              return false;
+          break;
+      }
+      function drawerToggle(){
+          $('body').toggleClass('drawer-opened');
+          touch = false;
+      }
+  })
+  $('#overlay').on('click touchstart',function(){
+      $('body').removeClass('drawer-opened');
+  })
+})(jQuery);
+</script>

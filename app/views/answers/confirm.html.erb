@@ -1,31 +1,29 @@
 <div class="container">
-    <section><h3 class="question_status"><%= @question.category.name %></h3></section>
-     <div class="qandaWrap">
-      <div class="qandaItem">
-          <article>
-              <div class="qandaItemStatus">
-                <% if @resolved %>
-                  <p class="answer">解決済み</p>
-                <% else %>
-                  <p class="question">回答受付中</p>
-                <% end %>
-              </div>
-              <section><h3><div class="question_title"><%= @question.title %></div></h3></section>
-              <div class="qanda_middle_items">
-                  <div class='question_user'>
-                    <%= image_tag  @question.user.image, class: "question_user_image" %>
-                    <%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
-                  </div>
-                    <time><%= @question.created_at.to_formatted_s(:without_second) %></time>
-                    <p><%= @question.answers.count %></p>
-                    <p><%= @question.impressionist_count %></p>
-              </div>
-              <p>
-                  <%= @question.text %>
-              </p>
-          </article>
-      </div>
-     </div>
+  <section><h3 class="question_status"><%= @question.category.name %></h3></section>
+  <div class="qandaWrap">
+    <div class="qandaItem">
+      <article>
+        <div class="qandaItemStatus">
+          <% if @resolved %>
+            <p class="answer">解決済み</p>
+          <% else %>
+            <p class="question">回答受付中</p>
+          <% end %>
+        </div>
+        <section><h3><div class="question_title"><%= @question.title %></div></h3></section>
+        <div class="qanda_middle_items">
+          <div class='question_user'>
+            <%= image_tag  @question.user.image, class: "question_user_image" %>
+            <%= link_to @question.user.user_name, "/users/#{@question.user_id}", class: "question_user_name" %>
+          </div>
+            <time><%= @question.created_at.to_formatted_s(:without_second) %></time>
+            <p><%= @question.answers.count %></p>
+            <p><%= @question.impressionist_count %></p>
+        </div>
+        <p><%= @question.text %></p>
+      </article>
+    </div>
+  </div>
 </div>
 <%= form_for [@question, @answer] do |f| %>
   <div class="container">
@@ -33,8 +31,8 @@
     <div class="qandaWrap">
       <div class="qandaItem">
         <article>
-            <p><%= @answer.text %></p>
-            <%= f.hidden_field :text %>
+          <p><%= @answer.text %></p>
+          <%= f.hidden_field :text %>
         </article>
       </div>
     </div>
@@ -42,11 +40,10 @@
 
   <div class='container_answer'>
     <div class="answer_actions answer_back">
-          <%= f.submit '投稿画面に戻る', name: 'back' %>
-        </div>
-        <div class="answer_actions answer_create">
-          <%= f.submit '投稿する' %>
-        </div>
+      <%= f.submit '投稿画面に戻る', name: 'back' %>
     </div>
-  <div>
+    <div class="answer_actions answer_create">
+      <%= f.submit '投稿する' %>
+    </div>
+  </div>
 <% end %>

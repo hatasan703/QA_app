@@ -1,123 +1,109 @@
 <header class="header">
-      <div class="headerWrap">
-
-            <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
-            <!-- pc search -->
-            <div class="search">
-              <%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
-                <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
-                <%= f.submit ("") , class: 'search-btn', value: '' %>
-              <% end %>
-            </div>
-
-  <% if user_signed_in? %>
-    <!-- *ログインの場合 -->
-    <div class="account">
-
+  <div class="headerWrap">
+    <h1 class="logo"><a href="/"><%= image_tag("h_logo.jpg", alt: "QOTAELU") %></a></h1>
+    <!-- pc search -->
+    <div class="search">
+      <%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
+        <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
+        <%= f.submit ("") , class: 'search-btn', value: '' %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <!-- *ログインの場合 -->
+      <div class="account">
         <div id="js-dropdown">
-            <drop-down
-                class="dropdown"
-                nick-name="<%= current_user.user_name %>"
-                :user-id="<%= current_user.id %>"
-             />
+          <drop-down
+              class="dropdown"
+              nick-name="<%= current_user.user_name %>"
+              :user-id="<%= current_user.id %>"
+          />
         </div>
-
-            <%= render partial: "notifications/notification",locals: { notifications: @notifications } %>
-
+        <%= render partial: "notifications/notification",locals: { notifications: @notifications } %>
         <%= link_to "#{current_user.money}", "/point/#{current_user.id}", class: 'pointLinkBtn' %>
-
         <div id="humberger" class="sp">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </div>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </div>
+    </div>
+  </div>
 
+  <%# sp %>
+  <div id="drawernav" class="sp">
+    <div class="container">
+      <nav>
+        <ul>
+          <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'item' %></li>
+          <li><%= link_to "アカウント設定", "/identification/#{current_user.id}", class: 'item' %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'item' %></li>
+        </ul>
+        <section><h3>みんなのQ&amp;A</h3></section>
+        <ul>
+          <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
+          <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
+          <li><%= link_to "カテゴリ", category_index_path, class: '' %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <%# <> %>
+    <% else %>
+      <!-- *未ログインの場合 -->
+      <div class="account">
+        <%= link_to "ログイン", new_user_session_path, class: 'loginLinkBtn' %>
+        <%= link_to "新規登録", new_user_registration_path, class: 'signupLinkBtn' %>
+        <div id="humberger" class="sp">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </div>
       </div>
     </div>
 
-<%# sp %>
+  <%# sp %>
     <div id="drawernav" class="sp">
-        <div class="container">
-            <nav>
-                <ul>
-                  <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'item' %></li>
-                  <li><%= link_to "アカウント設定", "/identification/#{current_user.id}", class: 'item' %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'item' %></li>
-                </ul>
-
-                <section><h3>みんなのQ&amp;A</h3></section>
-                <ul>
-                    <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
-                    <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
-                    <li><%= link_to "カテゴリ", category_index_path, class: '' %></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-<%# <> %>
-
-
-  <% else %>
-    <!-- *未ログインの場合 -->
-        <div class="account">
-            <%= link_to "ログイン", new_user_session_path, class: 'loginLinkBtn' %>
-            <%= link_to "新規登録", new_user_registration_path, class: 'signupLinkBtn' %>
-            <div id="humberger" class="sp">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </div>
-        </div>
-
-    </div>
-
-<%# sp %>
-    <div id="drawernav" class="sp">
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><%= link_to "ログイン", new_user_session_path, class: '' %></li>
-                    <li><%= link_to "新規登録", new_user_registration_path, class: '' %></li>
-                </ul>
-
-                <section><h3>みんなの&amp;A</h3></section>
-                <ul>
-                    <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
-                    <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
-                    <li><%= link_to "カテゴリ", category_index_path, class: '' %></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-
-  <% end %>
-
-  <!-- *main navigation -->
-        <nav class="mainNav">
-            <ul class="mainNavWrap">
-                <li><%= link_to "カテゴリ", category_index_path, class: '' %></li>
-                <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
-                <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
-            </ul>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><%= link_to "ログイン", new_user_session_path, class: '' %></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: '' %></li>
+          </ul>
+          <section><h3>みんなの&amp;A</h3></section>
+          <ul>
+            <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
+            <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
+            <li><%= link_to "カテゴリ", category_index_path, class: '' %></li>
+          </ul>
         </nav>
+      </div>
+    </div>
+    <% end %>
 
-        <!-- sp search -->
-        <div class="spSearch">
-            <%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
-                <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
-               <%= f.submit ("") , class: 'search-btn', value: '' %>
-            <% end %>
+    <!-- *main navigation -->
+    <nav class="mainNav">
+      <ul class="mainNavWrap">
+        <li><%= link_to "カテゴリ", category_index_path, class: '' %></li>
+        <li><%= link_to "ランキング", questions_ranking_path, class: '' %></li>
+        <li><%= link_to "回答受付中", questions_open_path, class: '' %></li>
+      </ul>
+    </nav>
+
+    <!-- sp search -->
+    <div class="spSearch">
+      <%= search_form_for(@search, url: search_search_index_path, class: "searchForm") do |f| %>
+        <%= f.text_field :title_cont ,placeholder: 'キーワード検索', value: '' %>
+        <%= f.submit ("") , class: 'search-btn', value: '' %>
+      <% end %>
+    </div>
+
+    <% if @unchecked_articles.present? %>
+      <% if  @top_index %>
+        <div id="js-notice-header">
+          <notice-header
+            notice-link="/articles"
+            :notice-list="<%= @unchecked_articles.to_json %>"
+          />
         </div>
-
-        <% if @unchecked_articles.present? %>
-            <% if  @top_index %>
-                <div id="js-notice-header">
-                    <notice-header
-                        notice-link="/articles"
-                        :notice-list="<%= @unchecked_articles.to_json %>"
-                     />
-                </div>
-            <% end %>
-        <% end %>
-
-    </header>
+      <% end %>
+    <% end %>
+</header>

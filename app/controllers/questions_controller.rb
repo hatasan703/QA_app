@@ -19,32 +19,30 @@ class QuestionsController < ApplicationController
   end
 
   def create
-
     @question = Question.new(question_params)
     @categories = Category.all
-        if params[:stripeToken] && params[:stripeEmail]
-        # stripe決済
-        # Amount in cents
-        @amount = @question.point #引き落とす金額
-        ###この操作で、Stripe から帰ってきた情報を取得します
-            customer = Stripe::Customer.create(
-                :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
-                :source  => params[:stripeToken] #めちゃめちゃな文字列です
-            )
+    if params[:stripeToken] && params[:stripeEmail]
+      # stripe決済
+      # Amount in cents
+      @amount = @question.point #引き落とす金額
+      ###この操作で、Stripe から帰ってきた情報を取得します
+      customer = Stripe::Customer.create(
+          :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
+          :source  => params[:stripeToken] #めちゃめちゃな文字列です
+      )
 
-            ###この操作で、決済をします
-            charge = Stripe::Charge.create(
-                :customer    => customer.id,
-                :amount      => @amount,
-                :description => 'Rails Stripe customer',
-                :currency    => 'jpy'
-            )
-            @question.save
-            redirect_to controller: 'questions', action: 'show', id: @question.id
-        else
-            redirect_to controller: 'questions', action: 'new'
-        end
-
+      ###この操作で、決済をします
+      charge = Stripe::Charge.create(
+          :customer    => customer.id,
+          :amount      => @amount,
+          :description => 'Rails Stripe customer',
+          :currency    => 'jpy'
+      )
+      @question.save
+      redirect_to controller: 'questions', action: 'show', id: @question.id
+    else
+      redirect_to controller: 'questions', action: 'new'
+    end
   end
 
   def show

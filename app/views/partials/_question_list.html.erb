@@ -1,35 +1,35 @@
 <div class='container'>
-    <% @questions.each do |question| %>
-      <div class="qandaWrap">
-          <div class="qandaItem">
-              <article>
-                <a href="/questions/<%= question.id %>">
-                  <div class="qandaItemStatus">
-                       <% if question.done.present? %>
-                        <p class="answer">解決済み</p>
-                       <% else %>
-                        <p class="question">回答受付中</p>
-                       <% end %>
-                       <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
-                        <div class='qandaItemStatusCat'><%= question.category.name %></div>
-                  </div>
-                  <section><h3> <%= question.title %></h3></section>
-                  <p>
-                      <%= link_to "#{truncate(question.text, length:200)}", question_path(question) %>
-                  </p>
-                  <div class="qandaItemFooter">
-                      <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                      <p class='answer_count'><%= question.answers.count %></p>
-                      <p><%= question.impressions_count %></p>
-                  </div>
-                </a>
-              </article>
-          </div>
+  <% @questions.each do |question| %>
+    <div class="qandaWrap">
+      <div class="qandaItem">
+        <article>
+          <a href="/questions/<%= question.id %>">
+            <div class="qandaItemStatus">
+              <% if question.done.present? %>
+              <p class="answer">解決済み</p>
+              <% else %>
+              <p class="question">回答受付中</p>
+              <% end %>
+              <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+              <div class='qandaItemStatusCat'><%= question.category.name %></div>
+            </div>
+            <section><h3> <%= question.title %></h3></section>
+            <p>
+              <%= link_to "#{truncate(question.text, length:200)}", question_path(question) %>
+            </p>
+            <div class="qandaItemFooter">
+              <time><%= question.created_at.to_formatted_s(:without_second) %></time>
+              <p class='answer_count'><%= question.answers.count %></p>
+              <p><%= question.impressions_count %></p>
+            </div>
+          </a>
+        </article>
       </div>
-    <% end %>
-    <div class="pagenation_design">
+    </div>
+  <% end %>
+  <div class="pagenation_design">
     <div class="bootstrap">
-    <%= paginate(@questions) %>
+      <%= paginate(@questions) %>
     </div>
-    </div>
+  </div>
 </div>

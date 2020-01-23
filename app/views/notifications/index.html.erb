@@ -1,44 +1,44 @@
 
 <div class="container">
-    <div class="notice_all">
-        <h1 class="all_info">お知らせ一覧</h1>
-        <div class="notice_box">
+  <div class="notice_all">
+    <h1 class="all_info">お知らせ一覧</h1>
+    <div class="notice_box">
       <% if @all_notify.exists? %>
         <% @all_notify.each do |notify| %>
           <% if notify.action == "answer" %>
             <div class="notice_mail">
-                <div class="notice_info">
-                    <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
-                    <%= link_to "#{User.find(notify.visiter_id).user_name}さんがあなたの質問に回答しました！", question_path(notify.question_id) %>
-                </div>
-                <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
+              <div class="notice_info">
+                <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
+                <%= link_to "#{User.find(notify.visiter_id).user_name}さんがあなたの質問に回答しました！", question_path(notify.question_id) %>
+              </div>
+              <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>
           <% elsif notify.action == "best_answer" %>
             <div class="notice_mail">
-                <div class="notice_info">
-                    <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
-                    <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.answer_id).question_id) %>
-                </div>
-                <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
+              <div class="notice_info">
+                <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
+                <%= link_to "あなたの回答がベストアンサーに選ばれました！", question_path(Answer.find(notify.answer_id).question_id) %>
+              </div>
+              <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
             </div>
           <% elsif notify.action == "question_dead" %>
-              <div class="notice_mail">
-                <div class="notice_info">
-                  <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
-                  <%= link_to "ベストアンサーに選んでいない質問があります！(３日経つと自動で選定されます)", question_path(notify.question_id) %>
-                </div>
-                <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
+            <div class="notice_mail">
+              <div class="notice_info">
+                <%= image_tag("logo_notice", alt: "QOTAELU" ,class: 'notice_logo') %>
+                <%= link_to "ベストアンサーに選んでいない質問があります！(３日経つと自動で選定されます)", question_path(notify.question_id) %>
               </div>
+              <div class="date"><%= distance_of_time_in_words_to_now(notify.created_at) %></div>
+            </div>
           <% end %>
         <% end %>
       <% end %>
-        </div>
+    </div>
+  </div>
 
-    </div>
-    <div class="pagenation_design">
+  <div class="pagenation_design">
     <div class="bootstrap">
-    <%= paginate(@all_notify) %>
+      <%= paginate(@all_notify) %>
     </div>
-    </div>
+  </div>
 </div>
 

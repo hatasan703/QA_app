@@ -1,147 +1,132 @@
 
 <!-- main contents -->
-    <main class="main">
-      <% if user_signed_in? %>
-          <div class="container">
-            <div class="howTo">
-                <section>
-                    <h2 class="howToTtl">
-                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
-                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
-                    </h2>
-                </section>
+<main class="main">
+  <% if user_signed_in? %>
+    <div class="container">
+      <div class="howTo">
+        <section>
+          <h2 class="howToTtl">
+            <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+            <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+          </h2>
+        </section>
 
-                <div class="js-section-with-image-list">
-                    <section-with-image-list />
-                </div>
-
-                <div class="js-discussion-button-list">
-                    <discussion-button-list
-                        :is-pc="<%= request.from_pc? %>"
-                        :is-login="true"
-                        question-link="<%= url_for controller: 'questions', action: 'new' %>"
-                        answer-link="<%= url_for controller: 'questions', action: 'open' %>"
-                        lp-link="<%= url_for controller: 'devise/sessions', action: 'new' %>"
-                    />
-                </div>
-            </div>
+        <div class="js-section-with-image-list">
+          <section-with-image-list />
         </div>
-
-      <% else %>
-
-        <div class="container">
-            <div class="howTo">
-                <section>
-                    <h2 class="howToTtl">
-                        <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
-                        <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
-                    </h2>
-                </section>
-
-                <div class="js-section-with-image-list">
-                    <section-with-image-list />
-                </div>
-
-                <div class="js-discussion-button-list">
-                    <discussion-button-list
-                        :is-pc="<%= request.from_pc? %>"
-                        :is-login="false"
-                        question-link="<%= url_for controller: 'questions', action: 'new' %>"
-                        answer-link="<%= url_for controller: 'questions', action: 'open' %>"
-                        lp-link="<%= url_for controller: 'devise/sessions', action: 'new' %>"
-                    />
-                </div>
-            </div>
+        <div class="js-discussion-button-list">
+          <discussion-button-list
+            :is-pc="<%= request.from_pc? %>"
+            :is-login="true"
+            question-link="<%= url_for controller: 'questions', action: 'new' %>"
+            answer-link="<%= url_for controller: 'questions', action: 'open' %>"
+            lp-link="<%= url_for controller: 'devise/sessions', action: 'new' %>"
+          />
         </div>
-      <% end %>
-
-        <div class="container">
-            <div class="qanda">
-                <section>
-                    <h2 class="qandaTtl">
-                        <span>みんなの</span>
-                        <%= image_tag("qanda_q.png", alt: "Q") %>
-
-                        <span>&amp;</span>
-                        <%= image_tag("qanda_a.png", alt: "A") %>
-                    </h2>
-                </section>
-
-                <section><h3 class="arrowTtl">回答受付中</h3></section>
-
-                <div class="qandaWrap">
-                  <% @questions.each do |question| %>
-                      <div class="qandaItem">
-                          <article>
-                              <div class="qandaItemStatus">
-                                  <p class="question">回答受付中</p>
-                                 <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
-
-                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
-                              </div>
-                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
-                              <p>
-                                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
-                              </p>
-                              <div class="qandaItemFooter">
-                                  <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                  <p class='answer_count'><%= question.answers.count %></p>
-                                  <p><%= question.impressions_count %></p>
-                              </div>
-                          </article>
-                      </div>
-                  <% end %>
-                  <div class="all_qa">
-                  <a href="/questions/open" class="all_qa_btn">もっと見る
-                    <span class="right_arrow"></span>
-                    </a>
-                  </div>
-                </div>
-
-
-                <section><h3 class="arrowTtl">ランキング</h3></section>
-                <div class="qandaWrap">
-                  <% @ranking_questions.each do |question| %>
-                      <div class="qandaItem">
-                          <article>
-                              <div class="qandaItemStatus">
-                              <% if question.done.present? %>
-                                <p class="answer">解決済み</p>
-                              <% else %>
-                                <p class="question">回答受付中</p>
-                              <% end %>
-                                <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
-
-                                  <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
-                              </div>
-                              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
-                              <p>
-                                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
-                              </p>
-                              <div class="qandaItemFooter">
-                                <time><%= question.created_at.to_formatted_s(:without_second) %></time>
-                                <p class='answer_count'><%= question.answers.count %></p>
-                                <p><%= question.impressions_count %></p>
-                              </div>
-                          </article>
-                      </div>
-                  <% end %>
-                  <div class="all_qa">
-                  <a href="/questions/ranking" class="all_qa_btn">もっと見る
-                    <span class="right_arrow"></span>
-                    </a>
-                  </div>
-                </div>
-
-                <section><h3 class="arrowTtl">カテゴリー</h3></section>
-                <div class="qandaWrap qandaWrapCat">
-                    <ul>
-                      <% @categories.each do |category| %>
-                        <li><%= link_to "#{category.name}", category_path(category) %></li>
-                      <% end %>
-                    </ul>
-                </div>
-
-            </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="container">
+      <div class="howTo">
+        <section>
+          <h2 class="howToTtl">
+            <%= image_tag("howTo_ttl.png", class: "pc", alt: "QOTAELUって？") %>
+            <%= image_tag("sp_howTo_ttl.png", class: "sp", alt: "QOTAELUって？") %>
+          </h2>
+        </section>
+        <div class="js-section-with-image-list">
+          <section-with-image-list />
         </div>
-    </main>
+        <div class="js-discussion-button-list">
+          <discussion-button-list
+            :is-pc="<%= request.from_pc? %>"
+            :is-login="false"
+            question-link="<%= url_for controller: 'questions', action: 'new' %>"
+            answer-link="<%= url_for controller: 'questions', action: 'open' %>"
+            lp-link="<%= url_for controller: 'devise/sessions', action: 'new' %>"
+          />
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="qanda">
+      <section>
+        <h2 class="qandaTtl">
+          <span>みんなの</span>
+          <%= image_tag("qanda_q.png", alt: "Q") %>
+          <span>&amp;</span>
+          <%= image_tag("qanda_a.png", alt: "A") %>
+        </h2>
+      </section>
+      <section><h3 class="arrowTtl">回答受付中</h3></section>
+      <div class="qandaWrap">
+        <% @questions.each do |question| %>
+          <div class="qandaItem">
+            <article>
+              <div class="qandaItemStatus">
+                <p class="question">回答受付中</p>
+                <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+                <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
+              </div>
+              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+              <p>
+                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
+              </p>
+              <div class="qandaItemFooter">
+                <time><%= question.created_at.to_formatted_s(:without_second) %></time>
+                <p class='answer_count'><%= question.answers.count %></p>
+                <p><%= question.impressions_count %></p>
+              </div>
+            </article>
+          </div>
+        <% end %>
+        <div class="all_qa">
+          <a href="/questions/open" class="all_qa_btn">もっと見る
+            <span class="right_arrow"></span>
+          </a>
+        </div>
+      </div>
+
+      <section><h3 class="arrowTtl">ランキング</h3></section>
+      <div class="qandaWrap">
+        <% @ranking_questions.each do |question| %>
+          <div class="qandaItem">
+            <article>
+              <div class="qandaItemStatus">
+              <% if question.done.present? %>
+                <p class="answer">解決済み</p>
+              <% else %>
+                <p class="question">回答受付中</p>
+              <% end %>
+              <div class="point_show"><div class="point_show3"><span class="point_show2"><%= question.point %></span></div></div>
+                <%= link_to "#{question.category.name}", category_path(question.category), class: "qandaItemStatusCat" %>
+              </div>
+              <section><h3> <%= link_to "#{question.title}", "/questions/#{question.id}", method: :get %></h3></section>
+              <p>
+                <%= link_to "#{truncate(question.text, length:200)}", question_path(question), method: :get %>
+              </p>
+              <div class="qandaItemFooter">
+                <time><%= question.created_at.to_formatted_s(:without_second) %></time>
+                <p class='answer_count'><%= question.answers.count %></p>
+                <p><%= question.impressions_count %></p>
+              </div>
+            </article>
+          </div>
+        <% end %>
+        <div class="all_qa">
+          <a href="/questions/ranking" class="all_qa_btn">もっと見る<span class="right_arrow"></span></a>
+        </div>
+      </div>
+      <section><h3 class="arrowTtl">カテゴリー</h3></section>
+      <div class="qandaWrap qandaWrapCat">
+        <ul>
+          <% @categories.each do |category| %>
+            <li><%= link_to "#{category.name}", category_path(category) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,62 +1,57 @@
-  <div class="container mypage">
-    <nav class="myprNav">
-        <ul class="user_setting">
-            <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
-            <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: 'card_info' %></li>
-            <li><%= link_to "お礼", "/point/#{current_user.id}", class: '' %></li>
-        </ul>
-    </nav>
+<div class="container mypage">
+  <nav class="myprNav">
+    <ul class="user_setting">
+      <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
+      <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: 'card_info' %></li>
+      <li><%= link_to "お礼", "/point/#{current_user.id}", class: '' %></li>
+    </ul>
+  </nav>
 
-    <div class="container myprNav">
-        <div class="edit-profile">
-        銀行口座登録
-        </div>
+  <div class="container myprNav">
+    <div class="edit-profile">
+    銀行口座登録
+    </div>
     <% if current_user.connect_id.present? %>
-
-
-        <div class="edit_id_info">
-            <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
-                <li class="id_info">銀行名</li>
-                <select name="bank_code" class="user_edit_form">
-                    <option value="0005">三菱UFJ銀行</option>
-                    <option value="0001">みずほ銀行</option>
-                    <option value="0010">りそな銀行</option>
-                    <option value="0017">埼玉りそな銀行</option>
-                    <option value="0009">三井住友銀行</option>
-                    <option value="0033">ジャパンネット銀行</option>
-                    <option value="0036">楽天銀行</option>
-                    <option value="9900">ゆうちょ銀行</option>
-                </select>
-                <li class="id_info">支店コード</li>
-                <input name="code" title="支店コード" placeholder="123" type="text" required="required" class="user_edit_form">
-                <li class="id_info">口座番号</li>
-                <input name="account_number" title="口座番号" placeholder="1234567" type="text" required="required" class="user_edit_form">
-                <li class="id_info">口座名義(セイ メイ)</li>
-                <input name="name" title="口座名義(セイ メイ)" placeholder="ハタケダ ヒロキ" type="text" required="required" class="user_edit_form">
-                <div class="mainItem">
-
-                <%= submit_tag "登録", class: "user_profile_edit_btn verifie_btn", title: "登録" %>
-
-            <% end %>
-        </div>
+      <div class="edit_id_info">
+        <%= form_tag("/bank/#{@user.id}/", enctype: "multipart/form-data", method: :post) do %>
+          <li class="id_info">銀行名</li>
+          <select name="bank_code" class="user_edit_form">
+            <option value="0005">三菱UFJ銀行</option>
+            <option value="0001">みずほ銀行</option>
+            <option value="0010">りそな銀行</option>
+            <option value="0017">埼玉りそな銀行</option>
+            <option value="0009">三井住友銀行</option>
+            <option value="0033">ジャパンネット銀行</option>
+            <option value="0036">楽天銀行</option>
+            <option value="9900">ゆうちょ銀行</option>
+          </select>
+          <li class="id_info">支店コード</li>
+          <input name="code" title="支店コード" placeholder="123" type="text" required="required" class="user_edit_form">
+          <li class="id_info">口座番号</li>
+          <input name="account_number" title="口座番号" placeholder="1234567" type="text" required="required" class="user_edit_form">
+          <li class="id_info">口座名義(セイ メイ)</li>
+          <input name="name" title="口座名義(セイ メイ)" placeholder="ハタケダ ヒロキ" type="text" required="required" class="user_edit_form">
+          <div class="mainItem">
+          <%= submit_tag "登録", class: "user_profile_edit_btn verifie_btn", title: "登録" %>
+        <% end %>
+      </div>
 
       <div class="bank_list">
         <div class="edit-profile">
         登録済み銀行口座
         </div>
         <div class="bank_name">
-            <%= @code %> <%= @bank_name %><br>
-            <%= @name %>
+          <%= @code %> <%= @bank_name %><br>
+          <%= @name %>
         </div>
       </div>
 
     <% else %>
-        <div class="no_bank">
-            <%= link_to "本人情報の登録を行ってください", "/identification/#{current_user.id}", class: '' %>
-        </div>
+      <div class="no_bank">
+        <%= link_to "本人情報の登録を行ってください", "/identification/#{current_user.id}", class: '' %>
+      </div>
     <% end %>
 
     </div>
-
-    </div>
+  </div>
 </div>

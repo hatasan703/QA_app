@@ -6,24 +6,24 @@
 </div>
 
 <div class='container qa_status_content'>
-<div class="wrap_qa_status">
-  <div class='left_content'>
-    <div class='status_btn status_resolved'>解決済み</div>
-    <div class='status_btn'><%= link_to "回答受付中", open_category_path(@category) %></div>
-  </div>
-      <div class='right_content'>
-        <div class="dropdown2">
-            <input id="tg2" class="dropInput2" type="checkbox">
-            <label for="tg2" class="dropLabel2">
-                <span class="userName">更新日時</span>
-            </label>
-            <ul class="menu2 animation2">
-              <li class='item2_new top_item'><%= link_to "閲覧数", pv_category_path(@category) %></li>
-              <li class='item2_new'><%= link_to "ポイント数", point_category_path(@category) %></li>
-            </ul>
-        </div>
+  <div class="wrap_qa_status">
+    <div class='left_content'>
+      <div class='status_btn status_resolved'>解決済み</div>
+      <div class='status_btn'><%= link_to "回答受付中", open_category_path(@category) %></div>
+    </div>
+    <div class='right_content'>
+      <div class="dropdown2">
+        <input id="tg2" class="dropInput2" type="checkbox">
+        <label for="tg2" class="dropLabel2">
+          <span class="userName">更新日時</span>
+        </label>
+        <ul class="menu2 animation2">
+          <li class='item2_new top_item'><%= link_to "閲覧数", pv_category_path(@category) %></li>
+          <li class='item2_new'><%= link_to "ポイント数", point_category_path(@category) %></li>
+        </ul>
       </div>
-</div>
+    </div>
+  </div>
 </div>
 
 <%= render file: "partials/_question_list.html.erb" %>

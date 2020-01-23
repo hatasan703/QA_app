@@ -1,14 +1,13 @@
 class AnswersController < ApplicationController
 
-    protect_from_forgery except: :confirm
-    before_action :redirect_top
-    before_action :set_answer, only: [:destroy, :ba_confirm, :update]
+  protect_from_forgery except: :confirm
+  before_action :redirect_top
+  before_action :set_answer, only: [:destroy, :ba_confirm, :update]
 
   def confirm
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
     redirect_to controller: 'questions', action: 'show', id: @question.id if @answer.text.empty?
-
   end
 
   def create
@@ -16,14 +15,14 @@ class AnswersController < ApplicationController
     @question = Question.find(@answer.question_id)
 
     if params[:back]
-        @all_answers = @question.answers.includes(:user)
-        @answers = @all_answers.where(best_answer: nil).order("updated_at DESC")
-        format.html { render template: "questions/show" }
+      @all_answers = @question.answers.includes(:user)
+      @answers = @all_answers.where(best_answer: nil).order("updated_at DESC")
+      format.html { render template: "questions/show" }
     elsif @answer.save
-        @question.answered_create_notification_by(current_user)
-        redirect_to controller: 'questions', action: 'show', id: @answer.question_id
+      @question.answered_create_notification_by(current_user)
+      redirect_to controller: 'questions', action: 'show', id: @answer.question_id
     else
-        render template: "questions/show"
+      render template: "questions/show"
     end
   end
 

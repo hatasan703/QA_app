@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def only_current_user
     @user = User.find(params[:id])
     unless @user == current_user
-        redirect_to root_path
+      redirect_to root_path
     end
   end
 

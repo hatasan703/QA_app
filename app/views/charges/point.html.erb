@@ -1,30 +1,29 @@
 <div class="container mypage">
-    <nav class="myprNav">
-        <ul class="user_setting">
-            <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
-            <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: '' %></li>
-            <li><%= link_to "お礼", "/point/#{current_user.id}", class: 'point_info' %></li>
-        </ul>
-    </nav>
+  <nav class="myprNav">
+    <ul class="user_setting">
+      <li><%= link_to "本人情報", "/identification/#{current_user.id}", class: '' %></li>
+      <li><%= link_to "銀行口座", "/bank/#{current_user.id}", class: '' %></li>
+      <li><%= link_to "お礼", "/point/#{current_user.id}", class: 'point_info' %></li>
+    </ul>
+  </nav>
 
-    <div class="point_info">
-      <div class="point_all">
-        <div class="point_some">
-          <p>現在の残高</p>
-          <div>¥<%= @user.money %></div>
-        </div>
-        <div class="point_some">
-          <p>振込申請</p>
-          <div class="icon_point">
-          <%= link_to "", "/payout_confirmation/#{@user.id}" , class: "icon_point2" %>
-          </div>
-        </div>
-        <div class="point_some">
-          <p>お礼とは？</p>
-          <div class="icon_point">
-          <%= link_to "", "/help" , class: "icon_point2" %>
-          </div>
-        </div>
+  <div class="point_info">
+    <div class="point_all">
+      <div class="point_some">
+        <p>現在の残高</p>
+        <div>¥<%= @user.money %></div>
+      </div>
+      <div class="point_some">
+        <p>振込申請</p>
+        <div class="icon_point">
+        <%= link_to "", "/payout_confirmation/#{@user.id}" , class: "icon_point2" %>
+      </div>
+    </div>
+    <div class="point_some">
+      <p>お礼とは？</p>
+      <div class="icon_point">
+        <%= link_to "", "/help" , class: "icon_point2" %>
       </div>
     </div>
   </div>
+</div>

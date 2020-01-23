@@ -1,6 +1,6 @@
 class CategoryController < ApplicationController
 
-    before_action :set_category, except: :index
+  before_action :set_category, except: :index
 
   # 解決済み
   def index

@@ -1,19 +1,20 @@
 # QOTAELU
 
-## 概要
-QOTAELUは、ベストアンサーに報酬を与えることで質の高いQ&Aを促進するWebサービスです。ユーザーは質問を投稿し、他のユーザーからの回答を受けます。最も役立った回答を選ぶことで、回答者には報酬が与えられます。
+## Description
+QOTAELU is a web service that encourages high-quality Q&As by rewarding the best answers. Users post questions and receive answers from others. The most helpful answer, as chosen by the question asker, earns a reward for the answerer.
 
-## 技術スタック
-- **フレームワーク**: Ruby on Rails
-- **フロントエンド**: Vue.js, jQuery
-- **データベース**: MySQL
-- **デプロイメント**: Heroku
+## Technology Stack
+- **Framework**: Ruby on Rails
+- **Backend**: Ruby
+- **Frontend**: Vue.js, jQuery
+- **Database**: MySQL (ClearDB)
+- **Deployment**: Heroku
 
-## 主な機能
-- 質問（単発決済あり）
-- 回答
-- ベストアンサーの選定とポイントの付与
-- ポイントの銀行出金
-- ユーザーランキング
-- 質問の検索
-- ユーザーへの通知
+## Main Features
+- Posting questions (with the option for single-payment rewards)
+- Providing answers
+- Selecting and awarding points to the best answer
+- Withdrawing points to a bank account
+- User rankings
+- Searching for questions
+- Notifications to users

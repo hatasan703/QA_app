@@ -1,98 +1,19 @@
-## users table
+# QOTAELU
 
-|Column|Type|Options|
-|------|----|-------|
-|nickname|string|null: false, foreign_key: true|
-|role|string|
-|sex|boolean|
-|money|integer|default: 0|
-|bio|text|
-|uid|string|
-|age|integer|
-|image|text|
-|provider|string|
-|admin|boolean|
+## 概要
+QOTAELUは、ベストアンサーに報酬を与えることで質の高いQ&Aを促進するWebサービスです。ユーザーは質問を投稿し、他のユーザーからの回答を受けます。最も役立った回答を選ぶことで、回答者には報酬が与えられます。
 
-### Association
-- has_many :questions, dependent: :destroy
-- has_many :answers, dependent: :destroy
-- has_many :impressions, dependent: :destroy
--   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-- has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-- has_many :articles, dependent: :destroy
+## 技術スタック
+- **フレームワーク**: Ruby on Rails
+- **フロントエンド**: Vue.js, jQuery
+- **データベース**: MySQL
+- **デプロイメント**: Heroku
 
-## questions table
-
-|Column|Type|Options|
-|------|----|-------|
-|title|string|null: false|
-|text|text|null: false|
-|point|integer|null: false|
-|done|boolean|
-|impressions_count|integer|default: 0|
-|category_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
-
-### Association
-- has_many :answers
-- belongs_to :user
-- belongs_to :category
-- has_many :notifications,dependent: :destroy
-
-## answers table
-
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|best_answer|boolean|
-|question_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :question
-- has_many :notifications,dependent: :destroy
-
-
-## categories table
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-
-### Association
-- has_many :questions
-
-
-
-## notifications table
-
-|Column|Type|Options|
-|------|----|-------|
-|visiter_id|integer||
-|visited_id|integer||
-|question_id|integer||
-|answer_id|integer||
-|action|string||
-|check|boolean|default: false|
-
-
-### Association
-- belongs_to :question, optional: true
-- belongs_to :answer, optional: true
-
-
-
-## articles table
-
-|Column|Type|Options|
-|------|----|-------|
-|title|string|null: false|
-|text|text|null: false|
-|check|boolean|default: false|
-|user_id|references|null: false, foreign_key: true|
-
-
-### Association
-- belongs_to :user
+## 主な機能
+- 質問（単発決済あり）
+- 回答
+- ベストアンサーの選定とポイントの付与
+- ポイントの銀行出金
+- ユーザーランキング
+- 質問の検索
+- ユーザーへの通知
